@@ -39,3 +39,49 @@ GAMA Knowledge Packs — v1.0.0
 8. Pack returns structured knowledge to the Runtime.
 9. Runtime uses the knowledge to complete the task.
 10. Diagnostics log the pack usage.
+## Knowledge Pack Components
+
+### 1. Pack Loader
+Responsible for loading packs from local storage.
+- path resolution
+- version checking
+- fallback handling
+- memory caching
+
+### 2. Metadata Parser
+Reads metadata.json and extracts:
+- pack type
+- version
+- subject
+- language
+- dependencies
+
+### 3. Knowledge Engine
+Processes knowledge.json.
+- structured facts
+- definitions
+- formulas
+- timelines
+- entities
+
+### 4. Rule Engine
+Applies rules.json to guide reasoning.
+- pattern matching
+- logic rules
+- transformation rules
+- validation rules
+
+### 5. Example Engine
+Uses examples.json for:
+- demonstrations
+- pattern inference
+- similarity matching
+- offline reasoning support
+
+### 6. Diagnostics Logger
+Tracks pack usage.
+- pack name
+- version
+- load time
+- errors
+- fallback usage

@@ -27,3 +27,15 @@ Each pack contains:
 
 ## Version
 GAMA Knowledge Packs — v1.0.0
+## Knowledge Pack Flow
+
+1. Runtime requests a knowledge pack based on task category.
+2. Pack Loader checks if the pack exists locally.
+3. If missing, fallback pack is used.
+4. metadata.json is parsed to identify pack type and version.
+5. knowledge.json is loaded into memory.
+6. rules.json is applied to structure reasoning.
+7. examples.json is used for pattern matching.
+8. Pack returns structured knowledge to the Runtime.
+9. Runtime uses the knowledge to complete the task.
+10. Diagnostics log the pack usage.

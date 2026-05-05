@@ -85,3 +85,15 @@ Tracks pack usage.
 - load time
 - errors
 - fallback usage
+## Knowledge Pack Execution Cycle
+
+1. Runtime requests a specific knowledge pack.
+2. Pack Loader locates the pack in local storage.
+3. Metadata Parser reads metadata.json.
+4. Knowledge Engine loads knowledge.json into memory.
+5. Rule Engine applies rules.json to guide reasoning.
+6. Example Engine loads examples.json for pattern matching.
+7. Pack compiles structured knowledge output.
+8. Output is returned to the Runtime.
+9. Diagnostics Logger records pack usage.
+10. System waits for the next pack request.

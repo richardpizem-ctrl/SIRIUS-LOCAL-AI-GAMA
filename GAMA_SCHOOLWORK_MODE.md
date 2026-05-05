@@ -22,3 +22,18 @@ Schoolwork Mode provides offline reasoning and problem‑solving for students.
 
 ## Version
 GAMA Schoolwork Mode — v1.0.0
+## Schoolwork Flow
+
+1. Receive input from Runtime (text or OCR).
+2. Detect subject type:
+   - math
+   - language
+   - science
+   - general knowledge
+3. Load appropriate Knowledge Pack.
+4. Normalize the problem or question.
+5. Apply reasoning rules based on subject.
+6. Generate solution steps.
+7. Produce final explanation and answer.
+8. Return structured output to Runtime.
+9. Log schoolwork event for diagnostics.

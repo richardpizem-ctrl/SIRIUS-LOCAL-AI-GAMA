@@ -37,3 +37,53 @@ GAMA Schoolwork Mode — v1.0.0
 7. Produce final explanation and answer.
 8. Return structured output to Runtime.
 9. Log schoolwork event for diagnostics.
+## Schoolwork Components
+
+### 1. Subject Detector
+Identifies the subject of the task.
+- math
+- language
+- science
+- general knowledge
+- mixed tasks
+
+### 2. Problem Normalizer
+Prepares the input for reasoning.
+- cleanup
+- structure detection
+- OCR correction
+- math formatting
+
+### 3. Reasoning Engine
+Core logic for solving tasks.
+- step-by-step reasoning
+- rule-based logic
+- pattern matching
+- offline inference
+
+### 4. Knowledge Pack Integrator
+Connects Schoolwork Mode with Knowledge Packs.
+- pack selection
+- rule application
+- example matching
+- fallback handling
+
+### 5. Explanation Generator
+Produces human‑readable explanations.
+- step breakdown
+- reasoning trace
+- final summary
+
+### 6. Output Formatter
+Structures the final result.
+- solution
+- steps
+- explanation
+- metadata
+
+### 7. Diagnostics Logger
+Tracks Schoolwork events.
+- subject type
+- pack used
+- reasoning time
+- errors or fallbacks

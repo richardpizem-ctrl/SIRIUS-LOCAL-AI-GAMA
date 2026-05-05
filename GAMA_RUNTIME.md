@@ -26,3 +26,19 @@ The GAMA Runtime Core is the central execution layer responsible for:
 
 ## Version
 GAMA Runtime Core — v1.0.0
+## Runtime Flow
+
+1. User input is received (text, voice, image).
+2. Input is normalized and sent to the Intent Router.
+3. Intent Router identifies the task category:
+   - vision
+   - knowledge pack
+   - schoolwork
+   - security
+   - general assistant
+4. Task Dispatcher selects the correct module.
+5. Module Manager loads the required module.
+6. Module executes the task locally (offline-first).
+7. Runtime collects the output.
+8. Security Layer validates the output.
+9. Final response is returned to the user.

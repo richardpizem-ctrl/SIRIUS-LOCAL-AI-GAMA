@@ -87,3 +87,15 @@ Tracks Schoolwork events.
 - pack used
 - reasoning time
 - errors or fallbacks
+## Schoolwork Execution Cycle
+
+1. Runtime sends a schoolwork task (text or OCR).
+2. Subject Detector identifies the subject category.
+3. Problem Normalizer prepares the input for reasoning.
+4. Knowledge Pack Integrator loads the required pack.
+5. Reasoning Engine generates step-by-step reasoning.
+6. Explanation Generator produces a clear explanation.
+7. Output Formatter structures the final answer.
+8. Final result is returned to the Runtime.
+9. Diagnostics Logger records the schoolwork event.
+10. System waits for the next task.

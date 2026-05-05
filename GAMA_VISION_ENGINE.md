@@ -37,3 +37,51 @@ GAMA Vision Engine — v1.0.0
 8. Generate final OCR result with confidence scores.
 9. Return structured OCR output to the Runtime.
 10. Log OCR event for diagnostics.
+## Vision Engine Components
+
+### 1. Image Preprocessor
+Handles all image cleanup before OCR.
+- resizing
+- denoising
+- sharpening
+- grayscale conversion
+- contrast enhancement
+
+### 2. Text Region Detector
+Finds areas in the image that contain text.
+- bounding box detection
+- region segmentation
+- noise filtering
+
+### 3. OCR Core
+Performs the actual text recognition.
+- character recognition
+- line grouping
+- block segmentation
+- confidence scoring
+
+### 4. Math OCR Engine
+Specialized logic for mathematical expressions.
+- symbol detection
+- formula reconstruction
+- layout interpretation
+
+### 5. Handwriting Heuristics
+Basic support for handwritten text.
+- stroke pattern detection
+- heuristic matching
+- fallback recognition
+
+### 6. Output Formatter
+Converts raw OCR output into structured blocks.
+- paragraphs
+- lines
+- tokens
+- confidence metadata
+
+### 7. Diagnostics Logger
+Tracks OCR events.
+- preprocessing steps
+- detected regions
+- recognition accuracy
+- errors and fallbacks

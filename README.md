@@ -1,6 +1,20 @@
 # 🟪 SIRIUS LOCAL AI GAMA  
 ### Mobile Offline AI Runtime (Android / iOS)
 
+<!-- SEO HEADLINE -->
+**Offline Mobile AI Runtime for Android & iOS — Vision, OCR, Knowledge Packs, Schoolwork Mode, Security Family, No Cloud.**
+
+<!-- SEO META DESCRIPTION -->
+GAMA is a fully offline, privacy‑first, modular AI runtime for mobile devices. Includes OCR, vision engine, schoolwork mode, knowledge packs, and identity‑aware safety. No cloud, no telemetry, no external dependencies.
+
+<!-- SEO KEYWORDS -->
+**Keywords:** offline ai, mobile ai, ai runtime, privacy first, modular ai, vision engine, ocr engine, knowledge packs, schoolwork ai, family safe ai, deterministic ai, sirius local ai, on device ai, android ai, ios ai
+
+<!-- SEO HOOK -->
+**A complete offline AI system for your phone — not a model, not an app, but a full mobile runtime.**
+
+---
+
 SIRIUS LOCAL AI GAMA is the **mobile branch** of the SIRIUS ecosystem — a lightweight, modular, fully offline AI runtime designed for phones and tablets.
 
 GAMA brings the core philosophy of SIRIUS to mobile devices:
@@ -104,15 +118,15 @@ No internet required.
 ---
 
 # 📁 Repository Structure
-/runtime_mobile
-/modules
-/ui
-/vision
-/security
-/knowledge_packs
-/bridge
-/docs
-/build
+/runtime_mobile  
+/modules  
+/ui  
+/vision  
+/security  
+/knowledge_packs  
+/bridge  
+/docs  
+/build  
 
 ---
 
@@ -236,14 +250,15 @@ GAMA 1.0 is stable and production‑ready.
 ---
 
 ## 📁 Included Folders
-/runtime_mobile
-/modules
-/ui
-/vision
-/security
-/knowledge_packs
-/docs
-/build 
+/runtime_mobile  
+/modules  
+/ui  
+/vision  
+/security  
+/knowledge_packs  
+/docs  
+/build  
+
 ---
 
 ## 🚀 Highlights

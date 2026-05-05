@@ -42,3 +42,42 @@ GAMA Runtime Core — v1.0.0
 7. Runtime collects the output.
 8. Security Layer validates the output.
 9. Final response is returned to the user.
+## Runtime Components Detail
+
+### 1. Intent Router
+Responsible for analyzing user input and determining the correct task category.
+- text normalization
+- language detection
+- intent classification
+- routing rules
+
+### 2. Task Dispatcher
+Receives the intent and selects the correct module.
+- module selection logic
+- priority handling
+- fallback routing
+
+### 3. Module Manager
+Loads and executes modules required for the task.
+- module registry
+- lifecycle management
+- dependency handling
+
+### 4. Local Storage Layer
+Handles all offline data.
+- knowledge packs
+- cached results
+- user preferences
+- secure storage
+
+### 5. Security Layer
+Ensures safe execution and output validation.
+- OWNER/FAMILY mode rules
+- output filtering
+- permission checks
+
+### 6. Logging & Diagnostics
+Tracks runtime behavior for debugging and stability.
+- event logs
+- error reports
+- performance metrics

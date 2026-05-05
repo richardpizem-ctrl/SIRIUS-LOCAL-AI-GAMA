@@ -75,3 +75,14 @@ Tracks routing decisions.
 - detected intent
 - selected module
 - errors or fallback usage
+## NL Router Execution Cycle
+
+1. Receive normalized input from the Runtime.
+2. Detect input type (text, voice transcript, OCR).
+3. Run intent classification.
+4. Match intent to routing rules.
+5. Determine task category and target module.
+6. Generate routing metadata.
+7. Return routing result to the Runtime Task Dispatcher.
+8. Log routing event for diagnostics.
+9. Wait for next input.

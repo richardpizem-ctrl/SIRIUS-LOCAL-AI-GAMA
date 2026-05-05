@@ -85,3 +85,15 @@ Tracks OCR events.
 - detected regions
 - recognition accuracy
 - errors and fallbacks
+## Vision Engine Execution Cycle
+
+1. Runtime sends an image to the Vision Engine.
+2. Image Preprocessor cleans and normalizes the image.
+3. Text Region Detector identifies areas containing text.
+4. OCR Core performs text recognition on detected regions.
+5. Math OCR Engine processes mathematical expressions (if detected).
+6. Handwriting Heuristics attempt recognition of handwritten text.
+7. Output Formatter structures the OCR result into blocks.
+8. Final OCR output is returned to the Runtime.
+9. Diagnostics Logger records the OCR event.
+10. Vision Engine waits for the next image input.

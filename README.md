@@ -1,6 +1,19 @@
 # 🟪 SIRIUS LOCAL AI GAMA
 ### Mobile Offline AI Runtime (Android / iOS)
 
+![version](https://img.shields.io/badge/version-1.0.0-purple?style=for-the-badge)
+![offline](https://img.shields.io/badge/100%25-OFFLINE-blueviolet?style=for-the-badge)
+![license](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+
+---
+
+# 🟪 Version
+**Current Release:** `1.0.0`  
+**Status:** Stable, production‑ready  
+**Release Date:** 2026‑05‑06  
+
+---
+
 <!-- SEO HEADLINE -->
 **Offline Mobile AI Runtime for Android & iOS — Vision, OCR, Knowledge Packs, Schoolwork Mode, Security Family, No Cloud.**
 

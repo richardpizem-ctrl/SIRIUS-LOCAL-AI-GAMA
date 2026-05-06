@@ -1,7 +1,10 @@
+from runtime_mobile.core.event_types import MobileEvent, MobileEventTypes
+
+
 class MobileNLRouter:
     """
     Natural Language router for the GAMA mobile runtime.
-    Converts user text commands into internal event identifiers.
+    Converts user text commands into MobileEvent objects.
     """
 
     def route(self, text: str):
@@ -10,47 +13,62 @@ class MobileNLRouter:
             text (str): User text command.
 
         Output:
-            dict: Event object with type + optional parameters.
+            MobileEvent: Parsed event with type + payload.
         """
 
         if not text:
-            return {"type": "UNKNOWN"}
+            return MobileEvent(MobileEventTypes.UNKNOWN)
 
         t = text.lower()
 
         # --- APP CONTROL ---
         if "open" in t:
-            return {"type": "OPEN_APP"}
+            return MobileEvent(MobileEventTypes.OPEN_APP)
 
         # --- DEVICE STATUS ---
         if "battery" in t:
-            return {"type": "CHECK_BATTERY"}
+            return MobileEvent(MobileEventTypes.CHECK_BATTERY)
 
         if "wifi" in t:
-            return {"type": "CHECK_WIFI"}
+            return MobileEvent(MobileEventTypes.CHECK_WIFI)
 
         # --- SECURITY ---
         if "permission" in t or "allow" in t or "deny" in t:
-            return {"type": "security", "permission": "generic"}
+            return MobileEvent(
+                MobileEventTypes.SECURITY,
+                {"permission": "generic"}
+            )
 
         if "restricted" in t:
             enabled = "on" in t or "enable" in t
-            return {"type": "security", "enabled": enabled}
+            return MobileEvent(
+                MobileEventTypes.RESTRICTED_MODE,
+                {"enabled": enabled}
+            )
 
         # --- VISION ---
         if "read" in t or "ocr" in t or "text from image" in t:
-            return {"type": "vision", "mode": "ocr"}
+            return MobileEvent(
+                MobileEventTypes.OCR,
+                {"mode": "ocr"}
+            )
 
         if "analyze" in t or "what is in the picture" in t:
-            return {"type": "vision", "mode": "analyze"}
+            return MobileEvent(
+                MobileEventTypes.ANALYZE,
+                {"mode": "analyze"}
+            )
 
         # --- KNOWLEDGE PACKS ---
         if "lookup" in t or "search" in t:
-            return {"type": "packs", "key": "query"}
+            return MobileEvent(
+                MobileEventTypes.PACK_LOOKUP,
+                {"key": "query"}
+            )
 
         # --- HELP ---
         if "help" in t:
-            return {"type": "SHOW_HELP"}
+            return MobileEvent(MobileEventTypes.SHOW_HELP)
 
         # Default fallback
-        return {"type": "UNKNOWN"}
+        return MobileEvent(MobileEventTypes.UNKNOWN)

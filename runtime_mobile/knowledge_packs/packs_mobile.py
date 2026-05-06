@@ -1,3 +1,6 @@
+from runtime_mobile.core.event_types import MobileEvent, MobileEventTypes
+
+
 class MobileKnowledgePacks:
     """
     Entry point for the mobile knowledge packs system.
@@ -8,10 +11,16 @@ class MobileKnowledgePacks:
         self.context = context
         self.loaded_packs = {}
 
-    def load_pack(self, pack_name):
+    def load_pack(self, pack_name: str):
         """
         Loads a knowledge pack by name.
         """
+        if not hasattr(self.context, "pack_manager"):
+            return {
+                "status": "error",
+                "reason": "pack_manager_missing"
+            }
+
         pack = self.context.pack_manager.load(pack_name)
 
         if pack is None:
@@ -28,7 +37,22 @@ class MobileKnowledgePacks:
             "pack": pack_name
         }
 
-    def get(self, pack_name, key):
+    def handle_event(self, event: MobileEvent):
+        """
+        Main entry point for dispatcher → packs module.
+        """
+        if event.type == MobileEventTypes.PACK_LOOKUP:
+            pack_name = event.get("pack")
+            key = event.get("key")
+            return self.get(pack_name, key)
+
+        return {
+            "status": "ignored",
+            "reason": "unknown_event",
+            "event_type": event.type
+        }
+
+    def get(self, pack_name: str, key: str):
         """
         Retrieves a value from a loaded knowledge pack.
         """

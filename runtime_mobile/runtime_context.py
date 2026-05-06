@@ -2,16 +2,26 @@
 
 class MobileRuntimeContext:
     """
-    Holds temporary state, session data, and runtime metadata
-    for the mobile execution environment.
+    Holds temporary state, session data, module references,
+    and runtime metadata for the mobile execution environment.
     """
 
     def __init__(self):
+        # Session & state
         self.session_id = None
-        self.device_info = {}
-        self.last_event = None
         self.language = "en"
+        self.last_event = None
 
+        # Device metadata
+        self.device_info = {}
+
+        # Runtime modules (injected by MobileRuntimeCore)
+        self.pack_manager = None
+        self.vision_engine = None
+        self.security_engine = None
+        self.knowledge_packs = None
+
+    # --- State setters ---
     def set_device_info(self, info):
         self.device_info = info
 

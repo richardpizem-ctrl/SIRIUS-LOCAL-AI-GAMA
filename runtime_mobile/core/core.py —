@@ -1,0 +1,13 @@
+class MobileRuntimeCore:
+    def __init__(self, context, dispatcher):
+        self.context = context
+        self.dispatcher = dispatcher
+
+    def initialize(self):
+        """Inicializácia mobilného runtime."""
+        self.context.load()
+        self.dispatcher.register_handlers()
+
+    def handle_event(self, event):
+        """Spracovanie udalosti cez dispatcher."""
+        return self.dispatcher.dispatch(event)

@@ -73,4 +73,40 @@
 - Full Mobile Reasoning Engine  
 - Advanced Knowledge Graphs  
 - Multi‑intent routing  
-- Complete offline autonomy
+- Complete offline autonomy  
+
+---
+
+## GAMA 4.0 (Hybrid‑Safe Architecture)
+
+### 🟪 Secure Online Envoy (Isolated Online Agent)
+- sandboxovaný online agent  
+- jednosmerný outbound prístup na internet  
+- získavanie textu, JSON, štruktúrovaných dát  
+- žiadny prístup k súborom, modelom ani systémovým API  
+- žiadne odosielanie lokálnych dát von  
+- funguje ako kuriér, nie ako súčasť AI
+
+### 🟩 Quarantine Pipeline (Data Sanitization Layer)
+- odstránenie skriptov a HTML  
+- validácia formátu  
+- kontrola veľkosti  
+- čistenie textu  
+- bezpečnostné filtre  
+- povolené len: čistý text, JSON, štruktúrované dáta  
+- offline jadro nikdy nepríde do kontaktu s nečistými dátami
+
+### 🟧 Offline Core Remains Fully Air‑Gapped
+- inference offline  
+- reasoning offline  
+- knowledge packs offline  
+- žiadne cloudové volania  
+- žiadna telemetria  
+- žiadne odosielanie dát  
+
+### 🟦 Why This Matters
+- offline AI zostáva offline  
+- používateľ má 100% súkromie  
+- AI môže pracovať s aktuálnymi dátami  
+- architektúra je bezpečná, modulárna, enterprise‑grade  
+- rovnaký model ako air‑gapped systémy v kritickej infraštruktúre

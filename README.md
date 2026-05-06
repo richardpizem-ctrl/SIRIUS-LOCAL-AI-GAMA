@@ -95,6 +95,50 @@ Identity‑aware safety:
 
 ---
 
+# 🟪 NEW IN GAMA v4 — SECURE ONLINE ENVOY (Sandbox + Quarantine)
+
+GAMA v4 zavádza nový bezpečnostný modul, ktorý umožňuje získavať aktuálne online informácie bez toho, aby offline jadro stratilo svoju 100% offline povahu.
+
+## 🟦 Secure Online Envoy (Isolated Online Agent)
+- beží v sandboxe, úplne oddelený od offline runtime  
+- má povolený jednosmerný prístup na internet  
+- môže získavať textové dáta, JSON, dokumenty  
+- nemá prístup k súborom, modelom ani systémovým právam  
+- nemôže odosielať žiadne lokálne dáta von  
+
+Envoy funguje ako kuriér, nie ako súčasť AI.
+
+## 🟩 Quarantine Pipeline (Data Sanitization Layer)
+Každý návrat z online sveta prechádza karanténou:
+
+- odstránenie skriptov a HTML  
+- validácia formátu  
+- kontrola veľkosti  
+- čistenie textu  
+- bezpečnostné filtre  
+- povolené sú len: čistý text, JSON, štruktúrované dáta  
+
+Offline jadro nikdy nepríde do kontaktu s nečistými dátami.
+
+## 🟧 Offline Core Remains Fully Air‑Gapped
+- inference je offline  
+- reasoning je offline  
+- knowledge packs sú offline  
+- žiadne dáta sa neposielajú von  
+- žiadne cloudové volania  
+- žiadna telemetria  
+
+GAMA v4 tak kombinuje offline bezpečnosť s možnosťou získavať nové informácie.
+
+## 🟪 Why This Matters
+- offline AI zostáva offline  
+- používateľ má stále 100% súkromie  
+- AI môže pracovať s aktuálnymi dátami  
+- architektúra je bezpečná, modulárna a kontrolovaná  
+- ide o model používaný v enterprise a air‑gapped systémoch  
+
+---
+
 # 🔗 Optional: LAN Offline Bridge
 
 GAMA can connect to the PC version of SIRIUS LOCAL AI via **local Wi‑Fi only**:
@@ -127,6 +171,11 @@ No internet required.
 - Advanced Knowledge Graphs  
 - Multi‑intent routing  
 - Complete offline autonomy  
+
+## GAMA 4.0
+- Secure Online Envoy  
+- Quarantine Pipeline  
+- Air‑gapped hybrid architecture  
 
 ---
 

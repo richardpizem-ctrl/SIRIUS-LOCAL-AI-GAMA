@@ -60,10 +60,24 @@ class MobileNLRouter:
             )
 
         # --- KNOWLEDGE PACKS ---
+        # Format: "lookup <pack> <key>"
+        # Example: "lookup demo hello"
         if "lookup" in t or "search" in t:
+            parts = t.split()
+
+            pack_name = None
+            key = None
+
+            if len(parts) >= 3:
+                pack_name = parts[1]
+                key = parts[2]
+
             return MobileEvent(
                 MobileEventTypes.PACK_LOOKUP,
-                {"key": "query"}
+                {
+                    "pack": pack_name if pack_name else "default",
+                    "key": key if key else "query"
+                }
             )
 
         # --- HELP ---

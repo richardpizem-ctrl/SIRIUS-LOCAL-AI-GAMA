@@ -114,6 +114,42 @@ Contributors must follow these principles:
 
 ---
 
+# 🟪 6.5 NEW IN GAMA v4 — Secure Online Envoy & Quarantine Pipeline
+
+GAMA v4 introduces a **hybrid‑safe architecture** that preserves full offline security while allowing controlled, sanitized import of online data.
+
+## 🟦 Secure Online Envoy (Isolated Online Agent)
+- runs in a fully isolated sandbox  
+- has **one‑way outbound** access to the internet  
+- can fetch text, JSON, structured data  
+- cannot access local files, models, or system APIs  
+- cannot send any local data outward  
+- acts strictly as a **courier**, not part of the AI core  
+
+## 🟩 Quarantine Pipeline (Data Sanitization Layer)
+All data returned by the envoy is processed through a strict quarantine:
+
+- script & HTML removal  
+- format validation  
+- size limits  
+- text cleaning  
+- security filtering  
+- only clean text + JSON + structured data allowed  
+
+Offline modules **never** interact with untrusted data.
+
+## 🟧 Offline Core Remains Fully Air‑Gapped
+- inference offline  
+- reasoning offline  
+- knowledge packs offline  
+- no cloud calls  
+- no telemetry  
+- no outbound data  
+
+This ensures that **SIRIUS LOCAL AI GAMA remains 100% offline**, even with optional online data retrieval.
+
+---
+
 # ❤️ 7. Thank You
 
 Security researchers and contributors help keep  

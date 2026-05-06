@@ -54,16 +54,18 @@ class MobileKnowledgePacks:
 
     def get(self, pack_name: str, key: str):
         """
-        Retrieves a value from a loaded knowledge pack.
+        Retrieves a value from a knowledge pack.
+        Automatically loads the pack if not already loaded.
         """
-        pack = self.loaded_packs.get(pack_name)
 
-        if pack is None:
-            return {
-                "status": "error",
-                "reason": "pack_not_loaded",
-                "pack": pack_name
-            }
+        # Auto-load pack if missing
+        if pack_name not in self.loaded_packs:
+            load_result = self.load_pack(pack_name)
+
+            if load_result.get("status") != "ok":
+                return load_result  # return the error
+
+        pack = self.loaded_packs.get(pack_name)
 
         value = pack.get(key)
 

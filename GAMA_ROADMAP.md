@@ -11,6 +11,7 @@
 ---
 
 ## GAMA 1.1 (Upcoming Enhancements)
+
 ### 🟪 1) Priority Score pre Knowledge Packs
 - nové pole v metadata.json: `"priority": 0.0 – 1.0`
 - umožní preferovať špecializované packy pred všeobecnými
@@ -58,6 +59,13 @@
 - Device Diagnostics Mobile  
 - Scene Understanding  
 - Workflow Engine Mobile 2.0  
+- Health Assistant 2.0 (NEW)  
+  - offline zdravotnícky modul  
+  - OCR zdravotných dokumentov  
+  - rozpoznávanie liekov a dávkovania  
+  - prvá pomoc a triage logika  
+  - rodinne bezpečné zdravotné odporúčania  
+  - 100 % offline spracovanie  
 
 ---
 

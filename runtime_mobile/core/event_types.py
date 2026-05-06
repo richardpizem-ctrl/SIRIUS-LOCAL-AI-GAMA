@@ -53,5 +53,4 @@ class MobileEventTypes:
     ANALYZE = "analyze"
 
     # Knowledge packs
-    PACKS = "packs"
     PACK_LOOKUP = "pack_lookup"

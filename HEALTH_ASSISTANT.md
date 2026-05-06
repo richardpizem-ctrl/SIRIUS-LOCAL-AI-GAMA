@@ -1,87 +1,87 @@
 # 🏥 SIRIUS LOCAL AI GAMA – Health Assistant 2.0
-Offline zdravotnícky modul pre GAMA 2.0.0  
-Zameraný na bezpečné, rodinné a súkromné použitie bez diagnostiky.
+Offline healthcare module for GAMA 2.0.0  
+Designed for safe, family‑friendly, privacy‑focused use without diagnostics.
 
 ---
 
-## 🎯 Poslanie modulu
-Health Assistant 2.0 prináša do SIRIUS LOCAL AI GAMA schopnosti:
-- spracovania zdravotných dokumentov offline,
-- poskytovania bezpečných zdravotných informácií,
-- pomoci pri prvej pomoci,
-- práce s liekmi a dávkovaním,
-- rodinne bezpečného zdravotného správania.
+## 🎯 Module Purpose
+Health Assistant 2.0 brings the following capabilities to SIRIUS LOCAL AI GAMA:
+- offline processing of medical documents,
+- providing safe and reliable health information,
+- assisting with first‑aid procedures,
+- working with medications and dosage information,
+- family‑safe health behavior and recommendations.
 
-Modul **neposkytuje diagnózy** a je navrhnutý tak, aby bol 100 % offline a bezpečný.
-
----
-
-## 🧩 Architektúra modulu
-
-### Súčasti:
-- **HealthAssistantEntry** – hlavný vstupný bod
-- **Health Knowledge Packs** – špecializované dátové balíky
-- **Health OCR Pipeline** – OCR pre zdravotné dokumenty
-- **First Aid Logic** – bezpečné offline postupy prvej pomoci
-- **Medication Info Engine** – informácie o liekoch a dávkovaní
+The module **does not provide diagnoses** and is designed to operate 100% offline and safely.
 
 ---
 
-## 🧬 Event Types (rozšírenie MobileEventTypes)
+## 🧩 Module Architecture
 
-| Event Type | Účel |
-|-----------|------|
-| `HEALTH_QUERY` | všeobecné zdravotné otázky |
-| `HEALTH_DOC_OCR` | OCR zdravotných dokumentov |
-| `HEALTH_FIRST_AID` | prvá pomoc a bezpečnostné postupy |
-| `HEALTH_MEDICATION_INFO` | informácie o liekoch a dávkovaní |
-
----
-
-## 🏗 HealthAssistantEntry – správanie
-
-### 1) OCR zdravotných dokumentov
-- recepty  
-- lekárske správy  
-- dávkovanie  
-- alergické karty  
-
-### 2) Informácie o liekoch
-- dávkovanie  
-- upozornenia  
-- interakcie (bez diagnostiky)  
-
-### 3) Prvá pomoc
-- krvácanie  
-- popáleniny  
-- dusenie  
-- bezvedomie  
-- bezpečnostné postupy  
-
-### 4) Zdravotné znalosti
-- vysvetlenie pojmov  
-- bezpečné odporúčania  
-- rodinné zdravotné informácie  
+### Components:
+- **HealthAssistantEntry** – main entry point  
+- **Health Knowledge Packs** – specialized data packs  
+- **Health OCR Pipeline** – OCR for medical documents  
+- **First Aid Logic** – safe offline first‑aid procedures  
+- **Medication Info Engine** – medication and dosage information  
 
 ---
 
-## 📦 Health Knowledge Pack (špecifikácia)
+## 🧬 Event Types (extension of MobileEventTypes)
 
-*(sem doplníš JSON podľa potreby — štruktúra je pripravená)*
-
----
-
-## 🔒 Bezpečnostné zásady
-- modul **neposkytuje diagnózy**, iba informácie,
-- všetko prebieha **offline**,
-- obsah je **deterministický**,
-- vhodné pre rodiny, deti a seniorov,
-- žiadne rizikové odporúčania.
+| Event Type | Purpose |
+|-----------|---------|
+| `HEALTH_QUERY` | general health questions |
+| `HEALTH_DOC_OCR` | OCR of medical documents |
+| `HEALTH_FIRST_AID` | first‑aid and safety procedures |
+| `HEALTH_MEDICATION_INFO` | medication and dosage information |
 
 ---
 
-## 🗺 Integrácia do GAMA 2.0
-Health Assistant 2.0 je súčasťou:
+## 🏗 HealthAssistantEntry – Behavior
+
+### 1) OCR of medical documents
+- prescriptions  
+- medical reports  
+- dosage instructions  
+- allergy cards  
+
+### 2) Medication information
+- dosage  
+- warnings  
+- interactions (non‑diagnostic)  
+
+### 3) First aid
+- bleeding  
+- burns  
+- choking  
+- unconsciousness  
+- safety procedures  
+
+### 4) Health knowledge
+- explanation of medical terms  
+- safe recommendations  
+- family‑friendly health information  
+
+---
+
+## 📦 Health Knowledge Pack (Specification)
+
+*(Insert JSON here as needed — structure is prepared.)*
+
+---
+
+## 🔒 Safety Principles
+- the module **does not provide diagnoses**, only information,  
+- all processing is **offline**,  
+- output is **deterministic**,  
+- suitable for families, children, and seniors,  
+- no risky or clinical recommendations.
+
+---
+
+## 🗺 Integration into GAMA 2.0
+Health Assistant 2.0 is part of:
 GAMA 2.0
 LAN Offline Bridge
 
@@ -92,5 +92,3 @@ Scene Understanding
 Workflow Engine Mobile 2.0
 
 Health Assistant 2.0 (NEW)
-
-

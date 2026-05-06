@@ -1,4 +1,4 @@
-# 🟪 SIRIUS LOCAL AI GAMA  
+# 🟪 SIRIUS LOCAL AI GAMA
 ### Mobile Offline AI Runtime (Android / iOS)
 
 <!-- SEO HEADLINE -->

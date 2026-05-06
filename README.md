@@ -145,37 +145,64 @@ No internet required.
 
 # 📝 License  
 ### **MIT License with Trademark & Commercial Restrictions**
-MIT License with Trademark and Commercial Restrictions
+
+MIT License with Trademark and Commercial Restrictions  
 Copyright (c) 2026 Richard Pizem
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to use,
-copy, modify, merge, publish, and distribute the Software, subject to the
+Permission is hereby granted, free of charge, to any person obtaining a copy  
+of this software and associated documentation files (the "Software"), to use,  
+copy, modify, merge, publish, and distribute the Software, subject to the  
 following conditions:
 
-Trademark Restriction:
-The names "SIRIUS LOCAL AI", "GAMA", "SIRIUS", "GAMA Runtime", and any
-associated logos or branding may not be used to endorse, promote, or
-distribute products derived from this Software without prior written
+**Trademark Restriction:**  
+The names "SIRIUS LOCAL AI", "GAMA", "SIRIUS", "GAMA Runtime", and any  
+associated logos or branding may not be used to endorse, promote, or  
+distribute products derived from this Software without prior written  
 permission from the copyright holder.
 
-Commercial Resale Restriction:
-This Software may not be sold as a standalone commercial product or as
-part of a paid product or service without obtaining a separate commercial
-license from the copyright holder. This includes, but is not limited to:
+**Commercial Resale Restriction:**  
+This Software may not be sold as a standalone commercial product or as  
+part of a paid product or service without obtaining a separate commercial  
+license from the copyright holder. This includes, but is not limited to:  
+- selling the Software directly  
+- bundling the Software into a paid application  
+- offering the Software as a hosted or subscription‑based service  
 
-selling the Software directly,
-
-bundling the Software into a paid application,
-
-offering the Software as a hosted or subscription-based service.
-
-Attribution:
+**Attribution:**  
 Any redistribution of the Software must include this license text.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+---
+
+# 🛡️ LEGAL
+
+## Trademark Notice  
+The names **SIRIUS LOCAL AI**, **GAMA**, **GAMA Runtime**, and all related  
+branding, logos, and identity elements are protected trademarks of  
+**Richard Pizem**.  
+They may not be used in commercial products, forks, services, or promotional  
+materials without explicit written permission.
+
+## Commercial Use  
+Any commercial use of this software — including resale, bundling, SaaS,  
+paid mobile apps, enterprise deployment, or monetized distribution —  
+requires a **separate commercial license**.  
+For licensing inquiries, contact the project owner.
+
+## Restrictions Summary  
+- No commercial resale  
+- No paid distribution  
+- No use of SIRIUS or GAMA branding without permission  
+- Forks must keep this license  
+- Redistribution must include the full license text  
+- No cloud‑based monetization using this runtime  
+
+## Warranty Disclaimer  
+This software is provided **“as is”**, without warranty of any kind.  
+Use at your own risk.
 
 ---
 
@@ -256,11 +283,6 @@ This release includes:
 - `/security`  
 - `/knowledge_packs`  
 - `/docs`  
-
----
-
-## 🟪 Status
-GAMA 1.0 is stable and production‑ready.
 
 ---
 

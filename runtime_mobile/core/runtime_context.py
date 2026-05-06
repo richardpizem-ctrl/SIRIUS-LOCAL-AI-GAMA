@@ -1,47 +1,68 @@
+from runtime_mobile.security.security_entry import MobileSecurityEntry
+from runtime_mobile.vision.vision_entry import MobileVisionEntry
+from runtime_mobile.knowledge_packs.packs_mobile import MobileKnowledgePacks
+
+
 class MobileRuntimeContext:
     """
-    Základný kontext pre mobilný runtime GAMA.
-    Uchováva stav, konfiguráciu a runtime premenné.
+    Base context for the GAMA mobile runtime.
+    Stores runtime state, configuration and module instances.
     """
 
     def __init__(self):
-        # Hlavný stav runtime
+        # Runtime state
         self.state = {
             "initialized": False,
             "active_module": None,
             "last_event": None,
+            "restricted_mode": False
         }
 
-        # Konfigurácia runtime (možno rozšíriť)
+        # Runtime configuration
         self.config = {
             "version": "1.0.0",
             "platform": "mobile",
             "debug": False,
         }
 
+        # Permissions placeholder (extend later)
+        self.permissions = None
+
+        # Module instances (created after load)
+        self.security = None
+        self.vision = None
+        self.packs = None
+
     def load(self):
         """
-        Inicializácia kontextu pri štarte runtime.
-        Sem môžeš neskôr doplniť:
-        - načítanie uloženého stavu
-        - načítanie konfigurácie
-        - inicializáciu modulov
+        Initializes the runtime context.
+        Loads modules and prepares the runtime environment.
         """
+
+        # Mark runtime as initialized
         self.state["initialized"] = True
 
+        # Initialize modules
+        self.security = MobileSecurityEntry(self)
+        self.vision = MobileVisionEntry(self)
+        self.packs = MobileKnowledgePacks(self)
+
     def set_active_module(self, module_name: str):
-        """Nastaví aktuálne aktívny modul."""
+        """Sets the currently active module."""
         self.state["active_module"] = module_name
 
     def update_last_event(self, event_type: str):
-        """Uloží posledný spracovaný event."""
+        """Stores the last processed event type."""
         self.state["last_event"] = event_type
 
+    def set_restricted_mode(self, enabled: bool):
+        """Enables or disables restricted mode."""
+        self.state["restricted_mode"] = enabled
+
     def get_state(self):
-        """Vráti celý stav runtime."""
+        """Returns the full runtime state."""
         return self.state
 
     def get_config(self):
-        """Vráti konfiguráciu runtime."""
+        """Returns the runtime configuration."""
         return self.config
-

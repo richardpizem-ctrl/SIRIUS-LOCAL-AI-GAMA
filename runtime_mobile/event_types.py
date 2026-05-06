@@ -3,8 +3,25 @@
 class MobileEventTypes:
     """Centralized list of event types for the mobile runtime."""
 
-    OCR_REQUEST = "ocr_request"
-    TEXT_QUERY = "text_query"
-    SECURITY_CHECK = "security_check"
-    KNOWLEDGE_QUERY = "knowledge_query"
+    # System / Runtime
     UNKNOWN = "unknown"
+    OPEN_APP = "open_app"
+    SHOW_HELP = "show_help"
+
+    # Device status
+    CHECK_BATTERY = "check_battery"
+    CHECK_WIFI = "check_wifi"
+
+    # Security
+    SECURITY = "security"
+    RESTRICTED_MODE = "restricted_mode"
+
+    # Vision
+    OCR = "ocr"
+    ANALYZE = "analyze"
+
+    # Knowledge Packs
+    PACK_LOOKUP = "pack_lookup"
+
+    # Text / Queries
+    TEXT_QUERY = "text_query"

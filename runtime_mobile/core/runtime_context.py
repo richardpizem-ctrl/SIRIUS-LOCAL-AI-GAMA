@@ -1,6 +1,7 @@
 from runtime_mobile.security.security_entry import MobileSecurityEntry
 from runtime_mobile.vision.vision_entry import MobileVisionEntry
 from runtime_mobile.knowledge_packs.packs_mobile import MobileKnowledgePacks
+from runtime_mobile.knowledge_packs.pack_manager.pack_manager import PackManager
 
 
 class MobileRuntimeContext:
@@ -32,6 +33,11 @@ class MobileRuntimeContext:
         self.security = None
         self.vision = None
         self.packs = None
+
+        # Knowledge pack manager
+        self.pack_manager = PackManager(
+            "runtime_mobile/knowledge_packs/data"
+        )
 
     def load(self):
         """

@@ -17,7 +17,8 @@
 from .runtime_core import MobileRuntimeCore
 from .runtime_context import MobileRuntimeContext
 from .runtime_dispatcher import MobileRuntimeDispatcher
-from .event_types import MobileEvent, MobileEventTypes
+from .event import MobileEvent
+from .event_types import MobileEventTypes
 from .router_mobile import MobileNLRouter
 
 __all__ = [

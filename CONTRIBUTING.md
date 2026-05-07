@@ -1,7 +1,7 @@
 # 🤝 Contributing to SIRIUS LOCAL AI GAMA
 
 Thank you for your interest in contributing to **SIRIUS LOCAL AI GAMA**, the mobile offline AI runtime of the SIRIUS ecosystem.  
-GAMA follows the same principles as the main SIRIUS runtime:
+GAMA follows the core SIRIUS principles:
 
 - 100% offline  
 - deterministic  
@@ -19,7 +19,7 @@ This document explains how to contribute safely and effectively.
 All contributions must respect the core SIRIUS principles:
 
 - **Offline‑first** — no cloud APIs, no remote servers  
-- **Deterministic behavior** — no randomness that affects output  
+- **Deterministic behavior** — no randomness affecting output  
 - **Safety** — must comply with SECURITY FAMILY rules  
 - **Modularity** — each feature must be isolated and replaceable  
 - **Transparency** — clear documentation and predictable behavior  

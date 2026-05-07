@@ -1,10 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Image Component
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Lightweight image component for displaying pictures.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
 from .base_component import BaseUIComponent
@@ -12,22 +8,15 @@ from ..theme import MobileUITheme
 
 
 class Image(BaseUIComponent):
-    """
-    Lightweight image component for displaying pictures.
-    """
 
     COMPONENT_VERSION = "3.0.0-pre"
 
     def __init__(self, source=None, size=None, component_id=None, visible=True):
         super().__init__(component_id=component_id, visible=visible)
 
-        # Path or runtime image reference
         self.source = source
+        self.size = size  # (width, height) or None
 
-        # (width, height) or None for auto
-        self.size = size
-
-        # Visual properties
         self.background = MobileUITheme.COLORS["surface"]
         self.border_radius = MobileUITheme.BORDER_RADIUS["sm"]
         self.padding = MobileUITheme.SPACING["sm"]
@@ -40,7 +29,10 @@ class Image(BaseUIComponent):
         base = super().initialize()
         base.update({
             "source": self.source,
-            "size": self.size
+            "size": self.size,
+            "background": self.background,
+            "border_radius": self.border_radius,
+            "padding": self.padding
         })
         return base
 
@@ -48,29 +40,38 @@ class Image(BaseUIComponent):
         base = super().update()
         base.update({
             "source": self.source,
-            "size": self.size
+            "size": self.size,
+            "background": self.background,
+            "border_radius": self.border_radius
         })
         return base
 
     # ------------------------------------------------------------
-    # Render (placeholder)
+    # Render
     # ------------------------------------------------------------
 
     def render(self):
-        """
-        Placeholder render output.
-        In UI 3.0.0 this will be handled by the rendering engine.
-        """
-        return {
-            "status": "rendered",
-            "component": self.component_id,
+        base = super().render()
+        base.update({
             "type": "image",
             "source": self.source,
             "size": self.size,
             "background": self.background,
             "border_radius": self.border_radius,
-            "padding": self.padding,
-            "visible": self.visible
+            "padding": self.padding
+        })
+        return base
+
+    # ------------------------------------------------------------
+    # Event routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """Images normally do not handle events, but forward them."""
+        return {
+            "status": "ignored",
+            "component": self.component_id,
+            "event": event
         }
 
     # ------------------------------------------------------------
@@ -82,6 +83,9 @@ class Image(BaseUIComponent):
         base.update({
             "type": "image",
             "source": self.source,
-            "size": self.size
+            "size": self.size,
+            "background": self.background,
+            "border_radius": self.border_radius,
+            "padding": self.padding
         })
         return base

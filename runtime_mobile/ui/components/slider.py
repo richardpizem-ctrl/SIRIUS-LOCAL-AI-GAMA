@@ -1,10 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Slider Component
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Value slider with min/max range and callback support.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
 from .base_component import BaseUIComponent
@@ -12,9 +8,6 @@ from ..theme import MobileUITheme
 
 
 class Slider(BaseUIComponent):
-    """
-    Horizontal slider for selecting a numeric value.
-    """
 
     COMPONENT_VERSION = "3.0.0-pre"
 
@@ -34,14 +27,13 @@ class Slider(BaseUIComponent):
         self.min_value = float(min_value)
         self.max_value = float(max_value)
         self.step = float(step)
-        self.on_change = on_change  # callback(value)
+        self.on_change = on_change
 
-        # Visual properties
         self.track_color = MobileUITheme.COLORS["border"]
         self.track_color_active = MobileUITheme.COLORS["accent"]
         self.knob_color = MobileUITheme.COLORS["surface"]
         self.padding = MobileUITheme.SPACING["md"]
-        self.size = (160, 24)  # width, height
+        self.size = (160, 24)
 
     # ------------------------------------------------------------
     # Value control
@@ -50,10 +42,8 @@ class Slider(BaseUIComponent):
     def set_value(self, new_value):
         new_value = float(new_value)
 
-        # Clamp to range
         new_value = max(self.min_value, min(self.max_value, new_value))
 
-        # Apply step
         if self.step > 0:
             steps = round((new_value - self.min_value) / self.step)
             new_value = self.min_value + steps * self.step
@@ -62,6 +52,12 @@ class Slider(BaseUIComponent):
 
         if self.on_change:
             self.on_change(self.value)
+
+        self.on_event({
+            "type": "value_changed",
+            "component": self.component_id,
+            "value": self.value
+        })
 
         return {"status": "value_set", "value": self.value}
 
@@ -81,7 +77,9 @@ class Slider(BaseUIComponent):
             "value": self.value,
             "min": self.min_value,
             "max": self.max_value,
-            "step": self.step
+            "step": self.step,
+            "size": self.size,
+            "padding": self.padding
         })
         return base
 
@@ -91,21 +89,18 @@ class Slider(BaseUIComponent):
         return base
 
     # ------------------------------------------------------------
-    # Render (placeholder)
+    # Render
     # ------------------------------------------------------------
 
     def render(self):
-        """
-        Placeholder render output.
-        In UI 3.0.0 this will be handled by the rendering engine.
-        """
+        base = super().render()
 
-        # Percentage for active track
-        percent = (self.value - self.min_value) / (self.max_value - self.min_value)
+        if self.max_value == self.min_value:
+            percent = 0
+        else:
+            percent = (self.value - self.min_value) / (self.max_value - self.min_value)
 
-        return {
-            "status": "rendered",
-            "component": self.component_id,
+        base.update({
             "type": "slider",
             "value": self.value,
             "min": self.min_value,
@@ -116,8 +111,29 @@ class Slider(BaseUIComponent):
             "track_color_active": self.track_color_active,
             "knob_color": self.knob_color,
             "size": self.size,
-            "padding": self.padding,
-            "visible": self.visible
+            "padding": self.padding
+        })
+        return base
+
+    # ------------------------------------------------------------
+    # Event routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """Slider handles drag/tap events for value changes."""
+        et = event.get("type")
+
+        if et == "increase":
+            return self.increase()
+        if et == "decrease":
+            return self.decrease()
+        if et == "set_value":
+            return self.set_value(event.get("value"))
+
+        return {
+            "status": "ignored",
+            "component": self.component_id,
+            "event": event
         }
 
     # ------------------------------------------------------------
@@ -131,6 +147,11 @@ class Slider(BaseUIComponent):
             "value": self.value,
             "min": self.min_value,
             "max": self.max_value,
-            "step": self.step
+            "step": self.step,
+            "track_color": self.track_color,
+            "track_color_active": self.track_color_active,
+            "knob_color": self.knob_color,
+            "size": self.size,
+            "padding": self.padding
         })
         return base

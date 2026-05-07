@@ -10,29 +10,24 @@
 from runtime_mobile.modules.base_module import BaseModule
 
 # Knowledge system
-from runtime_mobile.knowledge.knowledge_module import KnowledgeModule
+from runtime_mobile.modules.knowledge_module import KnowledgeModule
 from runtime_mobile.knowledge_packs.packs_mobile import MobileKnowledgePacks
-from runtime_mobile.knowledge_packs.pack_manager.pack_manager import PackManager
+from runtime_mobile.pack_manager import MobilePackManager
 
 # Security system
-from runtime_mobile.security.security_module import SecurityModule
+from runtime_mobile.modules.security_module import SecurityModule
 
 # Vision system
-from runtime_mobile.vision.vision_module import VisionModule
+from runtime_mobile.modules.vision_module import VisionModule
 
 # Diagnostics
-from runtime_mobile.diagnostics.diagnostics import MobileDiagnostics
-
-# Optional modules (future)
-# from runtime_mobile.workflow.workflow_module import WorkflowModule
-# from runtime_mobile.lan.lan_bridge import LanBridgeModule
-# from runtime_mobile.governor.energy_governor import EnergyGovernorModule
+from runtime_mobile.diagnostics.diagnostics_entry import MobileDiagnostics
 
 __all__ = [
     "BaseModule",
     "KnowledgeModule",
     "MobileKnowledgePacks",
-    "PackManager",
+    "MobilePackManager",
     "SecurityModule",
     "VisionModule",
     "MobileDiagnostics",

@@ -1,170 +1,93 @@
 # 🟪 SIRIUS LOCAL AI GAMA — CHANGELOG
 
-## 📌 Version 1.0.0 — (Initial Mobile Runtime Release)
-**Release Date:** 2026-05-06  
-**Status:** Stable, production‑ready  
+## 📌 Version 2.0.0 — (Stabilná verzia)
+**Release Date:** 2026-05-07  
+**Status:** Stable, fully verified  
 
-This is the first official release of the **SIRIUS LOCAL AI GAMA** mobile runtime.  
-It introduces a complete offline AI execution environment for Android & iOS devices, fully aligned with the SIRIUS LOCAL AI ecosystem.
-
----
-
-# 🚀 NEW FEATURES
-
-## 🟦 1. Mobile Runtime Core
-- ARM‑optimized execution engine  
-- deterministic offline behavior  
-- unified module lifecycle  
-- modular architecture identical to PC runtime  
-
-## 🟩 2. Mobile NL Router
-- natural‑language intent routing  
-- multi‑intent detection  
-- safe fallback routing  
-- PACK_LOOKUP routing integrated  
-
-## 🟪 3. Mobile Knowledge Packs
-- compressed offline JSON packs  
-- auto‑loading on first use  
-- fast key‑value retrieval  
-- rule‑based reasoning support  
-- PackManager integration  
-
-## 🟧 4. Vision Engine (OCR)
-- offline OCR  
-- math OCR  
-- handwriting heuristics  
-- structured OCR blocks  
-
-## 🟧 5. Schoolwork Mode Mobile
-- math reasoning  
-- step‑by‑step logic  
-- OCR‑based homework solving  
-- explanation engine  
-
-## 🟫 6. SECURITY FAMILY Mobile
-- Owner / Teen / Child / Restricted modes  
-- identity‑aware behavior  
-- rule enforcement  
-- safe operation filtering  
+Verzia 2.0.0 prináša stabilnú architektúru mobilného runtime, kompletné moduly a plnú kompatibilitu s budúcou verziou 3.0.0-pre.
 
 ---
 
-# 🛠 IMPROVEMENTS
-- unified module structure across PC and mobile  
-- deterministic execution cycles  
-- optimized memory footprint for ARM devices  
-- simplified event routing  
-- stable PACK_LOOKUP chain (router → dispatcher → packs → pack_manager)  
+# 🚀 ČO JE NOVÉ VO VERZII 2.0.0
+
+## 🟦 1. Stabilný Mobile Runtime Core
+- stabilizované event API  
+- jednotný dispatcher  
+- runtime context v2  
+- NL router v2  
+- deterministické správanie  
+
+## 🟩 2. Vision Engine v2
+- OCR  
+- základná detekcia  
+- základná analýza scény  
+- homework OCR  
+
+## 🟪 3. Knowledge Packs v2
+- offline JSON packs  
+- PackManager v2  
+- PACK_LOOKUP  
+- PACK_INFO  
+- caching  
+
+## 🟧 4. Security v2
+- restricted mode  
+- permission checks  
+- text safety filter  
+- základný security profile  
+
+## 🟫 5. Diagnostics v2
+- battery  
+- thermal  
+- storage  
+- memory  
+- diagnostics report  
 
 ---
 
-# 🧩 ARCHITECTURE INCLUDED
-- Runtime Flow  
-- Router Flow  
-- Vision Flow  
-- Schoolwork Flow  
-- Security Flow  
-- Execution Cycles for all modules  
+# 🛠 ČO SME OPRAVILI / VYLEPŠILI
+- stabilizované moduly  
+- zjednotená štruktúra  
+- čisté API  
+- kompatibilita s Android/iOS  
+- príprava na modulárnu architektúru 3.x  
 
 ---
 
-# 📁 PACKAGING
-Included in this release:
-- `/runtime_mobile`  
-- `/modules`  
-- `/vision`  
-- `/security`  
-- `/knowledge_packs`  
-- `/docs`  
-- `/build`  
+# 🟩 PRIPRAVENÉ PRE VERZIU 3.0.0-pre
+
+## 🔹 Runtime 3.x
+- prepojenie router → dispatcher → core  
+- jednotné on_event() API  
+- rozšírené metadata  
+
+## 🔹 Vision 3.x
+- ANALYZE event  
+- SCENE event  
+- robustnejšie spracovanie obrázkov  
+
+## 🔹 Security 3.x
+- unified handler  
+- rozšírený restricted mode  
+- rozšírený text safety filter  
+
+## 🔹 Knowledge Packs 3.x
+- validácia packov  
+- PACK_QUERY  
+- auto-load  
+- jednotné výsledky  
+
+## 🔹 Dispatcher 3.x
+- podpora pre všetky nové eventy  
+- jednotný error handling  
+- modul tracking  
+
+## 🔹 Runtime Context 3.x
+- debug log  
+- reset()  
+- rozšírené metadata  
 
 ---
 
 # 🟪 STATUS
-GAMA 1.0.0 is stable and production‑ready.
-
----
-
-# 📦 RELEASE NOTES — GAMA 1.0.0
-
-## Version 1.0.0 — Mobile Offline Runtime
-
-This release introduces the first fully functional mobile runtime of the SIRIUS LOCAL AI ecosystem.  
-GAMA brings deterministic, offline, privacy‑first AI capabilities to Android and iOS devices.
-
----
-
-## 🚀 What’s New
-- Mobile Runtime Core  
-- Mobile NL Router  
-- Mobile Knowledge Packs  
-- Mobile Vision Engine (OCR)  
-- Schoolwork Mode Mobile  
-- SECURITY FAMILY Mobile  
-
----
-
-## 🧩 Modules Included
-- Runtime Mobile  
-- NL Router Mobile  
-- Knowledge Packs Mobile  
-- Vision Engine Mobile  
-- Schoolwork Mode  
-- Security Family  
-
----
-
-## 🚀 Highlights
-- 100% offline  
-- deterministic execution  
-- privacy‑first  
-- child‑safe  
-- no cloud, no telemetry  
-- mobile‑optimized reasoning  
-
----
-
-## 🔗 Optional (Coming in 2.0)
-- LAN Offline Bridge (PC ↔ Mobile)  
-
----
-
-## 🟪 Ready for Use
-GAMA 1.0.0 is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
-
----
-
-# 🟪 UPCOMING — GAMA 4.0 (Hybrid‑Safe Architecture)
-
-## 🟦 Secure Online Envoy (Isolated Online Agent)
-- sandboxovaný online agent  
-- jednosmerný outbound prístup na internet  
-- získavanie textu, JSON, štruktúrovaných dát  
-- žiadny prístup k súborom, modelom ani systémovým API  
-- žiadne odosielanie lokálnych dát von  
-- funguje ako kuriér, nie ako súčasť AI
-
-## 🟩 Quarantine Pipeline (Data Sanitization Layer)
-- odstránenie skriptov a HTML  
-- validácia formátu  
-- kontrola veľkosti  
-- čistenie textu  
-- bezpečnostné filtre  
-- povolené len: čistý text, JSON, štruktúrované dáta  
-- offline jadro nikdy nepríde do kontaktu s nečistými dátami
-
-## 🟧 Offline Core Remains Fully Air‑Gapped
-- inference offline  
-- reasoning offline  
-- knowledge packs offline  
-- žiadne cloudové volania  
-- žiadna telemetria  
-- žiadne odosielanie dát  
-
-## 🟪 Why This Matters
-- offline AI zostáva offline  
-- používateľ má 100% súkromie  
-- AI môže pracovať s aktuálnymi dátami  
-- architektúra je bezpečná, modulárna, enterprise‑grade  
-- rovnaký model ako air‑gapped systémy v kritickej infraštruktúre
+GAMA 2.0.0 je stabilná, prekontrolovaná a pripravená na upgrade na 3.0.0-pre.

@@ -1,11 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Panel Component
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Visual UI block with background, padding and optional layout.
-# Used for sections, cards, widgets, containers, screens.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
 from .container import Container
@@ -13,9 +8,6 @@ from ..theme import MobileUITheme
 
 
 class Panel(Container):
-    """
-    Visual UI block with background, padding and optional layout.
-    """
 
     COMPONENT_VERSION = "3.0.0-pre"
 
@@ -30,29 +22,36 @@ class Panel(Container):
         self.padding = MobileUITheme.SPACING["lg"]
 
     # ------------------------------------------------------------
-    # Render (placeholder)
+    # Render
     # ------------------------------------------------------------
 
     def render(self):
-        """
-        Placeholder render output.
-        In UI 3.0.0 this will be handled by the rendering engine.
-        """
-        layout_render = None
-        if self.layout:
-            layout_render = self.layout.render()
+        base = super().render()
 
-        return {
-            "status": "rendered",
-            "component": self.component_id,
+        base.update({
             "type": "panel",
             "background": self.background,
             "border_radius": self.border_radius,
             "border_color": self.border_color,
             "border_width": self.border_width,
-            "padding": self.padding,
-            "layout": layout_render,
-            "visible": self.visible
+            "padding": self.padding
+        })
+
+        return base
+
+    # ------------------------------------------------------------
+    # Event routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """Forward events to layout if present."""
+        if self.layout and hasattr(self.layout, "on_event"):
+            return self.layout.on_event(event)
+
+        return {
+            "status": "ignored",
+            "component": self.component_id,
+            "event": event
         }
 
     # ------------------------------------------------------------
@@ -63,8 +62,10 @@ class Panel(Container):
         base = super().get_info()
         base.update({
             "type": "panel",
+            "background": self.background,
             "border_radius": self.border_radius,
             "border_color": self.border_color,
-            "border_width": self.border_width
+            "border_width": self.border_width,
+            "padding": self.padding
         })
         return base

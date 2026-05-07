@@ -1,16 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Vision Entry
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Entry point for the mobile vision module.
-# Responsibilities:
-#   - OCR
-#   - object detection
-#   - scene analysis
-#   - homework mode (math/text extraction)
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
@@ -19,7 +9,7 @@ from runtime_mobile.core.event_types import MobileEventTypes
 class MobileVisionEntry:
     """
     Entry point for the mobile vision module.
-    Handles OCR, image preprocessing and visual event interpretation.
+    Handles OCR, object detection, scene analysis and homework mode.
     """
 
     MODULE_VERSION = "3.0.0-pre"
@@ -28,32 +18,33 @@ class MobileVisionEntry:
         self.context = context
 
     # ------------------------------------------------------------
-    # Main Event Handler
+    # Main Event Handler (required by runtime)
     # ------------------------------------------------------------
 
-    def handle_event(self, event):
+    def on_event(self, event):
         """
-        Main processing method for vision events.
+        Unified event handler for the runtime dispatcher.
+        Supports both MobileEvent and dict events.
         """
 
-        et = event.type
+        etype = event.type if hasattr(event, "type") else event.get("type")
 
-        if et == MobileEventTypes.OCR:
+        if etype == MobileEventTypes.OCR:
             return self._run_ocr(event)
 
-        if et == MobileEventTypes.DETECT:
+        if etype == MobileEventTypes.DETECT:
             return self._detect_objects(event)
 
-        if et == MobileEventTypes.SCENE:
+        if etype == MobileEventTypes.SCENE:
             return self._analyze_scene(event)
 
-        if et == MobileEventTypes.HOMEWORK:
+        if etype == MobileEventTypes.HOMEWORK:
             return self._homework_mode(event)
 
         return {
             "status": "ignored",
             "reason": "unknown_event",
-            "event_type": et
+            "event_type": etype
         }
 
     # ------------------------------------------------------------
@@ -61,9 +52,9 @@ class MobileVisionEntry:
     # ------------------------------------------------------------
 
     def _run_ocr(self, event):
-        image = event.get("image")
+        image = event.image if hasattr(event, "image") else event.get("image")
 
-        if not image:
+        if image is None:
             return {"status": "error", "reason": "no_image"}
 
         try:
@@ -82,9 +73,9 @@ class MobileVisionEntry:
     # ------------------------------------------------------------
 
     def _detect_objects(self, event):
-        image = event.get("image")
+        image = event.image if hasattr(event, "image") else event.get("image")
 
-        if not image:
+        if image is None:
             return {"status": "error", "reason": "no_image"}
 
         try:
@@ -103,9 +94,9 @@ class MobileVisionEntry:
     # ------------------------------------------------------------
 
     def _analyze_scene(self, event):
-        image = event.get("image")
+        image = event.image if hasattr(event, "image") else event.get("image")
 
-        if not image:
+        if image is None:
             return {"status": "error", "reason": "no_image"}
 
         try:
@@ -120,13 +111,13 @@ class MobileVisionEntry:
         }
 
     # ------------------------------------------------------------
-    # Homework Mode (GAMA Schoolwork Mode)
+    # Homework Mode
     # ------------------------------------------------------------
 
     def _homework_mode(self, event):
-        image = event.get("image")
+        image = event.image if hasattr(event, "image") else event.get("image")
 
-        if not image:
+        if image is None:
             return {"status": "error", "reason": "no_image"}
 
         try:

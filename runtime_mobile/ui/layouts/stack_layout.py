@@ -1,11 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Stack Layout
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Stack layout: overlays components on top of each other.
-# Useful for popups, modals, debug overlays, layered UI.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
 from .base_layout import BaseUILayout
@@ -13,50 +8,79 @@ from ..theme import MobileUITheme
 
 
 class StackLayout(BaseUILayout):
-    """
-    Overlays components on top of each other.
-    The first component is the bottom layer,
-    the last component is the top layer.
-    """
 
     LAYOUT_VERSION = "3.0.0-pre"
 
     def __init__(self, layout_id=None, visible=True):
         super().__init__(layout_id=layout_id, visible=visible)
-
-        # Stack layout specific defaults
         self.padding = MobileUITheme.SPACING["md"]
 
     # ------------------------------------------------------------
-    # Render (placeholder)
+    # Lifecycle
+    # ------------------------------------------------------------
+
+    def initialize(self):
+        base = super().initialize()
+        base.update({
+            "padding": self.padding
+        })
+        return base
+
+    def update(self):
+        return super().update()
+
+    # ------------------------------------------------------------
+    # Render
     # ------------------------------------------------------------
 
     def render(self):
-        """
-        Placeholder render output.
-        In UI 3.0.0 this will be handled by the rendering engine.
-        Each component is rendered at the same base position,
-        but in different layers (z-index).
-        """
-        rendered_components = []
-        z_index = 0
-
-        for component in self.components:
-            component_render = component.render()
-            component_render["z_index"] = z_index
-            component_render["padding"] = self.padding
-            rendered_components.append(component_render)
-
-            z_index += 1
-
-        return {
+        base = {
             "status": "rendered",
             "layout": self.layout_id,
             "type": "stack",
             "background": self.background,
             "padding": self.padding,
-            "components": rendered_components,
-            "visible": self.visible
+            "visible": self.visible,
+            "x": self.x,
+            "y": self.y,
+            "width": self.width,
+            "height": self.height
+        }
+
+        rendered_components = []
+        z_index = 0
+
+        for component in self.components:
+            c = component.render()
+
+            c["z_index"] = z_index
+            c["padding"] = self.padding
+
+            rendered_components.append(c)
+            z_index += 1
+
+        base["components"] = rendered_components
+        return base
+
+    # ------------------------------------------------------------
+    # Event routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """
+        StackLayout forwards events to components from top to bottom.
+        The top-most component receives the event first.
+        """
+        results = []
+
+        for component in reversed(self.components):
+            if hasattr(component, "on_event"):
+                results.append(component.on_event(event))
+
+        return {
+            "status": "events_forwarded",
+            "layout": self.layout_id,
+            "results": results
         }
 
     # ------------------------------------------------------------
@@ -67,6 +91,8 @@ class StackLayout(BaseUILayout):
         base = super().get_info()
         base.update({
             "type": "stack",
-            "padding": self.padding
+            "padding": self.padding,
+            "background": self.background,
+            "components": [c.component_id for c in self.components]
         })
         return base

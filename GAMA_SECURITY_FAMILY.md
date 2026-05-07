@@ -1,93 +1,122 @@
-# GAMA Security Family
+# 🛡 GAMA Security Family
 
 Security Family provides behavioral monitoring, safety rules, and protection for the GAMA system.
 
-## Responsibilities
-- behavior monitoring
-- safety rule enforcement
-- blocking dangerous operations
-- parental/child mode support
-- integration with Runtime and Router
+---
 
-## Modes
-- Owner Mode
-- Teen Mode
-- Child Mode
-- Restricted Mode
+# 🎯 Responsibilities
+- behavior monitoring  
+- safety rule enforcement  
+- blocking dangerous operations  
+- parental/child mode support  
+- integration with Runtime and Router  
+- output safety validation (NEW)  
+- low‑trust data handling (NEW)  
+- anomaly‑based restrictions (NEW)  
 
-## Output
-- allow / deny decisions
-- security flags
-- behavior logs
+---
 
-## Version
-GAMA Security Family — v1.0.0
+# 🧩 Modes
+- Owner Mode  
+- Teen Mode  
+- Child Mode  
+- Restricted Mode  
+- Auto‑Adaptive Mode (NEW – optional)  
 
-## Security Flow
+---
 
-1. Runtime sends a security‑relevant event or user action.
-2. Security Family identifies the active mode:
-   - Owner Mode
-   - Teen Mode
-   - Child Mode
-   - Restricted Mode
-3. Behavior Monitor evaluates the action.
-4. Safety Rules Engine checks for violations.
-5. If safe:
-   - allow the action
-   - return "allow" decision
-6. If unsafe:
-   - block the action
-   - return "deny" decision with security flags
-7. Log the event in the Security Diagnostics Log.
-8. Update behavior profile (if enabled).
-9. Return final decision to the Runtime.
+# 📤 Output
+- allow / deny decisions  
+- security flags  
+- behavior logs  
+- anomaly reports (NEW)  
+- quarantine flags (NEW)  
 
-## Security Components
+---
 
-### 1. Behavior Monitor
+# 🏷 Version
+**GAMA Security Family — v1.0.0**  
+(prepared for GAMA 3.0.0‑pre and extended in GAMA 4.0)
+
+---
+
+# 🔄 Security Flow
+
+1. Runtime sends a security‑relevant event or user action.  
+2. Security Family identifies the active mode:  
+   - Owner  
+   - Teen  
+   - Child  
+   - Restricted  
+3. Behavior Monitor evaluates the action.  
+4. Safety Rules Engine checks for violations.  
+5. If safe:  
+   - allow the action  
+   - return `"allow"`  
+6. If unsafe:  
+   - block the action  
+   - return `"deny"` + security flags  
+7. Log the event in the Security Diagnostics Log.  
+8. Update behavior profile (if enabled).  
+9. Return final decision to the Runtime.  
+10. Apply quarantine rules if data is external (NEW).  
+
+---
+
+# 🧱 Security Components
+
+## 1. Behavior Monitor
 Tracks user actions and system events.
-- action classification
-- frequency analysis
-- anomaly detection
-- mode‑specific behavior rules
+- action classification  
+- frequency analysis  
+- anomaly detection  
+- mode‑specific behavior rules  
+- hybrid‑input behavior tracking (NEW)  
+- escalation triggers (NEW)  
 
-### 2. Safety Rules Engine
+## 2. Safety Rules Engine
 Evaluates actions against security policies.
-- rule matching
-- violation detection
-- severity scoring
-- allow/deny decision logic
+- rule matching  
+- violation detection  
+- severity scoring  
+- allow/deny logic  
+- rule chaining (NEW)  
+- safety‑intent detection (NEW)  
 
-### 3. Mode Controller
+## 3. Mode Controller
 Determines active security mode.
-- Owner Mode
-- Teen Mode
-- Child Mode
-- Restricted Mode
-- automatic mode switching (optional)
+- Owner / Teen / Child / Restricted  
+- automatic mode switching (optional)  
+- behavior‑based mode escalation (NEW)  
+- restricted‑mode hardening (NEW)  
 
-### 4. Operation Filter
+## 4. Operation Filter
 Blocks or allows system operations.
-- file access control
-- network restrictions
-- command filtering
-- sensitive operation blocking
+- file access control  
+- network restrictions  
+- command filtering  
+- sensitive operation blocking  
+- module‑level privilege isolation (NEW)  
+- event‑level sandboxing (NEW)  
 
-### 5. Behavior Profile Manager
+## 5. Behavior Profile Manager
 Maintains long‑term behavior patterns.
-- learning user habits
-- detecting deviations
-- adaptive restrictions
-- profile updates
+- learning user habits  
+- detecting deviations  
+- adaptive restrictions  
+- profile updates  
+- anomaly‑based cooldowns (NEW)  
+- child‑safe behavior shaping (NEW)  
 
-### 6. Security Diagnostics Logger
+## 6. Security Diagnostics Logger
 Records all security‑related events.
-- allowed actions
-- blocked actions
-- rule violations
-- mode changes
-- anomaly reports
+- allowed actions  
+- blocked actions  
+- rule violations  
+- mode changes  
+- anomaly reports  
+- quarantine rejections (NEW)  
+- envoy‑related violations (NEW)  
 
 ---
 
@@ -97,23 +126,23 @@ GAMA v4 introduces a **hybrid‑safe extension** of the Security Family, enablin
 
 ## 🟦 Secure Online Envoy (Isolated Online Agent)
 - runs in a fully isolated sandbox  
-- has **one‑way outbound** access to the internet  
-- can fetch text, JSON, structured data  
-- cannot access local files, models, or system APIs  
-- cannot send any local data outward  
-- treated as an **untrusted external source** by Security Family  
+- one‑way outbound internet access  
+- fetches text, JSON, structured data  
+- no access to local files, models, or system APIs  
+- no local data ever sent outward  
+- treated as **untrusted external input**  
 
 ## 🟩 Quarantine Pipeline (Security Family Integration)
-All data from the envoy is processed through a strict quarantine layer:
+All envoy data passes through strict sanitization:
 
 - script & HTML removal  
 - format validation  
 - size limits  
 - text cleaning  
 - security filtering  
-- only clean text + JSON + structured data allowed  
+- only clean text + JSON allowed  
 
-Security Family ensures that **no untrusted data** ever reaches:
+Security Family ensures **no untrusted data** reaches:
 
 - Runtime  
 - Router  
@@ -124,40 +153,49 @@ Security Family ensures that **no untrusted data** ever reaches:
 ## 🟧 Security Family Enforcement
 Security Family applies additional rules:
 
-- envoy data is always treated as **low‑trust**  
-- no execution of remote code  
+- envoy data = **low‑trust**  
+- no remote code execution  
 - no dynamic imports  
-- no direct system operations  
+- no system operations  
 - no cross‑module privileges  
 
-If any anomaly is detected:
-
-- quarantine rejects the data  
-- Security Family logs the violation  
-- Runtime receives a **deny** decision  
+If anomaly detected:
+- quarantine rejects data  
+- Security Family logs violation  
+- Runtime receives `"deny"`  
 
 ## 🟪 Why This Matters
 - offline AI remains offline  
 - online data is sanitized and isolated  
-- Security Family becomes the **gatekeeper** for all external inputs  
+- Security Family becomes the **gatekeeper**  
 - architecture matches air‑gapped enterprise systems  
-- zero risk of remote code execution or data leakage  
+- zero risk of RCE or data leakage  
 
 ---
 
-## Security Execution Cycle
+# 🔁 Security Execution Cycle
 
-1. Runtime sends a user action or system event to Security Family.
-2. Mode Controller determines the active security mode.
-3. Behavior Monitor analyzes the action and context.
-4. Safety Rules Engine evaluates the action against security policies.
-5. If the action is safe:
-   - Operation Filter allows the action
-   - return "allow" decision
-6. If the action is unsafe:
-   - Operation Filter blocks the action
-   - return "deny" decision with security flags
-7. Behavior Profile Manager updates long‑term behavior patterns.
-8. Security Diagnostics Logger records the event.
-9. Decision is returned to the Runtime.
-10. System waits for the next security event.
+1. Runtime sends a user action or system event.  
+2. Mode Controller determines active mode.  
+3. Behavior Monitor analyzes context.  
+4. Safety Rules Engine evaluates policies.  
+5. If safe → Operation Filter allows action.  
+6. If unsafe → Operation Filter blocks action.  
+7. Behavior Profile Manager updates patterns.  
+8. Security Diagnostics Logger records event.  
+9. Decision returned to Runtime.  
+10. System waits for next event.  
+
+---
+
+# 🟫 NEW IN VERSION 2 → PREPARED FOR VERSION 3.0.0‑pre
+- safety‑intent detection  
+- rule chaining  
+- module privilege isolation  
+- event‑level sandboxing  
+- hybrid‑input behavior tracking  
+- anomaly‑based restrictions  
+- restricted‑mode hardening  
+- unified SECURITY event metadata  
+- envoy low‑trust classification  
+- quarantine integration  

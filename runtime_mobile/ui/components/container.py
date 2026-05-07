@@ -1,11 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Container Component
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Container component that holds a layout.
-# This allows nested UI structures (panels, sections, screens).
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
 from .base_component import BaseUIComponent
@@ -13,10 +8,6 @@ from ..theme import MobileUITheme
 
 
 class Container(BaseUIComponent):
-    """
-    A UI component that contains a layout.
-    This is the bridge between components and layout systems.
-    """
 
     COMPONENT_VERSION = "3.0.0-pre"
 
@@ -58,23 +49,19 @@ class Container(BaseUIComponent):
         return base
 
     def render(self):
-        """
-        Placeholder render output.
-        In UI 3.0.0 this will be handled by the rendering engine.
-        """
+        base = super().render()
+
         layout_render = None
         if self.layout:
             layout_render = self.layout.render()
 
-        return {
-            "status": "rendered",
-            "component": self.component_id,
+        base.update({
             "type": "container",
             "background": self.background,
             "padding": self.padding,
             "layout": layout_render,
-            "visible": self.visible
-        }
+        })
+        return base
 
     def shutdown(self):
         layout_info = None
@@ -86,6 +73,33 @@ class Container(BaseUIComponent):
         return base
 
     # ------------------------------------------------------------
+    # Layout Management
+    # ------------------------------------------------------------
+
+    def set_layout(self, layout):
+        """Replace current layout."""
+        self.layout = layout
+
+    def clear_layout(self):
+        """Remove layout."""
+        self.layout = None
+
+    # ------------------------------------------------------------
+    # Event routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """Forward UI events to layout if needed."""
+        if self.layout and hasattr(self.layout, "on_event"):
+            return self.layout.on_event(event)
+
+        return {
+            "status": "ignored",
+            "component": self.component_id,
+            "event": event
+        }
+
+    # ------------------------------------------------------------
     # Metadata
     # ------------------------------------------------------------
 
@@ -93,7 +107,8 @@ class Container(BaseUIComponent):
         base = super().get_info()
         base.update({
             "type": "container",
+            "background": self.background,
+            "padding": self.padding,
             "layout": self.layout.get_info() if self.layout else None
         })
         return base
-

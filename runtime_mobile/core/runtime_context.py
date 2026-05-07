@@ -1,3 +1,24 @@
+# ============================================================
+# SIRIUS LOCAL AI GAMA - Mobile Runtime Context
+# Version: 3.0.0-pre
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Stores:
+#   - runtime state
+#   - configuration
+#   - module instances
+#   - security profile
+#   - restricted mode
+#   - knowledge pack manager
+#
+# GAMA 3-ready features:
+#   - diagnostics module slot
+#   - energy governor slot
+#   - unified module initialization
+#   - versioned metadata
+#   - clean runtime injection
+# ============================================================
+
 from runtime_mobile.security.security_entry import MobileSecurityEntry
 from runtime_mobile.vision.vision_entry import MobileVisionEntry
 from runtime_mobile.knowledge_packs.packs_mobile import MobileKnowledgePacks
@@ -10,34 +31,54 @@ class MobileRuntimeContext:
     Stores runtime state, configuration and module instances.
     """
 
+    CONTEXT_VERSION = "3.0.0-pre"
+
     def __init__(self):
-        # Runtime state
+        # --------------------------------------------------------
+        # Runtime State
+        # --------------------------------------------------------
         self.state = {
             "initialized": False,
             "active_module": None,
             "last_event": None,
-            "restricted_mode": False
+            "restricted_mode": False,
         }
 
-        # Runtime configuration
+        # --------------------------------------------------------
+        # Runtime Configuration
+        # --------------------------------------------------------
         self.config = {
-            "version": "1.0.0",
+            "version": "3.0.0-pre",
             "platform": "mobile",
             "debug": False,
         }
 
-        # Permissions placeholder (extend later)
+        # Permissions placeholder
         self.permissions = None
 
-        # Module instances (created after load)
+        # --------------------------------------------------------
+        # Module Instances (injected on load)
+        # --------------------------------------------------------
         self.security = None
         self.vision = None
         self.packs = None
 
-        # Knowledge pack manager
+        # Future modules (GAMA 2.0 → 3.0)
+        self.diagnostics = None
+        self.energy_governor = None
+        self.workflow = None
+        self.lan_bridge = None
+
+        # --------------------------------------------------------
+        # Knowledge Pack Manager
+        # --------------------------------------------------------
         self.pack_manager = PackManager(
             "runtime_mobile/knowledge_packs/data"
         )
+
+    # ------------------------------------------------------------
+    # Initialization
+    # ------------------------------------------------------------
 
     def load(self):
         """
@@ -45,13 +86,19 @@ class MobileRuntimeContext:
         Loads modules and prepares the runtime environment.
         """
 
-        # Mark runtime as initialized
         self.state["initialized"] = True
 
-        # Initialize modules
+        # Initialize core modules
         self.security = MobileSecurityEntry(self)
         self.vision = MobileVisionEntry(self)
         self.packs = MobileKnowledgePacks(self)
+
+        # Optional modules (attached later by runtime)
+        # diagnostics, governor, workflow, lan_bridge
+
+    # ------------------------------------------------------------
+    # State Management
+    # ------------------------------------------------------------
 
     def set_active_module(self, module_name: str):
         """Sets the currently active module."""
@@ -65,6 +112,10 @@ class MobileRuntimeContext:
         """Enables or disables restricted mode."""
         self.state["restricted_mode"] = enabled
 
+    # ------------------------------------------------------------
+    # Accessors
+    # ------------------------------------------------------------
+
     def get_state(self):
         """Returns the full runtime state."""
         return self.state
@@ -72,3 +123,25 @@ class MobileRuntimeContext:
     def get_config(self):
         """Returns the runtime configuration."""
         return self.config
+
+    # ------------------------------------------------------------
+    # Metadata
+    # ------------------------------------------------------------
+
+    def get_info(self) -> dict:
+        """Return context metadata for diagnostics/UI."""
+        return {
+            "context_version": self.CONTEXT_VERSION,
+            "initialized": self.state["initialized"],
+            "restricted_mode": self.state["restricted_mode"],
+            "active_module": self.state["active_module"],
+            "modules": {
+                "security": self.security is not None,
+                "vision": self.vision is not None,
+                "packs": self.packs is not None,
+                "diagnostics": self.diagnostics is not None,
+                "energy_governor": self.energy_governor is not None,
+                "workflow": self.workflow is not None,
+                "lan_bridge": self.lan_bridge is not None,
+            }
+        }

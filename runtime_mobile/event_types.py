@@ -1,15 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Event Types
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Centralized list of event types for the mobile runtime.
-# Used by:
-#   - NL Router
-#   - Dispatcher
-#   - RuntimeCore
-#   - Vision / Security / Knowledge Packs
-#   - Diagnostics / Governor / Workflow / LAN Bridge
 # ============================================================
 
 class MobileEventTypes:
@@ -25,6 +16,12 @@ class MobileEventTypes:
     SHOW_HELP = "SHOW_HELP"
     HEARTBEAT = "HEARTBEAT"
     RUNTIME_INFO = "RUNTIME_INFO"
+
+    # --------------------------------------------------------
+    # Text / Queries / Assistant
+    # --------------------------------------------------------
+    TEXT_QUERY = "TEXT_QUERY"
+    ASSISTANT = "ASSISTANT"
 
     # --------------------------------------------------------
     # Device Diagnostics
@@ -55,6 +52,7 @@ class MobileEventTypes:
     OCR = "OCR"
     DETECT = "DETECT"
     SCENE = "SCENE"
+    ANALYZE = "ANALYZE"
     HOMEWORK = "HOMEWORK"
 
     # --------------------------------------------------------
@@ -62,6 +60,7 @@ class MobileEventTypes:
     # --------------------------------------------------------
     PACK_LOOKUP = "PACK_LOOKUP"
     PACK_INFO = "PACK_INFO"
+    PACK_QUERY = "PACK_QUERY"
 
     # --------------------------------------------------------
     # Workflow Engine

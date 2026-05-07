@@ -1,12 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Runtime Context
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Holds runtime state, session data, module references,
-# and metadata for the mobile execution environment.
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
 class MobileRuntimeContext:
@@ -25,7 +19,6 @@ class MobileRuntimeContext:
         self.language = "en"
         self.last_event = None
 
-        # Runtime state dictionary
         self.state = {
             "restricted_mode": False,
             "initialized": False,
@@ -38,7 +31,7 @@ class MobileRuntimeContext:
         self.device_info = {}
 
         # --------------------------------------------------------
-        # Runtime modules (injected by MobileRuntimeCore)
+        # Runtime modules (attached by MobileRuntimeCore)
         # --------------------------------------------------------
         self.pack_manager = None
         self.vision_engine = None
@@ -49,6 +42,11 @@ class MobileRuntimeContext:
         self.workflow = None
         self.lan_bridge = None
 
+        # --------------------------------------------------------
+        # Debug log buffer
+        # --------------------------------------------------------
+        self._debug_log = []
+
     # ------------------------------------------------------------
     # State setters
     # ------------------------------------------------------------
@@ -58,6 +56,7 @@ class MobileRuntimeContext:
 
     def update_last_event(self, event):
         self.last_event = event
+        self._debug_log.append(f"EVENT: {event.type}")
 
     def set_language(self, lang):
         self.language = lang
@@ -67,6 +66,25 @@ class MobileRuntimeContext:
 
     def set_active_module(self, module_name: str):
         self.state["active_module"] = module_name
+
+    # ------------------------------------------------------------
+    # Debug log
+    # ------------------------------------------------------------
+
+    def get_debug_log(self):
+        return list(self._debug_log)
+
+    # ------------------------------------------------------------
+    # Reset
+    # ------------------------------------------------------------
+
+    def reset(self):
+        self.session_id = None
+        self.last_event = None
+        self.device_info = {}
+        self.state["active_module"] = None
+        self.state["restricted_mode"] = False
+        self._debug_log.clear()
 
     # ------------------------------------------------------------
     # Getters
@@ -87,7 +105,6 @@ class MobileRuntimeContext:
     # ------------------------------------------------------------
 
     def get_info(self):
-        """Returns full runtime metadata."""
         return {
             "context_version": self.CONTEXT_VERSION,
             "session_id": self.session_id,

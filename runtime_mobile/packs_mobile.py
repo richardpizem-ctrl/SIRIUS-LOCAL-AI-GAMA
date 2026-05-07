@@ -2,19 +2,10 @@
 # SIRIUS LOCAL AI GAMA - Mobile Knowledge Packs Entry
 # Version: 3.0.0-pre
 # Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Entry point for the mobile knowledge packs system.
-# Responsibilities:
-#   - loading JSON knowledge packs
-#   - caching
-#   - validation
-#   - event-based lookup
-#   - safe fallback responses
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
-from runtime_mobile.core.event_types import MobileEvent, MobileEventTypes
+from runtime_mobile.core.event_types import MobileEventTypes
+from runtime_mobile.core.mobile_event import MobileEvent
 
 
 class MobileKnowledgePacks:
@@ -34,57 +25,44 @@ class MobileKnowledgePacks:
     # ------------------------------------------------------------
 
     def load_pack(self, pack_name: str):
-        """
-        Loads a knowledge pack by name.
-        """
-
         if not hasattr(self.context, "pack_manager"):
-            return {
-                "status": "error",
-                "reason": "pack_manager_missing"
-            }
+            return {"status": "error", "reason": "pack_manager_missing"}
 
         pack = self.context.pack_manager.load(pack_name)
 
         if pack is None:
-            return {
-                "status": "error",
-                "reason": "pack_not_found",
-                "pack": pack_name
-            }
+            return {"status": "error", "reason": "pack_not_found", "pack": pack_name}
 
-        # Cache loaded pack
+        # Basic validation
+        if "entries" not in pack or not isinstance(pack["entries"], dict):
+            return {"status": "error", "reason": "invalid_pack_format"}
+
         self.loaded_packs[pack_name] = pack
 
         return {
             "status": "ok",
             "pack": pack_name,
-            "entries": len(pack.get("entries", {})),
+            "entries": len(pack["entries"]),
             "version": pack.get("version", "unknown")
         }
 
     # ------------------------------------------------------------
-    # Event Handler
+    # Event Handler (required by runtime)
     # ------------------------------------------------------------
 
-    def handle_event(self, event: MobileEvent):
-        """
-        Main entry point for dispatcher → packs module.
-        """
+    def on_event(self, event: MobileEvent):
+        etype = event.type
 
-        if event.type == MobileEventTypes.PACK_LOOKUP:
-            pack_name = event.get("pack")
-            key = event.get("key")
-            return self.get(pack_name, key)
+        if etype == MobileEventTypes.PACK_LOOKUP:
+            return self.get(event.pack, event.key)
 
-        if event.type == MobileEventTypes.PACK_INFO:
-            pack_name = event.get("pack")
-            return self.info(pack_name)
+        if etype == MobileEventTypes.PACK_INFO:
+            return self.info(event.pack)
 
         return {
             "status": "ignored",
             "reason": "unknown_event",
-            "event_type": event.type
+            "event_type": etype
         }
 
     # ------------------------------------------------------------
@@ -92,28 +70,19 @@ class MobileKnowledgePacks:
     # ------------------------------------------------------------
 
     def get(self, pack_name: str, key: str):
-        """
-        Retrieves a value from a knowledge pack.
-        Automatically loads the pack if not already loaded.
-        """
-
-        # Auto-load pack if missing
         if pack_name not in self.loaded_packs:
             load_result = self.load_pack(pack_name)
-
             if load_result.get("status") != "ok":
-                return load_result  # return the error
+                return load_result
 
-        pack = self.loaded_packs.get(pack_name)
-        entries = pack.get("entries", {})
-
-        value = entries.get(key)
+        pack = self.loaded_packs[pack_name]
+        entries = pack["entries"]
 
         return {
             "status": "ok",
             "pack": pack_name,
             "key": key,
-            "value": value,
+            "value": entries.get(key),
             "exists": key in entries
         }
 
@@ -122,23 +91,18 @@ class MobileKnowledgePacks:
     # ------------------------------------------------------------
 
     def info(self, pack_name: str):
-        """
-        Returns metadata about a loaded or available pack.
-        """
-
-        # Auto-load if needed
         if pack_name not in self.loaded_packs:
             load_result = self.load_pack(pack_name)
             if load_result.get("status") != "ok":
                 return load_result
 
-        pack = self.loaded_packs.get(pack_name)
+        pack = self.loaded_packs[pack_name]
 
         return {
             "status": "ok",
             "pack": pack_name,
             "version": pack.get("version", "unknown"),
-            "entries": list(pack.get("entries", {}).keys()),
+            "entries": list(pack["entries"].keys())
         }
 
     # ------------------------------------------------------------
@@ -146,9 +110,6 @@ class MobileKnowledgePacks:
     # ------------------------------------------------------------
 
     def list_loaded(self):
-        """
-        Returns a list of currently loaded knowledge packs.
-        """
         return {
             "status": "ok",
             "loaded_packs": list(self.loaded_packs.keys())

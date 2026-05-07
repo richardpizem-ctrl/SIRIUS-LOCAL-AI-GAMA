@@ -1,22 +1,10 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Runtime Core
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Main orchestrator for the mobile offline execution environment.
-# Responsibilities:
-#   - initialization
-#   - module injection
-#   - NL routing
-#   - security pipeline
-#   - event dispatching
-#   - runtime metadata
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
-from runtime_mobile.core.event import MobileEvent
+from runtime_mobile.core.mobile_event import MobileEvent
 
 
 class MobileRuntimeCore:
@@ -34,6 +22,10 @@ class MobileRuntimeCore:
         self.router = router
         self.initialized = False
 
+        # Link router → dispatcher
+        self.router.dispatcher = dispatcher
+        self.router.context = context
+
     # ------------------------------------------------------------
     # Module Loading
     # ------------------------------------------------------------
@@ -41,7 +33,6 @@ class MobileRuntimeCore:
     def load_modules(self, vision, security, packs,
                      diagnostics=None, governor=None,
                      workflow=None, lan_bridge=None):
-        """Attach core modules to the runtime and context."""
 
         self.context.vision_engine = vision
         self.context.security = security
@@ -56,8 +47,6 @@ class MobileRuntimeCore:
     # ------------------------------------------------------------
 
     def initialize(self):
-        """Initialize the mobile runtime."""
-
         required = [
             self.router,
             self.dispatcher,
@@ -72,11 +61,13 @@ class MobileRuntimeCore:
         self.initialized = True
         self.context.state["initialized"] = True
 
+        return {"status": "initialized", "core_version": self.CORE_VERSION}
+
     # ------------------------------------------------------------
     # Main Event Handler
     # ------------------------------------------------------------
 
-    def handle_event(self, text: str):
+    def on_event(self, text: str):
         """
         Main event handler for mobile runtime.
         Converts text → MobileEvent → security → dispatch → result.
@@ -92,7 +83,7 @@ class MobileRuntimeCore:
         self.context.update_last_event(event)
 
         # 3. Security pipeline
-        sec = self.context.security.handle_event(event)
+        sec = self.context.security.on_event(event)
         if isinstance(sec, dict) and sec.get("allowed") is False:
             return {
                 "status": "blocked",
@@ -114,7 +105,6 @@ class MobileRuntimeCore:
     # ------------------------------------------------------------
 
     def get_info(self):
-        """Return runtime metadata."""
         return {
             "core_version": self.CORE_VERSION,
             "initialized": self.initialized,

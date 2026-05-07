@@ -1,12 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Storage System Module
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Framework-agnostic storage status provider for the mobile runtime.
-# - no direct OS / platform calls
-# - expects an injected backend/adapter for real filesystem data
-# - safe for offline / simulated environments
 # ============================================================
 
 from typing import Any, Dict, Optional
@@ -16,23 +10,10 @@ from runtime_mobile.core.event_types import MobileEventTypes
 
 
 class MobileStorageModule:
-    """
-    Storage abstraction for the mobile runtime.
-
-    Design:
-    - backend optional (callable or object with get_storage_status())
-    - if backend missing, returns safe simulated values
-    - used by diagnostics and dispatcher
-    """
 
     MODULE_VERSION = "3.0.0-pre"
 
     def __init__(self, backend: Optional[Any] = None):
-        """
-        backend may be:
-            - callable: backend() -> dict
-            - object:   backend.get_storage_status() -> dict
-        """
         self.backend = backend
 
     # ------------------------------------------------------------
@@ -40,7 +21,6 @@ class MobileStorageModule:
     # ------------------------------------------------------------
 
     def _read_backend(self) -> Dict[str, Any]:
-        """Safely read raw storage data from backend."""
         if self.backend is None:
             return {}
 
@@ -59,18 +39,31 @@ class MobileStorageModule:
     # ------------------------------------------------------------
 
     def get_status(self) -> Dict[str, Any]:
-        """
-        Return normalized storage status.
-        Keys are stable across all platforms.
-        """
         raw = self._read_backend()
 
-        total = raw.get("total") or raw.get("total_bytes")
-        free = raw.get("free") or raw.get("free_bytes")
-        used = raw.get("used") or (total - free if total and free else None)
-        percent = None
+        # Safe extraction
+        total = raw.get("total")
+        if total is None:
+            total = raw.get("total_bytes")
 
-        if total and used:
+        free = raw.get("free")
+        if free is None:
+            free = raw.get("free_bytes")
+
+        used = raw.get("used")
+        if used is None and total is not None and free is not None:
+            used = total - free
+
+        # Validate values
+        if total is not None and total < 0:
+            total = None
+        if free is not None and free < 0:
+            free = None
+        if used is not None and used < 0:
+            used = None
+
+        percent = None
+        if total not in (None, 0) and used is not None:
             try:
                 percent = round((used / total) * 100, 2)
             except Exception:
@@ -90,7 +83,7 @@ class MobileStorageModule:
     # ------------------------------------------------------------
 
     def handle_event(self, event: MobileEvent) -> Dict[str, Any]:
-        """Handle CHECK_STORAGE event."""
+
         if event.type != MobileEventTypes.CHECK_STORAGE:
             return {
                 "status": "ignored",
@@ -103,6 +96,7 @@ class MobileStorageModule:
 
         return {
             "status": "ok",
+            "event_type": MobileEventTypes.CHECK_STORAGE,
             "module": "storage",
             "storage": status,
         }

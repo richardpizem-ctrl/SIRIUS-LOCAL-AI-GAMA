@@ -86,6 +86,9 @@ This policy covers vulnerabilities related to:
 - file handling  
 - memory handling  
 - denial‑of‑service vectors  
+- module privilege isolation (NEW)  
+- event‑level sandboxing (NEW)  
+- hybrid input processing (NEW)  
 
 It does **not** cover:
 
@@ -111,6 +114,9 @@ Contributors must follow these principles:
 - minimal dependencies  
 - deterministic behavior  
 - sandboxed processing  
+- no dynamic imports (NEW)  
+- no privileged module escalation (NEW)  
+- strict validation of all external data (NEW)  
 
 ---
 
@@ -125,6 +131,7 @@ GAMA v4 introduces a **hybrid‑safe architecture** that preserves full offline 
 - cannot access local files, models, or system APIs  
 - cannot send any local data outward  
 - acts strictly as a **courier**, not part of the AI core  
+- always classified as **low‑trust** (NEW)  
 
 ## 🟩 Quarantine Pipeline (Data Sanitization Layer)
 All data returned by the envoy is processed through a strict quarantine:
@@ -135,6 +142,7 @@ All data returned by the envoy is processed through a strict quarantine:
 - text cleaning  
 - security filtering  
 - only clean text + JSON + structured data allowed  
+- integration with Security Family (NEW)  
 
 Offline modules **never** interact with untrusted data.
 
@@ -145,8 +153,38 @@ Offline modules **never** interact with untrusted data.
 - no cloud calls  
 - no telemetry  
 - no outbound data  
+- air‑gapped execution model (NEW)  
 
 This ensures that **SIRIUS LOCAL AI GAMA remains 100% offline**, even with optional online data retrieval.
+
+---
+
+# 🛡 6.6 NEW — Security Family Integration
+
+Security Family enforces additional rules for hybrid‑safe mode:
+
+- envoy data is always low‑trust  
+- no remote code execution  
+- no dynamic evaluation  
+- no cross‑module privilege escalation  
+- no direct access to runtime context  
+- quarantine rejects unsafe data  
+- all violations logged in Security Diagnostics  
+
+---
+
+# 🧪 6.7 NEW — Security Testing Requirements
+
+All contributors must ensure:
+
+- static analysis of all modules  
+- no unsafe dependencies  
+- no network calls except envoy sandbox  
+- deterministic execution paths  
+- reproducible builds  
+- no hidden telemetry  
+- no analytics libraries  
+- no external SDKs  
 
 ---
 

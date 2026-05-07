@@ -3,21 +3,14 @@
 # Version: 3.0.0-pre
 # Author: Richard Pizem (SIRIUS LOCAL AI)
 #
-# This file exposes the public API of the mobile runtime core.
-# All modules, engines, and runtime components import from here.
-#
-# GAMA 3-ready features:
-#   - unified import surface
-#   - stable public API for all runtime modules
-#   - versioned architecture
-#   - compatibility with new modules (diagnostics, governor, scene)
-#   - clean namespace for external integrations
+# Public API surface for the mobile runtime core.
+# Provides unified imports for all runtime modules.
 # ============================================================
 
 from .runtime_core import MobileRuntimeCore
 from .runtime_context import MobileRuntimeContext
 from .runtime_dispatcher import MobileRuntimeDispatcher
-from .event import MobileEvent
+from .mobile_event import MobileEvent
 from .event_types import MobileEventTypes
 from .router_mobile import MobileNLRouter
 

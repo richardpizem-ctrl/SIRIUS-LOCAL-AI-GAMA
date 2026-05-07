@@ -1,6 +1,8 @@
 # 🚀 SIRIUS LOCAL AI GAMA – Roadmap
 
-## GAMA 1.0 (Initial Release)
+---
+
+## 🟦 GAMA 1.0 (Initial Release)
 - Mobile Runtime Core  
 - NL Router Mobile  
 - Knowledge Packs Mobile  
@@ -10,103 +12,136 @@
 
 ---
 
-## GAMA 1.1 (Upcoming Enhancements)
+## 🟪 GAMA 1.1 (Enhancements)
 
-### 🟪 1) Priority Score pre Knowledge Packs
-- nové pole v metadata.json: `"priority": 0.0 – 1.0`
-- umožní preferovať špecializované packy pred všeobecnými
-- deterministické rozhodovanie pri PACK_LOOKUP
-- fallback mechanizmus pri rovnakom skóre
-- zlepšená presnosť odpovedí bez NLP klasifikácie
+### 1) Priority Score for Knowledge Packs
+- new field in metadata.json: `"priority": 0.0 – 1.0`  
+- specialized packs preferred over general packs  
+- deterministic PACK_LOOKUP  
+- fallback for equal scores  
+- improved accuracy without NLP  
 
-### 🟦 2) Native Image Preprocessing (Android/iOS)
+### 2) Native Image Preprocessing (Android/iOS)
 **Android (CameraX / ML Kit):**
-- auto-focus  
-- auto-exposure  
-- auto-white balance  
+- auto‑focus  
+- auto‑exposure  
+- auto‑white balance  
 - document detection  
 - perspective correction  
 - stabilization  
 
 **iOS (VisionKit / AVFoundation):**
 - VNDocumentCameraViewController  
-- auto-crop  
-- auto-enhance  
-- auto-deskew  
+- auto‑crop  
+- auto‑enhance  
+- auto‑deskew  
 - noise reduction  
 
-**Výsledok:**
-- vyššia presnosť OCR  
-- nižšia záťaž CPU  
-- rýchlejšie spracovanie  
-- čistejší vstup pre Vision Engine  
+**Result:**
+- higher OCR accuracy  
+- lower CPU load  
+- faster processing  
+- cleaner input for Vision Engine  
 
-### 🟩 3) Vylepšenia Vision Engine Pipeline
-- natívny preprocessing → GAMA Vision Engine → OCR → Reasoning  
-- optimalizácia pre ARM  
-- zníženie šumu a chýb v textoch  
+### 3) Vision Engine Pipeline Improvements
+- native preprocessing → Vision Engine → OCR → Reasoning  
+- ARM optimization  
+- reduced noise and OCR errors  
 
-### 🟧 4) Knowledge Pack Spec 2.0
-- rozšírený metadata formát  
-- kategorizácia packov  
+### 4) Knowledge Pack Spec 2.0
+- expanded metadata  
+- pack categorization  
 - priority routing  
-- príprava na Knowledge Graphs (GAMA 3.0)
+- preparation for Knowledge Graphs (GAMA 3.0)  
 
 ---
 
-## GAMA 2.0
+## 🟩 GAMA 2.0
 - LAN Offline Bridge  
 - Device Diagnostics Mobile  
 - Scene Understanding  
 - Workflow Engine Mobile 2.0  
-- Health Assistant 2.0 (NEW)  
-  - offline zdravotnícky modul  
-  - OCR zdravotných dokumentov  
-  - rozpoznávanie liekov a dávkovania  
-  - prvá pomoc a triage logika  
-  - rodinne bezpečné zdravotné odporúčania  
-  - 100 % offline spracovanie  
+- **Health Assistant 2.0 (NEW)**  
+  - offline medical module  
+  - OCR of medical documents  
+  - medication & dosage recognition  
+  - first‑aid & triage logic  
+  - family‑safe medical guidance  
+  - 100% offline processing  
+
+### 🔹 NEW IN GAMA 2.0 (ADDED)
+- Diagnostics Expansion (battery, thermal, storage, memory)  
+- Runtime Context v2  
+- Pack Integrity Checker  
+- Rule Chaining (preparation for 3.0)  
+- Example‑based fallback reasoning  
+- Unified PACK_QUERY + PACK_INFO events  
+- Module priority + module tracking  
+- Hybrid input support (text + OCR)  
+- Safety‑aware routing in NL Router  
 
 ---
 
-## GAMA 3.0
+## 🟧 GAMA 3.0
 - Full Mobile Reasoning Engine  
 - Advanced Knowledge Graphs  
 - Multi‑intent routing  
 - Complete offline autonomy  
+- Unified event architecture (router → dispatcher → core)  
+- Vision ANALYZE + SCENE events  
+- Runtime Context v3 (debug logs, metadata, reset)  
+- Knowledge Pack auto‑load + validation  
+- Diagnostics v3 (rule hits, example hits, pack usage)  
+
+### 🔹 NEW PREPARED FEATURES
+- dict → event fallback normalization  
+- event version tagging  
+- module compatibility flags  
+- pack priority scoring  
+- safety‑intent detection  
+- hybrid reasoning (rules + examples)  
 
 ---
 
-## GAMA 4.0 (Hybrid‑Safe Architecture)
+## 🟪 GAMA 4.0 (Hybrid‑Safe Architecture)
 
-### 🟪 Secure Online Envoy (Isolated Online Agent)
-- sandboxovaný online agent  
-- jednosmerný outbound prístup na internet  
-- získavanie textu, JSON, štruktúrovaných dát  
-- žiadny prístup k súborom, modelom ani systémovým API  
-- žiadne odosielanie lokálnych dát von  
-- funguje ako kuriér, nie ako súčasť AI
+### Secure Online Envoy (Isolated Online Agent)
+- sandboxed online agent  
+- one‑way outbound internet access  
+- fetches text, JSON, structured data  
+- no access to local files, models, APIs  
+- no local data ever sent out  
+- acts as a courier, not part of AI  
 
-### 🟩 Quarantine Pipeline (Data Sanitization Layer)
-- odstránenie skriptov a HTML  
-- validácia formátu  
-- kontrola veľkosti  
-- čistenie textu  
-- bezpečnostné filtre  
-- povolené len: čistý text, JSON, štruktúrované dáta  
-- offline jadro nikdy nepríde do kontaktu s nečistými dátami
+### Quarantine Pipeline (Data Sanitization Layer)
+- script & HTML removal  
+- format validation  
+- size limits  
+- text cleaning  
+- security filtering  
+- only clean text + JSON allowed  
+- offline core never touches untrusted data  
 
-### 🟧 Offline Core Remains Fully Air‑Gapped
+### Offline Core Remains Fully Air‑Gapped
 - inference offline  
 - reasoning offline  
 - knowledge packs offline  
-- žiadne cloudové volania  
-- žiadna telemetria  
-- žiadne odosielanie dát  
+- no cloud calls  
+- no telemetry  
+- no outbound data  
 
-### 🟦 Why This Matters
-- offline AI zostáva offline  
-- používateľ má 100% súkromie  
-- AI môže pracovať s aktuálnymi dátami  
-- architektúra je bezpečná, modulárna, enterprise‑grade  
-- rovnaký model ako air‑gapped systémy v kritickej infraštruktúre
+### Why This Matters
+- offline AI stays offline  
+- absolute user privacy  
+- AI can use up‑to‑date information  
+- modular, safe, enterprise‑grade  
+- same model as air‑gapped critical systems  
+
+---
+
+## 🟫 Optional: LAN Offline Bridge
+Mobile ↔ PC communication over **local Wi‑Fi only**:
+- mobile = camera, UI, input  
+- PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
+
+No internet required.

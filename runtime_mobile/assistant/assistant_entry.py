@@ -1,28 +1,14 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Assistant Entry
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Central assistant logic for the mobile runtime.
-# Responsibilities:
-#   - interpret NL events
-#   - route to packs / diagnostics / vision / security
-#   - provide fallback responses
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
 from typing import Dict, Any
-
 from runtime_mobile.core.event import MobileEvent
 from runtime_mobile.core.event_types import MobileEventTypes
 
 
 class MobileAssistantEntry:
-    """
-    Central assistant logic for the mobile runtime.
-    Handles ASSISTANT events and provides fallback responses.
-    """
 
     MODULE_VERSION = "3.0.0-pre"
 
@@ -30,13 +16,18 @@ class MobileAssistantEntry:
         self.context = context
 
     # ------------------------------------------------------------
+    # Event Hook (3.x)
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """Passive hook (optional)."""
+        pass
+
+    # ------------------------------------------------------------
     # Main Event Handler
     # ------------------------------------------------------------
 
     def handle_event(self, event: MobileEvent) -> Dict[str, Any]:
-        """
-        Main processing method for assistant events.
-        """
 
         if event.type != MobileEventTypes.ASSISTANT:
             return {
@@ -48,12 +39,10 @@ class MobileAssistantEntry:
         text = event.payload.get("text", "")
         intent = event.payload.get("intent", "")
 
-        # Try routing to specialized modules
         routed = self._try_specialized_modules(text, intent)
         if routed is not None:
             return routed
 
-        # Fallback → generic assistant response
         return self._fallback_response(text)
 
     # ------------------------------------------------------------
@@ -61,26 +50,18 @@ class MobileAssistantEntry:
     # ------------------------------------------------------------
 
     def _try_specialized_modules(self, text: str, intent: str):
-        """
-        Try routing to packs, diagnostics, vision, or security
-        based on text patterns.
-        """
 
         t = text.lower()
 
-        # Packs
         if "pack" in t:
             return self._route_to_packs(text)
 
-        # Diagnostics
         if "battery" in t or "temperature" in t or "storage" in t:
             return self._route_to_diagnostics(text)
 
-        # Vision
         if "ocr" in t or "detect" in t or "scene" in t or "homework" in t:
             return self._route_to_vision(text)
 
-        # Security
         if "permission" in t or "restricted" in t:
             return self._route_to_security(text)
 
@@ -91,17 +72,21 @@ class MobileAssistantEntry:
     # ------------------------------------------------------------
 
     def _route_to_packs(self, text: str):
-        if not self.context.packs:
+
+        packs = getattr(self.context.runtime, "packs", None)
+        if not packs:
             return {"status": "error", "reason": "packs_not_available"}
 
         event = MobileEvent(
             type=MobileEventTypes.PACK_QUERY,
-            payload={"text": text, "query": text, "pack_id": "default"}
+            payload={"text": text, "query": text}
         )
         return self.context.runtime.handle_event(event)
 
     def _route_to_diagnostics(self, text: str):
-        if not self.context.diagnostics:
+
+        diagnostics = getattr(self.context.runtime, "diagnostics", None)
+        if not diagnostics:
             return {"status": "error", "reason": "diagnostics_not_available"}
 
         event = MobileEvent(
@@ -111,22 +96,26 @@ class MobileAssistantEntry:
         return self.context.runtime.handle_event(event)
 
     def _route_to_vision(self, text: str):
-        if not self.context.vision:
+
+        vision = getattr(self.context.runtime, "vision", None)
+        if not vision:
             return {"status": "error", "reason": "vision_not_available"}
 
         event = MobileEvent(
             type=MobileEventTypes.SCENE,
-            payload={"text": text, "image": None}
+            payload={"text": text}
         )
         return self.context.runtime.handle_event(event)
 
     def _route_to_security(self, text: str):
-        if not self.context.security:
+
+        security = getattr(self.context.runtime, "security", None)
+        if not security:
             return {"status": "error", "reason": "security_not_available"}
 
         event = MobileEvent(
             type=MobileEventTypes.PERMISSION_CHECK,
-            payload={"text": text, "permission": text}
+            payload={"text": text}
         )
         return self.context.runtime.handle_event(event)
 
@@ -135,9 +124,6 @@ class MobileAssistantEntry:
     # ------------------------------------------------------------
 
     def _fallback_response(self, text: str) -> Dict[str, Any]:
-        """
-        Default assistant response when no module handles the request.
-        """
 
         return {
             "status": "ok",

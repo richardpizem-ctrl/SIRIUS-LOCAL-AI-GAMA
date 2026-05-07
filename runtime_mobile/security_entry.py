@@ -1,16 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Security Entry
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Entry point for the mobile security module.
-# Responsibilities:
-#   - permission checks
-#   - restricted mode handling
-#   - unsafe text filtering
-#   - security profile logic (OWNER / FAMILY / STRANGER)
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
@@ -29,10 +19,10 @@ class MobileSecurityEntry:
         self.security_profile = "OWNER"  # OWNER / FAMILY / STRANGER
 
     # ------------------------------------------------------------
-    # Main Event Handler
+    # Main Event Handler (required by runtime)
     # ------------------------------------------------------------
 
-    def handle_event(self, event):
+    def on_event(self, event):
         et = event.type
 
         # Restricted Mode Toggle
@@ -43,15 +33,18 @@ class MobileSecurityEntry:
         if et == MobileEventTypes.PERMISSION_CHECK:
             return self._check_permission(event)
 
-        # Text Safety Filter (applies to all events)
-        return self._text_safety(event)
+        # Text Safety Filter (only for text-based events)
+        if hasattr(event, "text") and isinstance(event.text, str):
+            return self._text_safety(event)
+
+        return {"status": "ok", "allowed": True}
 
     # ------------------------------------------------------------
     # Restricted Mode
     # ------------------------------------------------------------
 
     def _handle_restricted_mode(self, event):
-        enabled = event.get("enabled", False)
+        enabled = getattr(event, "enabled", False)
         self.context.set_restricted_mode(enabled)
 
         return {
@@ -65,7 +58,7 @@ class MobileSecurityEntry:
     # ------------------------------------------------------------
 
     def _check_permission(self, event):
-        permission = event.get("permission", "generic")
+        permission = getattr(event, "permission", "generic")
 
         if not hasattr(self.context, "permissions"):
             return {
@@ -88,7 +81,7 @@ class MobileSecurityEntry:
     # ------------------------------------------------------------
 
     def _text_safety(self, event):
-        text = event.get("text", "").lower()
+        text = event.text.lower()
 
         forbidden = ["hack", "bypass", "cheat", "exploit"]
 
@@ -99,10 +92,7 @@ class MobileSecurityEntry:
                 "allowed": False
             }
 
-        return {
-            "status": "ok",
-            "allowed": True
-        }
+        return {"status": "ok", "allowed": True}
 
     # ------------------------------------------------------------
     # Metadata

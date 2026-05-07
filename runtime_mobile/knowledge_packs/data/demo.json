@@ -3,6 +3,11 @@
     "version": "3.0.0-pre",
     "description": "Demo knowledge pack for testing GAMA 3.0.0.",
     "priority": 1,
+    "pack_type": "static",
+    "language": "en",
+    "author": "Richard Pizem",
+    "updated": "2026-05-07T17:02:00Z",
+    "tags": ["demo", "test", "basic", "sample"],
     "entries": {
         "hello": "Hello from the knowledge pack!",
         "weather": "Sunny",

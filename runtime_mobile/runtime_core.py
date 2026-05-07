@@ -1,8 +1,23 @@
+# ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Runtime Core
-# Main runtime controller for the mobile offline execution environment.
+# Version: 3.0.0-pre
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Main orchestrator for the mobile offline execution environment.
+# Responsibilities:
+#   - initialization
+#   - module injection
+#   - NL routing
+#   - security pipeline
+#   - event dispatching
+#   - runtime metadata
+#
+# Fully prepared for GAMA 3.x architecture.
+# ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
 from runtime_mobile.core.event import MobileEvent
+
 
 class MobileRuntimeCore:
     """
@@ -11,36 +26,62 @@ class MobileRuntimeCore:
     and communication with the mobile NL Router.
     """
 
+    CORE_VERSION = "3.0.0-pre"
+
     def __init__(self, context, dispatcher, router):
         self.context = context
         self.dispatcher = dispatcher
         self.router = router
         self.initialized = False
 
-    def load_modules(self, vision, security, packs):
+    # ------------------------------------------------------------
+    # Module Loading
+    # ------------------------------------------------------------
+
+    def load_modules(self, vision, security, packs,
+                     diagnostics=None, governor=None,
+                     workflow=None, lan_bridge=None):
         """Attach core modules to the runtime and context."""
+
         self.context.vision_engine = vision
-        self.context.security_engine = security
+        self.context.security = security
         self.context.knowledge_packs = packs
+        self.context.diagnostics = diagnostics
+        self.context.energy_governor = governor
+        self.context.workflow = workflow
+        self.context.lan_bridge = lan_bridge
+
+    # ------------------------------------------------------------
+    # Initialization
+    # ------------------------------------------------------------
 
     def initialize(self):
         """Initialize the mobile runtime."""
-        if not all([
+
+        required = [
             self.router,
             self.dispatcher,
             self.context.vision_engine,
-            self.context.security_engine,
+            self.context.security,
             self.context.knowledge_packs
-        ]):
+        ]
+
+        if not all(required):
             raise RuntimeError("Runtime modules not fully loaded.")
 
         self.initialized = True
+        self.context.state["initialized"] = True
+
+    # ------------------------------------------------------------
+    # Main Event Handler
+    # ------------------------------------------------------------
 
     def handle_event(self, text: str):
         """
         Main event handler for mobile runtime.
-        Converts text → MobileEvent → dispatch → module result.
+        Converts text → MobileEvent → security → dispatch → result.
         """
+
         if not self.initialized:
             raise RuntimeError("Runtime not initialized.")
 
@@ -50,10 +91,32 @@ class MobileRuntimeCore:
         # 2. Update context
         self.context.update_last_event(event)
 
-        # 3. Security check
-        decision = self.context.security_engine.evaluate(event)
-        if decision == "deny":
-            return {"status": "blocked", "reason": "security"}
+        # 3. Security pipeline
+        sec = self.context.security.handle_event(event)
+        if isinstance(sec, dict) and sec.get("allowed") is False:
+            return {
+                "status": "blocked",
+                "reason": "security_denied",
+                "event": event.type
+            }
 
         # 4. Dispatch event to correct module
-        return self.dispatcher.dispatch(event)
+        result = self.dispatcher.dispatch(event)
+
+        # 5. Track active module
+        if isinstance(result, dict) and "module" in result:
+            self.context.set_active_module(result["module"])
+
+        return result
+
+    # ------------------------------------------------------------
+    # Metadata
+    # ------------------------------------------------------------
+
+    def get_info(self):
+        """Return runtime metadata."""
+        return {
+            "core_version": self.CORE_VERSION,
+            "initialized": self.initialized,
+            "context": self.context.get_info(),
+        }

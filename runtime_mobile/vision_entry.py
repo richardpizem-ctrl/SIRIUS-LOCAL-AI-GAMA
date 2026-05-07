@@ -1,16 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Vision Entry
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Entry point for mobile OCR and vision processing.
-# Supports:
-#   - OCR
-#   - Object detection
-#   - Scene analysis
-#   - Homework mode (math/text extraction)
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
@@ -27,19 +17,16 @@ class MobileVisionEntry:
         self.context = context
 
     # ------------------------------------------------------------
-    # Main Event Handler
+    # Main Event Handler (required by runtime)
     # ------------------------------------------------------------
 
-    def handle_event(self, event):
-        image = event.get("image")
+    def on_event(self, event):
+        # Support both MobileEvent and dict events
+        etype = event.type if hasattr(event, "type") else event.get("type")
+        image = event.image if hasattr(event, "image") else event.get("image")
 
         if image is None:
-            return {
-                "status": "error",
-                "reason": "no_image"
-            }
-
-        etype = event.type
+            return {"status": "error", "reason": "no_image"}
 
         # --------------------------------------------------------
         # OCR
@@ -50,11 +37,7 @@ class MobileVisionEntry:
             except Exception as e:
                 return {"status": "error", "reason": "ocr_failed", "error": str(e)}
 
-            return {
-                "status": "ok",
-                "type": "ocr_result",
-                "text": text
-            }
+            return {"status": "ok", "type": "ocr_result", "text": text}
 
         # --------------------------------------------------------
         # Object Detection
@@ -65,11 +48,7 @@ class MobileVisionEntry:
             except Exception as e:
                 return {"status": "error", "reason": "detect_failed", "error": str(e)}
 
-            return {
-                "status": "ok",
-                "type": "detection_result",
-                "objects": objects
-            }
+            return {"status": "ok", "type": "detection_result", "objects": objects}
 
         # --------------------------------------------------------
         # Scene Analysis
@@ -80,11 +59,18 @@ class MobileVisionEntry:
             except Exception as e:
                 return {"status": "error", "reason": "scene_failed", "error": str(e)}
 
-            return {
-                "status": "ok",
-                "type": "scene_result",
-                "analysis": analysis
-            }
+            return {"status": "ok", "type": "scene_result", "analysis": analysis}
+
+        # --------------------------------------------------------
+        # ANALYZE (alias for SCENE)
+        # --------------------------------------------------------
+        if etype == MobileEventTypes.ANALYZE:
+            try:
+                analysis = self.context.vision_engine.analyze(image)
+            except Exception as e:
+                return {"status": "error", "reason": "analyze_failed", "error": str(e)}
+
+            return {"status": "ok", "type": "analysis_result", "analysis": analysis}
 
         # --------------------------------------------------------
         # Homework Mode
@@ -95,11 +81,7 @@ class MobileVisionEntry:
             except Exception as e:
                 return {"status": "error", "reason": "homework_failed", "error": str(e)}
 
-            return {
-                "status": "ok",
-                "type": "homework_result",
-                "solution": solution
-            }
+            return {"status": "ok", "type": "homework_result", "solution": solution}
 
         # --------------------------------------------------------
         # Unknown

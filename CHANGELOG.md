@@ -1,26 +1,26 @@
-# 🟪 SIRIUS LOCAL AI GAMA — CHANGELOG
+# 🟪 SIRIUS LOCAL AI GAMA — CHANGELOG (ENGLISH EDITION)
 
-## 📌 Version 2.0.0 — (Stabilná verzia)
-**Release Date:** 2026-05-07  
+## 📌 Version 2.0.0 — (Stable Release)
+**Release Date:** 2026‑05‑07  
 **Status:** Stable, fully verified  
 
-Verzia 2.0.0 prináša stabilnú architektúru mobilného runtime, kompletné moduly a plnú kompatibilitu s budúcou verziou 3.0.0-pre.
+Version 2.0.0 delivers a fully stabilized mobile runtime architecture, complete module set, and full compatibility with the upcoming 3.0.0‑pre modular system.
 
 ---
 
-# 🚀 ČO JE NOVÉ VO VERZII 2.0.0
+# 🚀 WHAT’S NEW IN VERSION 2.0.0
 
-## 🟦 1. Stabilný Mobile Runtime Core
-- stabilizované event API  
-- jednotný dispatcher  
+## 🟦 1. Stable Mobile Runtime Core
+- stabilized event API  
+- unified dispatcher  
 - runtime context v2  
 - NL router v2  
-- deterministické správanie  
+- deterministic execution  
 
 ## 🟩 2. Vision Engine v2
 - OCR  
-- základná detekcia  
-- základná analýza scény  
+- basic object detection  
+- basic scene analysis  
 - homework OCR  
 
 ## 🟪 3. Knowledge Packs v2
@@ -34,7 +34,7 @@ Verzia 2.0.0 prináša stabilnú architektúru mobilného runtime, kompletné mo
 - restricted mode  
 - permission checks  
 - text safety filter  
-- základný security profile  
+- basic security profile  
 
 ## 🟫 5. Diagnostics v2
 - battery  
@@ -45,49 +45,49 @@ Verzia 2.0.0 prináša stabilnú architektúru mobilného runtime, kompletné mo
 
 ---
 
-# 🛠 ČO SME OPRAVILI / VYLEPŠILI
-- stabilizované moduly  
-- zjednotená štruktúra  
-- čisté API  
-- kompatibilita s Android/iOS  
-- príprava na modulárnu architektúru 3.x  
+# 🛠 IMPROVEMENTS
+- stabilized module structure  
+- unified architecture  
+- clean API  
+- Android/iOS compatibility  
+- groundwork for the 3.x modular system  
 
 ---
 
-# 🟩 PRIPRAVENÉ PRE VERZIU 3.0.0-pre
+# 🟩 READY FOR VERSION 3.0.0‑pre
 
 ## 🔹 Runtime 3.x
-- prepojenie router → dispatcher → core  
-- jednotné on_event() API  
-- rozšírené metadata  
+- router → dispatcher → core integration  
+- unified on_event() API  
+- extended metadata  
 
 ## 🔹 Vision 3.x
 - ANALYZE event  
 - SCENE event  
-- robustnejšie spracovanie obrázkov  
+- more robust image processing  
 
 ## 🔹 Security 3.x
 - unified handler  
-- rozšírený restricted mode  
-- rozšírený text safety filter  
+- extended restricted mode  
+- improved text safety filter  
 
 ## 🔹 Knowledge Packs 3.x
-- validácia packov  
+- pack validation  
 - PACK_QUERY  
-- auto-load  
-- jednotné výsledky  
+- auto‑load  
+- unified result format  
 
 ## 🔹 Dispatcher 3.x
-- podpora pre všetky nové eventy  
-- jednotný error handling  
-- modul tracking  
+- support for all new events  
+- unified error handling  
+- module tracking  
 
 ## 🔹 Runtime Context 3.x
 - debug log  
 - reset()  
-- rozšírené metadata  
+- extended metadata  
 
 ---
 
 # 🟪 STATUS
-GAMA 2.0.0 je stabilná, prekontrolovaná a pripravená na upgrade na 3.0.0-pre.
+GAMA 2.0.0 is stable, verified, and fully prepared for the transition to 3.0.0‑pre.

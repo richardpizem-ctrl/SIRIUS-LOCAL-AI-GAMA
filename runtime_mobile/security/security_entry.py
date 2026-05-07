@@ -1,43 +1,24 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Security Entry
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Entry point for the mobile security module.
-# Responsibilities:
-#   - permission checks
-#   - restricted mode handling
-#   - security profile logic (OWNER / FAMILY / STRANGER)
-#   - safe event evaluation
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
+from runtime_mobile.core.event import MobileEvent
 from runtime_mobile.core.event_types import MobileEventTypes
 
 
 class MobileSecurityEntry:
-    """
-    Entry point for the mobile security module.
-    Handles permission checks, safety evaluation and restricted-mode logic.
-    """
 
     MODULE_VERSION = "3.0.0-pre"
 
     def __init__(self, context):
         self.context = context
 
-        # Default security profile (runtime may override)
-        self.security_profile = "OWNER"  # OWNER / FAMILY / STRANGER
-
     # ------------------------------------------------------------
     # Main Evaluation
     # ------------------------------------------------------------
 
-    def handle_event(self, event):
-        """
-        Main evaluation method for security events.
-        """
+    def handle_event(self, event: MobileEvent):
 
         et = event.type
 
@@ -46,6 +27,9 @@ class MobileSecurityEntry:
 
         if et == MobileEventTypes.RESTRICTED_MODE:
             return self._handle_restricted_mode(event)
+
+        if et == MobileEventTypes.SECURITY:
+            return self._handle_security_event(event)
 
         return {
             "status": "ignored",
@@ -57,10 +41,10 @@ class MobileSecurityEntry:
     # Permission Check
     # ------------------------------------------------------------
 
-    def _check_permission(self, event):
+    def _check_permission(self, event: MobileEvent):
+
         permission = event.get("permission")
 
-        # If permissions system is missing → deny by default
         if not self.context.permissions:
             return {
                 "status": "error",
@@ -68,29 +52,53 @@ class MobileSecurityEntry:
                 "permission": permission
             }
 
-        allowed = self.context.permissions.is_allowed(permission)
+        # Restricted mode → STRANGER → deny
+        if self.context.is_restricted_mode():
+            allowed = False
+            profile = "STRANGER"
+        else:
+            allowed = self.context.permissions.is_allowed(permission)
+            profile = self.context.permissions.get_profile()
 
         return {
             "status": "ok",
             "permission": permission,
             "allowed": allowed,
-            "profile": self.security_profile
+            "profile": profile
         }
 
     # ------------------------------------------------------------
     # Restricted Mode
     # ------------------------------------------------------------
 
-    def _handle_restricted_mode(self, event):
+    def _handle_restricted_mode(self, event: MobileEvent):
+
         enabled = event.get("enabled", False)
 
-        # Update runtime state
         self.context.set_restricted_mode(enabled)
+
+        # Update profile in permissions
+        if enabled:
+            self.context.permissions.set_profile("STRANGER")
+        else:
+            self.context.permissions.set_profile("OWNER")
 
         return {
             "status": "ok",
             "restricted_mode": enabled,
-            "profile": self.security_profile
+            "profile": self.context.permissions.get_profile()
+        }
+
+    # ------------------------------------------------------------
+    # SECURITY (generic)
+    # ------------------------------------------------------------
+
+    def _handle_security_event(self, event: MobileEvent):
+        return {
+            "status": "ok",
+            "type": "security_event",
+            "restricted_mode": self.context.is_restricted_mode(),
+            "profile": self.context.permissions.get_profile()
         }
 
     # ------------------------------------------------------------
@@ -98,10 +106,9 @@ class MobileSecurityEntry:
     # ------------------------------------------------------------
 
     def get_info(self):
-        """Return module metadata."""
         return {
             "module": "security",
             "version": self.MODULE_VERSION,
-            "profile": self.security_profile,
-            "restricted_mode": self.context.state.get("restricted_mode"),
+            "profile": self.context.permissions.get_profile(),
+            "restricted_mode": self.context.is_restricted_mode(),
         }

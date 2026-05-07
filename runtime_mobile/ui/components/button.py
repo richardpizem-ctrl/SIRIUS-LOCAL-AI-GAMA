@@ -1,10 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Button Component
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Interactive button component for the Mobile UI.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
 from .base_component import BaseUIComponent
@@ -12,10 +8,6 @@ from ..theme import MobileUITheme
 
 
 class Button(BaseUIComponent):
-    """
-    Basic button component.
-    Supports text, click callbacks and theme styling.
-    """
 
     COMPONENT_VERSION = "3.0.0-pre"
 
@@ -23,7 +15,7 @@ class Button(BaseUIComponent):
         super().__init__(component_id=component_id, visible=visible)
 
         self.text = text
-        self.on_click = on_click  # callback function
+        self.on_click = on_click
 
         # Theme defaults
         self.bg_color = MobileUITheme.COLORS["primary"]
@@ -57,39 +49,38 @@ class Button(BaseUIComponent):
         return base
 
     def render(self):
-        """
-        Placeholder render output.
-        In UI 3.0.0 this will be handled by the rendering engine.
-        """
-        return {
-            "status": "rendered",
-            "component": self.component_id,
+        base = super().render()
+        base.update({
             "text": self.text,
             "background": self.bg_color_pressed if self._pressed else self.bg_color,
             "text_color": self.text_color,
             "font": self.font_family,
-            "size": self.font_size,
-            "height": self.height,
+            "font_size": self.font_size,
             "corner_radius": self.corner_radius,
-            "visible": self.visible
-        }
+        })
+        return base
 
     # ------------------------------------------------------------
     # Interaction API
     # ------------------------------------------------------------
 
     def press(self):
-        """Simulate button press."""
         self._pressed = True
+        self.on_event({"type": "press", "component": self.component_id})
         return {"status": "pressed", "component": self.component_id}
 
     def release(self):
-        """Simulate button release and trigger callback."""
         self._pressed = False
 
         callback_result = None
         if callable(self.on_click):
-            callback_result = self.on_click()
+            callback_result = self.on_click({
+                "component": self.component_id,
+                "text": self.text,
+                "pressed": False
+            })
+
+        self.on_event({"type": "release", "component": self.component_id})
 
         return {
             "status": "released",
@@ -105,7 +96,11 @@ class Button(BaseUIComponent):
         base = super().get_info()
         base.update({
             "text": self.text,
-            "height": self.height,
-            "corner_radius": self.corner_radius
+            "pressed": self._pressed,
+            "text_color": self.text_color,
+            "background": self.bg_color,
+            "font": self.font_family,
+            "font_size": self.font_size,
+            "corner_radius": self.corner_radius,
         })
         return base

@@ -1,34 +1,23 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile UI Main Window
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Minimal UI shell for the mobile runtime.
-# This is a framework-agnostic placeholder:
-# - no pygame
-# - no tkinter
-# - no kivy
-# - no qt
-#
-# The purpose is to provide a stable API for UI 3.0.0.
 # ============================================================
 
 class MobileMainWindow:
-    """
-    Minimal UI container for GAMA 3.0.0-pre.
-    This class does NOT render anything visually.
-    It only defines the structure expected by future UI engines.
-    """
 
     UI_VERSION = "3.0.0-pre"
 
     def __init__(self, context):
         self.context = context
         self.title = "SIRIUS LOCAL AI – Mobile Runtime"
+
+        # Window geometry
+        self.x = 0
+        self.y = 0
         self.width = 360
         self.height = 640
 
-        # Future: attach UI components
+        # Attached UI components
         self.components = []
 
     # ------------------------------------------------------------
@@ -36,33 +25,56 @@ class MobileMainWindow:
     # ------------------------------------------------------------
 
     def initialize(self):
-        """
-        Called once when the UI is created.
-        """
+        initialized = []
+        for c in self.components:
+            if hasattr(c, "initialize"):
+                initialized.append(c.initialize())
+
         return {
             "status": "initialized",
             "ui_version": self.UI_VERSION,
             "title": self.title,
-            "size": (self.width, self.height)
+            "size": (self.width, self.height),
+            "components": initialized
         }
 
     def update(self):
-        """
-        Called repeatedly by the runtime loop.
-        This is where UI would refresh in a real engine.
-        """
+        updates = []
+        for c in self.components:
+            if hasattr(c, "update"):
+                updates.append(c.update())
+
         return {
             "status": "updated",
-            "components": len(self.components)
+            "components": updates
+        }
+
+    def render(self):
+        rendered = []
+        for c in self.components:
+            if hasattr(c, "render"):
+                rendered.append(c.render())
+
+        return {
+            "status": "rendered",
+            "window": self.title,
+            "x": self.x,
+            "y": self.y,
+            "width": self.width,
+            "height": self.height,
+            "components": rendered
         }
 
     def shutdown(self):
-        """
-        Called when the UI is being closed.
-        """
+        shutdowns = []
+        for c in self.components:
+            if hasattr(c, "shutdown"):
+                shutdowns.append(c.shutdown())
+
         return {
             "status": "shutdown",
-            "ui_version": self.UI_VERSION
+            "ui_version": self.UI_VERSION,
+            "components": shutdowns
         }
 
     # ------------------------------------------------------------
@@ -70,21 +82,23 @@ class MobileMainWindow:
     # ------------------------------------------------------------
 
     def add_component(self, component):
-        """
-        Add a UI component (placeholder).
-        """
         self.components.append(component)
+
+        if hasattr(component, "initialize"):
+            component.initialize()
+
         return {
             "status": "component_added",
             "component": component.__class__.__name__
         }
 
     def remove_component(self, component):
-        """
-        Remove a UI component (placeholder).
-        """
         if component in self.components:
+            if hasattr(component, "shutdown"):
+                component.shutdown()
+
             self.components.remove(component)
+
             return {
                 "status": "component_removed",
                 "component": component.__class__.__name__
@@ -96,6 +110,21 @@ class MobileMainWindow:
         }
 
     # ------------------------------------------------------------
+    # Event Routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        results = []
+        for c in self.components:
+            if hasattr(c, "on_event"):
+                results.append(c.on_event(event))
+
+        return {
+            "status": "events_forwarded",
+            "results": results
+        }
+
+    # ------------------------------------------------------------
     # Metadata
     # ------------------------------------------------------------
 
@@ -103,6 +132,6 @@ class MobileMainWindow:
         return {
             "module": "ui.main_window",
             "version": self.UI_VERSION,
-            "components": len(self.components)
+            "components": len(self.components),
+            "size": (self.width, self.height)
         }
-

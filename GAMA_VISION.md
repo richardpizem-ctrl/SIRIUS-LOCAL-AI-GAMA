@@ -9,10 +9,14 @@ Its purpose is to bring:
 - offline image understanding  
 - offline knowledge packs  
 - identity‑aware safety  
+- deterministic mobile workflows (NEW)  
+- hybrid input processing (NEW)  
 
 …to **Android and iOS devices**, without cloud, telemetry, or external dependencies.
 
-## 🎯 Core Principles
+---
+
+# 🎯 Core Principles
 - 100% offline  
 - deterministic  
 - family‑safe  
@@ -20,8 +24,12 @@ Its purpose is to bring:
 - modular  
 - extensible  
 - ARM‑optimized  
+- event‑driven architecture (NEW)  
+- safety‑aware routing (NEW)  
 
-## 🚀 Long‑Term Goal
+---
+
+# 🚀 Long‑Term Goal
 Create the first **fully local mobile AI assistant** that works:
 - without internet  
 - without cloud APIs  
@@ -29,3 +37,101 @@ Create the first **fully local mobile AI assistant** that works:
 - without data leaving the device  
 
 A personal AI that lives **on your phone**, not in the cloud.
+
+---
+
+# 🟦 NEW IN GAMA Vision 1.1 → PREPARED FOR 2.0
+- hybrid input support (text + OCR)  
+- dict → event fallback normalization  
+- improved OCR correction pipeline  
+- native preprocessing integration (Android/iOS)  
+- noise reduction + auto‑deskew  
+- perspective correction  
+- document detection  
+- unified VISION_ANALYZE event  
+
+---
+
+# 🟩 NEW IN GAMA Vision 2.0
+- Scene Understanding v1  
+- Object Detection v1  
+- Vision → Reasoning integration  
+- Vision fallback engine (dict → structured event)  
+- OCR quality scoring  
+- Vision diagnostics (NEW)  
+- ARM‑optimized image pipeline  
+
+---
+
+# 🟧 NEW IN GAMA Vision 3.0
+- Full ANALYZE event  
+- Full SCENE event  
+- Hybrid reasoning (vision + knowledge packs)  
+- Vision metadata v3  
+- Multi‑intent routing from vision  
+- Vision → Schoolwork auto‑detection  
+- Vision → Safety integration  
+
+---
+
+# 🟪 NEW IN GAMA Vision 4.0 (Hybrid‑Safe Architecture)
+Vision Engine integrates with the **Secure Online Envoy** and **Quarantine Pipeline**:
+
+### Secure Online Envoy (Vision Integration)
+- envoy can fetch *descriptions* or *definitions*  
+- envoy cannot access images, camera, or local files  
+- envoy output treated as **low‑trust**  
+
+### Quarantine Pipeline
+- removes scripts, HTML, unsafe content  
+- validates size + format  
+- allows only clean text + JSON  
+- ensures offline core never touches untrusted data  
+
+### Vision Safety Enforcement
+- no remote image processing  
+- no cloud OCR  
+- no external model calls  
+- no telemetry  
+- no outbound data  
+
+---
+
+# 📸 Vision Engine Responsibilities (Expanded)
+- OCR 2.0  
+- object detection  
+- scene understanding  
+- homework recognition  
+- document analysis  
+- hybrid input merging (NEW)  
+- OCR correction + normalization (NEW)  
+- quality scoring (NEW)  
+- fallback dict → event conversion (NEW)  
+- deterministic image pipeline (NEW)  
+
+---
+
+# 🔁 Vision Execution Cycle (Updated)
+
+1. Receive image or OCR request from Runtime.  
+2. Native preprocessing (Android/iOS) cleans the image.  
+3. Vision Engine performs OCR / detection / scene analysis.  
+4. OCR correction + normalization applied.  
+5. Vision metadata generated (quality, type, confidence).  
+6. Hybrid input merged if text + OCR present.  
+7. Vision event returned to Runtime.  
+8. Diagnostics log the vision event.  
+9. System waits for next input.  
+
+---
+
+# 🟫 Prepared for GAMA 3.0.0‑pre
+- unified VISION_ANALYZE event  
+- unified VISION_SCENE event  
+- hybrid input support  
+- dict → event fallback  
+- extended metadata  
+- diagnostics expansion  
+- safety‑aware routing  
+- pack‑assisted vision reasoning  
+

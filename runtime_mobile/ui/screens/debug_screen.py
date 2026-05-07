@@ -1,13 +1,9 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Debug Screen
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Diagnostic and development screen for mobile UI.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
-from ..components.text import Text
+from ..components.text_label import TextLabel
 from ..components.button import Button
 from ..components.panel import Panel
 from ..components.scroll_view import ScrollView
@@ -15,15 +11,11 @@ from ..layouts.vertical_layout import VerticalLayout
 
 
 class DebugScreen:
-    """
-    Diagnostic and development screen for mobile UI.
-    """
-
     SCREEN_VERSION = "3.0.0-pre"
 
     def __init__(self, screen_manager, debug_provider=None):
         self.screen_manager = screen_manager
-        self.debug_provider = debug_provider  # function returning list of log strings
+        self.debug_provider = debug_provider
         self.layout = None
 
     # ------------------------------------------------------------
@@ -31,54 +23,54 @@ class DebugScreen:
     # ------------------------------------------------------------
 
     def on_show(self):
-        """
-        Called when the screen becomes active.
-        Build UI layout here.
-        """
+        # Title
+        title = TextLabel("Debug Menu")
+        title.font_size = 20
 
-        title = Text("Debug Menu", size=20, weight="bold")
-        subtitle = Text("Runtime Diagnostics", size=14)
+        subtitle = TextLabel("Runtime Diagnostics")
+        subtitle.font_size = 14
 
+        # Back button
         btn_back = Button(
-            label="← Back",
+            text="← Back",
             on_click=lambda: self.screen_manager.pop()
         )
 
-        # Load logs from provider
-        logs = []
-        if self.debug_provider:
-            logs = self.debug_provider()
+        # Logs
+        logs = self.debug_provider() if self.debug_provider else []
+        log_layout = VerticalLayout()
 
-        log_texts = [Text(line, size=12) for line in logs]
+        for line in logs:
+            t = TextLabel(line)
+            t.font_size = 12
+            log_layout.add_component(t)
 
-        scroll = ScrollView(
-            layout=VerticalLayout(log_texts)
-        )
+        scroll = ScrollView(layout=log_layout)
 
-        panel = Panel(
-            content=VerticalLayout([
-                title,
-                subtitle,
-                btn_back,
-                scroll
-            ])
-        )
+        # Main panel
+        panel_layout = VerticalLayout()
+        panel_layout.add_component(title)
+        panel_layout.add_component(subtitle)
+        panel_layout.add_component(btn_back)
+        panel_layout.add_component(scroll)
 
-        self.layout = VerticalLayout([panel])
+        panel = Panel(layout=panel_layout)
+
+        # Root layout
+        root = VerticalLayout()
+        root.add_component(panel)
+
+        self.layout = root
 
     # ------------------------------------------------------------
     # Update + Render
     # ------------------------------------------------------------
 
     def update(self):
-        if self.layout:
-            return self.layout.update()
-        return {"status": "no_layout"}
+        return self.layout.update() if self.layout else {"status": "no_layout"}
 
     def render(self):
-        if self.layout:
-            return self.layout.render()
-        return {"status": "no_layout"}
+        return self.layout.render() if self.layout else {"status": "no_layout"}
 
     # ------------------------------------------------------------
     # Metadata

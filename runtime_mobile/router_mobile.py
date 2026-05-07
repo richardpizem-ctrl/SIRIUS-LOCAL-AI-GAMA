@@ -1,7 +1,11 @@
+# ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile NL Router
+# Version: 3.0.0-pre
+# ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
-from runtime_mobile.core.event import MobileEvent
+from runtime_mobile.core.mobile_event import MobileEvent
+
 
 class MobileNLRouter:
     """
@@ -15,28 +19,59 @@ class MobileNLRouter:
 
         t = text.lower()
 
-        # --- VISION ---
+        # --------------------------------------------------------
+        # VISION
+        # --------------------------------------------------------
         if any(k in t for k in ["scan", "photo", "ocr", "camera"]):
             return MobileEvent(MobileEventTypes.OCR)
 
         if any(k in t for k in ["analyze", "what is in the picture"]):
             return MobileEvent(MobileEventTypes.ANALYZE)
 
-        # --- KNOWLEDGE PACKS ---
-        if any(k in t for k in ["how", "why", "what", "explain"]):
-            return MobileEvent(MobileEventTypes.PACK_LOOKUP, key="query")
+        # --------------------------------------------------------
+        # KNOWLEDGE PACKS
+        # --------------------------------------------------------
+        if any(k in t for k in ["how", "why", "what is", "explain"]):
+            return MobileEvent(MobileEventTypes.PACK_QUERY, key=t)
 
-        # --- SECURITY ---
-        if "permission" in t or "allow" in t or "deny" in t:
+        # --------------------------------------------------------
+        # TEXT QUERY / ASSISTANT
+        # --------------------------------------------------------
+        if any(k in t for k in ["write", "summarize", "translate", "answer"]):
+            return MobileEvent(MobileEventTypes.TEXT_QUERY, query=t)
+
+        if any(k in t for k in ["assistant", "ai", "help me with"]):
+            return MobileEvent(MobileEventTypes.ASSISTANT, query=t)
+
+        # --------------------------------------------------------
+        # SECURITY
+        # --------------------------------------------------------
+        if any(k in t for k in ["permission", "allow", "deny"]):
             return MobileEvent(MobileEventTypes.SECURITY)
 
         if "restricted" in t:
             enabled = "on" in t or "enable" in t
             return MobileEvent(MobileEventTypes.RESTRICTED_MODE, enabled=enabled)
 
-        # --- HELP ---
+        # --------------------------------------------------------
+        # SYSTEM / RUNTIME
+        # --------------------------------------------------------
+        if "runtime" in t or "system info" in t:
+            return MobileEvent(MobileEventTypes.RUNTIME_INFO)
+
+        # --------------------------------------------------------
+        # LAN SYNC
+        # --------------------------------------------------------
+        if "sync" in t or "lan" in t:
+            return MobileEvent(MobileEventTypes.LAN_SYNC)
+
+        # --------------------------------------------------------
+        # HELP
+        # --------------------------------------------------------
         if "help" in t:
             return MobileEvent(MobileEventTypes.SHOW_HELP)
 
-        # Default fallback
+        # --------------------------------------------------------
+        # DEFAULT
+        # --------------------------------------------------------
         return MobileEvent(MobileEventTypes.UNKNOWN)

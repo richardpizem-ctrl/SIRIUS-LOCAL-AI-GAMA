@@ -1,17 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Security Module
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Unified security evaluation module for mobile runtime.
-# Provides:
-#   - text safety evaluation
-#   - restricted mode enforcement
-#   - OWNER / FAMILY / STRANGER profiles
-#   - event-level filtering
-#   - runtime integration hooks
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
 from typing import Dict, Any
@@ -19,22 +8,12 @@ from .base_module import BaseModule
 
 
 class SecurityModule(BaseModule):
-    """
-    Security evaluation module for GAMA mobile runtime.
-
-    Responsibilities:
-    - evaluate text and event safety
-    - enforce restricted mode
-    - apply user profile rules (OWNER / FAMILY / STRANGER)
-    - integrate with runtime security family
-    """
 
     MODULE_VERSION = "3.0.0-pre"
 
     def __init__(self):
         super().__init__("security")
 
-        # Forbidden keywords (expandable in 3.x)
         self.forbidden_keywords = [
             "hack",
             "bypass",
@@ -45,8 +24,7 @@ class SecurityModule(BaseModule):
             "keylogger",
         ]
 
-        # Security Family mode (injected by runtime)
-        self.security_profile = "OWNER"  # OWNER / FAMILY / STRANGER
+        self.security_profile = "OWNER"
         self.restricted_mode = False
 
     # ------------------------------------------------------------
@@ -54,7 +32,6 @@ class SecurityModule(BaseModule):
     # ------------------------------------------------------------
 
     def on_load(self):
-        """Load security configuration from runtime if available."""
         if self.runtime:
             if hasattr(self.runtime, "get_security_profile"):
                 self.security_profile = self.runtime.get_security_profile()
@@ -63,47 +40,52 @@ class SecurityModule(BaseModule):
                 self.restricted_mode = self.runtime.is_restricted_mode()
 
     def on_unload(self):
-        """Reset security state."""
         self.security_profile = "OWNER"
         self.restricted_mode = False
+
+    # ------------------------------------------------------------
+    # Event Hook (3.x)
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """Passive event hook (optional)."""
+        pass
 
     # ------------------------------------------------------------
     # Main Evaluation
     # ------------------------------------------------------------
 
-    def evaluate(self, event: Dict[str, Any]) -> str:
+    def evaluate(self, event: Any) -> str:
         """
         Evaluate event safety.
-
-        Returns:
-            "allow"
-            "deny"
-            "restricted"
+        Supports both dict and MobileEvent.
         """
 
-        text = event.get("text", "").lower()
+        # MobileEvent support
+        if hasattr(event, "payload"):
+            text = event.payload.get("text", "").lower()
+        else:
+            text = event.get("text", "").lower()
 
-        # 1) Restricted Mode overrides everything
+        # Restricted mode overrides everything
         if self.restricted_mode:
             if self._contains_forbidden(text):
                 return "deny"
             return "restricted"
 
-        # 2) STRANGER profile = strictest
+        # STRANGER = strictest
         if self.security_profile == "STRANGER":
             if self._contains_forbidden(text):
                 return "deny"
-            if len(text) > 200:
-                return "restricted"
             return "allow"
 
-        # 3) FAMILY profile = medium strict
+        # FAMILY = medium strict
         if self.security_profile == "FAMILY":
             if self._contains_forbidden(text):
                 return "deny"
             return "allow"
 
-        # 4) OWNER profile = full access except forbidden
+        # OWNER = full access except forbidden
         if self._contains_forbidden(text):
             return "deny"
 
@@ -114,7 +96,6 @@ class SecurityModule(BaseModule):
     # ------------------------------------------------------------
 
     def _contains_forbidden(self, text: str) -> bool:
-        """Check if text contains forbidden keywords."""
         return any(word in text for word in self.forbidden_keywords)
 
     # ------------------------------------------------------------
@@ -122,7 +103,6 @@ class SecurityModule(BaseModule):
     # ------------------------------------------------------------
 
     def get_info(self) -> dict:
-        """Extend base metadata with security info."""
         base = super().get_info()
         base.update({
             "security_profile": self.security_profile,

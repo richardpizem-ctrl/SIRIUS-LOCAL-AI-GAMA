@@ -1,12 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Thermal System Module
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Framework-agnostic thermal status provider for the mobile runtime.
-# - no direct OS / platform calls
-# - expects an injected backend/adapter for real sensor data
-# - safe for offline / simulated environments
 # ============================================================
 
 from typing import Any, Dict, Optional
@@ -16,23 +10,10 @@ from runtime_mobile.core.event_types import MobileEventTypes
 
 
 class MobileThermalModule:
-    """
-    Thermal sensor abstraction for the mobile runtime.
-
-    Design:
-    - backend is optional (callable or object with get_thermal_status())
-    - if backend missing, returns safe simulated values
-    - used by diagnostics and dispatcher
-    """
 
     MODULE_VERSION = "3.0.0-pre"
 
     def __init__(self, backend: Optional[Any] = None):
-        """
-        backend may be:
-            - callable: backend() -> dict
-            - object:   backend.get_thermal_status() -> dict
-        """
         self.backend = backend
 
     # ------------------------------------------------------------
@@ -40,7 +21,6 @@ class MobileThermalModule:
     # ------------------------------------------------------------
 
     def _read_backend(self) -> Dict[str, Any]:
-        """Safely read raw thermal data from backend."""
         if self.backend is None:
             return {}
 
@@ -59,15 +39,38 @@ class MobileThermalModule:
     # ------------------------------------------------------------
 
     def get_status(self) -> Dict[str, Any]:
-        """
-        Return normalized thermal status.
-        Keys are stable across all platforms.
-        """
         raw = self._read_backend()
 
-        cpu = raw.get("cpu_temp") or raw.get("cpu") or None
-        gpu = raw.get("gpu_temp") or raw.get("gpu") or None
-        battery = raw.get("battery_temp") or raw.get("battery") or None
+        # CPU
+        cpu = raw.get("cpu_temp")
+        if cpu is None:
+            cpu = raw.get("cpu")
+
+        # GPU
+        gpu = raw.get("gpu_temp")
+        if gpu is None:
+            gpu = raw.get("gpu")
+
+        # Battery
+        battery = raw.get("battery_temp")
+        if battery is None:
+            battery = raw.get("battery")
+
+        # Validate ranges
+        def _validate_temp(v):
+            if v is None:
+                return None
+            if not isinstance(v, (int, float)):
+                return None
+            if v < -50 or v > 150:
+                return None
+            return v
+
+        cpu = _validate_temp(cpu)
+        gpu = _validate_temp(gpu)
+        battery = _validate_temp(battery)
+
+        # Thermal state
         thermal_state = raw.get("state", "unknown")
 
         return {
@@ -76,7 +79,7 @@ class MobileThermalModule:
             "cpu_temp": cpu,
             "gpu_temp": gpu,
             "battery_temp": battery,
-            "state": thermal_state,
+            "thermal_state": thermal_state,
         }
 
     # ------------------------------------------------------------
@@ -84,7 +87,7 @@ class MobileThermalModule:
     # ------------------------------------------------------------
 
     def handle_event(self, event: MobileEvent) -> Dict[str, Any]:
-        """Handle CHECK_THERMAL event."""
+
         if event.type != MobileEventTypes.CHECK_THERMAL:
             return {
                 "status": "ignored",
@@ -97,6 +100,7 @@ class MobileThermalModule:
 
         return {
             "status": "ok",
+            "event_type": MobileEventTypes.CHECK_THERMAL,
             "module": "thermal",
             "thermal": status,
         }

@@ -1,12 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Runtime Dispatcher
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Dispatches MobileEvent objects to the correct runtime module.
-# Acts as a bridge between the NL Router and runtime modules.
-#
-# Fully prepared for GAMA 3.x architecture.
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
@@ -40,9 +34,10 @@ class MobileRuntimeDispatcher:
             MobileEventTypes.OCR,
             MobileEventTypes.DETECT,
             MobileEventTypes.SCENE,
+            MobileEventTypes.ANALYZE,
             MobileEventTypes.HOMEWORK,
         ]:
-            result = self.context.vision_engine.handle_event(event)
+            result = self.context.vision_engine.on_event(event)
             result["module"] = "vision"
             return result
 
@@ -52,10 +47,23 @@ class MobileRuntimeDispatcher:
         if etype in [
             MobileEventTypes.PACK_LOOKUP,
             MobileEventTypes.PACK_INFO,
+            MobileEventTypes.PACK_QUERY,
         ]:
-            result = self.context.knowledge_packs.handle_event(event)
+            result = self.context.knowledge_packs.on_event(event)
             result["module"] = "knowledge_packs"
             return result
+
+        # --------------------------------------------------------
+        # TEXT QUERY / ASSISTANT
+        # --------------------------------------------------------
+        if etype in [
+            MobileEventTypes.TEXT_QUERY,
+            MobileEventTypes.ASSISTANT,
+        ]:
+            if hasattr(self.context, "assistant"):
+                result = self.context.assistant.on_event(event)
+                result["module"] = "assistant"
+                return result
 
         # --------------------------------------------------------
         # SECURITY
@@ -65,7 +73,7 @@ class MobileRuntimeDispatcher:
             MobileEventTypes.PERMISSION_CHECK,
             MobileEventTypes.RESTRICTED_MODE,
         ]:
-            result = self.context.security.handle_event(event)
+            result = self.context.security.on_event(event)
             result["module"] = "security"
             return result
 
@@ -80,7 +88,7 @@ class MobileRuntimeDispatcher:
             MobileEventTypes.DIAGNOSTICS_REPORT,
         ]:
             if self.context.diagnostics:
-                result = self.context.diagnostics.handle_event(event)
+                result = self.context.diagnostics.on_event(event)
                 result["module"] = "diagnostics"
                 return result
 
@@ -92,7 +100,7 @@ class MobileRuntimeDispatcher:
             MobileEventTypes.GOVERNOR_BLOCK,
         ]:
             if self.context.energy_governor:
-                result = self.context.energy_governor.handle_event(event)
+                result = self.context.energy_governor.on_event(event)
                 result["module"] = "energy_governor"
                 return result
 
@@ -106,7 +114,7 @@ class MobileRuntimeDispatcher:
             MobileEventTypes.WORKFLOW_ABORT,
         ]:
             if self.context.workflow:
-                result = self.context.workflow.handle_event(event)
+                result = self.context.workflow.on_event(event)
                 result["module"] = "workflow"
                 return result
 
@@ -119,7 +127,7 @@ class MobileRuntimeDispatcher:
             MobileEventTypes.LAN_STATUS,
         ]:
             if self.context.lan_bridge:
-                result = self.context.lan_bridge.handle_event(event)
+                result = self.context.lan_bridge.on_event(event)
                 result["module"] = "lan_bridge"
                 return result
 
@@ -130,14 +138,15 @@ class MobileRuntimeDispatcher:
             return {
                 "status": "ok",
                 "module": "system",
-                "help": "Available commands: scan, detect, scene, homework, lookup, security, diagnostics, workflow, lan, help"
+                "help": "Available commands: scan, detect, scene, homework, lookup, query, assistant, security, diagnostics, workflow, lan, help"
             }
 
         # --------------------------------------------------------
         # UNKNOWN EVENT
         # --------------------------------------------------------
         return {
-            "status": "unknown_event",
+            "status": "error",
+            "reason": "unknown_event",
             "event_type": etype,
             "module": "none"
         }

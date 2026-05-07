@@ -1,10 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Base UI Layout
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Abstract base layout for arranging UI components.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
 from ..components.base_component import BaseUIComponent
@@ -12,11 +8,6 @@ from ..theme import MobileUITheme
 
 
 class BaseUILayout:
-    """
-    Base class for all UI layouts.
-    A layout manages a collection of UI components and defines
-    how they are arranged on the screen.
-    """
 
     LAYOUT_VERSION = "3.0.0-pre"
 
@@ -25,16 +16,20 @@ class BaseUILayout:
         self.visible = visible
         self.components = []
 
-        # Theme defaults
         self.spacing = MobileUITheme.SPACING["md"]
         self.background = MobileUITheme.COLORS["surface"]
+
+        # Layout bounding box (UI Manager fills these)
+        self.x = 0
+        self.y = 0
+        self.width = None
+        self.height = None
 
     # ------------------------------------------------------------
     # Component Management
     # ------------------------------------------------------------
 
     def add_component(self, component: BaseUIComponent):
-        """Add a UI component to the layout."""
         self.components.append(component)
         return {
             "status": "component_added",
@@ -42,8 +37,16 @@ class BaseUILayout:
             "component": component.component_id
         }
 
+    def insert_component(self, index: int, component: BaseUIComponent):
+        self.components.insert(index, component)
+        return {
+            "status": "component_inserted",
+            "layout": self.layout_id,
+            "index": index,
+            "component": component.component_id
+        }
+
     def remove_component(self, component: BaseUIComponent):
-        """Remove a UI component from the layout."""
         if component in self.components:
             self.components.remove(component)
             return {
@@ -51,34 +54,28 @@ class BaseUILayout:
                 "layout": self.layout_id,
                 "component": component.component_id
             }
+        return {"status": "error", "reason": "component_not_found"}
 
-        return {
-            "status": "error",
-            "reason": "component_not_found"
-        }
+    def clear_components(self):
+        self.components = []
+        return {"status": "components_cleared", "layout": self.layout_id}
 
     # ------------------------------------------------------------
     # Lifecycle
     # ------------------------------------------------------------
 
     def initialize(self):
-        """Initialize layout and all components."""
-        initialized = []
-        for c in self.components:
-            initialized.append(c.initialize())
-
+        initialized = [c.initialize() for c in self.components]
         return {
             "status": "initialized",
             "layout": self.layout_id,
+            "background": self.background,
+            "spacing": self.spacing,
             "components": initialized
         }
 
     def update(self):
-        """Update layout and all components."""
-        updates = []
-        for c in self.components:
-            updates.append(c.update())
-
+        updates = [c.update() for c in self.components]
         return {
             "status": "updated",
             "layout": self.layout_id,
@@ -86,33 +83,42 @@ class BaseUILayout:
         }
 
     def render(self):
-        """
-        Placeholder render output.
-        In UI 3.0.0 this will be handled by the rendering engine.
-        """
-        rendered = []
-        for c in self.components:
-            rendered.append(c.render())
-
+        rendered = [c.render() for c in self.components]
         return {
             "status": "rendered",
             "layout": self.layout_id,
             "background": self.background,
             "spacing": self.spacing,
             "components": rendered,
-            "visible": self.visible
+            "visible": self.visible,
+            "x": self.x,
+            "y": self.y,
+            "width": self.width,
+            "height": self.height
         }
 
     def shutdown(self):
-        """Shutdown layout and all components."""
-        shutdowns = []
-        for c in self.components:
-            shutdowns.append(c.shutdown())
-
+        shutdowns = [c.shutdown() for c in self.components]
         return {
             "status": "shutdown",
             "layout": self.layout_id,
             "components": shutdowns
+        }
+
+    # ------------------------------------------------------------
+    # Event routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """Forward events to all components."""
+        results = []
+        for c in self.components:
+            if hasattr(c, "on_event"):
+                results.append(c.on_event(event))
+        return {
+            "status": "events_forwarded",
+            "layout": self.layout_id,
+            "results": results
         }
 
     # ------------------------------------------------------------
@@ -123,6 +129,9 @@ class BaseUILayout:
         return {
             "layout": self.layout_id,
             "version": self.LAYOUT_VERSION,
-            "components": len(self.components),
-            "visible": self.visible
+            "visible": self.visible,
+            "background": self.background,
+            "spacing": self.spacing,
+            "components": [c.component_id for c in self.components],
+            "count": len(self.components)
         }

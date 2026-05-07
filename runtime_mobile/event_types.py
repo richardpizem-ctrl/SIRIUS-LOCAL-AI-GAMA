@@ -1,27 +1,79 @@
+# ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Event Types
+# Version: 3.0.0-pre
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Centralized list of event types for the mobile runtime.
+# Used by:
+#   - NL Router
+#   - Dispatcher
+#   - RuntimeCore
+#   - Vision / Security / Knowledge Packs
+#   - Diagnostics / Governor / Workflow / LAN Bridge
+# ============================================================
 
 class MobileEventTypes:
     """Centralized list of event types for the mobile runtime."""
 
+    VERSION = "3.0.0-pre"
+
+    # --------------------------------------------------------
     # System / Runtime
-    UNKNOWN = "unknown"
-    OPEN_APP = "open_app"
-    SHOW_HELP = "show_help"
+    # --------------------------------------------------------
+    UNKNOWN = "UNKNOWN"
+    OPEN_APP = "OPEN_APP"
+    SHOW_HELP = "SHOW_HELP"
+    HEARTBEAT = "HEARTBEAT"
+    RUNTIME_INFO = "RUNTIME_INFO"
 
-    # Device status
-    CHECK_BATTERY = "check_battery"
-    CHECK_WIFI = "check_wifi"
+    # --------------------------------------------------------
+    # Device Diagnostics
+    # --------------------------------------------------------
+    CHECK_BATTERY = "CHECK_BATTERY"
+    CHECK_THERMAL = "CHECK_THERMAL"
+    CHECK_MEMORY = "CHECK_MEMORY"
+    CHECK_STORAGE = "CHECK_STORAGE"
+    DIAGNOSTICS_REPORT = "DIAGNOSTICS_REPORT"
 
+    # --------------------------------------------------------
+    # Energy Governor
+    # --------------------------------------------------------
+    GOVERNOR_POLICY_UPDATE = "GOVERNOR_POLICY_UPDATE"
+    GOVERNOR_BLOCK = "GOVERNOR_BLOCK"
+
+    # --------------------------------------------------------
     # Security
-    SECURITY = "security"
-    RESTRICTED_MODE = "restricted_mode"
+    # --------------------------------------------------------
+    SECURITY = "SECURITY"
+    PERMISSION_CHECK = "PERMISSION_CHECK"
+    RESTRICTED_MODE = "RESTRICTED_MODE"
 
+    # --------------------------------------------------------
     # Vision
-    OCR = "ocr"
-    ANALYZE = "analyze"
+    # --------------------------------------------------------
+    VISION = "VISION"
+    OCR = "OCR"
+    DETECT = "DETECT"
+    SCENE = "SCENE"
+    HOMEWORK = "HOMEWORK"
 
+    # --------------------------------------------------------
     # Knowledge Packs
-    PACK_LOOKUP = "pack_lookup"
+    # --------------------------------------------------------
+    PACK_LOOKUP = "PACK_LOOKUP"
+    PACK_INFO = "PACK_INFO"
 
-    # Text / Queries
-    TEXT_QUERY = "text_query"
+    # --------------------------------------------------------
+    # Workflow Engine
+    # --------------------------------------------------------
+    WORKFLOW_START = "WORKFLOW_START"
+    WORKFLOW_STEP = "WORKFLOW_STEP"
+    WORKFLOW_COMPLETE = "WORKFLOW_COMPLETE"
+    WORKFLOW_ABORT = "WORKFLOW_ABORT"
+
+    # --------------------------------------------------------
+    # LAN Offline Bridge
+    # --------------------------------------------------------
+    LAN_MESSAGE = "LAN_MESSAGE"
+    LAN_SYNC = "LAN_SYNC"
+    LAN_STATUS = "LAN_STATUS"

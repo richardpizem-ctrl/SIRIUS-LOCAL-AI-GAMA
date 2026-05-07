@@ -1,20 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Diagnostics Module
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Central diagnostics orchestrator for the mobile runtime.
-# Integrates:
-#   - battery module
-#   - thermal module
-#   - storage module
-#
-# Provides:
-#   - unified diagnostics API
-#   - event handler for dispatcher
-#   - on_event() hook for runtime_core
-#
-# Framework-agnostic, safe for offline/simulated environments.
 # ============================================================
 
 from typing import Dict, Any, Optional
@@ -28,14 +14,6 @@ from runtime_mobile.system.storage import MobileStorageModule
 
 
 class MobileDiagnostics:
-    """
-    Central diagnostics orchestrator.
-
-    Responsibilities:
-    - unify battery / thermal / storage diagnostics
-    - provide event-based diagnostics API
-    - provide runtime hook on_event()
-    """
 
     MODULE_VERSION = "3.0.0-pre"
 
@@ -49,7 +27,6 @@ class MobileDiagnostics:
         self.thermal = thermal or MobileThermalModule()
         self.storage = storage or MobileStorageModule()
 
-        # last diagnostics snapshot (for UI debug screen)
         self.last_report: Dict[str, Any] = {}
 
     # ------------------------------------------------------------
@@ -57,12 +34,7 @@ class MobileDiagnostics:
     # ------------------------------------------------------------
 
     def on_event(self, event: MobileEvent):
-        """
-        Hook called by runtime_core before dispatch.
-        Used for passive monitoring (optional).
-        """
-        # We do not modify the event or block anything.
-        # Only record metadata if needed.
+        """Passive monitoring hook."""
         self.last_report["last_event"] = event.type
 
     # ------------------------------------------------------------
@@ -70,13 +42,13 @@ class MobileDiagnostics:
     # ------------------------------------------------------------
 
     def generate_report(self) -> Dict[str, Any]:
-        """Return full diagnostics snapshot."""
         report = {
             "module": "diagnostics",
             "version": self.MODULE_VERSION,
             "battery": self.battery.get_status(),
             "thermal": self.thermal.get_status(),
             "storage": self.storage.get_status(),
+            "last_event": self.last_report.get("last_event"),
         }
 
         self.last_report = report
@@ -87,12 +59,11 @@ class MobileDiagnostics:
     # ------------------------------------------------------------
 
     def handle_event(self, event: MobileEvent) -> Dict[str, Any]:
-        """
-        Handle diagnostics-related events from dispatcher.
-        """
+
+        et = event.type
 
         # Full diagnostics report
-        if event.type == MobileEventTypes.DIAGNOSTICS_REPORT:
+        if et == MobileEventTypes.DIAGNOSTICS_REPORT:
             return {
                 "status": "ok",
                 "type": "diagnostics_report",
@@ -100,21 +71,28 @@ class MobileDiagnostics:
             }
 
         # Battery
-        if event.type == MobileEventTypes.CHECK_BATTERY:
+        if et == MobileEventTypes.CHECK_BATTERY:
             return self.battery.handle_event(event)
 
         # Thermal
-        if event.type == MobileEventTypes.CHECK_THERMAL:
+        if et == MobileEventTypes.CHECK_THERMAL:
             return self.thermal.handle_event(event)
 
         # Storage
-        if event.type == MobileEventTypes.CHECK_STORAGE:
+        if et == MobileEventTypes.CHECK_STORAGE:
             return self.storage.handle_event(event)
 
-        # Unknown event
+        # Memory (missing in original)
+        if et == MobileEventTypes.CHECK_MEMORY:
+            return {
+                "status": "ok",
+                "type": "memory_status",
+                "memory": self.storage.get_memory_status(),
+            }
+
         return {
             "status": "ignored",
             "reason": "unsupported_event",
-            "event_type": event.type,
+            "event_type": et,
             "module": "diagnostics",
         }

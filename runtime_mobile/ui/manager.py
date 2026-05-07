@@ -31,12 +31,22 @@ class UIManager:
         self.initialized = False
 
     # ------------------------------------------------------------
-    # Layout Management
+    # Layout management
     # ------------------------------------------------------------
 
     def set_layout(self, layout):
         """Assign a layout as the active UI layout."""
+        if not hasattr(layout, "render"):
+            return {"status": "error", "reason": "invalid_layout"}
+
         self.active_layout = layout
+
+        # Assign layout geometry to match window
+        layout.x = 0
+        layout.y = 0
+        layout.width = self.window.width
+        layout.height = self.window.height
+
         return {
             "status": "layout_set",
             "layout": layout.layout_id
@@ -85,13 +95,15 @@ class UIManager:
         if not self.initialized:
             return {"status": "error", "reason": "ui_not_initialized"}
 
+        win_render = self.window.render()
+
         layout_render = None
         if self.active_layout:
             layout_render = self.active_layout.render()
 
         return {
             "status": "rendered",
-            "window_title": self.window.title,
+            "window": win_render,
             "layout": layout_render
         }
 
@@ -107,6 +119,27 @@ class UIManager:
             "status": "shutdown",
             "window": win,
             "layout": layout_info
+        }
+
+    # ------------------------------------------------------------
+    # Event routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """
+        Route events to window and active layout.
+        """
+        results = []
+
+        if hasattr(self.window, "on_event"):
+            results.append(self.window.on_event(event))
+
+        if self.active_layout and hasattr(self.active_layout, "on_event"):
+            results.append(self.active_layout.on_event(event))
+
+        return {
+            "status": "events_forwarded",
+            "results": results
         }
 
     # ------------------------------------------------------------

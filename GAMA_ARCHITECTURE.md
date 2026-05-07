@@ -1,6 +1,6 @@
 # 🧩 SIRIUS LOCAL AI GAMA – Architecture 1.0
 
-GAMA is a lightweight mobile runtime built on five pillars:
+GAMA is a lightweight mobile runtime built on five foundational pillars.
 
 ---
 
@@ -48,19 +48,19 @@ GAMA is a lightweight mobile runtime built on five pillars:
 
 # 🟪 NEW IN GAMA v4 — SECURE ONLINE ENVOY (Sandbox + Quarantine)
 
-GAMA v4 introduces a new hybrid‑safe architecture that allows the system to obtain **fresh online information** while keeping the **core AI fully offline and air‑gapped**.
+GAMA v4 introduces a hybrid‑safe architecture that enables access to **fresh online information** while keeping the **core AI fully offline and air‑gapped**.
 
 ## 🟦 Secure Online Envoy (Isolated Online Agent)
-- runs in a fully isolated sandbox  
-- has one‑way outbound access to the internet  
-- can fetch text, JSON, structured data  
-- cannot access local files, models, or system APIs  
+- runs inside a fully isolated sandbox  
+- one‑way outbound internet access  
+- fetches text, JSON, structured data  
+- no access to local files, models, or system APIs  
 - cannot send any local data outward  
 
-The envoy acts as a **courier**, not part of the AI brain.
+The envoy acts purely as a **courier**, not part of the AI brain.
 
 ## 🟩 Quarantine Pipeline (Data Sanitization Layer)
-All returned data passes through a strict quarantine:
+All incoming data passes through strict sanitization:
 
 - script & HTML removal  
 - format validation  
@@ -79,12 +79,12 @@ Offline modules never touch untrusted data.
 - no telemetry  
 - no outbound data  
 
-This architecture preserves **100% offline safety** while enabling controlled, sanitized data import.
+This preserves **100% offline safety** while enabling controlled, sanitized data import.
 
 ## 🟪 Why This Matters
 - offline AI remains offline  
 - user privacy stays absolute  
-- AI can still work with up‑to‑date information  
+- AI can still use up‑to‑date information  
 - architecture is modular, safe, and enterprise‑grade  
 - identical to air‑gapped systems used in critical infrastructure  
 
@@ -92,6 +92,7 @@ This architecture preserves **100% offline safety** while enabling controlled, s
 
 # Optional: LAN Offline Bridge
 Mobile ↔ PC communication over **local Wi‑Fi only**:
+
 - mobile = camera, UI, input  
 - PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
 

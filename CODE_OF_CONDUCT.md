@@ -2,7 +2,7 @@
 ### SIRIUS LOCAL AI GAMA
 
 This Code of Conduct defines safe, respectful, and responsible behavior within the SIRIUS LOCAL AI GAMA project.  
-GAMA is part of the SIRIUS ecosystem and follows the same principles of **privacy, safety, determinism, and offline‑first design**.
+GAMA follows the SIRIUS ecosystem principles of **privacy, safety, determinism, and offline‑first design**.
 
 ---
 
@@ -10,13 +10,13 @@ GAMA is part of the SIRIUS ecosystem and follows the same principles of **privac
 
 All contributors and users agree to uphold:
 
-- **Respect** – treat others with dignity and professionalism  
-- **Safety** – no harmful, abusive, or dangerous behavior  
+- **Respect** – professional, dignified communication  
+- **Safety** – no harmful or abusive behavior  
 - **Privacy** – no collection or sharing of personal data  
-- **Integrity** – honest, transparent communication  
-- **Inclusivity** – no discrimination of any kind  
-- **Family‑safe environment** – content must be appropriate for all ages  
-- **Offline‑first mindset** – no cloud dependencies, no telemetry  
+- **Integrity** – honest, transparent collaboration  
+- **Inclusivity** – zero discrimination  
+- **Family‑safe environment** – content appropriate for all ages  
+- **Offline‑first mindset** – no cloud, no telemetry, no remote dependencies  
 
 ---
 
@@ -29,26 +29,26 @@ Contributors and users should:
 - provide clear, actionable feedback  
 - follow project architecture and guidelines  
 - protect user privacy  
-- avoid introducing unsafe or unpredictable behavior  
-- maintain deterministic execution in all modules  
+- avoid unsafe or unpredictable behavior  
+- maintain deterministic execution  
 - ensure all contributions remain 100% offline  
 
 ---
 
 # 🚫 3. Unacceptable Behavior
 
-The following is strictly prohibited:
+Strictly prohibited:
 
-- harassment, insults, or personal attacks  
-- discrimination based on any personal attribute  
+- harassment, insults, personal attacks  
+- discrimination of any kind  
 - sharing private or sensitive data  
-- adding cloud services, telemetry, or remote tracking  
-- unsafe code that bypasses SECURITY FAMILY  
-- attempts to weaken offline safety guarantees  
-- malicious contributions or backdoors  
+- adding cloud services, telemetry, or tracking  
+- bypassing SECURITY FAMILY rules  
+- weakening offline safety guarantees  
+- malicious code or backdoors  
 - harmful, violent, or adult content  
 
-Any violation may result in removal of contributions or access restrictions.
+Violations may result in contribution removal or access restrictions.
 
 ---
 
@@ -57,12 +57,12 @@ Any violation may result in removal of contributions or access restrictions.
 Contributors must:
 
 - follow the SIRIUS architecture (runtime, modules, safety layers)  
-- ensure code is deterministic and offline  
+- ensure deterministic, offline behavior  
 - test modules in restricted environments  
 - respect OWNER / FAMILY / STRANGER identity rules  
-- document all changes clearly  
+- document changes clearly  
 - avoid unnecessary complexity  
-- maintain compatibility with GAMA roadmap  
+- maintain compatibility with the GAMA roadmap  
 
 ---
 
@@ -88,19 +88,19 @@ This Code of Conduct applies to:
 - discussions  
 - documentation  
 - community interactions  
-- any official SIRIUS LOCAL AI GAMA channels  
+- all official SIRIUS LOCAL AI GAMA channels  
 
 ---
 
 # 🛠 7. Reporting Issues
 
-If you encounter violations of this Code of Conduct:
+To report violations:
 
 - open a private GitHub issue  
 - describe the problem clearly  
 - provide context if needed  
 
-Maintainers will review the report confidentially.
+Maintainers will review reports confidentially.
 
 ---
 

@@ -1,10 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Icon Component
 # Version: 3.0.0-pre
-# Author: Richard Pizem (SIRIUS LOCAL AI)
-#
-# Lightweight icon component using Unicode or text symbols.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
 # ============================================================
 
 from .base_component import BaseUIComponent
@@ -12,9 +8,6 @@ from ..theme import MobileUITheme
 
 
 class Icon(BaseUIComponent):
-    """
-    Lightweight icon component using Unicode or text symbols.
-    """
 
     COMPONENT_VERSION = "3.0.0-pre"
 
@@ -35,7 +28,8 @@ class Icon(BaseUIComponent):
         base.update({
             "symbol": self.symbol,
             "size": self.size,
-            "color": self.color
+            "color": self.color,
+            "padding": self.padding
         })
         return base
 
@@ -43,28 +37,36 @@ class Icon(BaseUIComponent):
         base = super().update()
         base.update({
             "symbol": self.symbol,
-            "size": self.size
+            "size": self.size,
+            "color": self.color
         })
         return base
 
     # ------------------------------------------------------------
-    # Render (placeholder)
+    # Render
     # ------------------------------------------------------------
 
     def render(self):
-        """
-        Placeholder render output.
-        In UI 3.0.0 this will be handled by the rendering engine.
-        """
-        return {
-            "status": "rendered",
-            "component": self.component_id,
+        base = super().render()
+        base.update({
             "type": "icon",
             "symbol": self.symbol,
             "size": self.size,
             "color": self.color,
-            "padding": self.padding,
-            "visible": self.visible
+            "padding": self.padding
+        })
+        return base
+
+    # ------------------------------------------------------------
+    # Event routing
+    # ------------------------------------------------------------
+
+    def on_event(self, event):
+        """Icons normally do not handle events, but forward them."""
+        return {
+            "status": "ignored",
+            "component": self.component_id,
+            "event": event
         }
 
     # ------------------------------------------------------------
@@ -77,6 +79,7 @@ class Icon(BaseUIComponent):
             "type": "icon",
             "symbol": self.symbol,
             "size": self.size,
-            "color": self.color
+            "color": self.color,
+            "padding": self.padding
         })
         return base

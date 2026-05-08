@@ -1,4 +1,5 @@
-# 🌟 SIRIUS LOCAL AI GAMA – Vision 1.0
+# 🌟 SIRIUS LOCAL AI GAMA – Vision 2.0  
+Version: **2.0.0**
 
 SIRIUS LOCAL AI GAMA is the official **mobile expansion** of the SIRIUS ecosystem.
 
@@ -9,8 +10,8 @@ Its purpose is to bring:
 - offline image understanding  
 - offline knowledge packs  
 - identity‑aware safety  
-- deterministic mobile workflows (NEW)  
-- hybrid input processing (NEW)  
+- deterministic mobile workflows  
+- hybrid input processing  
 
 …to **Android and iOS devices**, without cloud, telemetry, or external dependencies.
 
@@ -24,8 +25,8 @@ Its purpose is to bring:
 - modular  
 - extensible  
 - ARM‑optimized  
-- event‑driven architecture (NEW)  
-- safety‑aware routing (NEW)  
+- event‑driven architecture  
+- safety‑aware routing  
 
 ---
 
@@ -52,18 +53,21 @@ A personal AI that lives **on your phone**, not in the cloud.
 
 ---
 
-# 🟩 NEW IN GAMA Vision 2.0
+# 🟩 NEW IN GAMA Vision 2.0 (CURRENT VERSION)
 - Scene Understanding v1  
 - Object Detection v1  
 - Vision → Reasoning integration  
 - Vision fallback engine (dict → structured event)  
 - OCR quality scoring  
-- Vision diagnostics (NEW)  
+- Vision diagnostics  
 - ARM‑optimized image pipeline  
+- hybrid input merging  
+- extended metadata v2  
+- deterministic vision pipeline  
 
 ---
 
-# 🟧 NEW IN GAMA Vision 3.0
+# 🟧 NEW IN GAMA Vision 3.0 (PREVIEW)
 - Full ANALYZE event  
 - Full SCENE event  
 - Hybrid reasoning (vision + knowledge packs)  
@@ -74,8 +78,8 @@ A personal AI that lives **on your phone**, not in the cloud.
 
 ---
 
-# 🟪 NEW IN GAMA Vision 4.0 (Hybrid‑Safe Architecture)
-Vision Engine integrates with the **Secure Online Envoy** and **Quarantine Pipeline**:
+# 🟪 NEW IN GAMA Vision 4.0 (Hybrid‑Safe Architecture Preview)
+Vision Engine integrates with the **Secure Online Envoy** and **Quarantine Pipeline**.
 
 ### Secure Online Envoy (Vision Integration)
 - envoy can fetch *descriptions* or *definitions*  
@@ -97,21 +101,22 @@ Vision Engine integrates with the **Secure Online Envoy** and **Quarantine Pipel
 
 ---
 
-# 📸 Vision Engine Responsibilities (Expanded)
+# 📸 Vision Engine Responsibilities (Expanded for 2.0)
 - OCR 2.0  
 - object detection  
 - scene understanding  
 - homework recognition  
 - document analysis  
-- hybrid input merging (NEW)  
-- OCR correction + normalization (NEW)  
-- quality scoring (NEW)  
-- fallback dict → event conversion (NEW)  
-- deterministic image pipeline (NEW)  
+- hybrid input merging  
+- OCR correction + normalization  
+- quality scoring  
+- fallback dict → event conversion  
+- deterministic image pipeline  
+- extended diagnostics  
 
 ---
 
-# 🔁 Vision Execution Cycle (Updated)
+# 🔁 Vision Execution Cycle (Updated for 2.0)
 
 1. Receive image or OCR request from Runtime.  
 2. Native preprocessing (Android/iOS) cleans the image.  
@@ -134,4 +139,3 @@ Vision Engine integrates with the **Secure Online Envoy** and **Quarantine Pipel
 - diagnostics expansion  
 - safety‑aware routing  
 - pack‑assisted vision reasoning  
-

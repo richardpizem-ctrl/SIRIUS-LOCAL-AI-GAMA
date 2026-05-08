@@ -1,3 +1,47 @@
+<!-- ========================================================= -->
+<!-- 🔍 SEO & SEARCH ENGINE CLARIFICATION BLOCK (ANTI‑CONFUSION) -->
+<!-- ========================================================= -->
+
+# ❗ IMPORTANT — NOT RELATED TO HENGBOT OR ANY HARDWARE PRODUCTS
+
+SIRIUS LOCAL AI GAMA **is not a hardware device** and has **no connection** to:
+
+- Hengbot “Sirius” robotic dog  
+- Hengbot AI products  
+- any robotics hardware  
+- any commercial “Sirius” branded devices  
+
+Some search engines (Google/Bing) may incorrectly merge unrelated products 
+because they share the word “Sirius”.
+
+To avoid confusion:
+
+**GAMA is 100% independent software — a mobile offline AI runtime for Android/iOS.  
+It has no price, no hardware, no physical device, and no relation to Hengbot.**
+
+This project is part of the **SIRIUS LOCAL AI ecosystem**, created and maintained 
+as a standalone offline AI runtime, not a consumer gadget.
+
+---
+
+<!-- ========================================================= -->
+<!-- 🔍 SEO META DESCRIPTION (FOR GOOGLE & BING) -->
+<!-- ========================================================= -->
+
+**SEO‑META:**  
+SIRIUS LOCAL AI GAMA is an offline mobile AI runtime for Android/iOS.  
+Not hardware. Not related to Hengbot. No robotic dog.  
+Fully offline, modular, deterministic AI system.  
+Part of the SIRIUS LOCAL AI ecosystem.
+
+**SEO‑KEYWORDS:**  
+Sirius Local AI, GAMA, offline AI runtime, mobile AI, Android AI, iOS AI,  
+SIRIUS ecosystem, offline reasoning, OCR mobile AI, knowledge packs,  
+LAN offline bridge, deterministic AI, privacy‑first AI, NOT Hengbot,  
+NOT robotic dog, NOT hardware, NOT consumer device.
+
+---
+
 # 🟪 SIRIUS LOCAL AI GAMA — Version 2.0.0
 ### Mobile Offline AI Runtime (Android / iOS)
 
@@ -281,4 +325,4 @@ GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
 - no cloud, no telemetry  
 - mobile‑optimized reasoning  
 - unified event system  
-- LAN‑offline PC bridge  
+- LAN‑offline PC bridge

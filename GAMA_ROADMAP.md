@@ -1,4 +1,5 @@
-# 🚀 SIRIUS LOCAL AI GAMA – Roadmap
+# 🚀 SIRIUS LOCAL AI GAMA – Roadmap  
+Version: **2.0.0**
 
 ---
 
@@ -56,7 +57,7 @@
 
 ---
 
-## 🟩 GAMA 2.0
+## 🟩 GAMA 2.0 (CURRENT VERSION)
 - LAN Offline Bridge  
 - Device Diagnostics Mobile  
 - Scene Understanding  
@@ -73,16 +74,18 @@
 - Diagnostics Expansion (battery, thermal, storage, memory)  
 - Runtime Context v2  
 - Pack Integrity Checker  
-- Rule Chaining (preparation for 3.0)  
+- Rule Chaining (foundation for 3.0)  
 - Example‑based fallback reasoning  
 - Unified PACK_QUERY + PACK_INFO events  
 - Module priority + module tracking  
 - Hybrid input support (text + OCR)  
 - Safety‑aware routing in NL Router  
+- Event Metadata Engine v2  
+- Deterministic workflow execution  
 
 ---
 
-## 🟧 GAMA 3.0
+## 🟧 GAMA 3.0 (PREPARATION PHASE)
 - Full Mobile Reasoning Engine  
 - Advanced Knowledge Graphs  
 - Multi‑intent routing  
@@ -93,13 +96,15 @@
 - Knowledge Pack auto‑load + validation  
 - Diagnostics v3 (rule hits, example hits, pack usage)  
 
-### 🔹 NEW PREPARED FEATURES
+### 🔹 NEW PREPARED FEATURES (FROM 2.0)
 - dict → event fallback normalization  
 - event version tagging  
 - module compatibility flags  
 - pack priority scoring  
 - safety‑intent detection  
 - hybrid reasoning (rules + examples)  
+- unified SCHOOLWORK + VISION + PACK events  
+- deterministic reasoning trace  
 
 ---
 

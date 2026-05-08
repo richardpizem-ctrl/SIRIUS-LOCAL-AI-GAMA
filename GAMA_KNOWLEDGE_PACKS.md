@@ -1,6 +1,7 @@
-# 🧩 GAMA Knowledge Packs
+# 🧩 GAMA Knowledge Packs — Version 2.0.0
 
-Knowledge Packs provide offline knowledge modules used by the GAMA Runtime and NL Router.
+Knowledge Packs provide **offline knowledge modules** used by the GAMA Runtime, NL Router, Schoolwork Mode, and Reasoning Engine.  
+Version 2.0.0 introduces pack integrity validation, priority routing, and Runtime 3.x compatibility.
 
 ---
 
@@ -12,6 +13,7 @@ Knowledge Packs provide offline knowledge modules used by the GAMA Runtime and N
 - reduce dependency on online sources  
 - ensure deterministic, explainable reasoning  
 - allow modular domain expansion  
+- support hybrid reasoning (rules + examples)  
 
 ---
 
@@ -31,7 +33,7 @@ Knowledge Packs provide offline knowledge modules used by the GAMA Runtime and N
 # 🏗 Structure
 Each pack contains:
 
-- **metadata.json** — pack info, version, subject, language  
+- **metadata.json** — pack info, version, subject, language, priority  
 - **knowledge.json** — structured facts, definitions, formulas  
 - **rules.json** — logic rules, transformations, validation  
 - **examples.json** — demonstrations, patterns, similarity samples  
@@ -39,12 +41,12 @@ Each pack contains:
 ---
 
 # 🏷 Version
-**GAMA Knowledge Packs — v1.0.0**  
-(fully compatible with Runtime 2.0.0 and prepared for 3.0.0‑pre)
+**GAMA Knowledge Packs — v2.0.0**  
+(fully compatible with Runtime 2.0.0 and prepared for Runtime 3.0.0‑pre)
 
 ---
 
-# 🔄 Knowledge Pack Flow
+# 🔄 Knowledge Pack Flow (v2.0.0)
 
 1. Runtime requests a knowledge pack based on task category.  
 2. Pack Loader checks if the pack exists locally.  
@@ -53,7 +55,7 @@ Each pack contains:
 5. knowledge.json is loaded into memory.  
 6. rules.json is applied to structure reasoning.  
 7. examples.json is used for pattern matching.  
-8. Pack returns structured knowledge to the Runtime.  
+8. Pack compiles structured knowledge output.  
 9. Runtime uses the knowledge to complete the task.  
 10. Diagnostics log the pack usage.  
 
@@ -67,8 +69,9 @@ Responsible for loading packs from local storage.
 - version checking  
 - fallback handling  
 - memory caching  
-- pack integrity validation (NEW)  
-- pack compatibility check for Runtime 3.x (NEW)  
+- pack integrity validation  
+- pack compatibility check for Runtime 3.x  
+- auto‑load support  
 
 ## 2. Metadata Parser
 Reads metadata.json and extracts:
@@ -77,8 +80,9 @@ Reads metadata.json and extracts:
 - subject  
 - language  
 - dependencies  
-- minimum runtime version (NEW)  
-- pack priority (NEW)  
+- minimum runtime version  
+- pack priority (0.0 – 1.0)  
+- compatibility flags (NEW)  
 
 ## 3. Knowledge Engine
 Processes knowledge.json.
@@ -87,7 +91,8 @@ Processes knowledge.json.
 - formulas  
 - timelines  
 - entities  
-- domain‑specific schemas (NEW)  
+- domain‑specific schemas  
+- deterministic knowledge mapping  
 
 ## 4. Rule Engine
 Applies rules.json to guide reasoning.
@@ -95,8 +100,9 @@ Applies rules.json to guide reasoning.
 - logic rules  
 - transformation rules  
 - validation rules  
-- rule chaining (NEW)  
-- rule priority (NEW)  
+- rule chaining  
+- rule priority  
+- Runtime 3.x rule compatibility  
 
 ## 5. Example Engine
 Uses examples.json for:
@@ -104,7 +110,8 @@ Uses examples.json for:
 - pattern inference  
 - similarity matching  
 - offline reasoning support  
-- example‑based fallback reasoning (NEW)  
+- example‑based fallback reasoning  
+- hybrid reasoning (rules + examples)  
 
 ## 6. Diagnostics Logger
 Tracks pack usage.
@@ -113,12 +120,13 @@ Tracks pack usage.
 - load time  
 - errors  
 - fallback usage  
-- rule hits (NEW)  
-- example hits (NEW)  
+- rule hits  
+- example hits  
+- pack integrity status  
 
 ---
 
-# 🔁 Knowledge Pack Execution Cycle
+# 🔁 Knowledge Pack Execution Cycle (v2.0.0)
 
 1. Runtime requests a specific knowledge pack.  
 2. Pack Loader locates the pack in local storage.  
@@ -133,7 +141,7 @@ Tracks pack usage.
 
 ---
 
-# 🟪 NEW IN VERSION 2 → PREPARED FOR VERSION 3
+# 🟪 NEW IN VERSION 2 → PREPARED FOR VERSION 3.0.0‑pre
 - pack validation  
 - pack priority  
 - runtime compatibility flags  
@@ -144,3 +152,4 @@ Tracks pack usage.
 - unified PACK_INFO event  
 - auto‑load support  
 - pack integrity checks  
+- deterministic pack routing  

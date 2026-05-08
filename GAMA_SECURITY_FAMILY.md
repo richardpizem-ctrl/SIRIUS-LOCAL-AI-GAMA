@@ -1,6 +1,7 @@
-# 🛡 GAMA Security Family
+# 🛡 GAMA Security Family — Version 2.0.0
 
-Security Family provides behavioral monitoring, safety rules, and protection for the GAMA system.
+Security Family provides behavioral monitoring, safety rules, and protection for the GAMA 2.0 system.  
+Version 2.0.0 introduces **low‑trust data handling**, **output safety validation**, and **anomaly‑based restrictions**.
 
 ---
 
@@ -10,18 +11,18 @@ Security Family provides behavioral monitoring, safety rules, and protection for
 - blocking dangerous operations  
 - parental/child mode support  
 - integration with Runtime and Router  
-- output safety validation (NEW)  
-- low‑trust data handling (NEW)  
-- anomaly‑based restrictions (NEW)  
+- output safety validation  
+- low‑trust data handling  
+- anomaly‑based restrictions  
 
 ---
 
 # 🧩 Modes
-- Owner Mode  
-- Teen Mode  
-- Child Mode  
-- Restricted Mode  
-- Auto‑Adaptive Mode (NEW – optional)  
+- **Owner Mode**  
+- **Teen Mode**  
+- **Child Mode**  
+- **Restricted Mode**  
+- **Auto‑Adaptive Mode** (optional)  
 
 ---
 
@@ -29,18 +30,18 @@ Security Family provides behavioral monitoring, safety rules, and protection for
 - allow / deny decisions  
 - security flags  
 - behavior logs  
-- anomaly reports (NEW)  
-- quarantine flags (NEW)  
+- anomaly reports  
+- quarantine flags  
 
 ---
 
 # 🏷 Version
-**GAMA Security Family — v1.0.0**  
-(prepared for GAMA 3.0.0‑pre and extended in GAMA 4.0)
+**GAMA Security Family — v2.0.0**  
+(compatible with GAMA Runtime 2.0, prepared for 3.0.0‑pre, extended in 4.0)
 
 ---
 
-# 🔄 Security Flow
+# 🔄 Security Flow (v2.0.0)
 
 1. Runtime sends a security‑relevant event or user action.  
 2. Security Family identifies the active mode:  
@@ -58,8 +59,8 @@ Security Family provides behavioral monitoring, safety rules, and protection for
    - return `"deny"` + security flags  
 7. Log the event in the Security Diagnostics Log.  
 8. Update behavior profile (if enabled).  
-9. Return final decision to the Runtime.  
-10. Apply quarantine rules if data is external (NEW).  
+9. Apply quarantine rules if data is external.  
+10. Return final decision to the Runtime.  
 
 ---
 
@@ -71,8 +72,8 @@ Tracks user actions and system events.
 - frequency analysis  
 - anomaly detection  
 - mode‑specific behavior rules  
-- hybrid‑input behavior tracking (NEW)  
-- escalation triggers (NEW)  
+- hybrid‑input behavior tracking  
+- escalation triggers  
 
 ## 2. Safety Rules Engine
 Evaluates actions against security policies.
@@ -80,15 +81,15 @@ Evaluates actions against security policies.
 - violation detection  
 - severity scoring  
 - allow/deny logic  
-- rule chaining (NEW)  
-- safety‑intent detection (NEW)  
+- rule chaining  
+- safety‑intent detection  
 
 ## 3. Mode Controller
 Determines active security mode.
 - Owner / Teen / Child / Restricted  
 - automatic mode switching (optional)  
-- behavior‑based mode escalation (NEW)  
-- restricted‑mode hardening (NEW)  
+- behavior‑based mode escalation  
+- restricted‑mode hardening  
 
 ## 4. Operation Filter
 Blocks or allows system operations.
@@ -96,8 +97,8 @@ Blocks or allows system operations.
 - network restrictions  
 - command filtering  
 - sensitive operation blocking  
-- module‑level privilege isolation (NEW)  
-- event‑level sandboxing (NEW)  
+- module‑level privilege isolation  
+- event‑level sandboxing  
 
 ## 5. Behavior Profile Manager
 Maintains long‑term behavior patterns.
@@ -105,8 +106,8 @@ Maintains long‑term behavior patterns.
 - detecting deviations  
 - adaptive restrictions  
 - profile updates  
-- anomaly‑based cooldowns (NEW)  
-- child‑safe behavior shaping (NEW)  
+- anomaly‑based cooldowns  
+- child‑safe behavior shaping  
 
 ## 6. Security Diagnostics Logger
 Records all security‑related events.
@@ -115,14 +116,14 @@ Records all security‑related events.
 - rule violations  
 - mode changes  
 - anomaly reports  
-- quarantine rejections (NEW)  
-- envoy‑related violations (NEW)  
+- quarantine rejections  
+- envoy‑related violations  
 
 ---
 
-# 🟪 NEW IN GAMA v4 — Secure Online Envoy & Quarantine Pipeline
+# 🟪 NEW IN GAMA v4 — Secure Online Envoy & Quarantine Pipeline (Preview)
 
-GAMA v4 introduces a **hybrid‑safe extension** of the Security Family, enabling controlled online data retrieval while keeping the entire AI core fully offline and protected.
+GAMA v4 introduces a **hybrid‑safe extension** of the Security Family, enabling controlled online data retrieval while keeping the entire AI core fully offline.
 
 ## 🟦 Secure Online Envoy (Isolated Online Agent)
 - runs in a fully isolated sandbox  
@@ -134,7 +135,6 @@ GAMA v4 introduces a **hybrid‑safe extension** of the Security Family, enablin
 
 ## 🟩 Quarantine Pipeline (Security Family Integration)
 All envoy data passes through strict sanitization:
-
 - script & HTML removal  
 - format validation  
 - size limits  
@@ -143,7 +143,6 @@ All envoy data passes through strict sanitization:
 - only clean text + JSON allowed  
 
 Security Family ensures **no untrusted data** reaches:
-
 - Runtime  
 - Router  
 - Reasoning Engine  
@@ -152,7 +151,6 @@ Security Family ensures **no untrusted data** reaches:
 
 ## 🟧 Security Family Enforcement
 Security Family applies additional rules:
-
 - envoy data = **low‑trust**  
 - no remote code execution  
 - no dynamic imports  
@@ -164,16 +162,9 @@ If anomaly detected:
 - Security Family logs violation  
 - Runtime receives `"deny"`  
 
-## 🟪 Why This Matters
-- offline AI remains offline  
-- online data is sanitized and isolated  
-- Security Family becomes the **gatekeeper**  
-- architecture matches air‑gapped enterprise systems  
-- zero risk of RCE or data leakage  
-
 ---
 
-# 🔁 Security Execution Cycle
+# 🔁 Security Execution Cycle (v2.0.0)
 
 1. Runtime sends a user action or system event.  
 2. Mode Controller determines active mode.  

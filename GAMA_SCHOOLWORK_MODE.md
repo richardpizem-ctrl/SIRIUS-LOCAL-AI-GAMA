@@ -1,6 +1,7 @@
-# 🎓 GAMA Schoolwork Mode
+# 🎓 GAMA Schoolwork Mode — Version 2.0.0
 
-Schoolwork Mode provides offline reasoning and problem‑solving for students.
+Schoolwork Mode provides **offline reasoning and problem‑solving** for students in GAMA 2.0.0.  
+Fully deterministic, family‑safe, hybrid‑input capable.
 
 ---
 
@@ -10,9 +11,9 @@ Schoolwork Mode provides offline reasoning and problem‑solving for students.
 - explanations and step‑by‑step reasoning  
 - OCR‑based homework support  
 - offline knowledge usage  
-- mixed‑subject reasoning (NEW)  
-- safety‑filtered educational output (NEW)  
-- deterministic reasoning trace (NEW)  
+- mixed‑subject reasoning  
+- safety‑filtered educational output  
+- deterministic reasoning trace  
 
 ---
 
@@ -20,8 +21,8 @@ Schoolwork Mode provides offline reasoning and problem‑solving for students.
 - text questions  
 - OCR from Vision Engine  
 - structured tasks  
-- hybrid inputs (text + OCR combined) (NEW)  
-- dict‑based fallback from Vision (NEW)  
+- hybrid inputs (text + OCR combined)  
+- dict‑based fallback from Vision  
 
 ---
 
@@ -30,18 +31,18 @@ Schoolwork Mode provides offline reasoning and problem‑solving for students.
 - explanations  
 - steps  
 - reasoning trace  
-- subject metadata (NEW)  
-- confidence score (NEW)  
+- subject metadata  
+- confidence score  
 
 ---
 
 # 🏷 Version
-**GAMA Schoolwork Mode — v1.0.0**  
-(prepared for Runtime 3.0.0‑pre)
+**GAMA Schoolwork Mode — v2.0.0**  
+(compatible with Runtime 2.0, prepared for Runtime 3.0.0‑pre)
 
 ---
 
-# 🔄 Schoolwork Flow
+# 🔄 Schoolwork Flow (v2.0.0)
 
 1. Receive input from Runtime (text or OCR).  
 2. Detect subject type:  
@@ -49,13 +50,13 @@ Schoolwork Mode provides offline reasoning and problem‑solving for students.
    - language  
    - science  
    - general knowledge  
-   - mixed subjects (NEW)  
+   - mixed subjects  
 3. Load appropriate Knowledge Pack.  
 4. Normalize the problem or question.  
 5. Apply reasoning rules based on subject.  
 6. Generate solution steps.  
 7. Produce final explanation and answer.  
-8. Add reasoning trace + metadata (NEW).  
+8. Add reasoning trace + metadata.  
 9. Return structured output to Runtime.  
 10. Log schoolwork event for diagnostics.  
 
@@ -70,8 +71,8 @@ Identifies the subject of the task.
 - science  
 - general knowledge  
 - mixed tasks  
-- subject confidence scoring (NEW)  
-- fallback subject detection (NEW)  
+- subject confidence scoring  
+- fallback subject detection  
 
 ## 2. Problem Normalizer
 Prepares the input for reasoning.
@@ -79,8 +80,8 @@ Prepares the input for reasoning.
 - structure detection  
 - OCR correction  
 - math formatting  
-- hybrid input merging (NEW)  
-- dict → text normalization (NEW)  
+- hybrid input merging  
+- dict → text normalization  
 
 ## 3. Reasoning Engine
 Core logic for solving tasks.
@@ -88,9 +89,9 @@ Core logic for solving tasks.
 - rule‑based logic  
 - pattern matching  
 - offline inference  
-- rule chaining (NEW)  
-- example‑based fallback reasoning (NEW)  
-- deterministic reasoning trace (NEW)  
+- rule chaining  
+- example‑based fallback reasoning  
+- deterministic reasoning trace  
 
 ## 4. Knowledge Pack Integrator
 Connects Schoolwork Mode with Knowledge Packs.
@@ -98,16 +99,16 @@ Connects Schoolwork Mode with Knowledge Packs.
 - rule application  
 - example matching  
 - fallback handling  
-- pack priority scoring (NEW)  
-- pack integrity validation (NEW)  
+- pack priority scoring  
+- pack integrity validation  
 
 ## 5. Explanation Generator
 Produces human‑readable explanations.
 - step breakdown  
 - reasoning trace  
 - final summary  
-- simplified child‑safe explanations (NEW)  
-- multi‑format output (short/long) (NEW)  
+- simplified child‑safe explanations  
+- multi‑format output (short/long)  
 
 ## 6. Output Formatter
 Structures the final result.
@@ -115,8 +116,8 @@ Structures the final result.
 - steps  
 - explanation  
 - metadata  
-- subject tags (NEW)  
-- confidence score (NEW)  
+- subject tags  
+- confidence score  
 
 ## 7. Diagnostics Logger
 Tracks Schoolwork events.
@@ -124,13 +125,13 @@ Tracks Schoolwork events.
 - pack used  
 - reasoning time  
 - errors or fallbacks  
-- rule hits (NEW)  
-- example hits (NEW)  
-- OCR quality score (NEW)  
+- rule hits  
+- example hits  
+- OCR quality score  
 
 ---
 
-# 🔁 Schoolwork Execution Cycle
+# 🔁 Schoolwork Execution Cycle (v2.0.0)
 
 1. Runtime sends a schoolwork task (text or OCR).  
 2. Subject Detector identifies the subject category.  

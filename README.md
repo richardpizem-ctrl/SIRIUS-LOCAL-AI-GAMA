@@ -1,18 +1,18 @@
-# 🟪 SIRIUS LOCAL AI GAMA
+# 🟪 SIRIUS LOCAL AI GAMA — Version 2.0.0
 ### Mobile Offline AI Runtime (Android / iOS)
 
-![version](https://img.shields.io/badge/version-1.0.0-purple?style=for-the-badge)
+![version](https://img.shields.io/badge/version-2.0.0-purple?style=for-the-badge)
 ![offline](https://img.shields.io/badge/100%25-OFFLINE-blueviolet?style=for-the-badge)
 ![license](https://img.shields.io/badge/license-MIT--Custom-green?style=for-the-badge)
 
 ---
 
 # 🟪 Version
-**Current Release:** `1.0.0`  
+**Current Release:** `2.0.0`  
 **Status:** Stable, production‑ready  
-**Release Date:** 2026‑05‑06  
-**Runtime Architecture:** Offline, Modular, Deterministic (NEW)  
-**Mobile Platforms:** Android / iOS (NEW)  
+**Release Date:** 2026‑05‑07  
+**Runtime Architecture:** Offline, Modular, Deterministic  
+**Mobile Platforms:** Android / iOS  
 
 ---
 
@@ -26,9 +26,13 @@ GAMA brings the core philosophy of SIRIUS to mobile devices:
 - privacy‑first  
 - modular and extensible  
 - ARM‑optimized  
-- event‑driven architecture (NEW)  
-- unified module interface (NEW)  
-- hybrid input support (text + OCR) (NEW)  
+- event‑driven architecture  
+- unified module interface  
+- hybrid input support (text + OCR)  
+- LAN‑offline PC bridge (NEW)  
+- diagnostics engine (NEW)  
+- scene understanding (NEW)  
+- Health Assistant 2.0 (NEW)  
 
 GAMA is not a port — it is a **mobile‑optimized runtime**.
 
@@ -44,9 +48,9 @@ GAMA extends SIRIUS LOCAL AI into the mobile world, enabling:
 - offline reasoning  
 - household guidance  
 - safe identity‑aware interactions  
-- optional LAN‑offline connection to PC runtime  
-- deterministic workflows identical to PC runtime (NEW)  
-- unified event system across mobile and PC (NEW)  
+- LAN‑offline connection to PC runtime  
+- deterministic workflows identical to PC runtime  
+- unified event system across mobile and PC  
 
 ---
 
@@ -55,29 +59,29 @@ GAMA extends SIRIUS LOCAL AI into the mobile world, enabling:
 ## 🟦 Mobile Runtime Core
 A lightweight ARM‑optimized runtime including:
 - NL Router Mobile  
-- Workflow Engine Mobile  
+- Workflow Engine Mobile 2.0 (NEW)  
 - Mobile Knowledge Packs  
 - Mobile Reasoning Engine  
 - Mobile Security Layer  
-- Runtime Context Manager (NEW)  
-- Event Metadata Engine (NEW)  
+- Runtime Context Manager  
+- Event Metadata Engine  
 
 ## 🟩 Mobile Vision Engine
 Offline image understanding:
 - OCR 2.0  
 - object detection  
 - homework recognition  
-- scene understanding  
-- hybrid input merging (NEW)  
-- OCR quality scoring (NEW)  
+- scene understanding (NEW)  
+- hybrid input merging  
+- OCR quality scoring  
 
 ## 🟧 Schoolwork Mode Mobile
 - math explanations  
 - step‑by‑step reasoning  
 - handwriting recognition  
 - textbook knowledge packs  
-- deterministic reasoning trace (NEW)  
-- subject confidence scoring (NEW)  
+- deterministic reasoning trace  
+- subject confidence scoring  
 
 ## 🟪 Knowledge Packs Mobile
 Compressed, fast, offline:
@@ -85,10 +89,10 @@ Compressed, fast, offline:
 - repairs  
 - school subjects  
 - household workflows  
-- safety rules pack (NEW)  
-- logic pack (NEW)  
-- pack priority scoring (NEW)  
-- pack integrity validation (NEW)  
+- safety rules pack  
+- logic pack  
+- pack priority scoring  
+- pack integrity validation  
 
 ## 🟫 SECURITY FAMILY Mobile
 Identity‑aware safety:
@@ -96,49 +100,70 @@ Identity‑aware safety:
 - restricted mode  
 - child‑safe filters  
 - offline behavior patterns  
-- safety‑intent detection (NEW)  
-- module privilege isolation (NEW)  
+- safety‑intent detection  
+- module privilege isolation  
 
 ---
 
-# 🟪 NEW IN GAMA v4 — SECURE ONLINE ENVOY (Sandbox + Quarantine)
+# 🟦 NEW IN GAMA 2.0 — LAN OFFLINE BRIDGE
 
-GAMA v4 zavádza nový bezpečnostný modul, ktorý umožňuje získavať aktuálne online informácie bez toho, aby offline jadro stratilo svoju 100% offline povahu.
-
-## 🟦 Secure Online Envoy (Isolated Online Agent)
-- beží v sandboxe, úplne oddelený od offline runtime  
-- jednosmerný outbound prístup  
-- získava text, JSON, štruktúrované dáta  
-- žiadny prístup k súborom, modelom, API  
-- žiadne odosielanie lokálnych dát  
-- vždy označený ako **low‑trust** (NEW)  
-
-## 🟩 Quarantine Pipeline (Data Sanitization Layer)
-- odstránenie skriptov a HTML  
-- validácia formátu  
-- kontrola veľkosti  
-- čistenie textu  
-- bezpečnostné filtre  
-- povolené len: čistý text, JSON, štruktúrované dáta  
-- integrácia so Security Family (NEW)  
-
-## 🟧 Offline Core Remains Fully Air‑Gapped
-- inference offline  
-- reasoning offline  
-- knowledge packs offline  
-- žiadne cloudové volania  
-- žiadna telemetria  
-- žiadne outbound dáta  
-- air‑gapped execution model (NEW)  
-
----
-
-# 🔗 Optional: LAN Offline Bridge
 Mobile ↔ PC communication over **local Wi‑Fi only**:
 - mobile = camera, UI, input  
 - PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
 
-No internet required.
+No internet required.  
+No cloud.  
+No telemetry.
+
+---
+
+# 🟩 NEW IN GAMA 2.0 — DEVICE DIAGNOSTICS MOBILE
+- battery  
+- thermal  
+- storage  
+- performance  
+- deterministic diagnostic events  
+
+---
+
+# 🟧 NEW IN GAMA 2.0 — SCENE UNDERSTANDING
+- object detection  
+- scene classification  
+- metadata v3  
+- hybrid vision + reasoning  
+
+---
+
+# 🟫 NEW IN GAMA 2.0 — HEALTH ASSISTANT 2.0
+- OCR pre medicínske dokumenty  
+- bezpečné info o liekoch  
+- first‑aid logika  
+- symptom explanations (non‑diagnostic)  
+- family‑safe health knowledge packs  
+
+---
+
+# 🟪 NEW IN GAMA 4.0 — SECURE ONLINE ENVOY (PREVIEW)
+
+*(Architecture preview included for future compatibility)*
+
+## 🟦 Secure Online Envoy (Sandbox)
+- izolovaný online agent  
+- jednosmerný outbound  
+- získava text/JSON  
+- žiadny prístup k offline runtime  
+
+## 🟩 Quarantine Pipeline
+- sanitizácia textu  
+- validácia JSON  
+- bezpečnostné filtre  
+- low‑trust classification  
+
+## 🟧 Offline Core Remains Air‑Gapped
+- inference offline  
+- reasoning offline  
+- knowledge packs offline  
+- žiadne cloudové volania  
 
 ---
 
@@ -152,25 +177,25 @@ No internet required.
 - Schoolwork Mode Mobile  
 - SECURITY FAMILY Mobile  
 
-## GAMA 2.0
+## GAMA 2.0 (CURRENT)
 - LAN Offline Bridge  
 - Device Diagnostics Mobile  
 - Scene Understanding  
 - Workflow Engine Mobile 2.0  
-- Health Assistant 2.0 (NEW)  
+- Health Assistant 2.0  
 
 ## GAMA 3.0
 - Full Mobile Reasoning Engine  
 - Advanced Knowledge Graphs  
 - Multi‑intent routing  
 - Complete offline autonomy  
-- unified event architecture (NEW)  
+- unified event architecture  
 
 ## GAMA 4.0
 - Secure Online Envoy  
 - Quarantine Pipeline  
 - Air‑gapped hybrid architecture  
-- low‑trust data classification (NEW)  
+- low‑trust data classification  
 
 ---
 
@@ -181,6 +206,7 @@ No internet required.
 /vision  
 /security  
 /knowledge_packs  
+/health  
 /bridge  
 /docs  
 /build  
@@ -190,7 +216,7 @@ No internet required.
 # 📝 License  
 ### **MIT License with Trademark & Commercial Restrictions**
 
-*(Full license text included below — unchanged, with new restrictions applied.)*
+*(Full license text unchanged.)*
 
 ---
 
@@ -209,12 +235,24 @@ GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
 
 ---
 
-# 📦 RELEASE NOTES — GAMA 1.0.0
-*(unchanged, but extended with new metadata)*
+# 📦 RELEASE NOTES — GAMA 2.0.0
+
+## NEW
+- LAN Offline Bridge  
+- Device Diagnostics Mobile  
+- Scene Understanding  
+- Workflow Engine Mobile 2.0  
+- Health Assistant 2.0  
+
+## IMPROVED
+- OCR pipeline  
+- ARM runtime performance  
+- event routing  
+- diagnostics logging  
 
 ---
 
-# 🟪 GAMA BOX — v1.0.0
+# 🟪 GAMA BOX — v2.0.0
 **Status:** Stable  
 **Type:** Mobile Runtime  
 **Architecture:** Offline, Modular, Deterministic  
@@ -229,7 +267,9 @@ GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
 - Vision Engine Mobile  
 - Schoolwork Mode  
 - Security Family  
-- Diagnostics Mobile (NEW)  
+- Diagnostics Mobile  
+- Scene Understanding  
+- Health Assistant 2.0  
 
 ---
 
@@ -240,5 +280,5 @@ GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
 - child‑safe  
 - no cloud, no telemetry  
 - mobile‑optimized reasoning  
-- unified event system (NEW)  
-
+- unified event system  
+- LAN‑offline PC bridge  

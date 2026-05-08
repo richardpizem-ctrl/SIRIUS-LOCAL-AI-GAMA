@@ -1,6 +1,7 @@
-# 🤝 Contributing to SIRIUS LOCAL AI GAMA
+# 🤝 Contributing to SIRIUS LOCAL AI GAMA — Version 2.0.0
 
-Thank you for your interest in contributing to **SIRIUS LOCAL AI GAMA**, the mobile offline AI runtime of the SIRIUS ecosystem.  
+Thank you for your interest in contributing to **SIRIUS LOCAL AI GAMA**, the fully offline mobile AI runtime of the SIRIUS ecosystem.
+
 GAMA follows the core SIRIUS principles:
 
 - 100% offline  
@@ -9,8 +10,10 @@ GAMA follows the core SIRIUS principles:
 - privacy‑first  
 - modular and extensible  
 - no cloud, no telemetry  
+- ARM‑optimized  
+- safety‑aware  
 
-This document explains how to contribute safely and effectively.
+This document explains how to contribute safely and effectively to **GAMA 2.0.0**.
 
 ---
 
@@ -24,18 +27,23 @@ All contributions must respect the core SIRIUS principles:
 - **Modularity** — each feature must be isolated and replaceable  
 - **Transparency** — clear documentation and predictable behavior  
 - **Performance** — optimized for ARM mobile devices  
+- **Explainability** — no opaque logic, no hidden behavior  
 
 ---
 
-# 📁 2. Repository Structure
+# 📁 2. Repository Structure (Updated for 2.0.0)
 
 ```
-/runtime_mobile        – lightweight mobile runtime core
-/modules               – mobile modules (OCR, schoolwork, reasoning, etc.)
-/vision                – Mobile Vision Engine components
-/security              – SECURITY FAMILY Mobile
-/knowledge_packs       – compressed offline knowledge packs
-/bridge                – LAN offline communication with PC runtime
+/runtime_mobile        – core runtime, dispatcher, context manager
+/modules               – all functional modules (vision, schoolwork, health…)
+/vision                – Vision Engine 2.0 (OCR, scene, detection)
+/security              – Security Family 2.0
+/knowledge_packs       – offline structured knowledge packs
+/bridge                – LAN Offline Bridge (mobile ↔ PC)
+/health                – Health Assistant 2.0
+/diagnostics           – diagnostics modules (battery, thermal, storage…)
+/context               – runtime context + metadata
+/events                – unified event architecture
 /ui                    – mobile UI components
 /docs                  – documentation
 /build                 – Android/iOS build configs
@@ -50,9 +58,11 @@ Before writing code, open an issue describing:
 
 - what you want to add or fix  
 - why it is needed  
-- how it fits into GAMA architecture  
+- how it fits into GAMA 2.0 architecture  
+- which module(s) it affects  
+- expected behavior and safety considerations  
 
-This ensures alignment with the roadmap.
+This ensures alignment with the roadmap and architecture.
 
 ---
 
@@ -63,6 +73,7 @@ Create your own fork and work in a feature branch:
 feature/<module-name>
 fix/<bug-name>
 improvement/<area>
+module/<new-module>
 ```
 
 ---
@@ -77,6 +88,10 @@ All contributions must:
 - follow modular structure  
 - include documentation  
 - include tests (if applicable)  
+- follow deterministic logic  
+- comply with SECURITY FAMILY rules  
+- support hybrid input where relevant  
+- include event metadata (2.0 standard)  
 
 ---
 
@@ -88,6 +103,8 @@ A PR must include:
 - explanation of architecture impact  
 - test results (if applicable)  
 - documentation updates  
+- safety considerations  
+- performance notes (if relevant)  
 
 Maintainers will review the PR for:
 
@@ -96,10 +113,12 @@ Maintainers will review the PR for:
 - offline compliance  
 - architecture compatibility  
 - performance impact  
+- module isolation  
+- event metadata correctness  
 
 ---
 
-# 🔐 4. SECURITY FAMILY Requirements
+# 🔐 4. SECURITY FAMILY Requirements (Mandatory)
 
 All contributions must respect:
 
@@ -108,6 +127,10 @@ All contributions must respect:
 - child‑safe behavior  
 - no unsafe or harmful outputs  
 - no bypassing of safety layers  
+- no remote code execution  
+- no dynamic imports  
+- no privileged module escalation  
+- low‑trust data handling rules  
 
 Any PR violating these rules will be rejected.
 
@@ -123,6 +146,8 @@ Knowledge Packs must be:
 - safe for all ages  
 - optimized for mobile storage  
 - modular and replaceable  
+- validated using pack integrity checker  
+- include metadata.json with priority + compatibility flags  
 
 ---
 
@@ -135,6 +160,8 @@ Reasoning modules must:
 - be transparent and explainable  
 - be deterministic  
 - be optimized for ARM  
+- support rule chaining (2.0+)  
+- support example‑based fallback reasoning  
 
 ---
 
@@ -143,21 +170,37 @@ Reasoning modules must:
 Before submitting a PR:
 
 - test on Android (required)  
-- test on iOS (optional but recommended)  
+- test on iOS (recommended)  
 - test offline mode  
 - test restricted mode  
 - test performance on low‑end devices  
+- test hybrid input (if applicable)  
+- test event metadata correctness  
 
 ---
 
-# 📜 8. Code of Conduct
+# 🧱 8. Module Requirements (New in 2.0)
+
+Every new module must:
+
+- include a clear entry point  
+- follow the unified event architecture  
+- include diagnostics logging  
+- include safety flags  
+- include metadata versioning  
+- support deterministic execution  
+- be isolated (no cross‑module side effects)  
+
+---
+
+# 📜 9. Code of Conduct
 
 All contributors must follow the **SIRIUS LOCAL AI GAMA Code of Conduct**.  
 Respectful, safe, and professional behavior is required.
 
 ---
 
-# 📬 9. Contact
+# 📬 10. Contact
 
 For questions or guidance:
 

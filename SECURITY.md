@@ -1,7 +1,7 @@
-# 🔐 SIRIUS LOCAL AI GAMA – Security Policy
+# 🔐 SIRIUS LOCAL AI GAMA – Security Policy (v2.0.0)
 
 SIRIUS LOCAL AI GAMA is a fully offline, privacy‑first mobile AI runtime.  
-This security policy explains how vulnerabilities should be reported and how they are handled.
+This security policy defines how vulnerabilities are reported, validated, and resolved in version **2.0.0**.
 
 ---
 
@@ -11,7 +11,8 @@ Only the latest stable version of GAMA receives security updates.
 
 | Version | Supported |
 |--------|-----------|
-| **GAMA 1.x** | ✔ Yes |
+| **GAMA 2.x** | ✔ Yes |
+| **GAMA 1.x** | ✖ No |
 | **GAMA 0.x** | ✖ No |
 
 Older versions may contain unresolved vulnerabilities and should not be used in production environments.
@@ -53,7 +54,7 @@ To protect users and contributors, please follow these rules:
 
 ### ✖ Do NOT:
 - publicly disclose the vulnerability before it is fixed  
-- exploit the vulnerability beyond what is necessary to demonstrate it  
+- exploit the vulnerability beyond what is necessary  
 - share the vulnerability with third parties  
 - use the vulnerability to access unauthorized data  
 
@@ -69,26 +70,28 @@ When a vulnerability is reported:
 4. **Fix Development** – Patch or mitigation is created  
 5. **Verification** – Fix is tested  
 6. **Release** – Security update is published  
-7. **Disclosure** – A short summary may appear in the changelog  
+7. **Disclosure** – A short summary appears in the changelog  
 
 ---
 
-# 🧱 5. Security Scope
+# 🧱 5. Security Scope (Updated for 2.0.0)
 
 This policy covers vulnerabilities related to:
 
 - mobile runtime stability  
 - offline reasoning engine  
-- workflow engine  
+- workflow engine 2.0  
 - mobile vision engine  
 - knowledge packs  
 - identity & safety layers (SECURITY FAMILY Mobile)  
 - file handling  
 - memory handling  
 - denial‑of‑service vectors  
-- module privilege isolation (NEW)  
-- event‑level sandboxing (NEW)  
-- hybrid input processing (NEW)  
+- module privilege isolation  
+- event‑level sandboxing  
+- hybrid input processing  
+- diagnostics engine (NEW)  
+- LAN Offline Bridge (NEW)  
 
 It does **not** cover:
 
@@ -101,7 +104,7 @@ These should be reported via normal GitHub issues.
 
 ---
 
-# 🔒 6. Safe Development Practices
+# 🔒 6. Safe Development Practices (Updated for 2.0.0)
 
 Contributors must follow these principles:
 
@@ -114,24 +117,25 @@ Contributors must follow these principles:
 - minimal dependencies  
 - deterministic behavior  
 - sandboxed processing  
-- no dynamic imports (NEW)  
-- no privileged module escalation (NEW)  
-- strict validation of all external data (NEW)  
+- no dynamic imports  
+- no privileged module escalation  
+- strict validation of all external data  
+- no network calls except LAN Offline Bridge (NEW)  
+- no access to PC runtime without explicit pairing (NEW)  
 
 ---
 
-# 🟪 6.5 NEW IN GAMA v4 — Secure Online Envoy & Quarantine Pipeline
+# 🟪 6.5 Hybrid‑Safe Architecture (Preview for GAMA 4.0)
 
-GAMA v4 introduces a **hybrid‑safe architecture** that preserves full offline security while allowing controlled, sanitized import of online data.
+GAMA 4.0 introduces a **hybrid‑safe architecture** that preserves full offline security while allowing controlled, sanitized import of online data.
 
 ## 🟦 Secure Online Envoy (Isolated Online Agent)
 - runs in a fully isolated sandbox  
-- has **one‑way outbound** access to the internet  
-- can fetch text, JSON, structured data  
-- cannot access local files, models, or system APIs  
-- cannot send any local data outward  
-- acts strictly as a **courier**, not part of the AI core  
-- always classified as **low‑trust** (NEW)  
+- one‑way outbound access  
+- fetches text, JSON, structured data  
+- cannot access local files, models, or APIs  
+- cannot send local data outward  
+- always classified as **low‑trust**  
 
 ## 🟩 Quarantine Pipeline (Data Sanitization Layer)
 All data returned by the envoy is processed through a strict quarantine:
@@ -141,8 +145,8 @@ All data returned by the envoy is processed through a strict quarantine:
 - size limits  
 - text cleaning  
 - security filtering  
-- only clean text + JSON + structured data allowed  
-- integration with Security Family (NEW)  
+- only clean text + JSON allowed  
+- integration with Security Family  
 
 Offline modules **never** interact with untrusted data.
 
@@ -153,13 +157,10 @@ Offline modules **never** interact with untrusted data.
 - no cloud calls  
 - no telemetry  
 - no outbound data  
-- air‑gapped execution model (NEW)  
-
-This ensures that **SIRIUS LOCAL AI GAMA remains 100% offline**, even with optional online data retrieval.
 
 ---
 
-# 🛡 6.6 NEW — Security Family Integration
+# 🛡 6.6 Security Family Integration (Updated)
 
 Security Family enforces additional rules for hybrid‑safe mode:
 
@@ -173,18 +174,19 @@ Security Family enforces additional rules for hybrid‑safe mode:
 
 ---
 
-# 🧪 6.7 NEW — Security Testing Requirements
+# 🧪 6.7 Security Testing Requirements (Updated)
 
 All contributors must ensure:
 
 - static analysis of all modules  
 - no unsafe dependencies  
-- no network calls except envoy sandbox  
+- no network calls except LAN Offline Bridge  
 - deterministic execution paths  
 - reproducible builds  
 - no hidden telemetry  
 - no analytics libraries  
 - no external SDKs  
+- diagnostics logs must not contain sensitive data (NEW)  
 
 ---
 

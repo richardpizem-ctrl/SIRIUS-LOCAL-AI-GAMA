@@ -1,99 +1,177 @@
-# 🧩 SIRIUS LOCAL AI GAMA – Architecture 1.0
+# 🧩 SIRIUS LOCAL AI GAMA – Architecture 2.0  
+Version: **2.0.0**
 
-GAMA is a lightweight mobile runtime built on five foundational pillars.
+GAMA 2.0 je moderný, modulárny, plne offline mobilný runtime postavený na **deväťpilierovej architektúre**, ktorá nahrádza pôvodný 1.0 model.  
+Prináša deterministické workflow, hybridné vstupy, diagnostiku, bezpečnostné vrstvy a prípravu na Runtime 3.x.
 
 ---
 
-# 1. Mobile Runtime Core
+# 🟦 1. Mobile Runtime Core
+Základný orchestrátor GAMA 2.0.
+
 - NL Router Mobile  
-- Workflow Engine Mobile  
+- Workflow Engine Mobile 2.0  
 - Mobile Reasoning Engine  
-- Mobile Knowledge Packs  
+- Mobile Knowledge Pack Integrator  
 - Mobile Security Layer  
+- Runtime Context Manager (NEW)  
+- Event Metadata Engine (NEW)  
+- Module Priority Resolver (NEW)  
+- Hybrid Input Normalizer (NEW)  
 
 ---
 
-# 2. Mobile Vision Engine
+# 🟪 2. Mobile Vision Engine
+Kompletný Vision stack pre GAMA 2.0.
+
 - OCR 2.0  
 - object detection  
 - scene understanding  
 - homework recognition  
+- hybrid input merging (NEW)  
+- OCR quality scoring (NEW)  
+- native preprocessing (Android/iOS) (NEW)  
+- dict → event fallback (NEW)  
+- unified ANALYZE event (NEW)  
 
 ---
 
-# 3. Schoolwork Mode Mobile
+# 🟧 3. Schoolwork Mode Mobile
+Offline školský asistent.
+
 - math reasoning  
 - step‑by‑step explanations  
 - handwriting recognition  
 - textbook knowledge packs  
+- mixed‑subject reasoning (NEW)  
+- deterministic reasoning trace (NEW)  
+- child‑safe explanations (NEW)  
+- subject confidence scoring (NEW)  
 
 ---
 
-# 4. Knowledge Packs Mobile
+# 🟩 4. Knowledge Packs Mobile
+Modulárne offline znalostné balíky.
+
 - compressed  
 - fast  
 - offline  
 - modular  
 - plug‑and‑play  
+- pack priority scoring (NEW)  
+- pack integrity validation (NEW)  
+- example‑based fallback reasoning (NEW)  
+- runtime compatibility flags (NEW)  
 
 ---
 
-# 5. SECURITY FAMILY Mobile
+# 🟫 5. SECURITY FAMILY Mobile
+Bezpečnostná vrstva GAMA 2.0.
+
 - OWNER / FAMILY / STRANGER  
 - restricted mode  
 - child‑safe filters  
 - offline behavior patterns  
+- safety‑intent detection (NEW)  
+- module privilege isolation (NEW)  
+- event‑level sandboxing (NEW)  
+- low‑trust data handling (NEW)  
+
+---
+
+# 🟦 6. Device Diagnostics Mobile (NEW)
+Nový diagnostický subsystém.
+
+- battery diagnostics  
+- thermal diagnostics  
+- storage diagnostics  
+- memory diagnostics  
+- performance logs  
+- event logs  
+- rule/example hits  
+
+---
+
+# 🟪 7. LAN Offline Bridge (NEW)
+Lokálna komunikácia Mobile ↔ PC.
+
+- mobile = camera, UI, input  
+- PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
+- zero cloud  
+- zero telemetry  
+- zero outbound data  
+
+---
+
+# 🟧 8. Workflow Engine Mobile 2.0 (NEW)
+Deterministický workflow systém.
+
+- unified event lifecycle  
+- hybrid input routing  
+- multi‑intent support  
+- fallback normalization  
+- event metadata v2  
+- Runtime 3.x preparation  
+
+---
+
+# 🟫 9. Event Architecture (NEW)
+Kompletný eventový systém pre GAMA 2.0.
+
+- unified PACK_QUERY  
+- unified PACK_INFO  
+- VISION_ANALYZE  
+- VISION_SCENE  
+- SCHOOLWORK_EVENT  
+- SECURITY_EVENT  
+- DIAGNOSTICS_EVENT  
+- event versioning  
+- deterministic event flow  
 
 ---
 
 # 🟪 NEW IN GAMA v4 — SECURE ONLINE ENVOY (Sandbox + Quarantine)
 
-GAMA v4 introduces a hybrid‑safe architecture that enables access to **fresh online information** while keeping the **core AI fully offline and air‑gapped**.
+GAMA v4 (preview) pridáva hybrid‑safe architektúru, ktorá umožňuje získavať **online textové dáta**, no zároveň zachováva **100% offline AI jadro**.
 
 ## 🟦 Secure Online Envoy (Isolated Online Agent)
-- runs inside a fully isolated sandbox  
-- one‑way outbound internet access  
-- fetches text, JSON, structured data  
-- no access to local files, models, or system APIs  
-- cannot send any local data outward  
+- sandboxovaný proces  
+- jednosmerný outbound internet  
+- fetch: text, JSON, structured data  
+- žiadny prístup k súborom, modelom, API  
+- žiadne odosielanie lokálnych dát  
+- vždy označený ako **low‑trust**  
 
-The envoy acts purely as a **courier**, not part of the AI brain.
-
-## 🟩 Quarantine Pipeline (Data Sanitization Layer)
-All incoming data passes through strict sanitization:
-
+## 🟩 Quarantine Pipeline
 - script & HTML removal  
 - format validation  
 - size limits  
 - text cleaning  
 - security filtering  
-- only clean text + JSON + structured data allowed  
-
-Offline modules never touch untrusted data.
+- iba čistý text + JSON  
 
 ## 🟧 Offline Core Remains Fully Air‑Gapped
-- inference stays offline  
-- reasoning stays offline  
-- knowledge packs stay offline  
+- inference offline  
+- reasoning offline  
+- knowledge packs offline  
 - no cloud calls  
 - no telemetry  
 - no outbound data  
 
-This preserves **100% offline safety** while enabling controlled, sanitized data import.
-
 ## 🟪 Why This Matters
-- offline AI remains offline  
-- user privacy stays absolute  
-- AI can still use up‑to‑date information  
-- architecture is modular, safe, and enterprise‑grade  
-- identical to air‑gapped systems used in critical infrastructure  
+- offline AI zostáva offline  
+- absolútne súkromie  
+- bezpečný import online dát  
+- enterprise‑grade architektúra  
+- rovnaký model ako kritické infra systémy  
 
 ---
 
 # Optional: LAN Offline Bridge
-Mobile ↔ PC communication over **local Wi‑Fi only**:
+Mobile ↔ PC komunikácia cez **lokálnu Wi‑Fi**:
 
 - mobile = camera, UI, input  
 - PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
 
-No internet required.
+Bez internetu. Bez cloudu. Bez rizika.
+

@@ -1,5 +1,6 @@
 # MIT License with Trademark and Commercial Restrictions  
-Copyright (c) 2026 Richard Pizem
+Copyright (c) 2026 Richard Pizem  
+Version: **2.0.0**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy  
 of this software and associated documentation files (the "Software"), to use,  
@@ -12,18 +13,18 @@ following conditions:
 The names **"SIRIUS LOCAL AI"**, **"GAMA"**, **"SIRIUS"**, **"GAMA Runtime"**,  
 and any associated logos, visual identity, or branding elements **may not be used** to:
 
-- endorse products,  
-- promote commercial services,  
-- distribute modified versions,  
-- create derivative branding,  
+- endorse products  
+- promote commercial services  
+- distribute modified versions  
+- create derivative branding  
 - imply affiliation or partnership  
 
 without **prior written permission** from the copyright holder.
 
 This includes **all variants**, such as:
 
-- “SIRIUS AI”, “SIRIUS Runtime”, “GAMA Mobile”,  
-- icons, glyphs, mascots, color schemes, and UI identity.
+- “SIRIUS AI”, “SIRIUS Runtime”, “GAMA Mobile”  
+- icons, glyphs, mascots, color schemes, UI identity  
 
 ---
 
@@ -33,21 +34,19 @@ part of a paid product or service without obtaining a **separate commercial lice
 
 This includes, but is not limited to:
 
-- selling the Software directly,  
-- bundling the Software into a paid application,  
-- offering the Software as a hosted or subscription-based service,  
-- integrating the Software into enterprise systems for profit,  
-- using the Software in SaaS, cloud, or remote-access products,  
-- selling modified or extended versions of the Software.
+- selling the Software directly  
+- bundling the Software into a paid application  
+- offering the Software as a hosted or subscription-based service  
+- integrating the Software into enterprise systems for profit  
+- using the Software in SaaS, cloud, or remote-access products  
+- selling modified or extended versions of the Software  
 
-### NEW — Additional Commercial Restrictions
+### Additional Commercial Restrictions (v2.0.0)
 - No paid “AI assistant” apps may include this Software without a license.  
-- No mobile app stores (Google Play / App Store) may distribute paid versions  
-  containing this Software without permission.  
+- No mobile app stores (Google Play / App Store) may distribute paid versions containing this Software.  
 - No cloud deployment, remote inference, or server-side hosting is allowed.  
 - No resale of Knowledge Packs, modules, or runtime components.  
-- No commercial training, consulting, or integration services using this Software  
-  without a commercial agreement.
+- No commercial training, consulting, or integration services using this Software without a commercial agreement.  
 
 ---
 
@@ -57,7 +56,7 @@ without modification, including all trademark and commercial restrictions.
 
 ---
 
-## 4. Additional Safety & Integrity Requirements (NEW)
+## 4. Additional Safety & Integrity Requirements
 To protect the SIRIUS ecosystem:
 
 - The Software may not be used to create harmful, unsafe, or deceptive systems.  
@@ -65,17 +64,17 @@ To protect the SIRIUS ecosystem:
 - The Software may not be used to create cloud-based AI services.  
 - The Software may not be used to train external AI models.  
 - The Software may not be used in surveillance, biometric tracking,  
-  or any privacy-invasive systems.
+  or any privacy-invasive systems.  
 
 ---
 
-## 5. Non‑Affiliation Clause (NEW)
+## 5. Non‑Affiliation Clause
 Use of the Software **does not grant**:
 
-- affiliation with the SIRIUS ecosystem,  
-- endorsement by the author,  
-- permission to claim compatibility,  
-- permission to use SIRIUS branding in marketing.
+- affiliation with the SIRIUS ecosystem  
+- endorsement by the author  
+- permission to claim compatibility  
+- permission to use SIRIUS branding in marketing  
 
 Any such claims require **written approval**.
 

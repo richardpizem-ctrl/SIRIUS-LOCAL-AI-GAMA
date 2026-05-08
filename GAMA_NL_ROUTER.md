@@ -1,6 +1,7 @@
-# 🧭 GAMA NL Router
+# 🧭 GAMA NL Router — Version 2.0.0
 
-The NL Router is responsible for interpreting user input and determining the correct task category.
+The NL Router is responsible for interpreting user input and determining the correct task category in **GAMA 2.0.0**.  
+Supports hybrid inputs, dict‑fallback events, safety‑aware routing, and Runtime 3.x metadata.
 
 ---
 
@@ -10,18 +11,18 @@ The NL Router is responsible for interpreting user input and determining the cor
 - routing logic  
 - fallback handling  
 - ambiguity resolution  
-- module priority resolution (NEW)  
-- event normalization for Runtime 3.x (NEW)  
-- safety‑aware routing (NEW)  
+- module priority resolution  
+- event normalization for Runtime 3.x  
+- safety‑aware routing  
 
 ---
 
 # 📝 Input Types
 - text  
 - voice (transcribed)  
-- OCR (vision engine output)  
-- dict‑based events from Vision fallback (NEW)  
-- hybrid inputs (text + OCR combined) (NEW)  
+- OCR (Vision Engine output)  
+- dict‑based events from Vision fallback  
+- hybrid inputs (text + OCR combined)  
 
 ---
 
@@ -29,26 +30,26 @@ The NL Router is responsible for interpreting user input and determining the cor
 - task category  
 - module target  
 - routing metadata  
-- confidence score (NEW)  
-- safety flags (NEW)  
-- fallback reason (NEW)  
+- confidence score  
+- safety flags  
+- fallback reason  
 
 ---
 
 # 🏷 Version
-**GAMA NL Router — v1.0.0**  
-(fully prepared for Runtime 3.0.0‑pre)
+**GAMA NL Router — v2.0.0**  
+(fully compatible with Runtime 2.0, prepared for Runtime 3.0.0‑pre)
 
 ---
 
-# 🔄 NL Router Flow
+# 🔄 NL Router Flow (v2.0.0)
 
 1. Receive normalized user input from the Runtime.  
 2. Detect input type:  
    - text  
    - voice (transcribed)  
    - OCR (vision output)  
-   - dict fallback (NEW)  
+   - dict fallback  
 3. Perform intent classification.  
 4. Match intent to routing rules.  
 5. Determine task category:  
@@ -57,12 +58,12 @@ The NL Router is responsible for interpreting user input and determining the cor
    - schoolwork  
    - security  
    - general assistant  
-   - diagnostics (NEW)  
-   - system/meta commands (NEW)  
+   - diagnostics  
+   - system/meta commands  
 6. Generate routing metadata.  
 7. Send routing result back to the Runtime Task Dispatcher.  
 8. Log routing event for diagnostics.  
-9. Apply safety filters if required (NEW).  
+9. Apply safety filters if required.  
 
 ---
 
@@ -74,8 +75,8 @@ Prepares incoming text, voice transcripts, or OCR output.
 - punctuation correction  
 - language detection  
 - tokenization  
-- hybrid input merging (NEW)  
-- dict → text normalization (NEW)  
+- hybrid input merging  
+- dict → text normalization  
 
 ## 2. Intent Classifier
 Determines what the user wants.
@@ -83,8 +84,8 @@ Determines what the user wants.
 - keyword detection  
 - lightweight offline ML model (optional)  
 - fallback heuristics  
-- multi‑intent detection (NEW)  
-- safety‑intent detection (NEW)  
+- multi‑intent detection  
+- safety‑intent detection  
 
 ## 3. Routing Engine
 Maps intents to modules.
@@ -92,9 +93,9 @@ Maps intents to modules.
 - priority rules  
 - fallback routes  
 - ambiguity resolution  
-- module priority scoring (NEW)  
-- safety‑aware routing (NEW)  
-- Runtime 3.x event mapping (NEW)  
+- module priority scoring  
+- safety‑aware routing  
+- Runtime 3.x event mapping  
 
 ## 4. Metadata Generator
 Creates routing metadata for the Runtime.
@@ -102,9 +103,9 @@ Creates routing metadata for the Runtime.
 - confidence score  
 - required module  
 - flags (vision, schoolwork, security)  
-- safety flags (NEW)  
-- fallback reason (NEW)  
-- event version tag (NEW)  
+- safety flags  
+- fallback reason  
+- event version tag  
 
 ## 5. Diagnostics Logger
 Tracks routing decisions.
@@ -112,13 +113,13 @@ Tracks routing decisions.
 - detected intent  
 - selected module  
 - errors or fallback usage  
-- confidence score (NEW)  
-- rule hits (NEW)  
-- ambiguity resolution logs (NEW)  
+- confidence score  
+- rule hits  
+- ambiguity resolution logs  
 
 ---
 
-# 🔁 NL Router Execution Cycle
+# 🔁 NL Router Execution Cycle (v2.0.0)
 
 1. Receive normalized input from the Runtime.  
 2. Detect input type (text, voice transcript, OCR, dict).  

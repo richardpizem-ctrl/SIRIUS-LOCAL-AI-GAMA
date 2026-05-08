@@ -1,15 +1,15 @@
-# ⚙️ GAMA Runtime Core
+# ⚙️ GAMA Runtime Core — Version 2.0.0
 
-The GAMA Runtime Core is the central execution layer responsible for:
+The GAMA Runtime Core is the **central execution layer** responsible for:
 - handling user intents  
 - routing tasks to modules  
 - managing offline capabilities  
 - coordinating knowledge packs  
 - executing mobile workflows  
 - providing a unified interface for all GAMA features  
-- enforcing deterministic behavior (NEW)  
-- managing event lifecycle (NEW)  
-- supporting Runtime 3.x metadata (NEW)  
+- enforcing deterministic behavior  
+- managing event lifecycle  
+- supporting Runtime 3.x metadata  
 
 ---
 
@@ -20,9 +20,9 @@ The GAMA Runtime Core is the central execution layer responsible for:
 - Local data access  
 - Security enforcement  
 - Error handling and recovery  
-- Diagnostics + event logging (NEW)  
-- Hybrid input normalization (NEW)  
-- Safety‑aware execution (NEW)  
+- Diagnostics + event logging  
+- Hybrid input normalization  
+- Safety‑aware execution  
 
 ---
 
@@ -33,19 +33,19 @@ The GAMA Runtime Core is the central execution layer responsible for:
 - Local Storage Layer  
 - Security Layer  
 - Logging & Diagnostics  
-- Runtime Context Manager (NEW)  
-- Event Metadata Engine (NEW)  
-- Module Priority Resolver (NEW)  
+- Runtime Context Manager  
+- Event Metadata Engine  
+- Module Priority Resolver  
 
 ---
 
 # 🏷 Version
-**GAMA Runtime Core — v1.0.0**  
-(fully prepared for Runtime 3.0.0‑pre)
+**GAMA Runtime Core — v2.0.0**  
+(fully compatible with Runtime 2.0, prepared for Runtime 3.0.0‑pre)
 
 ---
 
-# 🔄 Runtime Flow
+# 🔄 Runtime Flow (v2.0.0)
 
 1. User input is received (text, voice, image).  
 2. Input is normalized and sent to the Intent Router.  
@@ -55,8 +55,8 @@ The GAMA Runtime Core is the central execution layer responsible for:
    - schoolwork  
    - security  
    - general assistant  
-   - diagnostics (NEW)  
-   - system/meta commands (NEW)  
+   - diagnostics  
+   - system/meta commands  
 4. Task Dispatcher selects the correct module.  
 5. Module Manager loads the required module.  
 6. Module executes the task locally (offline‑first).  
@@ -72,30 +72,30 @@ The GAMA Runtime Core is the central execution layer responsible for:
 # 🧱 Runtime Components Detail
 
 ## 1. Intent Router
-Responsible for analyzing user input and determining the correct task category.
+Analyzes user input and determines the correct task category.
 - text normalization  
 - language detection  
 - intent classification  
 - routing rules  
-- multi‑intent detection (NEW)  
-- safety‑intent detection (NEW)  
-- hybrid input support (NEW)  
+- multi‑intent detection  
+- safety‑intent detection  
+- hybrid input support  
 
 ## 2. Task Dispatcher
-Receives the intent and selects the correct module.
+Selects the correct module for execution.
 - module selection logic  
 - priority handling  
 - fallback routing  
-- module priority scoring (NEW)  
-- event version mapping (NEW)  
+- module priority scoring  
+- event version mapping  
 
 ## 3. Module Manager
-Loads and executes modules required for the task.
+Loads and executes modules.
 - module registry  
 - lifecycle management  
 - dependency handling  
-- module compatibility checks (NEW)  
-- module tracking (NEW)  
+- module compatibility checks  
+- module tracking  
 
 ## 4. Local Storage Layer
 Handles all offline data.
@@ -103,34 +103,34 @@ Handles all offline data.
 - cached results  
 - user preferences  
 - secure storage  
-- pack integrity validation (NEW)  
-- pack auto‑load support (NEW)  
+- pack integrity validation  
+- pack auto‑load support  
 
 ## 5. Security Layer
 Ensures safe execution and output validation.
 - OWNER/FAMILY mode rules  
 - output filtering  
 - permission checks  
-- safety flags (NEW)  
-- restricted‑mode enforcement (NEW)  
+- safety flags  
+- restricted‑mode enforcement  
 
 ## 6. Logging & Diagnostics
-Tracks runtime behavior for debugging and stability.
+Tracks runtime behavior.
 - event logs  
 - error reports  
 - performance metrics  
-- rule hits (NEW)  
-- example hits (NEW)  
-- pack usage logs (NEW)  
+- rule hits  
+- example hits  
+- pack usage logs  
 
-## 7. Runtime Context Manager (NEW)
+## 7. Runtime Context Manager
 Maintains runtime state.
 - metadata  
 - debug logs  
 - reset()  
 - event context  
 
-## 8. Event Metadata Engine (NEW)
+## 8. Event Metadata Engine
 Adds structured metadata to every event.
 - event version  
 - module target  
@@ -139,7 +139,7 @@ Adds structured metadata to every event.
 
 ---
 
-# 🔁 Runtime Execution Cycle
+# 🔁 Runtime Execution Cycle (v2.0.0)
 
 1. Initialize runtime core.  
 2. Load essential modules and security rules.  

@@ -11,15 +11,15 @@ SIRIUS LOCAL AI GAMA **is not a hardware device** and has **no connection** to:
 - any robotics hardware  
 - any commercial “Sirius” branded devices  
 
-Some search engines (Google/Bing) may incorrectly merge unrelated products 
-because they share the word “Sirius”.
+Some search engines (Google/Bing) may incorrectly merge unrelated products  
+because they share the word **“Sirius”**.
 
 To avoid confusion:
 
 **GAMA is 100% independent software — a mobile offline AI runtime for Android/iOS.  
 It has no price, no hardware, no physical device, and no relation to Hengbot.**
 
-This project is part of the **SIRIUS LOCAL AI ecosystem**, created and maintained 
+This project is part of the **SIRIUS LOCAL AI ecosystem**, created and maintained  
 as a standalone offline AI runtime, not a consumer gadget.
 
 ---
@@ -61,9 +61,11 @@ NOT robotic dog, NOT hardware, NOT consumer device.
 ---
 
 # 🟪 What is GAMA?
+
 SIRIUS LOCAL AI GAMA is the **mobile branch** of the SIRIUS ecosystem — a lightweight, modular, fully offline AI runtime designed for phones and tablets.
 
 GAMA brings the core philosophy of SIRIUS to mobile devices:
+
 - 100% offline  
 - deterministic  
 - family‑safe  
@@ -102,6 +104,7 @@ GAMA extends SIRIUS LOCAL AI into the mobile world, enabling:
 
 ## 🟦 Mobile Runtime Core
 A lightweight ARM‑optimized runtime including:
+
 - NL Router Mobile  
 - Workflow Engine Mobile 2.0 (NEW)  
 - Mobile Knowledge Packs  
@@ -112,6 +115,7 @@ A lightweight ARM‑optimized runtime including:
 
 ## 🟩 Mobile Vision Engine
 Offline image understanding:
+
 - OCR 2.0  
 - object detection  
 - homework recognition  
@@ -129,17 +133,19 @@ Offline image understanding:
 
 ## 🟪 Knowledge Packs Mobile
 Compressed, fast, offline:
+
 - cooking  
 - repairs  
 - school subjects  
 - household workflows  
-- safety rules pack  
+- safety rules  
 - logic pack  
 - pack priority scoring  
 - pack integrity validation  
 
 ## 🟫 SECURITY FAMILY Mobile
 Identity‑aware safety:
+
 - OWNER / FAMILY / STRANGER  
 - restricted mode  
 - child‑safe filters  
@@ -152,6 +158,7 @@ Identity‑aware safety:
 # 🟦 NEW IN GAMA 2.0 — LAN OFFLINE BRIDGE
 
 Mobile ↔ PC communication over **local Wi‑Fi only**:
+
 - mobile = camera, UI, input  
 - PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
 
@@ -162,6 +169,7 @@ No telemetry.
 ---
 
 # 🟩 NEW IN GAMA 2.0 — DEVICE DIAGNOSTICS MOBILE
+
 - battery  
 - thermal  
 - storage  
@@ -171,6 +179,7 @@ No telemetry.
 ---
 
 # 🟧 NEW IN GAMA 2.0 — SCENE UNDERSTANDING
+
 - object detection  
 - scene classification  
 - metadata v3  
@@ -179,9 +188,10 @@ No telemetry.
 ---
 
 # 🟫 NEW IN GAMA 2.0 — HEALTH ASSISTANT 2.0
-- OCR pre medicínske dokumenty  
-- bezpečné info o liekoch  
-- first‑aid logika  
+
+- OCR for medical documents  
+- safe medication information  
+- first‑aid logic  
 - symptom explanations (non‑diagnostic)  
 - family‑safe health knowledge packs  
 
@@ -189,25 +199,28 @@ No telemetry.
 
 # 🟪 NEW IN GAMA 4.0 — SECURE ONLINE ENVOY (PREVIEW)
 
-*(Architecture preview included for future compatibility)*
+*(Architecture preview for future compatibility)*
 
 ## 🟦 Secure Online Envoy (Sandbox)
-- izolovaný online agent  
-- jednosmerný outbound  
-- získava text/JSON  
-- žiadny prístup k offline runtime  
+
+- isolated online agent  
+- outbound‑only  
+- retrieves text/JSON  
+- no access to offline runtime  
 
 ## 🟩 Quarantine Pipeline
-- sanitizácia textu  
-- validácia JSON  
-- bezpečnostné filtre  
+
+- text sanitization  
+- JSON validation  
+- security filters  
 - low‑trust classification  
 
 ## 🟧 Offline Core Remains Air‑Gapped
+
 - inference offline  
 - reasoning offline  
 - knowledge packs offline  
-- žiadne cloudové volania  
+- no cloud calls  
 
 ---
 
@@ -232,18 +245,20 @@ No telemetry.
 - Full Mobile Reasoning Engine  
 - Advanced Knowledge Graphs  
 - Multi‑intent routing  
-- Complete offline autonomy  
+- complete offline autonomy  
 - unified event architecture  
 
 ## GAMA 4.0
 - Secure Online Envoy  
 - Quarantine Pipeline  
-- Air‑gapped hybrid architecture  
+- air‑gapped hybrid architecture  
 - low‑trust data classification  
 
 ---
 
 # 📁 Repository Structure
+
+```
 /runtime_mobile  
 /modules  
 /ui  
@@ -254,6 +269,7 @@ No telemetry.
 /bridge  
 /docs  
 /build  
+```
 
 ---
 
@@ -265,6 +281,7 @@ No telemetry.
 ---
 
 # 🛡️ LEGAL
+
 - trademarks protected  
 - commercial use requires license  
 - forks must keep license  
@@ -279,24 +296,8 @@ GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
 
 ---
 
-# 📦 RELEASE NOTES — GAMA 2.0.0
+# 📦 GAMA RUNTIME PACKAGE — v2.0.0
 
-## NEW
-- LAN Offline Bridge  
-- Device Diagnostics Mobile  
-- Scene Understanding  
-- Workflow Engine Mobile 2.0  
-- Health Assistant 2.0  
-
-## IMPROVED
-- OCR pipeline  
-- ARM runtime performance  
-- event routing  
-- diagnostics logging  
-
----
-
-# 🟪 GAMA BOX — v2.0.0
 **Status:** Stable  
 **Type:** Mobile Runtime  
 **Architecture:** Offline, Modular, Deterministic  
@@ -305,6 +306,7 @@ GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
 ---
 
 # 🧩 Modules Included
+
 - Runtime Mobile  
 - NL Router Mobile  
 - Knowledge Packs Mobile  
@@ -318,6 +320,7 @@ GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
 ---
 
 # 🚀 Highlights
+
 - 100% offline  
 - deterministic execution  
 - privacy‑first  
@@ -325,4 +328,4 @@ GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
 - no cloud, no telemetry  
 - mobile‑optimized reasoning  
 - unified event system  
-- LAN‑offline PC bridge
+- LAN‑offline PC bridge  

@@ -22,6 +22,10 @@ This new license:
 **GAMA 2.0.0 remains under MIT‑Custom.  
 GAMA 3.0.0 and all future versions use SUL 3.0.0.**
 
+📘 **Documentation for version 3.0.0 and all future versions remains PUBLIC.**  
+Only the source code may be private.  
+This ensures transparency, visibility, and community interest while protecting the architecture.
+
 Full license text is included in README.
 
 ---
@@ -30,6 +34,8 @@ Full license text is included in README.
 **Release Date:** 2026‑05‑XX  
 **Status:** Major upgrade — architecture‑level update  
 **Compatibility:** Fully aligned with SIRIUS LOCAL AI 3.x ecosystem  
+**Documentation:** Public  
+**Source Code:** May be private under SUL 3.0.0  
 
 Version 3.0.0 introduces the **new modular architecture**, unified event system,  
 extended metadata, improved safety layers, and full integration with the  
@@ -142,6 +148,9 @@ This is the largest update to the mobile runtime since the creation of GAMA.
 # 🟪 STATUS
 GAMA 3.0.0 is a **major architectural milestone**,  
 fully aligned with the SIRIUS LOCAL AI 3.x ecosystem.
+
+📘 **Documentation for version 3.0.0 is public.**  
+🔒 **Source code may be private under SUL 3.0.0.**
 
 All modules, workflows, and event systems have been upgraded to the new unified architecture.
 

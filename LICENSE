@@ -1,11 +1,35 @@
 # SIRIUS Unified License (SUL)
-Version: 3.0.0
+Version: 3.0.0  
 Copyright (c) 2026 Richard Pizem
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to use
 the Software exclusively as a complete, indivisible whole, subject to the
 following conditions:
+
+---------------------------------------------------------------------
+
+## 📘 Public Documentation Notice (Effective from Version 3.0.0)
+All **documentation, specifications, and public-facing technical materials**
+for SIRIUS LOCAL AI GAMA **remain PUBLIC** for transparency, education,
+and ecosystem visibility.
+
+This includes:
+- README  
+- CHANGELOG  
+- architecture descriptions  
+- module overviews  
+- public API descriptions  
+- roadmap  
+- non-sensitive technical explanations  
+
+However:
+
+### 🔒 The **source code**, internal modules, runtime components, and all
+implementation details may be **private**, protected, or restricted under SUL.
+
+Public documentation does **not** grant permission to access, extract, copy,
+or reverse-engineer the private runtime or any part of the Software.
 
 ---------------------------------------------------------------------
 
@@ -18,11 +42,11 @@ No part of the Software may be extracted or reused independently.
 The Software may only be used and distributed as a complete, unified system.
 
 The following actions are strictly prohibited:
-- extracting modules or components
-- integrating parts into other projects
-- reusing components outside the SIRIUS ecosystem
-- forking or distributing only selected modules
-- repackaging or rebranding individual subsystems
+- extracting modules or components  
+- integrating parts into other projects  
+- reusing components outside the SIRIUS ecosystem  
+- forking or distributing only selected modules  
+- repackaging or rebranding individual subsystems  
 
 ---------------------------------------------------------------------
 
@@ -40,20 +64,20 @@ The Software may NOT be sold, monetized, or included in any paid product
 or service without obtaining a commercial license.
 
 This includes, but is not limited to:
-- paid mobile apps
-- SaaS, cloud, or hosted services
-- enterprise integrations
-- resale of modules, packs, or runtime components
-- commercial consulting, training, or integration services
-- server-side inference or remote-access AI systems
+- paid mobile apps  
+- SaaS, cloud, or hosted services  
+- enterprise integrations  
+- resale of modules, packs, or runtime components  
+- commercial consulting, training, or integration services  
+- server-side inference or remote-access AI systems  
 
 ---------------------------------------------------------------------
 
 ## 4. Redistribution Requirements
 Any redistribution of the Software must:
-- include this license in full
-- preserve the project structure without modification
-- distribute the Software ONLY as a complete whole
+- include this license in full  
+- preserve the project structure without modification  
+- distribute the Software ONLY as a complete whole  
 
 Partial redistribution is not allowed.
 
@@ -61,20 +85,20 @@ Partial redistribution is not allowed.
 
 ## 5. Safety & Integrity Requirements
 The Software may NOT be used to create:
-- harmful, deceptive, or unsafe systems
-- surveillance or biometric tracking systems
-- cloud-based AI services
-- external AI model training pipelines
-- systems bypassing identity or safety layers
+- harmful, deceptive, or unsafe systems  
+- surveillance or biometric tracking systems  
+- cloud-based AI services  
+- external AI model training pipelines  
+- systems bypassing identity or safety layers  
 
 ---------------------------------------------------------------------
 
 ## 6. Non‑Affiliation Clause
 Use of the Software does NOT grant:
-- affiliation with the SIRIUS ecosystem
-- endorsement by the author
-- permission to claim compatibility
-- permission to use SIRIUS branding
+- affiliation with the SIRIUS ecosystem  
+- endorsement by the author  
+- permission to claim compatibility  
+- permission to use SIRIUS branding  
 
 Any such claims require written approval.
 

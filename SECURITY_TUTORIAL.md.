@@ -1,0 +1,138 @@
+# 🛡 SIRIUS Local AI GAMA — Security Tutorial (EN)
+
+SIRIUS Local AI GAMA is a mobile offline AI runtime for Android and iOS, designed with a deterministic, privacy‑first, family‑safe security model. Its behavioral safety is a core system feature implemented through both architectural design and operational protocols.
+
+---
+
+## 🔐 Key Security Principles
+
+### **1. Fully Offline Operation**
+GAMA runs entirely offline, eliminating cloud telemetry and external network risks.
+
+- No internet access  
+- No cloud inference  
+- No remote data fetching  
+- No exposure to online prompt injection  
+
+Offline execution ensures deterministic behavior and drastically reduces the risk of external manipulation or untrusted input.
+
+---
+
+### **2. Identity‑Aware Access & Module Permissions**
+GAMA implements **OWNER / FAMILY / STRANGER** modes to differentiate user interactions.
+
+- Modules are restricted based on identity and privilege  
+- Prevents unsafe or inappropriate responses  
+- Ensures safe behavior in shared or family environments  
+
+---
+
+### **3. Child‑Safe & Family‑Safe Filters**
+Content safety filters prevent harmful, inappropriate, or dangerous outputs.
+
+Modules such as:
+
+- **Schoolwork Mode**  
+- **Health Assistant 2.0**  
+
+operate under deterministic, filtered workflows to protect minors.
+
+---
+
+### **4. Behavior Monitoring & Safety‑Intent Detection**
+GAMA monitors:
+
+- offline interaction patterns  
+- user behavior  
+- potential unsafe intentions  
+
+If a risk is detected:
+
+- restricted mode activates  
+- reasoning is limited  
+- unsafe outputs are blocked  
+
+Module isolation ensures that reasoning cannot bypass safety layers.
+
+---
+
+### **5. Modular Design & Privilege Isolation**
+Each functional module (OCR, Vision Engine, Knowledge Packs, Workflow Engine) runs inside a **sandbox**.
+
+This guarantees:
+
+- no cross‑module interference  
+- no privilege escalation  
+- predictable and safe behavior  
+- containment of potentially unsafe events  
+
+---
+
+### **6. Knowledge Packs with Compliance‑Aware Filtering**
+All knowledge packs and reasoning logic are:
+
+- offline  
+- deterministic  
+- pre‑validated  
+- family‑safe  
+
+Educational and health‑related content is curated for safe interaction.
+
+---
+
+### **7. Deterministic Execution**
+Given the same input, GAMA always produces the same output.
+
+This reduces:
+
+- unpredictable behavior  
+- unsafe improvisation  
+- hallucinations  
+
+Determinism is essential for behavioral safety and risk mitigation in local AI.
+
+---
+
+### **8. No External Data Dependency**
+GAMA does **not** require internet access for any core functionality.
+
+This eliminates:
+
+- malicious content retrieval  
+- online prompt injection  
+- runtime manipulation  
+
+---
+
+## 🧾 Summary Assessment
+
+From a behavioral safety perspective, GAMA demonstrates **high security standards** compared to general‑purpose AI systems due to:
+
+- offline deterministic architecture  
+- identity‑aware and privilege‑aware module execution  
+- child‑safe and intent‑aware filtering  
+- strict modular isolation  
+
+These design choices ensure that user interactions remain controlled, predictable, and safe — making GAMA suitable for family, educational, and sensitive environments.
+
+---
+
+## 📚 Documentation References
+
+- GAMA Security Family Documentation  
+- Mobile Runtime Architecture  
+- Vision Engine Documentation  
+- Schoolwork Mode Documentation  
+
+---
+
+## ✅ Conclusion
+
+The behavioral safety of SIRIUS Local AI GAMA is robust, leveraging:
+
+- offline isolation  
+- deterministic reasoning  
+- identity‑aware access  
+- modular privilege control  
+
+Its design aligns with best industry practices for family‑safe, privacy‑focused local AI systems.

@@ -1,91 +1,91 @@
-# MIT License with Trademark and Commercial Restrictions  
-Copyright (c) 2026 Richard Pizem  
-Version: **2.0.0**
+# SIRIUS Unified License (SUL)
+Version: 3.0.0
+Copyright (c) 2026 Richard Pizem
 
-Permission is hereby granted, free of charge, to any person obtaining a copy  
-of this software and associated documentation files (the "Software"), to use,  
-copy, modify, merge, publish, and distribute the Software, subject to the  
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to use
+the Software exclusively as a complete, indivisible whole, subject to the
 following conditions:
 
----
+---------------------------------------------------------------------
 
-## 1. Trademark Restriction
-The names **"SIRIUS LOCAL AI"**, **"GAMA"**, **"SIRIUS"**, **"GAMA Runtime"**,  
-and any associated logos, visual identity, or branding elements **may not be used** to:
+## 1. Indivisible Project Restriction
+The Software, including all modules, components, files, subsystems, runtimes,
+knowledge packs, engines, and any other part, may NOT be used, copied,
+modified, redistributed, or integrated separately.
 
-- endorse products  
-- promote commercial services  
-- distribute modified versions  
-- create derivative branding  
-- imply affiliation or partnership  
+No part of the Software may be extracted or reused independently.
+The Software may only be used and distributed as a complete, unified system.
 
-without **prior written permission** from the copyright holder.
+The following actions are strictly prohibited:
+- extracting modules or components
+- integrating parts into other projects
+- reusing components outside the SIRIUS ecosystem
+- forking or distributing only selected modules
+- repackaging or rebranding individual subsystems
 
-This includes **all variants**, such as:
+---------------------------------------------------------------------
 
-- “SIRIUS AI”, “SIRIUS Runtime”, “GAMA Mobile”  
-- icons, glyphs, mascots, color schemes, UI identity  
+## 2. Trademark Restriction
+The names "SIRIUS LOCAL AI", "SIRIUS", "GAMA", "GAMA Runtime",
+and all related branding, logos, icons, UI identity, or visual elements
+may NOT be used without prior written permission from the copyright holder.
 
----
+This includes all variants and derivatives.
 
-## 2. Commercial Resale Restriction
-This Software **may not be sold** as a standalone commercial product or as  
-part of a paid product or service without obtaining a **separate commercial license**.
+---------------------------------------------------------------------
+
+## 3. Commercial Use Restriction
+The Software may NOT be sold, monetized, or included in any paid product
+or service without obtaining a commercial license.
 
 This includes, but is not limited to:
+- paid mobile apps
+- SaaS, cloud, or hosted services
+- enterprise integrations
+- resale of modules, packs, or runtime components
+- commercial consulting, training, or integration services
+- server-side inference or remote-access AI systems
 
-- selling the Software directly  
-- bundling the Software into a paid application  
-- offering the Software as a hosted or subscription-based service  
-- integrating the Software into enterprise systems for profit  
-- using the Software in SaaS, cloud, or remote-access products  
-- selling modified or extended versions of the Software  
+---------------------------------------------------------------------
 
-### Additional Commercial Restrictions (v2.0.0)
-- No paid “AI assistant” apps may include this Software without a license.  
-- No mobile app stores (Google Play / App Store) may distribute paid versions containing this Software.  
-- No cloud deployment, remote inference, or server-side hosting is allowed.  
-- No resale of Knowledge Packs, modules, or runtime components.  
-- No commercial training, consulting, or integration services using this Software without a commercial agreement.  
+## 4. Redistribution Requirements
+Any redistribution of the Software must:
+- include this license in full
+- preserve the project structure without modification
+- distribute the Software ONLY as a complete whole
 
----
+Partial redistribution is not allowed.
 
-## 3. Attribution
-Any redistribution of the Software must include this license text **in full**,  
-without modification, including all trademark and commercial restrictions.
+---------------------------------------------------------------------
 
----
+## 5. Safety & Integrity Requirements
+The Software may NOT be used to create:
+- harmful, deceptive, or unsafe systems
+- surveillance or biometric tracking systems
+- cloud-based AI services
+- external AI model training pipelines
+- systems bypassing identity or safety layers
 
-## 4. Additional Safety & Integrity Requirements
-To protect the SIRIUS ecosystem:
+---------------------------------------------------------------------
 
-- The Software may not be used to create harmful, unsafe, or deceptive systems.  
-- The Software may not be used to bypass safety layers or identity rules.  
-- The Software may not be used to create cloud-based AI services.  
-- The Software may not be used to train external AI models.  
-- The Software may not be used in surveillance, biometric tracking,  
-  or any privacy-invasive systems.  
+## 6. Non‑Affiliation Clause
+Use of the Software does NOT grant:
+- affiliation with the SIRIUS ecosystem
+- endorsement by the author
+- permission to claim compatibility
+- permission to use SIRIUS branding
 
----
+Any such claims require written approval.
 
-## 5. Non‑Affiliation Clause
-Use of the Software **does not grant**:
+---------------------------------------------------------------------
 
-- affiliation with the SIRIUS ecosystem  
-- endorsement by the author  
-- permission to claim compatibility  
-- permission to use SIRIUS branding in marketing  
-
-Any such claims require **written approval**.
-
----
-
-## 6. Warranty Disclaimer
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
+## 7. Warranty Disclaimer
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,  
-DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR  
-OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE  
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR
+OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE
 USE OR OTHER DEALINGS IN THE SOFTWARE.

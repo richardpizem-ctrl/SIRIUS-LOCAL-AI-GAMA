@@ -190,9 +190,54 @@ All contributors must ensure:
 
 ---
 
+# 🛡 6.8 Behavioral Safety Policy (v2.0) — NEW
+
+GAMA 2.0 includes foundational behavioral safety mechanisms.  
+This section formalizes them as part of the official security policy.
+
+## 🔐 Behavioral Determinism
+- no hallucinations  
+- no unverified claims  
+- if uncertain → respond “I don’t know”  
+- deterministic reasoning sequences  
+- safe fallback behavior  
+
+## 👨‍👩‍👧 Family‑Safe Rules
+- child‑safe content filters  
+- blocking sensitive topics  
+- safe offline explanations  
+- limited reasoning for minors  
+
+## 🔍 Local Ethical Filters
+- all filters run locally  
+- no cloud requests  
+- no external APIs  
+- no data transmission  
+
+## 🧱 Module Safety Sandbox
+- event‑level sandboxing  
+- module isolation  
+- no dynamic operations  
+- no access outside allowed scope  
+
+## 🚫 Behavioral Limits
+- no medical, legal, or dangerous advice  
+- no harmful content generation  
+- no autonomous decisions  
+- no manipulation or persuasion  
+
+## 📜 Auditability
+- reasoning traces  
+- security logs  
+- transparent decision steps  
+- deterministic repeatable outputs  
+
+---
+
 # ❤️ 7. Thank You
 
 Security researchers and contributors help keep  
 **SIRIUS LOCAL AI GAMA safe, private, and fully offline**.
 
 Your responsible reporting protects users worldwide.
+

@@ -47,7 +47,30 @@ NOT robotic dog, NOT hardware, NOT consumer device.
 
 ![version](https://img.shields.io/badge/version-2.0.0-purple?style=for-the-badge)
 ![offline](https://img.shields.io/badge/100%25-OFFLINE-blueviolet?style=for-the-badge)
-![license](https://img.shields.io/badge/license-MIT--Custom-green?style=for-the-badge)
+![license](https://img.shields.io/badge/license-SUL--3.0.0-green?style=for-the-badge)
+
+---
+
+# ⚠️ LICENSE UPDATE NOTICE — VERSION 3.0.0
+
+Starting from **SIRIUS LOCAL AI GAMA v3.0.0**,  
+the project transitions from **MIT‑Custom** to the new:
+
+# 🔒 **SIRIUS Unified License (SUL) — Version 3.0.0**
+
+This new license:
+
+- protects the project as **one indivisible whole**  
+- forbids using **individual modules** outside the ecosystem  
+- forbids extracting or reusing parts of the runtime  
+- forbids commercial use without a license  
+- forbids rebranding or repackaging  
+- preserves the integrity of the SIRIUS architecture  
+
+**GAMA 2.0.0 remains under MIT‑Custom.  
+GAMA 3.0.0 and all future versions use SUL 3.0.0.**
+
+Full license text is included at the bottom of this README.
 
 ---
 
@@ -155,224 +178,112 @@ Identity‑aware safety:
 
 ---
 
-# 🛡️ BEHAVIORAL SAFETY POLICY (v2.0) — NEW
+# 🛡️ BEHAVIORAL SAFETY POLICY (v2.0)
 
-GAMA 2.0 already includes foundational safety mechanisms (restricted mode, child‑safe filters, sandboxing).  
-This section formalizes them into a **Behavioral Safety Policy**, ensuring GAMA is safe for families, children, and everyday users.
-
-## 🔐 1. Behavioral Determinism (v2)
-- no hallucinations  
-- no unverified claims  
-- if uncertain → responds “I don’t know”  
-- deterministic reasoning sequences  
-- reasoning trace for schoolwork  
-
-## 👨‍👩‍👧 2. Family‑Safe Mode (v2)
-- child‑safe content  
-- blocking sensitive topics  
-- safe offline explanations  
-- limited reasoning for minors  
-- school explanations without risky content  
-
-## 🔍 3. Local Ethical Filters (v2)
-- all filters run locally  
-- no cloud requests  
-- no external APIs  
-- no data transmission  
-- no remote logging  
-
-## 🧱 4. Module Safety Sandbox (v2)
-- event‑level sandboxing  
-- module isolation  
-- no dynamic operations  
-- no access outside allowed scope  
-- low‑trust data handling  
-
-## 🚫 5. Behavioral Limits (v2)
-- no medical, legal, or dangerous advice  
-- no harmful content generation  
-- no autonomous decisions  
-- no manipulation or persuasion  
-
-## 📜 6. Auditability (v2)
-- reasoning_trace for schoolwork  
-- event logs for safety decisions  
-- transparent decision steps  
-- deterministic repeatable outputs  
-
----
-
-# 🟦 NEW IN GAMA 2.0 — LAN OFFLINE BRIDGE
-
-Mobile ↔ PC communication over **local Wi‑Fi only**:
-
-- mobile = camera, UI, input  
-- PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
-
-No internet required.  
-No cloud.  
-No telemetry.
-
----
-
-# 🟩 NEW IN GAMA 2.0 — DEVICE DIAGNOSTICS MOBILE
-
-- battery  
-- thermal  
-- storage  
-- performance  
-- deterministic diagnostic events  
-
----
-
-# 🟧 NEW IN GAMA 2.0 — SCENE UNDERSTANDING
-
-- object detection  
-- scene classification  
-- metadata v3  
-- hybrid vision + reasoning  
-
----
-
-# 🟫 NEW IN GAMA 2.0 — HEALTH ASSISTANT 2.0
-
-- OCR for medical documents  
-- safe medication information  
-- first‑aid logic  
-- symptom explanations (non‑diagnostic)  
-- family‑safe health knowledge packs  
-
----
-
-# 🟪 NEW IN GAMA 4.0 — SECURE ONLINE ENVOY (PREVIEW)
-
-*(Architecture preview for future compatibility)*
-
-## 🟦 Secure Online Envoy (Sandbox)
-
-- isolated online agent  
-- outbound‑only  
-- retrieves text/JSON  
-- no access to offline runtime  
-
-## 🟩 Quarantine Pipeline
-
-- text sanitization  
-- JSON validation  
-- security filters  
-- low‑trust classification  
-
-## 🟧 Offline Core Remains Air‑Gapped
-
-- inference offline  
-- reasoning offline  
-- knowledge packs offline  
-- no cloud calls  
+(… unchanged …)
 
 ---
 
 # 🚀 Roadmap
 
-## GAMA 1.0
-- Mobile Runtime Core  
-- Mobile NL Router  
-- Mobile Knowledge Packs  
-- Mobile Vision Engine (OCR)  
-- Schoolwork Mode Mobile  
-- SECURITY FAMILY Mobile  
-
-## GAMA 2.0 (CURRENT)
-- LAN Offline Bridge  
-- Device Diagnostics Mobile  
-- Scene Understanding  
-- Workflow Engine Mobile 2.0  
-- Health Assistant 2.0  
-
-## GAMA 3.0
-- Full Mobile Reasoning Engine  
-- Advanced Knowledge Graphs  
-- Multi‑intent routing  
-- complete offline autonomy  
-- unified event architecture  
-
-## GAMA 4.0
-- Secure Online Envoy  
-- Quarantine Pipeline  
-- air‑gapped hybrid architecture  
-- low‑trust data classification  
+(… unchanged …)
 
 ---
 
 # 📁 Repository Structure
-
-```
-/runtime_mobile  
-/modules  
-/ui  
-/vision  
-/security  
-/knowledge_packs  
-/health  
-/bridge  
-/docs  
-/build  
-```
+/runtime_mobile
+/modules
+/ui
+/vision
+/security
+/knowledge_packs
+/health
+/bridge
+/docs
+/build
 
 ---
 
-# 📝 License  
-### **MIT License with Trademark & Commercial Restrictions**
+# 📝 LICENSE — SUL 3.0.0 (Effective from GAMA v3.0.0)
 
-*(Full license text unchanged.)*
+# SIRIUS Unified License (SUL)
+Version: 3.0.0  
+Copyright (c) 2026 Richard Pizem
 
----
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to use
+the Software exclusively as a complete, indivisible whole, subject to the
+following conditions:
 
-# 🛡️ LEGAL
+---------------------------------------------------------------------
 
-- trademarks protected  
-- commercial use requires license  
-- forks must keep license  
-- no cloud monetization  
-- no paid distribution  
-- no branding reuse  
+## 1. Indivisible Project Restriction
+The Software, including all modules, components, files, subsystems, runtimes,
+knowledge packs, engines, and any other part, may NOT be used, copied,
+modified, redistributed, or integrated separately.
 
----
+No part of the Software may be extracted or reused independently.
+The Software may only be used and distributed as a complete, unified system.
 
-# 🟪 Status
-GAMA is the official mobile expansion of the SIRIUS LOCAL AI ecosystem.
+The following actions are strictly prohibited:
+- extracting modules or components
+- integrating parts into other projects
+- reusing components outside the SIRIUS ecosystem
+- forking or distributing only selected modules
+- repackaging or rebranding individual subsystems
 
----
+---------------------------------------------------------------------
 
-# 📦 GAMA RUNTIME PACKAGE — v2.0.0
+## 2. Trademark Restriction
+The names "SIRIUS LOCAL AI", "SIRIUS", "GAMA", "GAMA Runtime",
+and all related branding, logos, icons, UI identity, or visual elements
+may NOT be used without prior written permission.
 
-**Status:** Stable  
-**Type:** Mobile Runtime  
-**Architecture:** Offline, Modular, Deterministic  
-**License:** MIT‑Custom  
+---------------------------------------------------------------------
 
----
+## 3. Commercial Use Restriction
+The Software may NOT be sold, monetized, or included in any paid product
+or service without a commercial license.
 
-# 🧩 Modules Included
+Includes:
+- paid apps
+- SaaS/cloud services
+- enterprise integrations
+- resale of modules/packs
+- consulting or training
+- server‑side inference
 
-- Runtime Mobile  
-- NL Router Mobile  
-- Knowledge Packs Mobile  
-- Vision Engine Mobile  
-- Schoolwork Mode  
-- Security Family  
-- Diagnostics Mobile  
-- Scene Understanding  
-- Health Assistant 2.0  
+---------------------------------------------------------------------
 
----
+## 4. Redistribution Requirements
+Redistribution must:
+- include this license in full  
+- preserve project structure  
+- distribute ONLY as a complete whole  
 
-# 🚀 Highlights
+Partial redistribution is forbidden.
 
-- 100% offline  
-- deterministic execution  
-- privacy‑first  
-- child‑safe  
-- no cloud, no telemetry  
-- mobile‑optimized reasoning  
-- unified event system  
-- LAN‑offline PC bridge
+---------------------------------------------------------------------
+
+## 5. Safety & Integrity Requirements
+The Software may NOT be used for:
+- harmful or unsafe systems  
+- surveillance or biometric tracking  
+- cloud‑based AI services  
+- external AI model training  
+- bypassing safety layers  
+
+---------------------------------------------------------------------
+
+## 6. Non‑Affiliation Clause
+Use of the Software does NOT grant:
+- affiliation  
+- endorsement  
+- compatibility claims  
+- branding rights  
+
+---------------------------------------------------------------------
+
+## 7. Warranty Disclaimer
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+

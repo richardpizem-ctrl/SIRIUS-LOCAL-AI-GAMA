@@ -45,6 +45,54 @@ The GAMA Runtime Core is the **central execution layer** responsible for:
 
 ---
 
+# 🛡️ BEHAVIORAL SAFETY POLICY (v2.0) — NEW
+
+The Runtime Core enforces global behavioral safety rules across all modules.  
+This ensures deterministic, safe, family‑friendly execution for all inputs.
+
+## 🔐 1. Deterministic Runtime Behavior
+- no hallucinated outputs  
+- no unverified claims  
+- if uncertain → respond “I don’t know”  
+- deterministic routing + reasoning  
+- safe fallback behavior  
+
+## 👨‍👩‍👧 2. Family‑Safe Execution
+- child‑safe filtering  
+- blocking sensitive topics  
+- safe offline explanations  
+- restricted reasoning for minors  
+
+## 🔍 3. Local Ethical Filters
+- all filtering is fully offline  
+- no cloud APIs  
+- no external requests  
+- no telemetry  
+- no remote logging  
+
+## 🧱 4. Runtime Sandbox (v2)
+- module isolation  
+- event‑level sandboxing  
+- no dynamic operations  
+- no cross‑module privilege escalation  
+- hybrid inputs treated as **low‑trust**  
+
+## 🚫 5. Behavioral Limits
+Runtime Core will **never**:
+- generate harmful content  
+- provide medical/legal/dangerous advice  
+- perform identity inference  
+- make autonomous decisions  
+- manipulate or persuade users  
+
+## 📜 6. Auditability
+- event logs  
+- safety flags  
+- fallback traces  
+- deterministic replay of events  
+
+---
+
 # 🔄 Runtime Flow (v2.0.0)
 
 1. User input is received (text, voice, image).  
@@ -166,4 +214,4 @@ Adds structured metadata to every event.
 - pack integrity validation  
 - diagnostics expansion  
 - unified event architecture  
-- dict → event fallback normalization  
+- dict → event fallback normalization

@@ -38,6 +38,56 @@ Fully deterministic, ARM‑optimized, hybrid‑input capable.
 
 ---
 
+# 🛡️ BEHAVIORAL SAFETY POLICY (v2.0) — NEW
+
+The Vision Engine is part of the GAMA 2.0 safety‑first architecture.  
+This section defines **behavioral safety rules** specific to OCR, image inputs, and hybrid inputs.
+
+## 🔐 1. Deterministic & Safe OCR Behavior
+- no hallucinated text  
+- no invented symbols or math expressions  
+- no unsafe interpretation of images  
+- deterministic OCR output for identical inputs  
+- fallback OCR mode for low‑quality images  
+
+## 👨‍👩‍👧 2. Family‑Safe Vision Processing
+- blocks unsafe visual content categories  
+- child‑safe filtering for schoolwork images  
+- no recognition of sensitive adult content  
+- no interpretation of violent or harmful scenes  
+
+## 🔍 3. Local Ethical Filters
+- all OCR processing is fully offline  
+- no cloud vision APIs  
+- no external model calls  
+- no image uploads  
+- no telemetry  
+
+## 🧱 4. Vision Sandbox (v2)
+- OCR runs in a restricted sandbox  
+- no dynamic operations  
+- no access to system files  
+- no cross‑module privilege escalation  
+- hybrid inputs treated as **low‑trust**  
+
+## 🚫 5. Behavioral Limits
+The Vision Engine will **never**:
+- classify people  
+- identify individuals  
+- perform face recognition  
+- infer emotions  
+- infer identity, age, gender, ethnicity  
+- provide medical or legal interpretation of documents  
+
+## 📜 6. Auditability
+- OCR events logged in diagnostics  
+- preprocessing steps recorded  
+- fallback usage recorded  
+- math detection logged  
+- handwriting detection logged  
+
+---
+
 # 🏷 Version
 **GAMA Vision Engine — v2.0.0**  
 (fully compatible with Runtime 2.0 and prepared for Runtime 3.0.0‑pre)
@@ -159,4 +209,4 @@ Tracks OCR events.
 - pack priority scoring  
 - pack integrity validation  
 - deterministic vision reasoning  
-- expanded diagnostics  
+- expanded diagnostics

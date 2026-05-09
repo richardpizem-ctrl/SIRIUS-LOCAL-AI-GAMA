@@ -35,6 +35,53 @@ Version 2.0.0 introduces **low‑trust data handling**, **output safety validati
 
 ---
 
+# 🛡️ BEHAVIORAL SAFETY POLICY (v2.0) — NEW
+
+GAMA 2.0 already includes foundational safety mechanisms (restricted mode, child‑safe filters, sandboxing).  
+This section formalizes them into a **Behavioral Safety Policy**, ensuring GAMA is safe for families, children, and everyday users.
+
+## 🔐 1. Behavioral Determinism (v2)
+- no hallucinations  
+- no unverified claims  
+- if uncertain → responds “I don’t know”  
+- deterministic reasoning sequences  
+- reasoning trace for schoolwork  
+
+## 👨‍👩‍👧 2. Family‑Safe Mode (v2)
+- child‑safe content  
+- blocking sensitive topics  
+- safe offline explanations  
+- limited reasoning for minors  
+- school explanations without risky content  
+
+## 🔍 3. Local Ethical Filters (v2)
+- all filters run locally  
+- no cloud requests  
+- no external APIs  
+- no data transmission  
+- no remote logging  
+
+## 🧱 4. Module Safety Sandbox (v2)
+- event‑level sandboxing  
+- module isolation  
+- no dynamic operations  
+- no access outside allowed scope  
+- low‑trust data handling  
+
+## 🚫 5. Behavioral Limits (v2)
+- no medical, legal, or dangerous advice  
+- no harmful content generation  
+- no autonomous decisions  
+- no manipulation or persuasion  
+
+## 📜 6. Auditability (v2)
+- reasoning_trace for schoolwork  
+- event logs for safety decisions  
+- transparent decision steps  
+- deterministic repeatable outputs  
+
+---
+
 # 🏷 Version
 **GAMA Security Family — v2.0.0**  
 (compatible with GAMA Runtime 2.0, prepared for 3.0.0‑pre, extended in 4.0)
@@ -189,4 +236,4 @@ If anomaly detected:
 - restricted‑mode hardening  
 - unified SECURITY event metadata  
 - envoy low‑trust classification  
-- quarantine integration  
+- quarantine integration

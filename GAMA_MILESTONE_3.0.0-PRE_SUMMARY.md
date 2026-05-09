@@ -183,7 +183,45 @@ Verzia 3.0.0‑pre predstavuje **kompletný re‑architecture** celého systému
 
 ---
 
-# 8. ✅ COMPLETION STATUS
+# 8. 🔐 BEHAVIORAL SAFETY POLICY (v3)
+
+## 8.1 Behavioral Determinism
+- žiadne halucinácie  
+- žiadne neoverené tvrdenia  
+- ak systém nevie → odpovie „neviem“  
+- všetky reasoning sekvencie sú deterministické a auditovateľné  
+
+## 8.2 Family Mode v3
+- bezpečný obsah pre domácnosť  
+- blokovanie citlivých tém  
+- obmedzené reasoning pre deti  
+- bezpečné odpovede v offline prostredí  
+
+## 8.3 Local Ethical Filters
+- všetky filtre bežia lokálne  
+- žiadne odosielanie dát  
+- žiadne cloud requesty  
+- žiadne externé API  
+
+## 8.4 Module Safety Sandbox
+- každý modul beží v izolácii  
+- podpisovanie modulov  
+- žiadne dynamické operácie  
+- žiadny prístup mimo povoleného rozsahu  
+
+## 8.5 Behavioral Limits
+- zákaz medicínskych, právnych a nebezpečných odporúčaní  
+- zákaz generovania škodlivého obsahu  
+- zákaz autonómnych rozhodnutí  
+
+## 8.6 Auditability
+- každý výstup má behavior_trace  
+- deterministické opakovanie  
+- transparentné rozhodovacie kroky  
+
+---
+
+# 9. ✅ COMPLETION STATUS
 
 | Component | Status |
 |----------|--------|
@@ -200,12 +238,10 @@ Verzia 3.0.0‑pre predstavuje **kompletný re‑architecture** celého systému
 | Build System v3 | ✔ Done |
 | Vision Module v3 | ✔ Done |
 | Schoolwork Module v3 | ✔ Done |
+| Behavioral Safety Policy v3 | ✔ Done |
 | Final Integration Tests v3 | ✔ Done |
 
 ---
 
-# 🎉 Milestone 3.0.0‑pre — COMPLETE
-
-Týmto je architektúra 3.0.0‑pre **plne uzavretá**.  
+# 🎉 Milestone 3.0.0‑pre — COMPLETE  
 Systém je pripravený na implementáciu.
-

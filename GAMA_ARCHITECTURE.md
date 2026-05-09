@@ -167,7 +167,7 @@ GAMA v4 (preview) pridáva hybrid‑safe architektúru, ktorá umožňuje získa
 
 ---
 
-# Optional: LAN Offline Bridge
+# 🟫 Optional: LAN Offline Bridge
 Mobile ↔ PC komunikácia cez **lokálnu Wi‑Fi**:
 
 - mobile = camera, UI, input  
@@ -175,3 +175,49 @@ Mobile ↔ PC komunikácia cez **lokálnu Wi‑Fi**:
 
 Bez internetu. Bez cloudu. Bez rizika.
 
+---
+
+# 🔐 10. BEHAVIORAL SAFETY POLICY (v2) — *NEW*
+
+GAMA 2.0 získava prvú verziu behaviorálnej bezpečnosti, ktorá pripravuje pôdu pre plnú deterministickú politiku v GAMA 3.x.
+
+## 10.1 Behavioral Determinism (v2)
+- žiadne halucinácie  
+- žiadne neoverené tvrdenia  
+- ak systém nevie → odpovie „neviem“  
+- reasoning trace pre školské úlohy  
+- deterministické odpovede v rámci packov  
+
+## 10.2 Family Mode (v2)
+- child‑safe filters  
+- blokovanie citlivých tém  
+- bezpečné offline odpovede  
+- obmedzené reasoning pre deti  
+- školské vysvetlenia bez rizikového obsahu  
+
+## 10.3 Local Ethical Filters (v2)
+- všetky filtre bežia lokálne  
+- žiadne cloud requesty  
+- žiadne externé API  
+- žiadne odosielanie dát  
+
+## 10.4 Module Safety Sandbox (v2)
+- event‑level sandboxing  
+- izolácia modulov  
+- žiadne dynamické operácie  
+- žiadny prístup mimo povoleného rozsahu  
+
+## 10.5 Behavioral Limits (v2)
+- zákaz medicínskych, právnych a nebezpečných odporúčaní  
+- zákaz generovania škodlivého obsahu  
+- zákaz autonómnych rozhodnutí  
+
+## 10.6 Auditability (v2)
+- reasoning_trace pre školské úlohy  
+- event logs pre bezpečnostné rozhodnutia  
+- transparentné rozhodovacie kroky  
+
+---
+
+# ✔ GAMA 2.0 — COMPLETE  
+Architektúra je stabilná, deterministická a pripravená na prechod do GAMA 3.x.

@@ -70,6 +70,10 @@ This new license:
 **GAMA 2.0.0 remains under MIT‑Custom.  
 GAMA 3.0.0 and all future versions use SUL 3.0.0.**
 
+📘 **Documentation for version 3.0.0 and all future versions remains PUBLIC.**  
+Only the source code may be private.  
+This ensures transparency, visibility, and community interest while protecting the architecture.
+
 Full license text is included at the bottom of this README.
 
 ---
@@ -191,16 +195,16 @@ Identity‑aware safety:
 ---
 
 # 📁 Repository Structure
-/runtime_mobile
-/modules
-/ui
-/vision
-/security
-/knowledge_packs
-/health
-/bridge
-/docs
-/build
+/runtime_mobile  
+/modules  
+/ui  
+/vision  
+/security  
+/knowledge_packs  
+/health  
+/bridge  
+/docs  
+/build  
 
 ---
 
@@ -246,12 +250,12 @@ The Software may NOT be sold, monetized, or included in any paid product
 or service without a commercial license.
 
 Includes:
-- paid apps
-- SaaS/cloud services
-- enterprise integrations
-- resale of modules/packs
-- consulting or training
-- server‑side inference
+- paid apps  
+- SaaS/cloud services  
+- enterprise integrations  
+- resale of modules/packs  
+- consulting or training  
+- server‑side inference  
 
 ---------------------------------------------------------------------
 
@@ -286,4 +290,3 @@ Use of the Software does NOT grant:
 
 ## 7. Warranty Disclaimer
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
-

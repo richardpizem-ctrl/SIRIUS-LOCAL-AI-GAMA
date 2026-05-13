@@ -1,11 +1,9 @@
 # 📁 SIRIUS LOCAL AI GAMA – Folder Structure  
-Version: **2.0.0**
+Version: **3.0.0**
 
-Toto je oficiálna priečinková štruktúra pre **SIRIUS LOCAL AI GAMA 2.0.0**, rozšírená o všetky nové moduly, ktoré vznikli v rámci verzie 2.0 a príprav na 3.0.0‑pre.
+This is the official folder structure for **SIRIUS LOCAL AI GAMA 3.0.0**, fully aligned with the new 3.x architecture, unified event system, hybrid‑safe rules, and Runtime Core 3.0.
 
 ---
-
-```
 /runtime_mobile
 /modules
 /ui
@@ -19,48 +17,51 @@ Toto je oficiálna priečinková štruktúra pre **SIRIUS LOCAL AI GAMA 2.0.0**,
 /events
 /docs
 /build
-```
 
 ---
 
 # 🟦 /runtime_mobile  
-Hlavný mobilný runtime pre GAMA 2.0.  
-Obsahuje:
+The main mobile runtime for GAMA 3.0.  
+Contains all core orchestrators and 3.x architecture components:
 
 - runtime_core.py  
-- task_dispatcher.py  
-- intent_router_link.py  
+- event_dispatcher_mobile.py  
 - module_manager.py  
 - runtime_context_manager.py  
-- event_metadata_engine.py  
+- event_metadata_engine_v3.py  
 - hybrid_input_normalizer.py  
 - safety_execution_layer.py  
+- module_priority_resolver_v3.py  
+- fallback_normalizer.py  
+- unified_event_router.py  
 
 ---
 
 # 🟪 /modules  
-Všetky funkčné moduly GAMA 2.0:
+All functional modules for GAMA 3.0 (rewritten or upgraded):
 
-- **vision_engine_mobile**  
-- **object_detection_mobile**  
-- **scene_understanding_mobile**  
-- **vision_fallback_mobile**  
-- **schoolwork_mode_mobile**  
-- **math_solver_mobile**  
-- **step_by_step_engine**  
-- **schoolwork_detector**  
-- **knowledge_pack_integrator**  
-- **health_assistant_mobile**  
-- **diagnostics_mobile**  
-- **security_family_mobile**  
-- **workflow_engine_mobile_2**  
-- **module_priority_resolver**  
-- **pack_integrity_checker**  
+- **vision_engine_mobile_v3**  
+- **object_detection_mobile_v3**  
+- **scene_understanding_mobile_v3**  
+- **analyze_mobile_v3**  
+- **vision_fallback_mobile_v3**  
+- **schoolwork_mode_mobile_v3**  
+- **math_solver_mobile_v3**  
+- **step_by_step_engine_v3**  
+- **schoolwork_detector_v3**  
+- **knowledge_pack_integrator_v3**  
+- **health_assistant_mobile_v3**  
+- **diagnostics_mobile_v3**  
+- **security_family_mobile_v3**  
+- **workflow_engine_mobile_3**  
+- **pack_integrity_checker_v3**  
+- **low_trust_classifier_v3**  
+- **hybrid_safe_gatekeeper**  
 
 ---
 
 # 🟩 /ui  
-Mobilné UI komponenty:
+Mobile UI components for GAMA 3.x:
 
 - screens/  
 - components/  
@@ -68,38 +69,42 @@ Mobilné UI komponenty:
 - animations/  
 - hybrid_input_ui/  
 - camera_ui/  
+- diagnostics_ui/  
+- safety_ui/  
 
 ---
 
 # 🟧 /vision  
-Všetky Vision moduly:
+All Vision Engine 3.0 modules:
 
-- ocr_mobile/  
-- object_detection_mobile/  
-- scene_understanding_mobile/  
-- analyze_mobile/  
-- preprocessing_native/  
-- vision_fallback_mobile/  
-- vision_diagnostics/  
+- ocr_mobile_v3/  
+- object_detection_mobile_v3/  
+- scene_understanding_mobile_v3/  
+- analyze_mobile_v3/  
+- preprocessing_native_v3/  
+- vision_fallback_mobile_v3/  
+- vision_diagnostics_v3/  
+- hybrid_input_merger/  
 
 ---
 
 # 🟫 /security  
-Bezpečnostné moduly:
+Security Family 3.0 modules:
 
-- security_family_mobile/  
-- behavior_monitor/  
-- safety_rules_engine/  
-- operation_filter/  
-- mode_controller/  
-- quarantine_pipeline/  
-- envoy_low_trust_handler/  
-- security_diagnostics/  
+- security_family_mobile_v3/  
+- behavior_monitor_v3/  
+- safety_rules_engine_v3/  
+- operation_filter_v3/  
+- mode_controller_v3/  
+- quarantine_pipeline_v3/  
+- envoy_low_trust_handler_v3/  
+- security_diagnostics_v3/  
+- restricted_mode_controller/  
 
 ---
 
 # 🟩 /knowledge_packs  
-Všetky Knowledge Packy:
+Knowledge Packs 3.0:
 
 - cooking_pack/  
 - repairs_pack/  
@@ -108,95 +113,101 @@ Všetky Knowledge Packy:
 - logic_pack/  
 - safety_rules_pack/  
 - general_knowledge_pack/  
-- metadata_specs/  
-- pack_integrity_checker/  
+- metadata_specs_v3/  
+- pack_integrity_checker_v3/  
+- pack_priority_engine_v3/  
 
 ---
 
 # 🟫 /bridge  
-LAN Offline Bridge + PC konektivita:
+LAN Offline Bridge 3.0 + PC connectivity:
 
-- lan_bridge/  
-- pc_runtime_connector/  
-- offline_sync_manager/  
-- mobile_pc_event_bridge/  
+- lan_bridge_v3/  
+- pc_runtime_connector_v3/  
+- offline_sync_manager_v3/  
+- mobile_pc_event_bridge_v3/  
+- diagnostics_bridge/  
 
 ---
 
 # 🩺 /health  
-Health Assistant 2.0:
+Health Assistant 3.0:
 
-- health_assistant_entry/  
-- health_ocr_pipeline/  
-- medication_info_engine/  
-- first_aid_logic/  
-- symptom_explanation_engine/  
-- health_safety_layer/  
-- health_diagnostics/  
+- health_assistant_entry_v3/  
+- health_ocr_pipeline_v3/  
+- medication_info_engine_v3/  
+- first_aid_logic_v3/  
+- symptom_explanation_engine_v3/  
+- health_safety_layer_v3/  
+- health_diagnostics_v3/  
 
 ---
 
 # 🛠 /diagnostics  
-Diagnostické moduly:
+Diagnostics 3.0:
 
-- battery_diagnostics/  
-- thermal_diagnostics/  
-- storage_diagnostics/  
-- memory_diagnostics/  
-- performance_logs/  
-- event_logs/  
-- rule_hits/  
-- example_hits/  
+- battery_diagnostics_v3/  
+- thermal_diagnostics_v3/  
+- storage_diagnostics_v3/  
+- memory_diagnostics_v3/  
+- performance_logs_v3/  
+- event_logs_v3/  
+- rule_hits_v3/  
+- example_hits_v3/  
+- hybrid_safe_logs/  
 
 ---
 
 # 🧠 /context  
-Runtime Context v2:
+Runtime Context 3.0:
 
-- runtime_context_manager/  
-- event_context/  
-- metadata_store/  
-- debug_logs/  
+- runtime_context_manager_v3/  
+- event_context_v3/  
+- metadata_store_v3/  
+- debug_logs_v3/  
+- hybrid_safe_context/  
 
 ---
 
 # 🔄 /events  
-Event Architecture:
+Unified Event Architecture 3.x:
 
-- event_dispatcher_mobile/  
-- event_metadata_engine/  
-- unified_events/  
+- event_dispatcher_mobile_v3/  
+- event_metadata_engine_v3/  
+- unified_events_v3/  
 - PACK_QUERY/  
 - PACK_INFO/  
 - VISION_ANALYZE/  
 - VISION_SCENE/  
 - SCHOOLWORK_EVENT/  
 - SECURITY_EVENT/  
+- DIAGNOSTICS_EVENT/  
+- HYBRID_SAFE_EVENT/  
 
 ---
 
 # 📚 /docs  
-Všetka dokumentácia pre verziu 2.0.0:
+All documentation for version 3.0.0:
 
 - README.md  
 - SECURITY.md  
-- ARCHITECTURE.md  
-- WORKFLOW.md  
-- MODULE_MAP.md  
-- KNOWLEDGE_PACKS.md  
-- HEALTH_ASSISTANT.md  
-- VISION_ENGINE.md  
-- RUNTIME_CORE.md  
-- ROADMAP.md  
+- ARCHITECTURE_3.0.md  
+- WORKFLOW_3.0.md  
+- MODULE_MAP_3.0.md  
+- KNOWLEDGE_PACKS_3.0.md  
+- HEALTH_ASSISTANT_3.0.md  
+- VISION_ENGINE_3.0.md  
+- RUNTIME_CORE_3.0.md  
+- ROADMAP_3.x.md  
 
 ---
 
 # 🏗 /build  
-Build systém pre mobilné platformy:
+Build system for mobile platforms:
 
 - android/  
 - ios/  
 - packaging/  
 - versioning/  
 - release/  
-
+- hybrid_safe_build/  

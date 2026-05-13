@@ -1,61 +1,59 @@
-# ⚙️ GAMA Runtime Core — Version 2.0.0
+# ⚙️ GAMA Runtime Core — Version 3.0.0
 
-The GAMA Runtime Core is the **central execution layer** responsible for:
-- handling user intents  
-- routing tasks to modules  
-- managing offline capabilities  
-- coordinating knowledge packs  
-- executing mobile workflows  
-- providing a unified interface for all GAMA features  
-- enforcing deterministic behavior  
-- managing event lifecycle  
-- supporting Runtime 3.x metadata  
+The GAMA Runtime Core is the **central execution layer** of the SIRIUS LOCAL AI GAMA 3.x ecosystem.  
+It provides deterministic task execution, unified event routing, hybrid‑safe processing, and full offline autonomy.
+
+Version 3.0.0 introduces the **Unified Event Architecture 3.x**, **Metadata v3**,  
+**deterministic routing**, **sandbox enforcement**, and **restricted‑mode safety**.
 
 ---
 
 # 🎯 Responsibilities
 - Intent processing  
-- Task dispatching  
+- Deterministic task dispatching  
 - Module orchestration  
 - Local data access  
-- Security enforcement  
-- Error handling and recovery  
+- Security enforcement (restricted + sandbox)  
+- Error handling + fallback  
 - Diagnostics + event logging  
 - Hybrid input normalization  
-- Safety‑aware execution  
+- Metadata v3 propagation  
+- Unified event lifecycle management  
 
 ---
 
-# 🧩 Components
-- Intent Router  
-- Task Dispatcher  
-- Module Manager  
+# 🧩 Components (v3)
+- NL Router v3  
+- Task Dispatcher v3  
+- Module Manager v3  
 - Local Storage Layer  
-- Security Layer  
-- Logging & Diagnostics  
-- Runtime Context Manager  
-- Event Metadata Engine  
-- Module Priority Resolver  
+- Security Layer v3  
+- Logging & Diagnostics v3  
+- Runtime Context Manager v3  
+- Event Metadata Engine v3  
+- Module Priority Resolver v3  
+- Fallback Normalizer v3  
+- Hybrid‑Safe Gatekeeper  
 
 ---
 
 # 🏷 Version
-**GAMA Runtime Core — v2.0.0**  
-(fully compatible with Runtime 2.0, prepared for Runtime 3.0.0‑pre)
+**GAMA Runtime Core — v3.0.0**  
+(fully aligned with Unified Event Architecture 3.x)
 
 ---
 
-# 🛡️ BEHAVIORAL SAFETY POLICY (v2.0) — NEW
+# 🛡️ BEHAVIORAL SAFETY POLICY (v3.0) — UPDATED
 
 The Runtime Core enforces global behavioral safety rules across all modules.  
 This ensures deterministic, safe, family‑friendly execution for all inputs.
 
 ## 🔐 1. Deterministic Runtime Behavior
-- no hallucinated outputs  
+- no hallucinations  
 - no unverified claims  
 - if uncertain → respond “I don’t know”  
 - deterministic routing + reasoning  
-- safe fallback behavior  
+- unified fallback logic  
 
 ## 👨‍👩‍👧 2. Family‑Safe Execution
 - child‑safe filtering  
@@ -70,12 +68,13 @@ This ensures deterministic, safe, family‑friendly execution for all inputs.
 - no telemetry  
 - no remote logging  
 
-## 🧱 4. Runtime Sandbox (v2)
+## 🧱 4. Runtime Sandbox (v3)
 - module isolation  
 - event‑level sandboxing  
 - no dynamic operations  
 - no cross‑module privilege escalation  
 - hybrid inputs treated as **low‑trust**  
+- restricted/sandbox enforcement  
 
 ## 🚫 5. Behavioral Limits
 Runtime Core will **never**:
@@ -89,27 +88,21 @@ Runtime Core will **never**:
 - event logs  
 - safety flags  
 - fallback traces  
+- metadata v3 trace  
 - deterministic replay of events  
 
 ---
 
-# 🔄 Runtime Flow (v2.0.0)
+# 🔄 Runtime Flow (v3.0.0)
 
-1. User input is received (text, voice, image).  
-2. Input is normalized and sent to the Intent Router.  
-3. Intent Router identifies the task category:  
-   - vision  
-   - knowledge pack  
-   - schoolwork  
-   - security  
-   - general assistant  
-   - diagnostics  
-   - system/meta commands  
+1. User input is received (text, voice, image, hybrid).  
+2. Input is normalized and sent to the NL Router v3.  
+3. NL Router identifies the task category using deterministic routing.  
 4. Task Dispatcher selects the correct module.  
 5. Module Manager loads the required module.  
 6. Module executes the task locally (offline‑first).  
 7. Runtime collects the output.  
-8. Security Layer validates the output.  
+8. Security Layer validates the output (restricted + sandbox).  
 9. Runtime formats the final response.  
 10. Response is returned to the user.  
 11. Diagnostics log the event.  
@@ -117,33 +110,34 @@ Runtime Core will **never**:
 
 ---
 
-# 🧱 Runtime Components Detail
+# 🧱 Runtime Components Detail (v3)
 
-## 1. Intent Router
+## 1. NL Router v3
 Analyzes user input and determines the correct task category.
-- text normalization  
+- hybrid‑safe normalization  
 - language detection  
 - intent classification  
-- routing rules  
+- deterministic routing rules  
 - multi‑intent detection  
 - safety‑intent detection  
-- hybrid input support  
+- EV3 event mapping  
 
-## 2. Task Dispatcher
+## 2. Task Dispatcher v3
 Selects the correct module for execution.
-- module selection logic  
-- priority handling  
+- deterministic module selection  
+- priority scoring v3  
 - fallback routing  
-- module priority scoring  
+- restricted/sandbox enforcement  
 - event version mapping  
 
-## 3. Module Manager
+## 3. Module Manager v3
 Loads and executes modules.
 - module registry  
 - lifecycle management  
 - dependency handling  
 - module compatibility checks  
 - module tracking  
+- sandbox isolation  
 
 ## 4. Local Storage Layer
 Handles all offline data.
@@ -151,18 +145,19 @@ Handles all offline data.
 - cached results  
 - user preferences  
 - secure storage  
-- pack integrity validation  
+- pack integrity validation v3  
 - pack auto‑load support  
 
-## 5. Security Layer
+## 5. Security Layer v3
 Ensures safe execution and output validation.
-- OWNER/FAMILY mode rules  
+- OWNER/FAMILY/STRANGER rules  
 - output filtering  
 - permission checks  
 - safety flags  
 - restricted‑mode enforcement  
+- sandbox enforcement  
 
-## 6. Logging & Diagnostics
+## 6. Logging & Diagnostics v3
 Tracks runtime behavior.
 - event logs  
 - error reports  
@@ -170,30 +165,42 @@ Tracks runtime behavior.
 - rule hits  
 - example hits  
 - pack usage logs  
+- hybrid‑safe logs  
 
-## 7. Runtime Context Manager
+## 7. Runtime Context Manager v3
 Maintains runtime state.
-- metadata  
+- metadata v3  
 - debug logs  
 - reset()  
 - event context  
+- hybrid‑safe context isolation  
 
-## 8. Event Metadata Engine
+## 8. Event Metadata Engine v3
 Adds structured metadata to every event.
-- event version  
+- event version (EV3)  
 - module target  
 - confidence score  
 - safety flags  
+- trust level  
+- restricted/sandbox flags  
+
+## 9. Fallback Normalizer v3
+Ensures deterministic fallback behavior.
+- dict → event normalization  
+- hybrid input fallback  
+- security fallback  
+- routing fallback  
+- integrity fallback  
 
 ---
 
-# 🔁 Runtime Execution Cycle (v2.0.0)
+# 🔁 Runtime Execution Cycle (v3.0.0)
 
 1. Initialize runtime core.  
 2. Load essential modules and security rules.  
-3. Wait for user input (text, voice, image).  
-4. Normalize input and send it to the Intent Router.  
-5. Intent Router determines the task category.  
+3. Wait for user input (text, voice, image, hybrid).  
+4. Normalize input and send it to NL Router v3.  
+5. NL Router determines the task category.  
 6. Task Dispatcher selects the appropriate module.  
 7. Module Manager loads and executes the module.  
 8. Module performs the task using local data and knowledge packs.  
@@ -204,14 +211,19 @@ Adds structured metadata to every event.
 
 ---
 
-# 🟪 NEW IN VERSION 2 → PREPARED FOR VERSION 3.0.0‑pre
-- hybrid input support  
-- multi‑intent routing  
-- safety‑aware execution  
-- module priority scoring  
-- event metadata engine  
-- runtime context v3  
-- pack integrity validation  
-- diagnostics expansion  
-- unified event architecture  
-- dict → event fallback normalization
+# 🟪 NEW IN VERSION 3.0.0
+- deterministic routing v3  
+- metadata v3  
+- event versioning EV3  
+- hybrid‑safe routing  
+- low‑trust input tagging  
+- restricted/sandbox enforcement  
+- unified fallback normalization  
+- diagnostics expansion v3  
+- module priority scoring v3  
+- unified event architecture integration  
+
+---
+
+# ✔ GAMA Runtime Core 3.0 — COMPLETE  
+Fully aligned with the SIRIUS LOCAL AI GAMA 3.x ecosystem.

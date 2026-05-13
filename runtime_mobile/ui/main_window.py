@@ -17,7 +17,7 @@ class MobileMainWindow:
         self.width = 360
         self.height = 640
 
-        # Attached UI components
+        # Attached UI components (layouts or components)
         self.components = []
 
     # ------------------------------------------------------------
@@ -34,7 +34,10 @@ class MobileMainWindow:
             "status": "initialized",
             "ui_version": self.UI_VERSION,
             "title": self.title,
-            "size": (self.width, self.height),
+            "x": self.x,
+            "y": self.y,
+            "width": self.width,
+            "height": self.height,
             "components": initialized
         }
 
@@ -133,5 +136,8 @@ class MobileMainWindow:
             "module": "ui.main_window",
             "version": self.UI_VERSION,
             "components": len(self.components),
-            "size": (self.width, self.height)
+            "x": self.x,
+            "y": self.y,
+            "width": self.width,
+            "height": self.height
         }

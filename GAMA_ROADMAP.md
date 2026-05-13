@@ -1,5 +1,5 @@
 # 🚀 SIRIUS LOCAL AI GAMA – Roadmap  
-Version: **2.0.0**
+Version: **3.0.0**
 
 ---
 
@@ -57,12 +57,12 @@ Version: **2.0.0**
 
 ---
 
-## 🟩 GAMA 2.0 (CURRENT VERSION)
+## 🟩 GAMA 2.0 (STABLE RELEASE)
 - LAN Offline Bridge  
 - Device Diagnostics Mobile  
 - Scene Understanding  
 - Workflow Engine Mobile 2.0  
-- **Health Assistant 2.0 (NEW)**  
+- **Health Assistant 2.0**  
   - offline medical module  
   - OCR of medical documents  
   - medication & dosage recognition  
@@ -70,7 +70,7 @@ Version: **2.0.0**
   - family‑safe medical guidance  
   - 100% offline processing  
 
-### 🔹 NEW IN GAMA 2.0 (ADDED)
+### 🔹 NEW IN GAMA 2.0
 - Diagnostics Expansion (battery, thermal, storage, memory)  
 - Runtime Context v2  
 - Pack Integrity Checker  
@@ -85,26 +85,59 @@ Version: **2.0.0**
 
 ---
 
-## 🟧 GAMA 3.0 (PREPARATION PHASE)
-- Full Mobile Reasoning Engine  
-- Advanced Knowledge Graphs  
-- Multi‑intent routing  
-- Complete offline autonomy  
-- Unified event architecture (router → dispatcher → core)  
-- Vision ANALYZE + SCENE events  
-- Runtime Context v3 (debug logs, metadata, reset)  
-- Knowledge Pack auto‑load + validation  
-- Diagnostics v3 (rule hits, example hits, pack usage)  
+## 🟧 GAMA 3.0 (CURRENT VERSION)
+**Full re‑architecture of the mobile runtime.**
 
-### 🔹 NEW PREPARED FEATURES (FROM 2.0)
+### 🔹 Runtime & Core
+- Full Mobile Reasoning Engine  
+- Deterministic Runtime Core 3.0  
+- Unified Event Architecture (router → dispatcher → core)  
+- Multi‑intent routing  
+- Hybrid‑safe routing  
+- Metadata v3 + Event Versioning v3  
+- Runtime Context v3 (debug logs, metadata, reset)  
+
+### 🔹 Vision Engine 3.0
+- ANALYZE event  
+- SCENE event  
+- improved OCR pipeline  
+- hybrid reasoning support  
+- deterministic vision flow  
+
+### 🔹 Knowledge Packs 3.0
+- auto‑load  
+- pack integrity v3  
+- pack priority v3  
+- compatibility flags v3  
+- PACK_QUERY / PACK_INFO v3  
+- deterministic pack routing  
+
+### 🔹 Diagnostics 3.0
+- rule hits  
+- example hits  
+- pack usage  
+- hybrid‑safe logs  
+- metadata trace  
+
+### 🔹 Security Family 3.0
+- restricted mode v3  
+- sandbox enforcement v3  
+- quarantine pipeline v3  
+- low‑trust classification  
+- deterministic safety routing  
+
+### 🔹 Schoolwork Mode 3.0
+- deterministic academic reasoning  
+- schoolwork_trace  
+- hybrid input support  
+- OCR schoolwork integration  
+
+### 🔹 Additional 3.0 Features
 - dict → event fallback normalization  
-- event version tagging  
-- module compatibility flags  
-- pack priority scoring  
-- safety‑intent detection  
-- hybrid reasoning (rules + examples)  
 - unified SCHOOLWORK + VISION + PACK events  
 - deterministic reasoning trace  
+- module compatibility flags  
+- hybrid reasoning (rules + examples)  
 
 ---
 
@@ -112,7 +145,7 @@ Version: **2.0.0**
 
 ### Secure Online Envoy (Isolated Online Agent)
 - sandboxed online agent  
-- one‑way outbound internet access  
+- outbound‑only internet  
 - fetches text, JSON, structured data  
 - no access to local files, models, APIs  
 - no local data ever sent out  

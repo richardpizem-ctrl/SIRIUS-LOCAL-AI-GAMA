@@ -5,9 +5,9 @@
 ---
 
 ## 📌 Overview
-Tento dokument sumarizuje kompletnú architektúru **GAMA 3.0.0‑pre**, pozostávajúcu zo **42 uzavretých issue**, ktoré definujú nový deterministický runtime, bezpečnostné vrstvy, routing, reasoning, metadata, versioning, build systém a všetky moduly.
+This document summarizes the complete architecture of **GAMA 3.0.0‑pre**, consisting of **42 closed issues** that define the new deterministic runtime, security layers, routing, reasoning, metadata, versioning, build system, and all modules.
 
-Verzia 3.0.0‑pre predstavuje **kompletný re‑architecture** celého systému.
+Version 3.0.0‑pre represents a **full re‑architecture** of the entire system.
 
 ---
 
@@ -31,10 +31,10 @@ Verzia 3.0.0‑pre predstavuje **kompletný re‑architecture** celého systému
 - restricted/sandbox enforcement  
 
 ## 1.3 Module State Machine v3
-- jednotné stavy: INIT → READY → PROCESSING → … → SHUTDOWN  
-- deterministické prechody  
-- žiadne dynamické zmeny  
-- bezpečnostné prechody (restricted, sandbox, quarantine)  
+- unified states: INIT → READY → PROCESSING → … → SHUTDOWN  
+- deterministic transitions  
+- no dynamic state changes  
+- security transitions (restricted, sandbox, quarantine)  
 
 ---
 
@@ -48,9 +48,9 @@ Verzia 3.0.0‑pre predstavuje **kompletný re‑architecture** celého systému
 - sandbox_enforcement_events  
 
 ## 2.2 Restricted Mode v3
-- neobíditeľná bezpečnostná vrstva  
+- non‑bypassable security layer  
 - triggers: low‑trust, sandbox, quarantine, integrity violation  
-- effects: obmedzené reasoning, routing, moduly, výstupy  
+- effects: limited reasoning, routing, modules, outputs  
 
 ## 2.3 Quarantine Pipeline v3
 - mandatory low‑trust isolation  
@@ -58,23 +58,23 @@ Verzia 3.0.0‑pre predstavuje **kompletný re‑architecture** celého systému
 - sanitization + validation  
 
 ## 2.4 Sandbox Enforcement v3
-- izolované reasoning prostredie  
-- žiadne dynamické operácie  
-- deterministické správanie  
+- isolated reasoning environment  
+- no dynamic operations  
+- deterministic behavior  
 
 ---
 
 # 3. 🧩 REASONING & FALLBACK (v3)
 
 ## 3.1 Reasoning Engine v3
-- deterministické reasoning sekvencie  
+- deterministic reasoning sequences  
 - pre‑sanitization → restricted → sandbox → deterministic reasoning → fallback  
 - reasoning_trace, sandbox_enforced, fallback_used  
 
 ## 3.2 Fallback Engine v3
-- jednotná degradácia systému  
+- unified system degradation  
 - fallback types: INPUT, OCR, SECURITY, SANDBOX, ROUTING, INTEGRITY  
-- deterministické fallback paths  
+- deterministic fallback paths  
 
 ## 3.3 Unified Error Handling v3
 - error_type, error_code, error_trace  
@@ -186,38 +186,38 @@ Verzia 3.0.0‑pre predstavuje **kompletný re‑architecture** celého systému
 # 8. 🔐 BEHAVIORAL SAFETY POLICY (v3)
 
 ## 8.1 Behavioral Determinism
-- žiadne halucinácie  
-- žiadne neoverené tvrdenia  
-- ak systém nevie → odpovie „neviem“  
-- všetky reasoning sekvencie sú deterministické a auditovateľné  
+- no hallucinations  
+- no unverified claims  
+- if the system does not know → it answers “I don’t know”  
+- all reasoning sequences are deterministic and auditable  
 
 ## 8.2 Family Mode v3
-- bezpečný obsah pre domácnosť  
-- blokovanie citlivých tém  
-- obmedzené reasoning pre deti  
-- bezpečné odpovede v offline prostredí  
+- safe household content  
+- blocking sensitive topics  
+- limited reasoning for children  
+- safe offline responses  
 
 ## 8.3 Local Ethical Filters
-- všetky filtre bežia lokálne  
-- žiadne odosielanie dát  
-- žiadne cloud requesty  
-- žiadne externé API  
+- all filters run locally  
+- no data transmission  
+- no cloud requests  
+- no external APIs  
 
 ## 8.4 Module Safety Sandbox
-- každý modul beží v izolácii  
-- podpisovanie modulov  
-- žiadne dynamické operácie  
-- žiadny prístup mimo povoleného rozsahu  
+- each module runs in isolation  
+- module signing  
+- no dynamic operations  
+- no access outside allowed scope  
 
 ## 8.5 Behavioral Limits
-- zákaz medicínskych, právnych a nebezpečných odporúčaní  
-- zákaz generovania škodlivého obsahu  
-- zákaz autonómnych rozhodnutí  
+- no medical, legal, or dangerous advice  
+- no harmful content  
+- no autonomous decisions  
 
 ## 8.6 Auditability
-- každý výstup má behavior_trace  
-- deterministické opakovanie  
-- transparentné rozhodovacie kroky  
+- every output has a behavior_trace  
+- deterministic repeatability  
+- transparent decision steps  
 
 ---
 
@@ -244,4 +244,4 @@ Verzia 3.0.0‑pre predstavuje **kompletný re‑architecture** celého systému
 ---
 
 # 🎉 Milestone 3.0.0‑pre — COMPLETE  
-Systém je pripravený na implementáciu.
+The system is fully prepared for implementation.

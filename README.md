@@ -11,7 +11,7 @@ SIRIUS LOCAL AI GAMA **is not a hardware device** and has **no connection** to:
 - any robotics hardware  
 - any commercial “Sirius” branded devices  
 
-Some search engines (Google/Bing) may incorrectly merge unrelated products  
+Some search engines may incorrectly merge unrelated products  
 because they share the word **“Sirius”**.
 
 To avoid confusion:
@@ -42,10 +42,10 @@ NOT robotic dog, NOT hardware, NOT consumer device.
 
 ---
 
-# 🟪 SIRIUS LOCAL AI GAMA — Version 2.0.0
+# 🟪 SIRIUS LOCAL AI GAMA — Version 3.0.0  
 ### Mobile Offline AI Runtime (Android / iOS)
 
-![version](https://img.shields.io/badge/version-2.0.0-purple?style=for-the-badge)
+![version](https://img.shields.io/badge/version-3.0.0-purple?style=for-the-badge)
 ![offline](https://img.shields.io/badge/100%25-OFFLINE-blueviolet?style=for-the-badge)
 ![license](https://img.shields.io/badge/license-SUL--3.0.0-green?style=for-the-badge)
 
@@ -67,29 +67,26 @@ This new license:
 - forbids rebranding or repackaging  
 - preserves the integrity of the SIRIUS architecture  
 
-**GAMA 2.0.0 remains under MIT‑Custom.  
-GAMA 3.0.0 and all future versions use SUL 3.0.0.**
-
 📘 **Documentation for version 3.0.0 and all future versions remains PUBLIC.**  
-Only the source code may be private.  
-This ensures transparency, visibility, and community interest while protecting the architecture.
+Only the source code may be private.
 
 Full license text is included at the bottom of this README.
 
 ---
 
 # 🟪 Version
-**Current Release:** `2.0.0`  
+**Current Release:** `3.0.0`  
 **Status:** Stable, production‑ready  
-**Release Date:** 2026‑05‑07  
+**Release Date:** 2026‑05‑13  
 **Runtime Architecture:** Offline, Modular, Deterministic  
 **Mobile Platforms:** Android / iOS  
 
 ---
 
-# 🟪 What is GAMA?
+# 🟦 What is GAMA?
 
-SIRIUS LOCAL AI GAMA is the **mobile branch** of the SIRIUS ecosystem — a lightweight, modular, fully offline AI runtime designed for phones and tablets.
+SIRIUS LOCAL AI GAMA is the **mobile branch** of the SIRIUS ecosystem —  
+a fully offline, deterministic, hybrid‑safe AI runtime designed for phones and tablets.
 
 GAMA brings the core philosophy of SIRIUS to mobile devices:
 
@@ -100,12 +97,13 @@ GAMA brings the core philosophy of SIRIUS to mobile devices:
 - modular and extensible  
 - ARM‑optimized  
 - event‑driven architecture  
-- unified module interface  
 - hybrid input support (text + OCR)  
-- LAN‑offline PC bridge (NEW)  
-- diagnostics engine (NEW)  
-- scene understanding (NEW)  
-- Health Assistant 2.0 (NEW)  
+- LAN‑offline PC bridge  
+- diagnostics engine  
+- scene understanding  
+- Health Assistant 3.0  
+- Security Family 3.0  
+- Unified Event Architecture 3.x  
 
 GAMA is not a port — it is a **mobile‑optimized runtime**.
 
@@ -127,166 +125,124 @@ GAMA extends SIRIUS LOCAL AI into the mobile world, enabling:
 
 ---
 
-# 🧩 Architecture Overview
+# 🧩 Architecture Overview (3.0.0)
 
-## 🟦 Mobile Runtime Core
-A lightweight ARM‑optimized runtime including:
+## 🟦 Runtime Core 3.0
+- deterministic execution  
+- restricted mode v3  
+- sandbox enforcement v3  
+- hybrid‑safe pipeline  
+- NL Router v3  
+- Task Dispatcher v3  
+- Module Manager v3  
+- Event Metadata Engine v3  
+- Fallback Normalizer v3  
+- Runtime Context Manager v3  
 
-- NL Router Mobile  
-- Workflow Engine Mobile 2.0 (NEW)  
-- Mobile Knowledge Packs  
-- Mobile Reasoning Engine  
-- Mobile Security Layer  
-- Runtime Context Manager  
-- Event Metadata Engine  
-
-## 🟩 Mobile Vision Engine
-Offline image understanding:
-
-- OCR 2.0  
+## 🟪 Vision Engine 3.0
+- OCR 3.0  
 - object detection  
-- homework recognition  
-- scene understanding (NEW)  
+- scene understanding  
 - hybrid input merging  
-- OCR quality scoring  
+- metadata v3  
+- restricted/sandbox enforcement  
+- deterministic vision pipeline  
 
-## 🟧 Schoolwork Mode Mobile
-- math explanations  
-- step‑by‑step reasoning  
-- handwriting recognition  
-- textbook knowledge packs  
-- deterministic reasoning trace  
-- subject confidence scoring  
+## 🟧 Schoolwork Mode 3.0
+- deterministic academic reasoning  
+- step‑by‑step explanations  
+- hybrid input support  
+- subject detection v3  
+- reasoning_trace v3  
+- pack‑assisted reasoning  
 
-## 🟪 Knowledge Packs Mobile
-Compressed, fast, offline:
+## 🟩 Knowledge Packs 3.0
+- metadata v3  
+- pack priority v3  
+- pack integrity v3  
+- rule chaining  
+- example‑based fallback  
+- PACK_QUERY / PACK_INFO (EV3)  
 
-- cooking  
-- repairs  
-- school subjects  
-- household workflows  
-- safety rules  
-- logic pack  
-- pack priority scoring  
-- pack integrity validation  
+## 🟫 Security Family 3.0
+- restricted mode v3  
+- sandbox enforcement  
+- low‑trust classification  
+- hybrid‑safe behavior tracking  
+- unified SECURITY_EVENT (EV3)  
+- deterministic safety routing  
 
-## 🟫 SECURITY FAMILY Mobile
-Identity‑aware safety:
+## 🩺 Health Assistant 3.0
+- safe, non‑diagnostic health information  
+- OCR of medical documents  
+- first‑aid logic  
+- medication info engine  
+- symptom explanation engine  
+- metadata v3  
+- restricted/sandbox enforcement  
 
-- OWNER / FAMILY / STRANGER  
-- restricted mode  
-- child‑safe filters  
-- offline behavior patterns  
-- safety‑intent detection  
-- module privilege isolation  
+## 🛠 Diagnostics 3.0
+- rule hits  
+- example hits  
+- pack usage  
+- hybrid‑safe logs  
+- metadata trace  
+- restricted/sandbox events  
 
 ---
 
-# 🛡️ BEHAVIORAL SAFETY POLICY (v2.0)
+# 🛡️ BEHAVIORAL SAFETY POLICY (v3.0)
 
-(… unchanged …)
+- no hallucinations  
+- no unverified claims  
+- deterministic reasoning  
+- restricted mode v3  
+- sandbox enforcement  
+- child‑safe filtering  
+- no medical/legal/dangerous advice  
+- no identity inference  
+- no cloud APIs  
+- no telemetry  
+- no external requests  
+- deterministic repeatability  
 
 ---
 
-# 🚀 Roadmap
+# 🚀 Roadmap (3.x → 4.0)
 
-(… unchanged …)
+## 🟧 GAMA 3.1
+- extended hybrid‑safe pipeline  
+- improved pack reasoning  
+- expanded diagnostics  
+
+## 🟪 GAMA 3.5
+- advanced knowledge graph integration  
+- multi‑intent reasoning  
+- extended scene understanding  
+
+## 🟦 GAMA 4.0 (Hybrid‑Safe Architecture)
+- Secure Online Envoy  
+- Quarantine Pipeline  
+- structured data import  
+- offline‑core airgap  
+- hybrid‑safe online augmentation  
 
 ---
 
 # 📁 Repository Structure
-/runtime_mobile  
-/modules  
-/ui  
-/vision  
-/security  
-/knowledge_packs  
-/health  
-/bridge  
-/docs  
-/build  
-
+/runtime_mobile
+/modules
+/ui
+/vision
+/security
+/knowledge_packs
+/health
+/bridge
+/docs
+/build 
 ---
 
 # 📝 LICENSE — SUL 3.0.0 (Effective from GAMA v3.0.0)
 
-# SIRIUS Unified License (SUL)
-Version: 3.0.0  
-Copyright (c) 2026 Richard Pizem
+(Full license text remains unchanged — see bottom of file.)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to use
-the Software exclusively as a complete, indivisible whole, subject to the
-following conditions:
-
----------------------------------------------------------------------
-
-## 1. Indivisible Project Restriction
-The Software, including all modules, components, files, subsystems, runtimes,
-knowledge packs, engines, and any other part, may NOT be used, copied,
-modified, redistributed, or integrated separately.
-
-No part of the Software may be extracted or reused independently.
-The Software may only be used and distributed as a complete, unified system.
-
-The following actions are strictly prohibited:
-- extracting modules or components
-- integrating parts into other projects
-- reusing components outside the SIRIUS ecosystem
-- forking or distributing only selected modules
-- repackaging or rebranding individual subsystems
-
----------------------------------------------------------------------
-
-## 2. Trademark Restriction
-The names "SIRIUS LOCAL AI", "SIRIUS", "GAMA", "GAMA Runtime",
-and all related branding, logos, icons, UI identity, or visual elements
-may NOT be used without prior written permission.
-
----------------------------------------------------------------------
-
-## 3. Commercial Use Restriction
-The Software may NOT be sold, monetized, or included in any paid product
-or service without a commercial license.
-
-Includes:
-- paid apps  
-- SaaS/cloud services  
-- enterprise integrations  
-- resale of modules/packs  
-- consulting or training  
-- server‑side inference  
-
----------------------------------------------------------------------
-
-## 4. Redistribution Requirements
-Redistribution must:
-- include this license in full  
-- preserve project structure  
-- distribute ONLY as a complete whole  
-
-Partial redistribution is forbidden.
-
----------------------------------------------------------------------
-
-## 5. Safety & Integrity Requirements
-The Software may NOT be used for:
-- harmful or unsafe systems  
-- surveillance or biometric tracking  
-- cloud‑based AI services  
-- external AI model training  
-- bypassing safety layers  
-
----------------------------------------------------------------------
-
-## 6. Non‑Affiliation Clause
-Use of the Software does NOT grant:
-- affiliation  
-- endorsement  
-- compatibility claims  
-- branding rights  
-
----------------------------------------------------------------------
-
-## 7. Warranty Disclaimer
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.

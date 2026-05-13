@@ -1,223 +1,190 @@
-# 🧩 SIRIUS LOCAL AI GAMA – Architecture 2.0  
-Version: **2.0.0**
+# 🧩 SIRIUS LOCAL AI GAMA – Architecture 3.0  
+Version: **3.0.0**
 
-GAMA 2.0 je moderný, modulárny, plne offline mobilný runtime postavený na **deväťpilierovej architektúre**, ktorá nahrádza pôvodný 1.0 model.  
-Prináša deterministické workflow, hybridné vstupy, diagnostiku, bezpečnostné vrstvy a prípravu na Runtime 3.x.
+GAMA 3.0 is a fully unified, deterministic, offline‑first mobile runtime built on the **SIRIUS 3.x ecosystem architecture**.  
+It replaces the 2.0 architecture with a **fully modular, event‑driven, metadata‑rich, hybrid‑safe design**.
 
----
-
-# 🟦 1. Mobile Runtime Core
-Základný orchestrátor GAMA 2.0.
-
-- NL Router Mobile  
-- Workflow Engine Mobile 2.0  
-- Mobile Reasoning Engine  
-- Mobile Knowledge Pack Integrator  
-- Mobile Security Layer  
-- Runtime Context Manager (NEW)  
-- Event Metadata Engine (NEW)  
-- Module Priority Resolver (NEW)  
-- Hybrid Input Normalizer (NEW)  
+This version introduces the **Unified Event Architecture 3.x**, **Runtime Core 3.0**,  
+**Vision Engine 3.0**, **Knowledge Packs 3.0**, **Security Family 3.0**,  
+and the foundation for **Secure Online Envoy (v4)**.
 
 ---
 
-# 🟪 2. Mobile Vision Engine
-Kompletný Vision stack pre GAMA 2.0.
+# 🟦 1. Mobile Runtime Core 3.0
+The heart of the GAMA 3.x architecture.
 
-- OCR 2.0  
-- object detection  
-- scene understanding  
-- homework recognition  
-- hybrid input merging (NEW)  
-- OCR quality scoring (NEW)  
-- native preprocessing (Android/iOS) (NEW)  
-- dict → event fallback (NEW)  
-- unified ANALYZE event (NEW)  
-
----
-
-# 🟧 3. Schoolwork Mode Mobile
-Offline školský asistent.
-
-- math reasoning  
-- step‑by‑step explanations  
-- handwriting recognition  
-- textbook knowledge packs  
-- mixed‑subject reasoning (NEW)  
-- deterministic reasoning trace (NEW)  
-- child‑safe explanations (NEW)  
-- subject confidence scoring (NEW)  
+- rewritten Runtime Core  
+- deterministic execution guarantees  
+- unified module interface v3  
+- runtime context v3  
+- extended debug logs  
+- reset() support  
+- improved state isolation  
+- module priority scoring v3  
+- event metadata engine v3  
+- hybrid‑safe routing foundation  
 
 ---
 
-# 🟩 4. Knowledge Packs Mobile
-Modulárne offline znalostné balíky.
+# 🟪 2. Unified Event Architecture 3.x
+The most important upgrade in GAMA 3.0.
 
-- compressed  
-- fast  
-- offline  
-- modular  
-- plug‑and‑play  
-- pack priority scoring (NEW)  
-- pack integrity validation (NEW)  
-- example‑based fallback reasoning (NEW)  
-- runtime compatibility flags (NEW)  
-
----
-
-# 🟫 5. SECURITY FAMILY Mobile
-Bezpečnostná vrstva GAMA 2.0.
-
-- OWNER / FAMILY / STRANGER  
-- restricted mode  
-- child‑safe filters  
-- offline behavior patterns  
-- safety‑intent detection (NEW)  
-- module privilege isolation (NEW)  
-- event‑level sandboxing (NEW)  
-- low‑trust data handling (NEW)  
+- universal `on_event()` handler  
+- unified event lifecycle  
+- deterministic routing  
+- event versioning  
+- extended metadata v3  
+- fallback normalization (dict → event)  
+- unified dispatcher → core → module flow  
+- error propagation improvements  
+- multi‑intent support  
 
 ---
 
-# 🟦 6. Device Diagnostics Mobile (NEW)
-Nový diagnostický subsystém.
+# 🟧 3. Vision Engine 3.0
+A complete rewrite of the Vision subsystem.
 
-- battery diagnostics  
-- thermal diagnostics  
-- storage diagnostics  
-- memory diagnostics  
-- performance logs  
-- event logs  
-- rule/example hits  
+- new ANALYZE event  
+- new SCENE event  
+- improved OCR pipeline  
+- hybrid reasoning support  
+- improved preprocessing  
+- better object detection  
+- metadata v3 integration  
+- unified image → event conversion  
+- deterministic vision flow  
 
 ---
 
-# 🟪 7. LAN Offline Bridge (NEW)
-Lokálna komunikácia Mobile ↔ PC.
+# 🟩 4. Knowledge Packs 3.0
+Offline structured knowledge with deterministic behavior.
 
-- mobile = camera, UI, input  
-- PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
+- PACK_QUERY (NEW)  
+- auto‑load packs  
+- unified result format  
+- pack integrity checker v3  
+- compatibility flags v3  
+- improved fallback reasoning  
+- pack priority scoring v3  
+- hybrid‑safe metadata  
+
+---
+
+# 🟫 5. Security Family 3.0
+The upgraded safety architecture for GAMA 3.x.
+
+- unified security handler  
+- extended restricted mode  
+- improved text safety filter  
+- low‑trust classification v3  
+- event‑level sandboxing v3  
+- module privilege isolation v3  
+- quarantine pipeline integration  
+- hybrid‑safe enforcement  
+
+---
+
+# 🟦 6. Dispatcher 3.0
+The central routing engine.
+
+- full support for new events  
+- unified error handling  
+- improved module priority scoring  
+- deterministic routing  
+- extended metadata support  
+- hybrid‑safe routing rules  
+
+---
+
+# 🟩 7. Runtime Context 3.0
+The unified state container for all modules.
+
+- extended metadata  
+- event versioning  
+- debug log  
+- reset()  
+- improved state tracking  
+- unified context for all modules  
+- hybrid‑safe context isolation  
+
+---
+
+# 🟧 8. LAN Offline Bridge 3.0
+Local Mobile ↔ PC communication.
+
+- improved PC ↔ mobile sync  
+- metadata v3  
+- diagnostics integration  
+- WIN‑CAP + FS‑AGENT compatibility  
+- deterministic bridge events  
 - zero cloud  
 - zero telemetry  
-- zero outbound data  
 
 ---
 
-# 🟧 8. Workflow Engine Mobile 2.0 (NEW)
-Deterministický workflow systém.
+# 🟪 9. Hybrid‑Safe Architecture (Foundation for v4)
+GAMA 3.0 introduces the rules required for the upcoming **Secure Online Envoy**.
 
-- unified event lifecycle  
-- hybrid input routing  
-- multi‑intent support  
-- fallback normalization  
-- event metadata v2  
-- Runtime 3.x preparation  
-
----
-
-# 🟫 9. Event Architecture (NEW)
-Kompletný eventový systém pre GAMA 2.0.
-
-- unified PACK_QUERY  
-- unified PACK_INFO  
-- VISION_ANALYZE  
-- VISION_SCENE  
-- SCHOOLWORK_EVENT  
-- SECURITY_EVENT  
-- DIAGNOSTICS_EVENT  
-- event versioning  
-- deterministic event flow  
-
----
-
-# 🟪 NEW IN GAMA v4 — SECURE ONLINE ENVOY (Sandbox + Quarantine)
-
-GAMA v4 (preview) pridáva hybrid‑safe architektúru, ktorá umožňuje získavať **online textové dáta**, no zároveň zachováva **100% offline AI jadro**.
-
-## 🟦 Secure Online Envoy (Isolated Online Agent)
-- sandboxovaný proces  
-- jednosmerný outbound internet  
-- fetch: text, JSON, structured data  
-- žiadny prístup k súborom, modelom, API  
-- žiadne odosielanie lokálnych dát  
-- vždy označený ako **low‑trust**  
+## 🟦 Secure Online Envoy (Preview)
+- isolated online agent  
+- outbound‑only internet  
+- fetches text/JSON  
+- no access to local files  
+- no sending of local data  
+- always low‑trust  
 
 ## 🟩 Quarantine Pipeline
-- script & HTML removal  
-- format validation  
+- script removal  
+- HTML sanitization  
 - size limits  
 - text cleaning  
-- security filtering  
-- iba čistý text + JSON  
+- safety filtering  
+- only clean text + JSON  
 
-## 🟧 Offline Core Remains Fully Air‑Gapped
+## 🟧 Offline Core Remains Air‑Gapped
 - inference offline  
 - reasoning offline  
 - knowledge packs offline  
 - no cloud calls  
 - no telemetry  
-- no outbound data  
-
-## 🟪 Why This Matters
-- offline AI zostáva offline  
-- absolútne súkromie  
-- bezpečný import online dát  
-- enterprise‑grade architektúra  
-- rovnaký model ako kritické infra systémy  
 
 ---
 
-# 🟫 Optional: LAN Offline Bridge
-Mobile ↔ PC komunikácia cez **lokálnu Wi‑Fi**:
+# 🔐 10. Behavioral Safety Policy (v3)
+GAMA 3.0 introduces deterministic behavioral rules.
 
-- mobile = camera, UI, input  
-- PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
+## 10.1 Deterministic Behavior (v3)
+- no hallucinations  
+- no unverified claims  
+- strict fallback logic  
+- deterministic event flow  
 
-Bez internetu. Bez cloudu. Bez rizika.
-
----
-
-# 🔐 10. BEHAVIORAL SAFETY POLICY (v2) — *NEW*
-
-GAMA 2.0 získava prvú verziu behaviorálnej bezpečnosti, ktorá pripravuje pôdu pre plnú deterministickú politiku v GAMA 3.x.
-
-## 10.1 Behavioral Determinism (v2)
-- žiadne halucinácie  
-- žiadne neoverené tvrdenia  
-- ak systém nevie → odpovie „neviem“  
-- reasoning trace pre školské úlohy  
-- deterministické odpovede v rámci packov  
-
-## 10.2 Family Mode (v2)
+## 10.2 Family Mode (v3)
 - child‑safe filters  
-- blokovanie citlivých tém  
-- bezpečné offline odpovede  
-- obmedzené reasoning pre deti  
-- školské vysvetlenia bez rizikového obsahu  
+- safe explanations  
+- restricted topics  
 
-## 10.3 Local Ethical Filters (v2)
-- všetky filtre bežia lokálne  
-- žiadne cloud requesty  
-- žiadne externé API  
-- žiadne odosielanie dát  
+## 10.3 Ethical Filters (v3)
+- all local  
+- no cloud  
+- no external APIs  
 
-## 10.4 Module Safety Sandbox (v2)
+## 10.4 Module Safety Sandbox (v3)
 - event‑level sandboxing  
-- izolácia modulov  
-- žiadne dynamické operácie  
-- žiadny prístup mimo povoleného rozsahu  
+- module isolation  
+- hybrid‑safe boundaries  
 
-## 10.5 Behavioral Limits (v2)
-- zákaz medicínskych, právnych a nebezpečných odporúčaní  
-- zákaz generovania škodlivého obsahu  
-- zákaz autonómnych rozhodnutí  
+## 10.5 Behavioral Limits (v3)
+- no medical/legal/dangerous advice  
+- no harmful content  
+- no autonomous decisions  
 
-## 10.6 Auditability (v2)
-- reasoning_trace pre školské úlohy  
-- event logs pre bezpečnostné rozhodnutia  
-- transparentné rozhodovacie kroky  
+## 10.6 Auditability (v3)
+- reasoning_trace  
+- event logs  
+- transparent decision steps  
 
 ---
 
-# ✔ GAMA 2.0 — COMPLETE  
-Architektúra je stabilná, deterministická a pripravená na prechod do GAMA 3.x.
+# ✔ GAMA 3.0 — ARCHITECTURE LOCKED  
+The architecture is unified, deterministic, hybrid‑safe, and fully aligned with the SIRIUS LOCAL AI 3.x ecosystem.

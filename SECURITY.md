@@ -1,7 +1,7 @@
-# 🔐 SIRIUS LOCAL AI GAMA – Security Policy (v2.0.0)
+# 🔐 SIRIUS LOCAL AI GAMA – Security Policy (v3.0.0)
 
 SIRIUS LOCAL AI GAMA is a fully offline, privacy‑first mobile AI runtime.  
-This security policy defines how vulnerabilities are reported, validated, and resolved in version **2.0.0**.
+This security policy defines how vulnerabilities are reported, validated, and resolved in version **3.0.0**, aligned with the **Unified Event Architecture 3.x**, **Metadata v3**, **Restricted Mode v3**, and the **Hybrid‑Safe Pipeline**.
 
 ---
 
@@ -11,7 +11,8 @@ Only the latest stable version of GAMA receives security updates.
 
 | Version | Supported |
 |--------|-----------|
-| **GAMA 2.x** | ✔ Yes |
+| **GAMA 3.x** | ✔ Yes |
+| **GAMA 2.x** | ✖ No (security fixes only if critical) |
 | **GAMA 1.x** | ✖ No |
 | **GAMA 0.x** | ✖ No |
 
@@ -74,24 +75,26 @@ When a vulnerability is reported:
 
 ---
 
-# 🧱 5. Security Scope (Updated for 2.0.0)
+# 🧱 5. Security Scope (Updated for 3.0.0)
 
 This policy covers vulnerabilities related to:
 
-- mobile runtime stability  
+- deterministic runtime core v3  
+- unified event architecture 3.x  
+- restricted mode v3  
+- sandbox enforcement v3  
+- hybrid‑safe pipeline  
 - offline reasoning engine  
-- workflow engine 2.0  
-- mobile vision engine  
-- knowledge packs  
-- identity & safety layers (SECURITY FAMILY Mobile)  
-- file handling  
-- memory handling  
-- denial‑of‑service vectors  
+- workflow engine 3.0  
+- vision engine 3.0  
+- schoolwork mode 3.0  
+- health assistant 3.0  
+- knowledge packs 3.0  
 - module privilege isolation  
-- event‑level sandboxing  
-- hybrid input processing  
-- diagnostics engine (NEW)  
-- LAN Offline Bridge (NEW)  
+- event metadata engine v3  
+- LAN Offline Bridge  
+- diagnostics engine v3  
+- low‑trust input handling  
 
 It does **not** cover:
 
@@ -104,7 +107,7 @@ These should be reported via normal GitHub issues.
 
 ---
 
-# 🔒 6. Safe Development Practices (Updated for 2.0.0)
+# 🔒 6. Safe Development Practices (Updated for 3.0.0)
 
 Contributors must follow these principles:
 
@@ -120,18 +123,20 @@ Contributors must follow these principles:
 - no dynamic imports  
 - no privileged module escalation  
 - strict validation of all external data  
-- no network calls except LAN Offline Bridge (NEW)  
-- no access to PC runtime without explicit pairing (NEW)  
+- no network calls except LAN Offline Bridge  
+- no access to PC runtime without explicit pairing  
+- all hybrid inputs treated as **low‑trust**  
+- restricted/sandbox enforcement for all modules  
 
 ---
 
-# 🟪 6.5 Hybrid‑Safe Architecture (Preview for GAMA 4.0)
+# 🟪 6.5 Hybrid‑Safe Architecture (Core of GAMA 4.0 — Adopted Early in 3.0)
 
-GAMA 4.0 introduces a **hybrid‑safe architecture** that preserves full offline security while allowing controlled, sanitized import of online data.
+GAMA 3.0 integrates the **hybrid‑safe foundation** of the upcoming 4.0 architecture.
 
 ## 🟦 Secure Online Envoy (Isolated Online Agent)
 - runs in a fully isolated sandbox  
-- one‑way outbound access  
+- outbound‑only access  
 - fetches text, JSON, structured data  
 - cannot access local files, models, or APIs  
 - cannot send local data outward  
@@ -146,7 +151,7 @@ All data returned by the envoy is processed through a strict quarantine:
 - text cleaning  
 - security filtering  
 - only clean text + JSON allowed  
-- integration with Security Family  
+- integration with Security Family 3.0  
 
 Offline modules **never** interact with untrusted data.
 
@@ -160,7 +165,7 @@ Offline modules **never** interact with untrusted data.
 
 ---
 
-# 🛡 6.6 Security Family Integration (Updated)
+# 🛡 6.6 Security Family Integration (v3)
 
 Security Family enforces additional rules for hybrid‑safe mode:
 
@@ -171,10 +176,11 @@ Security Family enforces additional rules for hybrid‑safe mode:
 - no direct access to runtime context  
 - quarantine rejects unsafe data  
 - all violations logged in Security Diagnostics  
+- restricted mode v3 automatically enabled on anomalies  
 
 ---
 
-# 🧪 6.7 Security Testing Requirements (Updated)
+# 🧪 6.7 Security Testing Requirements (Updated for 3.0.0)
 
 All contributors must ensure:
 
@@ -186,14 +192,15 @@ All contributors must ensure:
 - no hidden telemetry  
 - no analytics libraries  
 - no external SDKs  
-- diagnostics logs must not contain sensitive data (NEW)  
+- diagnostics logs must not contain sensitive data  
+- restricted/sandbox behavior must be testable  
+- hybrid‑safe pipeline must be validated  
 
 ---
 
-# 🛡 6.8 Behavioral Safety Policy (v2.0) — NEW
+# 🛡 6.8 Behavioral Safety Policy (v3.0)
 
-GAMA 2.0 includes foundational behavioral safety mechanisms.  
-This section formalizes them as part of the official security policy.
+GAMA 3.0 includes a fully formalized behavioral safety layer.
 
 ## 🔐 Behavioral Determinism
 - no hallucinations  
@@ -201,6 +208,7 @@ This section formalizes them as part of the official security policy.
 - if uncertain → respond “I don’t know”  
 - deterministic reasoning sequences  
 - safe fallback behavior  
+- metadata v3 trace  
 
 ## 👨‍👩‍👧 Family‑Safe Rules
 - child‑safe content filters  
@@ -229,7 +237,8 @@ This section formalizes them as part of the official security policy.
 ## 📜 Auditability
 - reasoning traces  
 - security logs  
-- transparent decision steps  
+- restricted mode logs  
+- sandbox enforcement logs  
 - deterministic repeatable outputs  
 
 ---
@@ -240,4 +249,3 @@ Security researchers and contributors help keep
 **SIRIUS LOCAL AI GAMA safe, private, and fully offline**.
 
 Your responsible reporting protects users worldwide.
-

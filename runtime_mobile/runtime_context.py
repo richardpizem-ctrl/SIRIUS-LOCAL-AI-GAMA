@@ -1,6 +1,7 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Runtime Context
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
 # ============================================================
 
 class MobileRuntimeContext:
@@ -9,7 +10,7 @@ class MobileRuntimeContext:
     and runtime metadata for the mobile execution environment.
     """
 
-    CONTEXT_VERSION = "3.0.0-pre"
+    CONTEXT_VERSION = "3.1.0"
 
     def __init__(self):
         # --------------------------------------------------------
@@ -23,6 +24,7 @@ class MobileRuntimeContext:
             "restricted_mode": False,
             "initialized": False,
             "active_module": None,
+            "app_state": "cold_start",   # foreground / background / suspended / cold_start
         }
 
         # --------------------------------------------------------
@@ -41,6 +43,7 @@ class MobileRuntimeContext:
         self.energy_governor = None
         self.workflow = None
         self.lan_bridge = None
+        self.assistant = None
 
         # --------------------------------------------------------
         # Debug log buffer
@@ -56,16 +59,28 @@ class MobileRuntimeContext:
 
     def update_last_event(self, event):
         self.last_event = event
-        self._debug_log.append(f"EVENT: {event.type}")
+        etype = getattr(event, "type", None) or getattr(event, "event_type", None)
+        if etype:
+            self._debug_log.append(f"EVENT: {etype}")
 
     def set_language(self, lang):
         self.language = lang
 
     def set_restricted_mode(self, enabled: bool):
-        self.state["restricted_mode"] = enabled
+        self.state["restricted_mode"] = bool(enabled)
 
     def set_active_module(self, module_name: str):
         self.state["active_module"] = module_name
+
+    def set_app_state(self, state: str):
+        """
+        Update high-level app state.
+        Expected values: foreground / background / suspended / cold_start
+        """
+        self.state["app_state"] = state
+
+    def mark_initialized(self):
+        self.state["initialized"] = True
 
     # ------------------------------------------------------------
     # Debug log
@@ -73,6 +88,10 @@ class MobileRuntimeContext:
 
     def get_debug_log(self):
         return list(self._debug_log)
+
+    def log(self, message: str):
+        """Generic debug log entry."""
+        self._debug_log.append(str(message))
 
     # ------------------------------------------------------------
     # Reset
@@ -84,6 +103,8 @@ class MobileRuntimeContext:
         self.device_info = {}
         self.state["active_module"] = None
         self.state["restricted_mode"] = False
+        self.state["initialized"] = False
+        self.state["app_state"] = "cold_start"
         self._debug_log.clear()
 
     # ------------------------------------------------------------
@@ -91,13 +112,14 @@ class MobileRuntimeContext:
     # ------------------------------------------------------------
 
     def get_state(self):
-        return self.state
+        return dict(self.state)
 
     def get_config(self):
         return {
             "version": self.CONTEXT_VERSION,
             "language": self.language,
             "restricted_mode": self.state["restricted_mode"],
+            "app_state": self.state["app_state"],
         }
 
     # ------------------------------------------------------------
@@ -110,6 +132,8 @@ class MobileRuntimeContext:
             "session_id": self.session_id,
             "language": self.language,
             "restricted_mode": self.state["restricted_mode"],
+            "initialized": self.state["initialized"],
+            "app_state": self.state["app_state"],
             "device_info": self.device_info,
             "modules_attached": {
                 "pack_manager": self.pack_manager is not None,
@@ -120,5 +144,7 @@ class MobileRuntimeContext:
                 "energy_governor": self.energy_governor is not None,
                 "workflow": self.workflow is not None,
                 "lan_bridge": self.lan_bridge is not None,
-            }
+                "assistant": self.assistant is not None,
+            },
+            "debug_log_size": len(self._debug_log),
         }

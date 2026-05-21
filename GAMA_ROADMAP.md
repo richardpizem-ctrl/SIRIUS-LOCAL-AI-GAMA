@@ -1,5 +1,5 @@
 # 🚀 SIRIUS LOCAL AI GAMA – Roadmap  
-Version: **3.0.0**
+Version: **3.1.0**
 
 ---
 
@@ -85,7 +85,7 @@ Version: **3.0.0**
 
 ---
 
-# 🟧 GAMA 3.0 (CURRENT VERSION)
+# 🟧 GAMA 3.0 (MAJOR RE‑ARCHITECTURE)
 **Full re‑architecture of the mobile runtime.**
 
 ## 🔹 Runtime & Core
@@ -143,14 +143,47 @@ Version: **3.0.0**
 
 # 🟦 GAMA 3.x – UPCOMING RELEASES
 
-## 🟩 GAMA 3.1.0 (NEXT RELEASE)
-- Unified Event Architecture – Phase 2  
-- Multi‑intent routing improvements  
-- Metadata v3 (core fields + normalization)  
-- Diagnostics v3 (rule hits + basic trace)  
-- Pack priority v3 refinements  
-- Vision Engine: SCENE v1  
-- Schoolwork Mode: hybrid input v1  
+## 🟩 GAMA 3.1.0 (CURRENT RELEASE)
+**Stability, metadata, routing, hybrid‑safe improvements**
+
+### 🔹 Runtime & Core
+- Runtime Core 3.1 (stability pass)  
+- unified result schema v3.1  
+- improved fallback logic  
+- runtime_info event  
+- safer reset()  
+- extended debug metadata  
+
+### 🔹 NL Router 3.1
+- PACK_SUGGEST support  
+- improved multi‑intent routing  
+- reduced event collisions  
+- metadata v3.1  
+- hybrid‑safe routing improvements  
+
+### 🔹 Vision Engine 3.1
+- ANALYZE → SCENE alias stabilization  
+- improved OCR fallback  
+- deterministic preprocessing  
+- unified error schema v3.1  
+
+### 🔹 Knowledge Packs 3.1
+- PACK_SUGGEST prefix search  
+- metadata v3.1  
+- pack priority v3.1  
+- compatibility flags v3.1  
+- improved fallback reasoning  
+
+### 🔹 Security Family 3.1
+- extended restricted mode  
+- improved unsafe‑text filter  
+- SECURITY_ALERT stabilization  
+- hybrid‑safe enforcement v3.1  
+
+### 🔹 Diagnostics 3.1
+- PACK_SUGGEST logs  
+- hybrid‑safe logs  
+- unified metadata trace v3.1  
 
 ---
 

@@ -1,6 +1,11 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile NL Router
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Lightweight intent router for the mobile runtime.
+# Converts natural language into MobileEvent objects.
+# Fully compatible with MobileEventTypes 3.1.0.
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
@@ -9,30 +14,52 @@ from runtime_mobile.core.mobile_event import MobileEvent
 
 class MobileNLRouter:
     """
-    Lightweight intent router for the mobile runtime.
-    Converts natural language into MobileEvent objects.
+    Natural language → MobileEvent router.
+    Handles:
+    - Vision intents
+    - Knowledge Pack queries
+    - Assistant / text queries
+    - Security
+    - System/runtime
+    - LAN bridge
     """
 
+    VERSION = "3.1.0"
+
+    # ------------------------------------------------------------
+    # Main routing function
+    # ------------------------------------------------------------
+
     def route(self, text: str):
-        if not text:
+        if not text or not isinstance(text, str):
             return MobileEvent(MobileEventTypes.UNKNOWN)
 
-        t = text.lower()
+        t = text.lower().strip()
 
         # --------------------------------------------------------
         # VISION
         # --------------------------------------------------------
         if any(k in t for k in ["scan", "photo", "ocr", "camera"]):
-            return MobileEvent(MobileEventTypes.OCR)
+            return MobileEvent(MobileEventTypes.OCR, query=t)
+
+        if any(k in t for k in ["detect", "object", "recognize"]):
+            return MobileEvent(MobileEventTypes.DETECT, query=t)
+
+        if any(k in t for k in ["scene", "environment", "context"]):
+            return MobileEvent(MobileEventTypes.SCENE, query=t)
 
         if any(k in t for k in ["analyze", "what is in the picture"]):
-            return MobileEvent(MobileEventTypes.ANALYZE)
+            return MobileEvent(MobileEventTypes.ANALYZE, query=t)
 
         # --------------------------------------------------------
         # KNOWLEDGE PACKS
         # --------------------------------------------------------
         if any(k in t for k in ["how", "why", "what is", "explain"]):
             return MobileEvent(MobileEventTypes.PACK_QUERY, key=t)
+
+        if t.startswith("suggest "):
+            prefix = t.replace("suggest", "").strip()
+            return MobileEvent(MobileEventTypes.PACK_SUGGEST, prefix=prefix)
 
         # --------------------------------------------------------
         # TEXT QUERY / ASSISTANT
@@ -47,7 +74,7 @@ class MobileNLRouter:
         # SECURITY
         # --------------------------------------------------------
         if any(k in t for k in ["permission", "allow", "deny"]):
-            return MobileEvent(MobileEventTypes.SECURITY)
+            return MobileEvent(MobileEventTypes.SECURITY, query=t)
 
         if "restricted" in t:
             enabled = "on" in t or "enable" in t
@@ -58,6 +85,9 @@ class MobileNLRouter:
         # --------------------------------------------------------
         if "runtime" in t or "system info" in t:
             return MobileEvent(MobileEventTypes.RUNTIME_INFO)
+
+        if "state" in t or "status" in t:
+            return MobileEvent(MobileEventTypes.APP_STATE)
 
         # --------------------------------------------------------
         # LAN SYNC
@@ -74,4 +104,4 @@ class MobileNLRouter:
         # --------------------------------------------------------
         # DEFAULT
         # --------------------------------------------------------
-        return MobileEvent(MobileEventTypes.UNKNOWN)
+        return MobileEvent(MobileEventTypes.UNKNOWN, query=t)

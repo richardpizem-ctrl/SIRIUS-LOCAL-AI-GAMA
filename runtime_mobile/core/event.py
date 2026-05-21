@@ -1,16 +1,44 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Event
-# Version: 3.0.0-pre
+# Version: 3.1.0
 # ============================================================
 
 class MobileEvent:
     """
-    Lightweight event object used across the mobile runtime.
-    Wraps event type and arbitrary payload fields.
+    Unified event object for the GAMA 3.1 runtime.
+    Includes:
+    - normalized input
+    - intent + confidence
+    - metadata v3
+    - tags (vision, OCR, hybrid)
+    - source tracking
     """
 
-    def __init__(self, event_type, **payload):
+    def __init__(self, event_type, *,
+                 raw_input=None,
+                 normalized_input=None,
+                 intent=None,
+                 confidence=None,
+                 source="unknown",
+                 tags=None,
+                 metadata=None,
+                 **payload):
+
+        # Core event fields
         self.type = event_type
+        self.raw_input = raw_input
+        self.normalized_input = normalized_input
+        self.intent = intent
+        self.confidence = confidence
+        self.source = source
+
+        # Metadata v3
+        self.metadata = metadata or {}
+
+        # Tags (vision, OCR, hybrid, scene)
+        self.tags = tags or []
+
+        # Original payload
         self._payload = payload
 
     # ------------------------------------------------------------
@@ -32,8 +60,20 @@ class MobileEvent:
     def to_dict(self):
         return {
             "type": self.type,
-            "payload": dict(self._payload)
+            "raw_input": self.raw_input,
+            "normalized_input": self.normalized_input,
+            "intent": self.intent,
+            "confidence": self.confidence,
+            "source": self.source,
+            "tags": list(self.tags),
+            "metadata": dict(self.metadata),
+            "payload": dict(self._payload),
         }
 
     def __repr__(self):
-        return f"<MobileEvent type={self.type} payload={self._payload}>"
+        return (
+            f"<MobileEvent type={self.type} "
+            f"intent={self.intent} conf={self.confidence} "
+            f"source={self.source} tags={self.tags} "
+            f"payload={self._payload}>"
+        )

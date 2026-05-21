@@ -1,6 +1,13 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Knowledge Packs Entry
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Updated for GAMA Runtime 3.1:
+# - metadata v3 support (pack_id, checksum, entries_count)
+# - auto-load with caching
+# - improved fallback search
+# - unified structured responses
 # ============================================================
 
 from runtime_mobile.core.event import MobileEvent
@@ -9,7 +16,7 @@ from runtime_mobile.core.event_types import MobileEventTypes
 
 class MobileKnowledgePacks:
 
-    MODULE_VERSION = "3.0.0-pre"
+    MODULE_VERSION = "3.1.0"
 
     def __init__(self, context):
         self.context = context
@@ -34,11 +41,14 @@ class MobileKnowledgePacks:
         return {
             "status": "ok",
             "pack": pack_name,
+            "pack_id": pack.get("pack_id", pack_name),
             "entries": len(pack.get("entries", {})),
+            "entries_count": pack.get("entries_count", len(pack.get("entries", {}))),
             "version": pack.get("version", "unknown"),
             "priority": pack.get("priority", 0),
             "language": pack.get("language", "en"),
             "tags": pack.get("tags", []),
+            "checksum": pack.get("checksum"),
         }
 
     # ------------------------------------------------------------
@@ -69,7 +79,7 @@ class MobileKnowledgePacks:
         pack_name = event.get("pack", "default")
         key = event.get("key", "query")
 
-        # auto-load
+        # Auto-load if needed
         if pack_name not in self.loaded_packs:
             load_result = self.load_pack(pack_name)
             if load_result.get("status") != "ok":
@@ -78,16 +88,18 @@ class MobileKnowledgePacks:
         pack = self.loaded_packs[pack_name]
         entries = pack.get("entries", {})
 
+        # Direct hit
         if key in entries:
             return {
                 "status": "ok",
                 "pack": pack_name,
+                "pack_id": pack.get("pack_id", pack_name),
                 "key": key,
                 "value": entries[key],
                 "exists": True,
             }
 
-        # fallback search
+        # Fallback search across all packs
         fallback = self.context.pack_manager.search_in_packs(key)
         if fallback is not None:
             return {
@@ -98,7 +110,12 @@ class MobileKnowledgePacks:
                 "exists": True,
             }
 
-        return {"status": "not_found", "pack": pack_name, "key": key, "exists": False}
+        return {
+            "status": "not_found",
+            "pack": pack_name,
+            "key": key,
+            "exists": False,
+        }
 
     # ------------------------------------------------------------
     # PACK INFO
@@ -108,6 +125,7 @@ class MobileKnowledgePacks:
 
         pack_name = event.get("pack", "default")
 
+        # Auto-load if needed
         if pack_name not in self.loaded_packs:
             load_result = self.load_pack(pack_name)
             if load_result.get("status") != "ok":
@@ -118,11 +136,14 @@ class MobileKnowledgePacks:
         return {
             "status": "ok",
             "pack": pack_name,
+            "pack_id": pack.get("pack_id", pack_name),
             "version": pack.get("version", "unknown"),
             "priority": pack.get("priority", 0),
             "language": pack.get("language", "en"),
             "tags": pack.get("tags", []),
+            "entries_count": pack.get("entries_count", len(pack.get("entries", {}))),
             "entries": list(pack.get("entries", {}).keys()),
+            "checksum": pack.get("checksum"),
         }
 
     # ------------------------------------------------------------
@@ -132,6 +153,9 @@ class MobileKnowledgePacks:
     def _handle_query(self, event: MobileEvent):
 
         text = event.get("text", "").strip().lower()
+
+        if not text:
+            return {"status": "error", "reason": "empty_query"}
 
         value = self.context.pack_manager.search_in_packs(text)
 
@@ -145,4 +169,7 @@ class MobileKnowledgePacks:
     # ------------------------------------------------------------
 
     def list_loaded(self):
-        return {"status": "ok", "loaded_packs": list(self.loaded_packs.keys())}
+        return {
+            "status": "ok",
+            "loaded_packs": list(self.loaded_packs.keys())
+        }

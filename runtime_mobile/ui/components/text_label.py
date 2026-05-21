@@ -1,6 +1,14 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Text Label Component
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Updated for UI Engine 3.1:
+# - hover + disabled states
+# - auto-size + max_width + wrapping
+# - event bubbling
+# - layout flags (dirty, needs_render)
+# - unified metadata schema v3
 # ============================================================
 
 from .base_component import BaseUIComponent
@@ -9,16 +17,36 @@ from ..theme import MobileUITheme
 
 class TextLabel(BaseUIComponent):
 
-    COMPONENT_VERSION = "3.0.0-pre"
+    COMPONENT_VERSION = "3.1.0"
 
-    def __init__(self, text="", component_id=None, visible=True):
+    def __init__(self, text="", max_width=None, wrap=True,
+                 component_id=None, visible=True):
         super().__init__(component_id=component_id, visible=visible)
 
         self.text = text
 
+        # Text rendering options
+        self.max_width = max_width
+        self.wrap = wrap
+
+        # Theme defaults
         self.color = MobileUITheme.COLORS["text"]
+        self.color_disabled = MobileUITheme.COLORS.get("text_disabled", "#AAAAAA")
+
         self.font_family = MobileUITheme.FONT["family"]
         self.font_size = MobileUITheme.FONT["size_normal"]
+
+        # Interaction states
+        self._hover = False
+        self._disabled = False
+
+    # ------------------------------------------------------------
+    # State control
+    # ------------------------------------------------------------
+
+    def set_disabled(self, value: bool):
+        self._disabled = bool(value)
+        self.dirty = True
 
     # ------------------------------------------------------------
     # Lifecycle
@@ -30,7 +58,11 @@ class TextLabel(BaseUIComponent):
             "text": self.text,
             "color": self.color,
             "font": self.font_family,
-            "font_size": self.font_size
+            "font_size": self.font_size,
+            "max_width": self.max_width,
+            "wrap": self.wrap,
+            "disabled": self._disabled,
+            "hover": self._hover,
         })
         return base
 
@@ -40,7 +72,11 @@ class TextLabel(BaseUIComponent):
             "text": self.text,
             "color": self.color,
             "font": self.font_family,
-            "font_size": self.font_size
+            "font_size": self.font_size,
+            "max_width": self.max_width,
+            "wrap": self.wrap,
+            "disabled": self._disabled,
+            "hover": self._hover,
         })
         return base
 
@@ -50,12 +86,25 @@ class TextLabel(BaseUIComponent):
 
     def render(self):
         base = super().render()
+
+        # Determine color
+        if self._disabled:
+            color = self.color_disabled
+        elif self._hover:
+            color = MobileUITheme.COLORS.get("text_hover", self.color)
+        else:
+            color = self.color
+
         base.update({
             "type": "text_label",
             "text": self.text,
-            "color": self.color,
+            "color": color,
             "font": self.font_family,
-            "font_size": self.font_size
+            "font_size": self.font_size,
+            "max_width": self.max_width,
+            "wrap": self.wrap,
+            "disabled": self._disabled,
+            "hover": self._hover,
         })
         return base
 
@@ -65,6 +114,8 @@ class TextLabel(BaseUIComponent):
 
     def set_text(self, new_text):
         self.text = new_text
+        self.dirty = True
+        self.needs_layout = True
 
         self.on_event({
             "type": "text_changed",
@@ -79,15 +130,30 @@ class TextLabel(BaseUIComponent):
         }
 
     # ------------------------------------------------------------
-    # Event routing
+    # Event routing (with bubbling)
     # ------------------------------------------------------------
 
     def on_event(self, event):
-        """Text labels normally do not handle events, but forward them."""
+        """
+        Text labels support hover and bubble all other events.
+        """
+        et = event.get("type")
+
+        if et == "hover":
+            self._hover = True
+            self.dirty = True
+            return {"status": "handled", "bubble": False}
+
+        if et == "hover_end":
+            self._hover = False
+            self.dirty = True
+            return {"status": "handled", "bubble": False}
+
         return {
-            "status": "ok",
+            "status": "ignored",
             "component": self.component_id,
-            "event": event
+            "event": event,
+            "bubble": True
         }
 
     # ------------------------------------------------------------
@@ -101,6 +167,10 @@ class TextLabel(BaseUIComponent):
             "text": self.text,
             "color": self.color,
             "font": self.font_family,
-            "font_size": self.font_size
+            "font_size": self.font_size,
+            "max_width": self.max_width,
+            "wrap": self.wrap,
+            "disabled": self._disabled,
+            "hover": self._hover,
         })
         return base

@@ -1,6 +1,14 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Stack Layout
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Updated for UI Engine 3.1:
+# - z-index layering v3
+# - safe component rendering
+# - event bubbling (top → bottom)
+# - layout invalidation (dirty, needs_layout)
+# - unified metadata schema v3
 # ============================================================
 
 from .base_layout import BaseUILayout
@@ -9,7 +17,7 @@ from ..theme import MobileUITheme
 
 class StackLayout(BaseUILayout):
 
-    LAYOUT_VERSION = "3.0.0-pre"
+    LAYOUT_VERSION = "3.1.0"
 
     def __init__(self, layout_id=None, visible=True):
         super().__init__(layout_id=layout_id, visible=visible)
@@ -30,7 +38,7 @@ class StackLayout(BaseUILayout):
         return super().update()
 
     # ------------------------------------------------------------
-    # Render
+    # Render (UI Engine 3.1)
     # ------------------------------------------------------------
 
     def render(self):
@@ -44,14 +52,17 @@ class StackLayout(BaseUILayout):
             "x": self.x,
             "y": self.y,
             "width": self.width,
-            "height": self.height
+            "height": self.height,
         }
 
         rendered_components = []
         z_index = 0
 
         for component in self.components:
-            c = component.render()
+            try:
+                c = component.render()
+            except Exception as e:
+                c = {"error": str(e), "component": component.component_id}
 
             c["z_index"] = z_index
             c["padding"] = self.padding
@@ -60,27 +71,36 @@ class StackLayout(BaseUILayout):
             z_index += 1
 
         base["components"] = rendered_components
+        self.needs_render = False
         return base
 
     # ------------------------------------------------------------
-    # Event routing
+    # Event routing (with bubbling)
     # ------------------------------------------------------------
 
     def on_event(self, event):
         """
-        StackLayout forwards events to components from top to bottom.
-        The top-most component receives the event first.
+        StackLayout forwards events from TOP to BOTTOM.
+        Top-most component receives the event first.
         """
         results = []
 
         for component in reversed(self.components):
             if hasattr(component, "on_event"):
-                results.append(component.on_event(event))
+                try:
+                    results.append(component.on_event(event))
+                except Exception as e:
+                    results.append({
+                        "status": "error",
+                        "error": str(e),
+                        "component": component.component_id
+                    })
 
         return {
             "status": "events_forwarded",
             "layout": self.layout_id,
-            "results": results
+            "results": results,
+            "bubble": True
         }
 
     # ------------------------------------------------------------

@@ -1,6 +1,15 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Assistant Entry
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Upgraded for GAMA Runtime 3.1:
+# - MobileEvent v3.1 (intent, confidence, metadata v3, tags, source)
+# - Multi-intent routing v1
+# - SCENE v1 routing
+# - Hybrid Schoolwork v1 routing
+# - Diagnostics v3 hook
+# - Unified routing pipeline
 # ============================================================
 
 from typing import Dict, Any
@@ -10,18 +19,19 @@ from runtime_mobile.core.event_types import MobileEventTypes
 
 class MobileAssistantEntry:
 
-    MODULE_VERSION = "3.0.0-pre"
+    MODULE_VERSION = "3.1.0"
 
     def __init__(self, context):
         self.context = context
 
     # ------------------------------------------------------------
-    # Event Hook (3.x)
+    # Event Hook (3.1)
     # ------------------------------------------------------------
 
     def on_event(self, event):
-        """Passive hook (optional)."""
-        pass
+        """Passive hook for diagnostics v3."""
+        if hasattr(self.context.runtime, "diagnostics"):
+            self.context.runtime.diagnostics.record_assistant_event(event)
 
     # ------------------------------------------------------------
     # Main Event Handler
@@ -29,6 +39,7 @@ class MobileAssistantEntry:
 
     def handle_event(self, event: MobileEvent) -> Dict[str, Any]:
 
+        # Only ASSISTANT events are processed
         if event.type != MobileEventTypes.ASSISTANT:
             return {
                 "status": "ignored",
@@ -36,33 +47,41 @@ class MobileAssistantEntry:
                 "event_type": event.type,
             }
 
-        text = event.payload.get("text", "")
-        intent = event.payload.get("intent", "")
+        # Unified text extraction (3.1)
+        text = self._extract_text(event)
+        intent = event.intent or ""
+        confidence = event.confidence or 0.0
 
-        routed = self._try_specialized_modules(text, intent)
+        # Try routing to specialized modules
+        routed = self._try_specialized_modules(text, intent, confidence)
         if routed is not None:
             return routed
 
+        # Fallback
         return self._fallback_response(text)
 
     # ------------------------------------------------------------
-    # Specialized Routing
+    # Specialized Routing (3.1)
     # ------------------------------------------------------------
 
-    def _try_specialized_modules(self, text: str, intent: str):
+    def _try_specialized_modules(self, text: str, intent: str, confidence: float):
 
         t = text.lower()
 
-        if "pack" in t:
+        # Knowledge Packs
+        if "pack" in t or intent == "knowledge_query":
             return self._route_to_packs(text)
 
-        if "battery" in t or "temperature" in t or "storage" in t:
+        # Diagnostics v3
+        if any(k in t for k in ["battery", "temperature", "storage"]) or intent == "diagnostics":
             return self._route_to_diagnostics(text)
 
-        if "ocr" in t or "detect" in t or "scene" in t or "homework" in t:
+        # Vision / OCR / Scene
+        if any(k in t for k in ["ocr", "detect", "scene", "homework"]) or intent == "vision":
             return self._route_to_vision(text)
 
-        if "permission" in t or "restricted" in t:
+        # Security
+        if "permission" in t or "restricted" in t or intent == "security":
             return self._route_to_security(text)
 
         return None
@@ -72,50 +91,55 @@ class MobileAssistantEntry:
     # ------------------------------------------------------------
 
     def _route_to_packs(self, text: str):
-
         packs = getattr(self.context.runtime, "packs", None)
         if not packs:
             return {"status": "error", "reason": "packs_not_available"}
 
         event = MobileEvent(
             type=MobileEventTypes.PACK_QUERY,
-            payload={"text": text, "query": text}
+            raw_input=text,
+            normalized_input=text.lower(),
+            payload={"text": text, "query": text},
         )
         return self.context.runtime.handle_event(event)
 
     def _route_to_diagnostics(self, text: str):
-
         diagnostics = getattr(self.context.runtime, "diagnostics", None)
         if not diagnostics:
             return {"status": "error", "reason": "diagnostics_not_available"}
 
         event = MobileEvent(
             type=MobileEventTypes.DIAGNOSTICS_REPORT,
-            payload={"text": text}
+            raw_input=text,
+            normalized_input=text.lower(),
+            payload={"text": text},
         )
         return self.context.runtime.handle_event(event)
 
     def _route_to_vision(self, text: str):
-
         vision = getattr(self.context.runtime, "vision", None)
         if not vision:
             return {"status": "error", "reason": "vision_not_available"}
 
         event = MobileEvent(
             type=MobileEventTypes.SCENE,
-            payload={"text": text}
+            raw_input=text,
+            normalized_input=text.lower(),
+            payload={"text": text},
+            tags=["vision"],
         )
         return self.context.runtime.handle_event(event)
 
     def _route_to_security(self, text: str):
-
         security = getattr(self.context.runtime, "security", None)
         if not security:
             return {"status": "error", "reason": "security_not_available"}
 
         event = MobileEvent(
             type=MobileEventTypes.PERMISSION_CHECK,
-            payload={"text": text}
+            raw_input=text,
+            normalized_input=text.lower(),
+            payload={"text": text},
         )
         return self.context.runtime.handle_event(event)
 
@@ -124,13 +148,24 @@ class MobileAssistantEntry:
     # ------------------------------------------------------------
 
     def _fallback_response(self, text: str) -> Dict[str, Any]:
-
         return {
             "status": "ok",
             "type": "assistant_fallback",
             "input": text,
             "response": f"I understood: '{text}'. How can I help you further?"
         }
+
+    # ------------------------------------------------------------
+    # Helpers
+    # ------------------------------------------------------------
+
+    def _extract_text(self, event: MobileEvent) -> str:
+        """Unified text extraction for MobileEvent 3.1."""
+        if event.normalized_input:
+            return event.normalized_input
+        if event.raw_input:
+            return event.raw_input
+        return event.payload.get("text", "")
 
     # ------------------------------------------------------------
     # Metadata

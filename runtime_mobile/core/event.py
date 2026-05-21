@@ -3,6 +3,10 @@
 # Version: 3.1.0
 # ============================================================
 
+import time
+import uuid
+
+
 class MobileEvent:
     """
     Unified event object for the GAMA 3.1 runtime.
@@ -12,6 +16,7 @@ class MobileEvent:
     - metadata v3
     - tags (vision, OCR, hybrid)
     - source tracking
+    - event_id + timestamp (NEW in 3.1)
     """
 
     def __init__(self, event_type, *,
@@ -36,7 +41,11 @@ class MobileEvent:
         self.metadata = metadata or {}
 
         # Tags (vision, OCR, hybrid, scene)
-        self.tags = tags or []
+        self.tags = list(tags) if tags else []
+
+        # NEW: event identity + timestamp
+        self.event_id = str(uuid.uuid4())
+        self.timestamp = time.time()
 
         # Original payload
         self._payload = payload
@@ -59,6 +68,8 @@ class MobileEvent:
 
     def to_dict(self):
         return {
+            "event_id": self.event_id,
+            "timestamp": self.timestamp,
             "type": self.type,
             "raw_input": self.raw_input,
             "normalized_input": self.normalized_input,
@@ -72,7 +83,7 @@ class MobileEvent:
 
     def __repr__(self):
         return (
-            f"<MobileEvent type={self.type} "
+            f"<MobileEvent id={self.event_id} type={self.type} "
             f"intent={self.intent} conf={self.confidence} "
             f"source={self.source} tags={self.tags} "
             f"payload={self._payload}>"

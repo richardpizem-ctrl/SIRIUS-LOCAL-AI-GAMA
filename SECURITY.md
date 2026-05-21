@@ -1,7 +1,7 @@
-# 🔐 SIRIUS LOCAL AI GAMA – Security Policy (v3.0.0)
+# 🔐 SIRIUS LOCAL AI GAMA – Security Policy (v3.1.0)
 
 SIRIUS LOCAL AI GAMA is a fully offline, privacy‑first mobile AI runtime.  
-This security policy defines how vulnerabilities are reported, validated, and resolved in version **3.0.0**, aligned with the **Unified Event Architecture 3.x**, **Metadata v3**, **Restricted Mode v3**, and the **Hybrid‑Safe Pipeline**.
+This security policy defines how vulnerabilities are reported, validated, and resolved in version **3.1.0**, aligned with the **Unified Event Architecture 3.1.x**, **Metadata v3.1**, **Restricted Mode v3.1**, **Sandbox Enforcement v3.1**, **PACK_SUGGEST safety**, and the **Hybrid‑Safe Pipeline**.
 
 ---
 
@@ -11,8 +11,9 @@ Only the latest stable version of GAMA receives security updates.
 
 | Version | Supported |
 |--------|-----------|
-| **GAMA 3.x** | ✔ Yes |
-| **GAMA 2.x** | ✖ No (security fixes only if critical) |
+| **GAMA 3.1.x** | ✔ Yes |
+| **GAMA 3.0.x** | ✔ Yes (security fixes only) |
+| **GAMA 2.x** | ✖ No (critical fixes only) |
 | **GAMA 1.x** | ✖ No |
 | **GAMA 0.x** | ✖ No |
 
@@ -75,25 +76,26 @@ When a vulnerability is reported:
 
 ---
 
-# 🧱 5. Security Scope (Updated for 3.0.0)
+# 🧱 5. Security Scope (Updated for 3.1.0)
 
 This policy covers vulnerabilities related to:
 
-- deterministic runtime core v3  
-- unified event architecture 3.x  
-- restricted mode v3  
-- sandbox enforcement v3  
+- deterministic runtime core v3.1  
+- unified event architecture 3.1.x  
+- restricted mode v3.1  
+- sandbox enforcement v3.1  
 - hybrid‑safe pipeline  
 - offline reasoning engine  
-- workflow engine 3.0  
-- vision engine 3.0  
-- schoolwork mode 3.0  
-- health assistant 3.0  
-- knowledge packs 3.0  
+- workflow engine 3.1  
+- vision engine 3.1  
+- schoolwork mode 3.1  
+- health assistant 3.1  
+- knowledge packs 3.1  
+- PACK_SUGGEST safety  
 - module privilege isolation  
-- event metadata engine v3  
+- event metadata engine v3.1  
 - LAN Offline Bridge  
-- diagnostics engine v3  
+- diagnostics engine v3.1  
 - low‑trust input handling  
 
 It does **not** cover:
@@ -107,7 +109,7 @@ These should be reported via normal GitHub issues.
 
 ---
 
-# 🔒 6. Safe Development Practices (Updated for 3.0.0)
+# 🔒 6. Safe Development Practices (Updated for 3.1.0)
 
 Contributors must follow these principles:
 
@@ -126,13 +128,14 @@ Contributors must follow these principles:
 - no network calls except LAN Offline Bridge  
 - no access to PC runtime without explicit pairing  
 - all hybrid inputs treated as **low‑trust**  
+- PACK_SUGGEST safety enforcement  
 - restricted/sandbox enforcement for all modules  
 
 ---
 
-# 🟪 6.5 Hybrid‑Safe Architecture (Core of GAMA 4.0 — Adopted Early in 3.0)
+# 🟪 6.5 Hybrid‑Safe Architecture (Core of GAMA 4.0 — Adopted in 3.1)
 
-GAMA 3.0 integrates the **hybrid‑safe foundation** of the upcoming 4.0 architecture.
+GAMA 3.1 integrates the **hybrid‑safe foundation** of the upcoming 4.0 architecture.
 
 ## 🟦 Secure Online Envoy (Isolated Online Agent)
 - runs in a fully isolated sandbox  
@@ -141,6 +144,7 @@ GAMA 3.0 integrates the **hybrid‑safe foundation** of the upcoming 4.0 archite
 - cannot access local files, models, or APIs  
 - cannot send local data outward  
 - always classified as **low‑trust**  
+- PACK_SUGGEST safety rules applied  
 
 ## 🟩 Quarantine Pipeline (Data Sanitization Layer)
 All data returned by the envoy is processed through a strict quarantine:
@@ -151,7 +155,7 @@ All data returned by the envoy is processed through a strict quarantine:
 - text cleaning  
 - security filtering  
 - only clean text + JSON allowed  
-- integration with Security Family 3.0  
+- integration with Security Family 3.1  
 
 Offline modules **never** interact with untrusted data.
 
@@ -165,7 +169,7 @@ Offline modules **never** interact with untrusted data.
 
 ---
 
-# 🛡 6.6 Security Family Integration (v3)
+# 🛡 6.6 Security Family Integration (v3.1)
 
 Security Family enforces additional rules for hybrid‑safe mode:
 
@@ -175,12 +179,12 @@ Security Family enforces additional rules for hybrid‑safe mode:
 - no cross‑module privilege escalation  
 - no direct access to runtime context  
 - quarantine rejects unsafe data  
-- all violations logged in Security Diagnostics  
-- restricted mode v3 automatically enabled on anomalies  
+- PACK_SUGGEST violations logged  
+- restricted mode v3.1 automatically enabled on anomalies  
 
 ---
 
-# 🧪 6.7 Security Testing Requirements (Updated for 3.0.0)
+# 🧪 6.7 Security Testing Requirements (Updated for 3.1.0)
 
 All contributors must ensure:
 
@@ -195,12 +199,13 @@ All contributors must ensure:
 - diagnostics logs must not contain sensitive data  
 - restricted/sandbox behavior must be testable  
 - hybrid‑safe pipeline must be validated  
+- PACK_SUGGEST safety must be validated  
 
 ---
 
-# 🛡 6.8 Behavioral Safety Policy (v3.0)
+# 🛡 6.8 Behavioral Safety Policy (v3.1)
 
-GAMA 3.0 includes a fully formalized behavioral safety layer.
+GAMA 3.1 includes a fully formalized behavioral safety layer.
 
 ## 🔐 Behavioral Determinism
 - no hallucinations  
@@ -208,7 +213,8 @@ GAMA 3.0 includes a fully formalized behavioral safety layer.
 - if uncertain → respond “I don’t know”  
 - deterministic reasoning sequences  
 - safe fallback behavior  
-- metadata v3 trace  
+- metadata v3.1 trace  
+- unified result schema v3.1  
 
 ## 👨‍👩‍👧 Family‑Safe Rules
 - child‑safe content filters  
@@ -239,6 +245,7 @@ GAMA 3.0 includes a fully formalized behavioral safety layer.
 - security logs  
 - restricted mode logs  
 - sandbox enforcement logs  
+- PACK_SUGGEST logs  
 - deterministic repeatable outputs  
 
 ---

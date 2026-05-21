@@ -1,6 +1,15 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Storage System Module
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Updated for GAMA Runtime 3.1:
+# - normalized storage schema v3
+# - safe validation of total/free/used
+# - percent calculation with protection
+# - backend fail-safe
+# - diagnostics v3 compatibility
+# - added storage health + io_load (optional)
 # ============================================================
 
 from typing import Any, Dict, Optional
@@ -11,9 +20,14 @@ from runtime_mobile.core.event_types import MobileEventTypes
 
 class MobileStorageModule:
 
-    MODULE_VERSION = "3.0.0-pre"
+    MODULE_VERSION = "3.1.0"
 
     def __init__(self, backend: Optional[Any] = None):
+        """
+        backend may be:
+            - callable: backend() -> dict
+            - object:   backend.get_storage_status() -> dict
+        """
         self.backend = backend
 
     # ------------------------------------------------------------
@@ -21,6 +35,7 @@ class MobileStorageModule:
     # ------------------------------------------------------------
 
     def _read_backend(self) -> Dict[str, Any]:
+        """Safe backend read with full isolation."""
         if self.backend is None:
             return {}
 
@@ -35,26 +50,22 @@ class MobileStorageModule:
         return {}
 
     # ------------------------------------------------------------
-    # Normalized storage status
+    # Normalized storage status (v3)
     # ------------------------------------------------------------
 
     def get_status(self) -> Dict[str, Any]:
         raw = self._read_backend()
 
-        # Safe extraction
-        total = raw.get("total")
-        if total is None:
-            total = raw.get("total_bytes")
-
-        free = raw.get("free")
-        if free is None:
-            free = raw.get("free_bytes")
-
+        # Extract values
+        total = raw.get("total") or raw.get("total_bytes")
+        free = raw.get("free") or raw.get("free_bytes")
         used = raw.get("used")
+
+        # Compute used if missing
         if used is None and total is not None and free is not None:
             used = total - free
 
-        # Validate values
+        # Validate numeric values
         if total is not None and total < 0:
             total = None
         if free is not None and free < 0:
@@ -62,12 +73,18 @@ class MobileStorageModule:
         if used is not None and used < 0:
             used = None
 
+        # Percent
         percent = None
         if total not in (None, 0) and used is not None:
             try:
                 percent = round((used / total) * 100, 2)
             except Exception:
                 percent = None
+
+        # Optional fields
+        health = raw.get("health")          # e.g. "good", "warning", "critical"
+        io_load = raw.get("io_load")        # e.g. 0–100 %
+        source = raw.get("source", "unknown")
 
         return {
             "module": "storage",
@@ -76,6 +93,9 @@ class MobileStorageModule:
             "used_bytes": used,
             "free_bytes": free,
             "used_percent": percent,
+            "health": health,
+            "io_load": io_load,
+            "source": source,
         }
 
     # ------------------------------------------------------------

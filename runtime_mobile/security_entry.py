@@ -1,6 +1,7 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Security Entry
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
@@ -9,21 +10,31 @@ from runtime_mobile.core.event_types import MobileEventTypes
 class MobileSecurityEntry:
     """
     Mobile security evaluation layer.
-    Handles permission checks, restricted mode, and unsafe text filtering.
+    Handles:
+    - permission checks
+    - restricted mode
+    - unsafe text filtering
+    - security alerts
     """
 
-    MODULE_VERSION = "3.0.0-pre"
+    MODULE_VERSION = "3.1.0"
 
     def __init__(self, context):
         self.context = context
         self.security_profile = "OWNER"  # OWNER / FAMILY / STRANGER
 
+        # Forbidden keywords (expandable)
+        self.forbidden_keywords = [
+            "hack", "bypass", "cheat", "exploit",
+            "root", "jailbreak", "ddos", "breach"
+        ]
+
     # ------------------------------------------------------------
-    # Main Event Handler (required by runtime)
+    # Main Event Handler
     # ------------------------------------------------------------
 
     def on_event(self, event):
-        et = event.type
+        et = getattr(event, "type", None)
 
         # Restricted Mode Toggle
         if et == MobileEventTypes.RESTRICTED_MODE:
@@ -32,6 +43,10 @@ class MobileSecurityEntry:
         # Permission Check
         if et == MobileEventTypes.PERMISSION_CHECK:
             return self._check_permission(event)
+
+        # Security Alert
+        if et == MobileEventTypes.SECURITY_ALERT:
+            return self._security_alert(event)
 
         # Text Safety Filter (only for text-based events)
         if hasattr(event, "text") and isinstance(event.text, str):
@@ -45,7 +60,7 @@ class MobileSecurityEntry:
 
     def _handle_restricted_mode(self, event):
         enabled = getattr(event, "enabled", False)
-        self.context.set_restricted_mode(enabled)
+        self.context.set_restricted_mode(bool(enabled))
 
         return {
             "status": "ok",
@@ -67,7 +82,15 @@ class MobileSecurityEntry:
                 "allowed": False
             }
 
-        allowed = self.context.permissions.is_allowed(permission)
+        try:
+            allowed = self.context.permissions.is_allowed(permission)
+        except Exception as e:
+            return {
+                "status": "error",
+                "reason": "permission_check_failed",
+                "error": str(e),
+                "allowed": False
+            }
 
         return {
             "status": "ok",
@@ -83,16 +106,37 @@ class MobileSecurityEntry:
     def _text_safety(self, event):
         text = event.text.lower()
 
-        forbidden = ["hack", "bypass", "cheat", "exploit"]
-
-        if any(w in text for w in forbidden):
+        if any(w in text for w in self.forbidden_keywords):
             return {
                 "status": "blocked",
                 "reason": "unsafe_text",
                 "allowed": False
             }
 
+        # Restricted mode blocks all assistant/text queries except safe ones
+        if self.context.state.get("restricted_mode"):
+            if any(k in text for k in ["search", "explain", "write", "generate"]):
+                return {
+                    "status": "blocked",
+                    "reason": "restricted_mode_active",
+                    "allowed": False
+                }
+
         return {"status": "ok", "allowed": True}
+
+    # ------------------------------------------------------------
+    # Security Alert
+    # ------------------------------------------------------------
+
+    def _security_alert(self, event):
+        message = getattr(event, "message", "unknown_alert")
+        self.context.log(f"SECURITY ALERT: {message}")
+
+        return {
+            "status": "ok",
+            "alert": message,
+            "profile": self.security_profile
+        }
 
     # ------------------------------------------------------------
     # Metadata
@@ -103,5 +147,6 @@ class MobileSecurityEntry:
             "module": "security",
             "version": self.MODULE_VERSION,
             "profile": self.security_profile,
-            "restricted_mode": self.context.state.get("restricted_mode")
+            "restricted_mode": self.context.state.get("restricted_mode"),
+            "forbidden_keywords": list(self.forbidden_keywords)
         }

@@ -1,6 +1,14 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Panel Component
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Updated for UI Engine 3.1:
+# - full Container 3.1 compatibility
+# - event bubbling + safe layout routing
+# - border + background rendering v3
+# - layout invalidation (dirty, needs_layout)
+# - unified metadata schema v3
 # ============================================================
 
 from .container import Container
@@ -9,7 +17,7 @@ from ..theme import MobileUITheme
 
 class Panel(Container):
 
-    COMPONENT_VERSION = "3.0.0-pre"
+    COMPONENT_VERSION = "3.1.0"
 
     def __init__(self, layout=None, component_id=None, visible=True):
         super().__init__(layout=layout, component_id=component_id, visible=visible)
@@ -22,7 +30,7 @@ class Panel(Container):
         self.padding = MobileUITheme.SPACING["lg"]
 
     # ------------------------------------------------------------
-    # Render
+    # Render (UI Engine 3.1)
     # ------------------------------------------------------------
 
     def render(self):
@@ -34,24 +42,38 @@ class Panel(Container):
             "border_radius": self.border_radius,
             "border_color": self.border_color,
             "border_width": self.border_width,
-            "padding": self.padding
+            "padding": self.padding,
         })
 
         return base
 
     # ------------------------------------------------------------
-    # Event routing
+    # Event routing (with bubbling)
     # ------------------------------------------------------------
 
     def on_event(self, event):
-        """Forward events to layout if present."""
+        """
+        Panels forward events to layout if present.
+        Layout may choose to bubble or stop propagation.
+        """
         if self.layout and hasattr(self.layout, "on_event"):
-            return self.layout.on_event(event)
+            try:
+                result = self.layout.on_event(event)
+                if isinstance(result, dict):
+                    return result
+            except Exception as e:
+                return {
+                    "status": "error",
+                    "component": self.component_id,
+                    "error": str(e),
+                    "bubble": True
+                }
 
         return {
             "status": "ignored",
             "component": self.component_id,
-            "event": event
+            "event": event,
+            "bubble": True
         }
 
     # ------------------------------------------------------------
@@ -66,6 +88,6 @@ class Panel(Container):
             "border_radius": self.border_radius,
             "border_color": self.border_color,
             "border_width": self.border_width,
-            "padding": self.padding
+            "padding": self.padding,
         })
         return base

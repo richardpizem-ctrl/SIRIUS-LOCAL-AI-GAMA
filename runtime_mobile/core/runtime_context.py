@@ -1,6 +1,7 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Runtime Context
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
 # ============================================================
 
 from runtime_mobile.security.security_module import SecurityModule
@@ -12,7 +13,7 @@ from runtime_mobile.knowledge_packs.pack_manager.pack_manager import PackManager
 
 class MobileRuntimeContext:
 
-    CONTEXT_VERSION = "3.0.0-pre"
+    CONTEXT_VERSION = "3.1.0"
 
     def __init__(self):
 
@@ -28,13 +29,13 @@ class MobileRuntimeContext:
 
         # Runtime Configuration
         self.config = {
-            "version": "3.0.0-pre",
+            "version": "3.1.0",
             "platform": "mobile",
             "debug": False,
         }
 
-        # Permissions
-        self.permissions = MobilePermissions(profile="OWNER")
+        # Permissions (3.1: profile + restricted mode)
+        self.permissions = MobilePermissions(profile="OWNER", restricted=False)
 
         # Module Instances
         self.security = None
@@ -63,7 +64,7 @@ class MobileRuntimeContext:
         self.vision = VisionModule()
         self.packs = KnowledgeModule()
 
-        # Attach runtime reference
+        # Attach runtime reference + load
         for module in (self.security, self.vision, self.packs):
             module.attach_runtime(self)
             module.load()
@@ -79,7 +80,9 @@ class MobileRuntimeContext:
         self.state["last_event"] = event_type
 
     def set_restricted_mode(self, enabled: bool):
-        self.state["restricted_mode"] = enabled
+        self.state["restricted_mode"] = bool(enabled)
+        # Keep permissions in sync with context
+        self.permissions.set_restricted(bool(enabled))
 
     # ------------------------------------------------------------
     # Accessors

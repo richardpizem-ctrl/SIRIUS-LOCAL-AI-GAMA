@@ -1,11 +1,12 @@
-# 🛡 GAMA Security Family — Version 3.0.0
+# 🛡 GAMA Security Family — Version 3.1.0
 
 The Security Family is the **central safety subsystem** of the SIRIUS LOCAL AI GAMA 3.x ecosystem.  
 It enforces deterministic safety rules, restricted‑mode behavior, sandbox isolation,  
-low‑trust data handling, and hybrid‑safe protections across the entire runtime.
+low‑trust data handling, hybrid‑safe protections, PACK_SUGGEST safety, and unified result schema v3.1.
 
-Version 3.0.0 introduces **Metadata v3**, **EV3 security events**,  
-**restricted‑mode v3**, **sandbox enforcement v3**, and **quarantine pipeline v3**.
+Version **3.1.0** introduces improved restricted‑mode enforcement,  
+**Metadata v3.1**, **EV3.1 security events**, PACK_SUGGEST safety rules,  
+expanded diagnostics, hybrid‑safe enforcement v3.1, and reduced false‑positive triggers.
 
 ---
 
@@ -14,28 +15,35 @@ Version 3.0.0 introduces **Metadata v3**, **EV3 security events**,
 - safety rule enforcement  
 - blocking unsafe operations  
 - parental/child mode support  
-- restricted‑mode enforcement  
+- restricted‑mode enforcement v3.1  
 - sandbox isolation  
 - low‑trust data handling  
 - output safety validation  
 - anomaly detection  
-- integration with Runtime Core 3.0  
-- unified SECURITY_EVENT (EV3)  
+- PACK_SUGGEST safety filtering  
+- integration with Runtime Core 3.1  
+- unified SECURITY_EVENT (EV3.1)  
+- unified result schema v3.1  
 
 ---
 
-# 🧩 Modes (v3)
+# 🧩 Modes (v3.1)
 - **Owner Mode**  
 - **Teen Mode**  
 - **Child Mode**  
-- **Restricted Mode (v3)**  
+- **Restricted Mode (v3.1)**  
 - **Auto‑Adaptive Mode**  
 
-Restricted Mode v3 is **non‑bypassable** and enforced automatically when low‑trust or anomalous behavior is detected.
+Restricted Mode v3.1 is **non‑bypassable**, automatically triggered by:
+- low‑trust inputs  
+- unsafe content  
+- anomaly detection  
+- sandbox violations  
+- PACK_SUGGEST unsafe patterns  
 
 ---
 
-# 📤 Output (v3)
+# 📤 Output (v3.1)
 - allow / deny decisions  
 - security flags  
 - restricted_mode flag  
@@ -44,46 +52,51 @@ Restricted Mode v3 is **non‑bypassable** and enforced automatically when low�
 - behavior logs  
 - anomaly reports  
 - quarantine flags  
-- metadata v3  
+- PACK_SUGGEST safety flags  
+- metadata v3.1  
+- unified result schema v3.1  
 
 ---
 
-# 🛡️ BEHAVIORAL SAFETY POLICY (v3.0) — UPDATED
+# 🛡️ BEHAVIORAL SAFETY POLICY (v3.1) — UPDATED
 
-GAMA 3.0 formalizes all safety mechanisms into a unified **Behavioral Safety Policy**,  
+GAMA 3.1 formalizes all safety mechanisms into a unified **Behavioral Safety Policy**,  
 ensuring deterministic, safe, family‑friendly execution across all modules.
 
-## 🔐 1. Behavioral Determinism (v3)
+## 🔐 1. Behavioral Determinism (v3.1)
 - no hallucinations  
 - no unverified claims  
 - if uncertain → respond “I don’t know”  
 - deterministic reasoning sequences  
-- reasoning_trace v3  
-- EV3 metadata tagging  
+- reasoning_trace v3.1  
+- EV3.1 metadata tagging  
+- unified result schema v3.1  
 
-## 👨‍👩‍👧 2. Family‑Safe Mode (v3)
+## 👨‍👩‍👧 2. Family‑Safe Mode (v3.1)
 - child‑safe content  
 - blocking sensitive topics  
 - safe offline explanations  
 - limited reasoning for minors  
 - school explanations without risky content  
 
-## 🔍 3. Local Ethical Filters (v3)
+## 🔍 3. Local Ethical Filters (v3.1)
 - all filters run locally  
 - no cloud requests  
 - no external APIs  
 - no data transmission  
 - no remote logging  
+- PACK_SUGGEST safety filtering  
 
-## 🧱 4. Module Safety Sandbox (v3)
+## 🧱 4. Module Safety Sandbox (v3.1)
 - event‑level sandboxing  
 - module isolation  
 - no dynamic operations  
 - no cross‑module privilege escalation  
 - low‑trust data isolation  
 - hybrid‑safe enforcement  
+- PACK_SUGGEST sandbox rules  
 
-## 🚫 5. Behavioral Limits (v3)
+## 🚫 5. Behavioral Limits (v3.1)
 Security Family will **never** allow:
 - medical, legal, or dangerous advice  
 - harmful content generation  
@@ -91,24 +104,25 @@ Security Family will **never** allow:
 - autonomous decisions  
 - manipulation or persuasion  
 
-## 📜 6. Auditability (v3)
-- reasoning_trace v3  
+## 📜 6. Auditability (v3.1)
+- reasoning_trace v3.1  
 - security_trace  
 - restricted_mode events  
 - sandbox_enforced events  
+- PACK_SUGGEST logs  
 - deterministic repeatable outputs  
 
 ---
 
 # 🏷 Version
-**GAMA Security Family — v3.0.0**  
-(fully aligned with Runtime 3.0.0 and Unified Event Architecture 3.x)
+**GAMA Security Family — v3.1.0**  
+(fully aligned with Runtime 3.1.0 and Unified Event Architecture 3.1.x)
 
 ---
 
-# 🔄 Security Flow (v3.0.0)
+# 🔄 Security Flow (v3.1.0)
 
-1. Runtime sends a SECURITY_EVENT (EV3).  
+1. Runtime sends a SECURITY_EVENT (EV3.1).  
 2. Security Family identifies active mode:  
    - Owner  
    - Teen  
@@ -123,50 +137,54 @@ Security Family will **never** allow:
    - block the action  
    - return `"deny"` + security flags  
 7. Apply restricted‑mode or sandbox if required.  
-8. Log the event in Security Diagnostics.  
-9. Update behavior profile (if enabled).  
-10. Apply quarantine rules for low‑trust data.  
-11. Return final decision to Runtime.  
+8. Apply PACK_SUGGEST safety rules if applicable.  
+9. Log the event in Security Diagnostics.  
+10. Update behavior profile (if enabled).  
+11. Apply quarantine rules for low‑trust data.  
+12. Return final decision to Runtime.  
 
 ---
 
-# 🧱 Security Components (v3)
+# 🧱 Security Components (v3.1)
 
-## 1. Behavior Monitor v3
+## 1. Behavior Monitor v3.1
 Tracks user actions and system events.
 - action classification  
 - frequency analysis  
 - anomaly detection  
 - mode‑specific behavior rules  
 - hybrid‑input behavior tracking  
+- PACK_SUGGEST safety detection  
 - escalation triggers  
 - trust_level updates  
 
 ---
 
-## 2. Safety Rules Engine v3
+## 2. Safety Rules Engine v3.1
 Evaluates actions against security policies.
 - rule matching  
 - violation detection  
 - severity scoring  
 - allow/deny logic  
-- rule chaining v3  
+- rule chaining v3.1  
 - safety‑intent detection  
 - restricted‑mode triggers  
+- PACK_SUGGEST unsafe pattern detection  
 
 ---
 
-## 3. Mode Controller v3
+## 3. Mode Controller v3.1
 Determines active security mode.
 - Owner / Teen / Child / Restricted  
 - automatic mode switching  
 - behavior‑based escalation  
 - restricted‑mode hardening  
 - sandbox enforcement  
+- PACK_SUGGEST safety escalation  
 
 ---
 
-## 4. Operation Filter v3
+## 4. Operation Filter v3.1
 Blocks or allows system operations.
 - file access control  
 - network restrictions  
@@ -175,10 +193,11 @@ Blocks or allows system operations.
 - module‑level privilege isolation  
 - event‑level sandboxing  
 - hybrid‑safe enforcement  
+- PACK_SUGGEST safety filtering  
 
 ---
 
-## 5. Behavior Profile Manager v3
+## 5. Behavior Profile Manager v3.1
 Maintains long‑term behavior patterns.
 - habit learning  
 - deviation detection  
@@ -186,10 +205,11 @@ Maintains long‑term behavior patterns.
 - profile updates  
 - anomaly‑based cooldowns  
 - child‑safe behavior shaping  
+- PACK_SUGGEST behavior tracking  
 
 ---
 
-## 6. Security Diagnostics Logger v3
+## 6. Security Diagnostics Logger v3.1
 Records all security‑related events.
 - allowed actions  
 - blocked actions  
@@ -199,6 +219,7 @@ Records all security‑related events.
 - quarantine rejections  
 - sandbox_enforced events  
 - restricted_mode events  
+- PACK_SUGGEST safety logs  
 - envoy‑related violations  
 
 ---
@@ -240,9 +261,9 @@ If anomaly detected:
 
 ---
 
-# 🔁 Security Execution Cycle (v3.0.0)
+# 🔁 Security Execution Cycle (v3.1.0)
 
-1. Runtime sends SECURITY_EVENT (EV3).  
+1. Runtime sends SECURITY_EVENT (EV3.1).  
 2. Mode Controller determines active mode.  
 3. Behavior Monitor analyzes context.  
 4. Safety Rules Engine evaluates policies.  
@@ -255,20 +276,21 @@ If anomaly detected:
 
 ---
 
-# 🟫 NEW IN VERSION 3.0.0
-- metadata v3  
-- event versioning EV3  
-- restricted‑mode v3  
-- sandbox enforcement v3  
-- low‑trust classification v3  
-- hybrid‑safe behavior tracking  
-- rule chaining v3  
-- module privilege isolation v3  
-- unified SECURITY_EVENT  
-- quarantine pipeline v3  
-- deterministic safety routing  
+# 🟫 NEW IN VERSION 3.1.0
+- metadata v3.1  
+- event versioning EV3.1  
+- unified result schema v3.1  
+- PACK_SUGGEST safety rules  
+- improved restricted‑mode enforcement  
+- improved sandbox enforcement  
+- hybrid‑safe enforcement v3.1  
+- low‑trust classification v3.1  
+- rule chaining v3.1  
+- module privilege isolation v3.1  
+- diagnostics expansion v3.1  
+- reduced false‑positive triggers  
 
 ---
 
-# ✔ GAMA Security Family 3.0 — COMPLETE  
-Fully aligned with the SIRIUS LOCAL AI GAMA 3.x ecosystem.
+# ✔ GAMA Security Family 3.1 — COMPLETE  
+Fully aligned with the SIRIUS LOCAL AI GAMA 3.1.x ecosystem.

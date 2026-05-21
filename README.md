@@ -47,32 +47,33 @@ NOT GAMA simulation, NOT multi‑agent simulator.
 
 ---
 
-# 🟪 SIRIUS LOCAL AI GAMA — Version 3.0.0  
+# 🟪 SIRIUS LOCAL AI GAMA — Version 3.1.0  
 ### Mobile Offline AI Runtime (Android / iOS)
 
-![version](https://img.shields.io/badge/version-3.0.0-purple?style=for-the-badge)
+![version](https://img.shields.io/badge/version-3.1.0-purple?style=for-the-badge)
 ![offline](https://img.shields.io/badge/100%25-OFFLINE-blueviolet?style=for-the-badge)
-![license](https://img.shields.io/badge/license-SUL--3.0.0-green?style=for-the-badge)
+![license](https://img.shields.io/badge/license-SUL--3.1.0-green?style=for-the-badge)
 
 ---
 
-# ⚠️ LICENSE UPDATE NOTICE — VERSION 3.0.0
+# ⚠️ LICENSE UPDATE NOTICE — VERSION 3.1.0
 
-Starting from **SIRIUS LOCAL AI GAMA v3.0.0**,  
-the project transitions from **MIT‑Custom** to the new:
+Starting from **SIRIUS LOCAL AI GAMA v3.1.0**,  
+the project uses the updated:
 
-# 🔒 **SIRIUS Unified License (SUL) — Version 3.0.0**
+# 🔒 **SIRIUS Unified License (SUL) — Version 3.1.0**
 
-This new license:
+This license:
 
 - protects the project as **one indivisible whole**  
 - forbids using **individual modules** outside the ecosystem  
 - forbids extracting or reusing parts of the runtime  
 - forbids commercial use without a license  
 - forbids rebranding or repackaging  
+- enforces **Hybrid‑Safe Architecture rules**  
 - preserves the integrity of the SIRIUS architecture  
 
-📘 **Documentation for version 3.0.0 and all future versions remains PUBLIC.**  
+📘 **Documentation remains PUBLIC.**  
 Only the source code may be private.
 
 Full license text is included at the bottom of this README.
@@ -80,10 +81,10 @@ Full license text is included at the bottom of this README.
 ---
 
 # 🟪 Version
-**Current Release:** `3.0.0`  
+**Current Release:** `3.1.0`  
 **Status:** Stable, production‑ready  
-**Release Date:** 2026‑05‑13  
-**Runtime Architecture:** Offline, Modular, Deterministic  
+**Release Date:** 2026‑05‑21  
+**Runtime Architecture:** Offline, Modular, Deterministic, Hybrid‑Safe  
 **Mobile Platforms:** Android / iOS  
 
 ---
@@ -106,9 +107,10 @@ GAMA brings the core philosophy of SIRIUS to mobile devices:
 - LAN‑offline PC bridge  
 - diagnostics engine  
 - scene understanding  
-- Health Assistant 3.0  
-- Security Family 3.0  
-- Unified Event Architecture 3.x  
+- Health Assistant 3.1  
+- Security Family 3.1  
+- Unified Event Architecture 3.1.x  
+- Unified Result Schema v3.1  
 
 GAMA is not a port — it is a **mobile‑optimized runtime**.
 
@@ -127,96 +129,106 @@ GAMA extends SIRIUS LOCAL AI into the mobile world, enabling:
 - LAN‑offline connection to PC runtime  
 - deterministic workflows identical to PC runtime  
 - unified event system across mobile and PC  
+- hybrid‑safe processing  
 
 ---
 
-# 🧩 Architecture Overview (3.0.0)
+# 🧩 Architecture Overview (3.1.0)
 
-## 🟦 Runtime Core 3.0
+## 🟦 Runtime Core 3.1
 - deterministic execution  
-- restricted mode v3  
-- sandbox enforcement v3  
+- restricted mode v3.1  
+- sandbox enforcement v3.1  
 - hybrid‑safe pipeline  
-- NL Router v3  
-- Task Dispatcher v3  
-- Module Manager v3  
-- Event Metadata Engine v3  
-- Fallback Normalizer v3  
-- Runtime Context Manager v3  
+- NL Router v3.1  
+- Task Dispatcher v3.1  
+- Module Manager v3.1  
+- Event Metadata Engine v3.1  
+- Fallback Normalizer v3.1  
+- Runtime Context Manager v3.1  
+- Unified Result Schema Engine v3.1  
 
-## 🟪 Vision Engine 3.0
-- OCR 3.0  
+## 🟪 Vision Engine 3.1
+- OCR 3.1  
 - object detection  
 - scene understanding  
 - hybrid input merging  
-- metadata v3  
+- metadata v3.1  
+- PACK_SUGGEST safety  
 - restricted/sandbox enforcement  
 - deterministic vision pipeline  
 
-## 🟧 Schoolwork Mode 3.0
+## 🟧 Schoolwork Mode 3.1
 - deterministic academic reasoning  
 - step‑by‑step explanations  
 - hybrid input support  
-- subject detection v3  
-- reasoning_trace v3  
+- subject detection v3.1  
+- reasoning_trace v3.1  
 - pack‑assisted reasoning  
+- unified result schema v3.1  
 
-## 🟩 Knowledge Packs 3.0
-- metadata v3  
-- pack priority v3  
-- pack integrity v3  
+## 🟩 Knowledge Packs 3.1
+- metadata v3.1  
+- pack priority v3.1  
+- pack integrity v3.1  
 - rule chaining  
 - example‑based fallback  
-- PACK_QUERY / PACK_INFO (EV3)  
+- PACK_QUERY / PACK_INFO (EV3.1)  
+- PACK_SUGGEST safety  
 
-## 🟫 Security Family 3.0
-- restricted mode v3  
+## 🟫 Security Family 3.1
+- restricted mode v3.1  
 - sandbox enforcement  
 - low‑trust classification  
 - hybrid‑safe behavior tracking  
-- unified SECURITY_EVENT (EV3)  
+- PACK_SUGGEST safety  
+- unified SECURITY_EVENT (EV3.1)  
 - deterministic safety routing  
 
-## 🩺 Health Assistant 3.0
+## 🩺 Health Assistant 3.1
 - safe, non‑diagnostic health information  
 - OCR of medical documents  
 - first‑aid logic  
 - medication info engine  
 - symptom explanation engine  
-- metadata v3  
+- metadata v3.1  
 - restricted/sandbox enforcement  
+- unified result schema v3.1  
 
-## 🛠 Diagnostics 3.0
+## 🛠 Diagnostics 3.1
 - rule hits  
 - example hits  
 - pack usage  
 - hybrid‑safe logs  
+- PACK_SUGGEST logs  
 - metadata trace  
 - restricted/sandbox events  
 
 ---
 
-# 🛡️ BEHAVIORAL SAFETY POLICY (v3.0)
+# 🛡️ BEHAVIORAL SAFETY POLICY (v3.1)
 
 - no hallucinations  
 - no unverified claims  
 - deterministic reasoning  
-- restricted mode v3  
+- restricted mode v3.1  
 - sandbox enforcement  
 - child‑safe filtering  
+- PACK_SUGGEST safety  
 - no medical/legal/dangerous advice  
 - no identity inference  
 - no cloud APIs  
 - no telemetry  
 - no external requests  
 - deterministic repeatability  
+- unified result schema v3.1  
 
 ---
 
-# 🚀 Roadmap (3.x → 4.0)
+# 🚀 Roadmap (3.1 → 4.0)
 
-## 🟧 GAMA 3.1
-- extended hybrid‑safe pipeline  
+## 🟧 GAMA 3.2
+- hybrid‑safe routing refinements  
 - improved pack reasoning  
 - expanded diagnostics  
 
@@ -235,18 +247,19 @@ GAMA extends SIRIUS LOCAL AI into the mobile world, enabling:
 ---
 
 # 📁 Repository Structure
-/runtime_mobile
-/modules
-/ui
-/vision
-/security
-/knowledge_packs
-/health
-/bridge
-/docs
-/build 
+/runtime_mobile  
+/modules  
+/ui  
+/vision  
+/security  
+/knowledge_packs  
+/health  
+/bridge  
+/docs  
+/build  
+
 ---
 
-# 📝 LICENSE — SUL 3.0.0 (Effective from GAMA v3.0.0)
+# 📝 LICENSE — SUL 3.1.0 (Effective from GAMA v3.1.0)
 
-(Full license text remains unchanged — see bottom of file.)
+(Full license text is included at the bottom of this README.)

@@ -1,6 +1,13 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Knowledge Packs
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Updated for GAMA Runtime 3.1:
+# - metadata v3 support (pack_id, checksum, entries_count)
+# - improved fallback search
+# - unified event handling
+# - stable structured responses
 # ============================================================
 
 from runtime_mobile.core.event import MobileEvent
@@ -9,7 +16,7 @@ from runtime_mobile.core.event_types import MobileEventTypes
 
 class MobileKnowledgePacks:
 
-    MODULE_VERSION = "3.0.0-pre"
+    MODULE_VERSION = "3.1.0"
 
     def __init__(self, context):
         self.context = context
@@ -55,10 +62,11 @@ class MobileKnowledgePacks:
                 "pack": pack_name
             }
 
+        # Direct lookup
         value = pack["entries"].get(key)
 
         if value is None:
-            # fallback search across all packs
+            # Fallback search across all packs
             fallback = self.context.pack_manager.search_in_packs(key)
             if fallback is not None:
                 return {
@@ -100,9 +108,12 @@ class MobileKnowledgePacks:
         return {
             "status": "ok",
             "pack": pack_name,
-            "entries": list(pack["entries"].keys()),
+            "pack_id": pack.get("pack_id", pack_name),
+            "version": pack.get("version", "unknown"),
             "priority": pack.get("priority", 0),
-            "version": pack.get("version", "unknown")
+            "entries_count": pack.get("entries_count", len(pack["entries"])),
+            "entries": list(pack["entries"].keys()),
+            "checksum": pack.get("checksum", None),
         }
 
     # ------------------------------------------------------------
@@ -113,7 +124,13 @@ class MobileKnowledgePacks:
 
         text = event.get("text", "").strip().lower()
 
-        # simple heuristic: use text as key
+        if not text:
+            return {
+                "status": "error",
+                "reason": "empty_query"
+            }
+
+        # Simple heuristic: use text as key
         value = self.context.pack_manager.search_in_packs(text)
 
         if value is None:

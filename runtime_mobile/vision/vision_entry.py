@@ -1,21 +1,38 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Vision Entry
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
 
 
-class MobileVisionEntry:
+class VisionEntry:
     """
     Entry point for the mobile vision module.
     Handles OCR, object detection, scene analysis and homework mode.
     """
 
-    MODULE_VERSION = "3.0.0-pre"
+    MODULE_VERSION = "3.1.0"
 
     def __init__(self, context):
         self.context = context
+
+    # ------------------------------------------------------------
+    # Helpers
+    # ------------------------------------------------------------
+
+    def _get_image(self, event):
+        image = event.image if hasattr(event, "image") else event.get("image")
+        if image is None:
+            return None, {"status": "error", "reason": "no_image"}
+        return image, None
+
+    def _get_engine(self):
+        engine = getattr(self.context, "vision_engine", None)
+        if engine is None:
+            return None, {"status": "error", "reason": "no_vision_engine"}
+        return engine, None
 
     # ------------------------------------------------------------
     # Main Event Handler (required by runtime)
@@ -52,13 +69,16 @@ class MobileVisionEntry:
     # ------------------------------------------------------------
 
     def _run_ocr(self, event):
-        image = event.image if hasattr(event, "image") else event.get("image")
+        image, err = self._get_image(event)
+        if err:
+            return err
 
-        if image is None:
-            return {"status": "error", "reason": "no_image"}
+        engine, err = self._get_engine()
+        if err:
+            return err
 
         try:
-            text = self.context.vision_engine.ocr(image)
+            text = engine.ocr(image)
         except Exception as e:
             return {"status": "error", "reason": "ocr_failed", "error": str(e)}
 
@@ -73,13 +93,16 @@ class MobileVisionEntry:
     # ------------------------------------------------------------
 
     def _detect_objects(self, event):
-        image = event.image if hasattr(event, "image") else event.get("image")
+        image, err = self._get_image(event)
+        if err:
+            return err
 
-        if image is None:
-            return {"status": "error", "reason": "no_image"}
+        engine, err = self._get_engine()
+        if err:
+            return err
 
         try:
-            result = self.context.vision_engine.detect(image)
+            result = engine.detect(image)
         except Exception as e:
             return {"status": "error", "reason": "detect_failed", "error": str(e)}
 
@@ -94,13 +117,16 @@ class MobileVisionEntry:
     # ------------------------------------------------------------
 
     def _analyze_scene(self, event):
-        image = event.image if hasattr(event, "image") else event.get("image")
+        image, err = self._get_image(event)
+        if err:
+            return err
 
-        if image is None:
-            return {"status": "error", "reason": "no_image"}
+        engine, err = self._get_engine()
+        if err:
+            return err
 
         try:
-            result = self.context.vision_engine.analyze(image)
+            result = engine.analyze(image)
         except Exception as e:
             return {"status": "error", "reason": "scene_failed", "error": str(e)}
 
@@ -115,13 +141,16 @@ class MobileVisionEntry:
     # ------------------------------------------------------------
 
     def _homework_mode(self, event):
-        image = event.image if hasattr(event, "image") else event.get("image")
+        image, err = self._get_image(event)
+        if err:
+            return err
 
-        if image is None:
-            return {"status": "error", "reason": "no_image"}
+        engine, err = self._get_engine()
+        if err:
+            return err
 
         try:
-            result = self.context.vision_engine.homework(image)
+            result = engine.homework(image)
         except Exception as e:
             return {"status": "error", "reason": "homework_failed", "error": str(e)}
 
@@ -139,5 +168,11 @@ class MobileVisionEntry:
         return {
             "module": "vision",
             "version": self.MODULE_VERSION,
-            "engine_attached": hasattr(self.context, "vision_engine")
+            "engine_attached": hasattr(self.context, "vision_engine"),
+            "supported_events": [
+                MobileEventTypes.OCR,
+                MobileEventTypes.DETECT,
+                MobileEventTypes.SCENE,
+                MobileEventTypes.HOMEWORK,
+            ],
         }

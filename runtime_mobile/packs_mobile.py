@@ -1,6 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Knowledge Packs Entry
-# Version: 3.0.0-pre
+# Version: 3.1.0
 # Author: Richard Pizem (SIRIUS LOCAL AI)
 # ============================================================
 
@@ -12,30 +12,57 @@ class MobileKnowledgePacks:
     """
     Entry point for the mobile knowledge packs system.
     Handles loading, validation and retrieval of offline knowledge packs.
+    Fully compatible with PACK_LOOKUP / PACK_INFO / PACK_QUERY / PACK_SUGGEST.
     """
 
-    MODULE_VERSION = "3.0.0-pre"
+    MODULE_VERSION = "3.1.0"
 
     def __init__(self, context):
         self.context = context
         self.loaded_packs = {}
 
     # ------------------------------------------------------------
+    # Helpers
+    # ------------------------------------------------------------
+
+    def _ensure_manager(self):
+        if not hasattr(self.context, "pack_manager"):
+            return None, {"status": "error", "reason": "pack_manager_missing"}
+        return self.context.pack_manager, None
+
+    def _ensure_loaded(self, pack_name: str):
+        """
+        Ensure pack is loaded; auto-load if needed.
+        """
+        if pack_name in self.loaded_packs:
+            return self.loaded_packs[pack_name], None
+
+        load_result = self.load_pack(pack_name)
+        if load_result.get("status") != "ok":
+            return None, load_result
+
+        return self.loaded_packs[pack_name], None
+
+    # ------------------------------------------------------------
     # Pack Loading
     # ------------------------------------------------------------
 
     def load_pack(self, pack_name: str):
-        if not hasattr(self.context, "pack_manager"):
-            return {"status": "error", "reason": "pack_manager_missing"}
+        manager, err = self._ensure_manager()
+        if err:
+            return err
 
-        pack = self.context.pack_manager.load(pack_name)
-
+        pack = manager.load(pack_name)
         if pack is None:
             return {"status": "error", "reason": "pack_not_found", "pack": pack_name}
 
-        # Basic validation
+        # Validation v3
         if "entries" not in pack or not isinstance(pack["entries"], dict):
             return {"status": "error", "reason": "invalid_pack_format"}
+
+        # Optional metadata
+        if "meta" in pack and not isinstance(pack["meta"], dict):
+            return {"status": "error", "reason": "invalid_pack_metadata"}
 
         self.loaded_packs[pack_name] = pack
 
@@ -43,7 +70,8 @@ class MobileKnowledgePacks:
             "status": "ok",
             "pack": pack_name,
             "entries": len(pack["entries"]),
-            "version": pack.get("version", "unknown")
+            "version": pack.get("version", "unknown"),
+            "has_meta": "meta" in pack
         }
 
     # ------------------------------------------------------------
@@ -59,6 +87,12 @@ class MobileKnowledgePacks:
         if etype == MobileEventTypes.PACK_INFO:
             return self.info(event.pack)
 
+        if etype == MobileEventTypes.PACK_QUERY:
+            return self.query(event.pack, event.key)
+
+        if etype == MobileEventTypes.PACK_SUGGEST:
+            return self.suggest(event.pack, event.prefix)
+
         return {
             "status": "ignored",
             "reason": "unknown_event",
@@ -66,16 +100,14 @@ class MobileKnowledgePacks:
         }
 
     # ------------------------------------------------------------
-    # Pack Query
+    # Pack Query (direct lookup)
     # ------------------------------------------------------------
 
     def get(self, pack_name: str, key: str):
-        if pack_name not in self.loaded_packs:
-            load_result = self.load_pack(pack_name)
-            if load_result.get("status") != "ok":
-                return load_result
+        pack, err = self._ensure_loaded(pack_name)
+        if err:
+            return err
 
-        pack = self.loaded_packs[pack_name]
         entries = pack["entries"]
 
         return {
@@ -91,18 +123,62 @@ class MobileKnowledgePacks:
     # ------------------------------------------------------------
 
     def info(self, pack_name: str):
-        if pack_name not in self.loaded_packs:
-            load_result = self.load_pack(pack_name)
-            if load_result.get("status") != "ok":
-                return load_result
-
-        pack = self.loaded_packs[pack_name]
+        pack, err = self._ensure_loaded(pack_name)
+        if err:
+            return err
 
         return {
             "status": "ok",
             "pack": pack_name,
             "version": pack.get("version", "unknown"),
-            "entries": list(pack["entries"].keys())
+            "entries": list(pack["entries"].keys()),
+            "meta": pack.get("meta", None)
+        }
+
+    # ------------------------------------------------------------
+    # Pack Query (search by substring)
+    # ------------------------------------------------------------
+
+    def query(self, pack_name: str, key: str):
+        pack, err = self._ensure_loaded(pack_name)
+        if err:
+            return err
+
+        entries = pack["entries"]
+        matches = {
+            k: v for k, v in entries.items()
+            if key.lower() in k.lower()
+        }
+
+        return {
+            "status": "ok",
+            "pack": pack_name,
+            "query": key,
+            "matches": matches,
+            "count": len(matches)
+        }
+
+    # ------------------------------------------------------------
+    # Pack Suggest (prefix search)
+    # ------------------------------------------------------------
+
+    def suggest(self, pack_name: str, prefix: str):
+        pack, err = self._ensure_loaded(pack_name)
+        if err:
+            return err
+
+        entries = pack["entries"]
+        suggestions = [
+            k for k in entries.keys()
+            if k.lower().startswith(prefix.lower())
+        ]
+
+        return {
+            "status": "ok",
+            "pack": pack_name,
+            "prefix": prefix,
+            "suggestions": suggestions,
+            "count": len(suggestions)
         }
 
     # ------------------------------------------------------------

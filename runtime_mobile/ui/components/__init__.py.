@@ -1,6 +1,14 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - UI Components Package
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Public API for all UI components used by the GAMA UI Engine.
+#
+# Updated for UI Runtime 3.1:
+# - unified component export surface
+# - consistent naming (ImageComponent kept for compatibility)
+# - ready for Layout Engine 3.1 and Animation Engine 3.1
 # ============================================================
 
 from .base_component import BaseComponent

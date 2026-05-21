@@ -1,13 +1,13 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile UI Package
-# Version: 3.0.0-pre
+# Version: 3.1.0
 # ============================================================
 
 """
-GAMA Mobile UI package.
+GAMA Mobile UI package (UI Engine 3.1.0).
 
 Provides:
-- Base UI components (Button, TextLabel, Icon, Image, InputField, Toggle, Container, Panel, ScrollView)
+- Base UI components (Button, TextLabel, Icon, Image, InputField, Toggle, Container, Panel, ScrollView, Slider)
 - Base layouts (BaseUILayout, VerticalLayout, HorizontalLayout, StackLayout)
 - Shared theme (MobileUITheme) for consistent styling across the runtime.
 """
@@ -33,7 +33,7 @@ from .layouts.vertical_layout import VerticalLayout
 from .layouts.horizontal_layout import HorizontalLayout
 from .layouts.stack_layout import StackLayout
 
-UI_VERSION = "3.0.0-pre"
+UI_VERSION = "3.1.0"
 
 __all__ = [
     "UI_VERSION",
@@ -57,4 +57,3 @@ __all__ = [
     "HorizontalLayout",
     "StackLayout",
 ]
-

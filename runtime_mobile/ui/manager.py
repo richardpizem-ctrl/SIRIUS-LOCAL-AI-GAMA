@@ -1,11 +1,16 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - UI Manager
-# Version: 3.0.0-pre
+# Version: 3.1.0
 # Author: Richard Pizem (SIRIUS LOCAL AI)
 #
 # Central UI orchestrator for the Mobile Runtime.
-# Manages layouts, components, lifecycle and update/render flow.
-# Framework-agnostic: no pygame, no tkinter, no qt, no kivy.
+# Manages:
+# - main window
+# - active layout
+# - lifecycle pipeline
+# - update/render loop
+# - event bubbling
+# - layout geometry sync
 # ============================================================
 
 from .main_window import MobileMainWindow
@@ -20,9 +25,10 @@ class UIManager:
     - active layout
     - lifecycle pipeline
     - update/render loop
+    - event routing (with bubbling)
     """
 
-    MANAGER_VERSION = "3.0.0-pre"
+    MANAGER_VERSION = "3.1.0"
 
     def __init__(self, context):
         self.context = context
@@ -41,11 +47,14 @@ class UIManager:
 
         self.active_layout = layout
 
-        # Assign layout geometry to match window
+        # Sync geometry with window
         layout.x = 0
         layout.y = 0
         layout.width = self.window.width
         layout.height = self.window.height
+
+        layout.needs_layout = True
+        layout.dirty = True
 
         return {
             "status": "layout_set",
@@ -58,11 +67,17 @@ class UIManager:
 
     def initialize(self):
         """Initialize window + layout + components."""
-        win = self.window.initialize()
+        try:
+            win = self.window.initialize()
+        except Exception as e:
+            win = {"status": "error", "error": str(e)}
 
         layout_info = None
         if self.active_layout:
-            layout_info = self.active_layout.initialize()
+            try:
+                layout_info = self.active_layout.initialize()
+            except Exception as e:
+                layout_info = {"status": "error", "error": str(e)}
 
         self.initialized = True
 
@@ -78,11 +93,17 @@ class UIManager:
         if not self.initialized:
             return {"status": "error", "reason": "ui_not_initialized"}
 
-        win = self.window.update()
+        try:
+            win = self.window.update()
+        except Exception as e:
+            win = {"status": "error", "error": str(e)}
 
         layout_info = None
         if self.active_layout:
-            layout_info = self.active_layout.update()
+            try:
+                layout_info = self.active_layout.update()
+            except Exception as e:
+                layout_info = {"status": "error", "error": str(e)}
 
         return {
             "status": "updated",
@@ -91,15 +112,21 @@ class UIManager:
         }
 
     def render(self):
-        """Render window + layout (placeholder)."""
+        """Render window + layout."""
         if not self.initialized:
             return {"status": "error", "reason": "ui_not_initialized"}
 
-        win_render = self.window.render()
+        try:
+            win_render = self.window.render()
+        except Exception as e:
+            win_render = {"status": "error", "error": str(e)}
 
         layout_render = None
         if self.active_layout:
-            layout_render = self.active_layout.render()
+            try:
+                layout_render = self.active_layout.render()
+            except Exception as e:
+                layout_render = {"status": "error", "error": str(e)}
 
         return {
             "status": "rendered",
@@ -111,9 +138,15 @@ class UIManager:
         """Shutdown UI cleanly."""
         layout_info = None
         if self.active_layout:
-            layout_info = self.active_layout.shutdown()
+            try:
+                layout_info = self.active_layout.shutdown()
+            except Exception as e:
+                layout_info = {"status": "error", "error": str(e)}
 
-        win = self.window.shutdown()
+        try:
+            win = self.window.shutdown()
+        except Exception as e:
+            win = {"status": "error", "error": str(e)}
 
         return {
             "status": "shutdown",
@@ -122,24 +155,34 @@ class UIManager:
         }
 
     # ------------------------------------------------------------
-    # Event routing
+    # Event routing (with bubbling)
     # ------------------------------------------------------------
 
     def on_event(self, event):
         """
         Route events to window and active layout.
+        Both may bubble events upward.
         """
         results = []
 
+        # Window first
         if hasattr(self.window, "on_event"):
-            results.append(self.window.on_event(event))
+            try:
+                results.append(self.window.on_event(event))
+            except Exception as e:
+                results.append({"status": "error", "error": str(e), "source": "window"})
 
+        # Layout second
         if self.active_layout and hasattr(self.active_layout, "on_event"):
-            results.append(self.active_layout.on_event(event))
+            try:
+                results.append(self.active_layout.on_event(event))
+            except Exception as e:
+                results.append({"status": "error", "error": str(e), "source": "layout"})
 
         return {
             "status": "events_forwarded",
-            "results": results
+            "results": results,
+            "bubble": True
         }
 
     # ------------------------------------------------------------

@@ -1,4 +1,122 @@
 # 🟪 SIRIUS LOCAL AI GAMA — CHANGELOG (ENGLISH EDITION)
+Version: **3.0.0 → 3.1.0**
+
+---
+
+# 📌 Version 3.1.0 — (Stability & Runtime Upgrade Release)
+**Release Date:** 2026‑05‑21  
+**Status:** Stable — runtime, dispatcher, vision, packs, and security upgraded  
+**Compatibility:** Fully aligned with SIRIUS LOCAL AI 3.1.x ecosystem  
+**Documentation:** Public  
+**Source Code:** May be private under SUL 3.0.0  
+
+Version 3.1.0 focuses on **runtime stability**, **module cleanup**, **dispatcher improvements**,  
+and **full alignment with the 3.1.x event system**.  
+This release finalizes the transition from the 3.0.0 architecture into a fully stable 3.1.0 runtime.
+
+---
+
+# 🚀 WHAT’S NEW IN VERSION 3.1.0
+
+## 🟦 1. Runtime Engine 3.1.0
+- stabilized initialization sequence  
+- unified error schema v3.1  
+- improved event lifecycle  
+- deterministic module loading  
+- runtime_info event support  
+- improved fallback logic  
+- safer state reset()  
+- extended debug metadata  
+
+---
+
+## 🟩 2. Dispatcher 3.1.0
+- full support for all 3.1.x events  
+- improved routing logic  
+- safer module selection  
+- unified result schema  
+- deterministic routing order  
+- extended metadata propagation  
+
+---
+
+## 🟪 3. Vision Entry 3.1.0
+- unified image → event pipeline  
+- improved OCR fallback  
+- ANALYZE → SCENE alias stabilization  
+- safer engine access helpers  
+- consistent error handling  
+- metadata v3.1 integration  
+
+---
+
+## 🟧 4. Knowledge Packs 3.1.0
+- PACK_SUGGEST (prefix search)  
+- PACK_QUERY improvements  
+- lazy‑loading stability fixes  
+- metadata v3.1  
+- pack integrity checker improvements  
+- unified pack result schema  
+
+---
+
+## 🟫 5. Security Family 3.1.0
+- extended restricted mode  
+- improved unsafe‑text filter  
+- SECURITY_ALERT event stabilization  
+- safer permission checks  
+- module privilege isolation v3.1  
+- unified security result schema  
+
+---
+
+## 🟦 6. NL Router 3.1.0
+- improved heuristics  
+- PACK_SUGGEST routing  
+- better fallback logic  
+- reduced event collisions  
+- improved hybrid input detection  
+
+---
+
+## 🟩 7. Runtime Context 3.1.0
+- extended metadata  
+- improved debug log  
+- safer state transitions  
+- unified context for all modules  
+- event versioning v3.1  
+
+---
+
+## 🟧 8. Smoke Tests 3.1.0
+- new mobile runtime smoke test  
+- dummy vision engine for CI  
+- stable assertions  
+- deterministic test output  
+
+---
+
+# 🛠 ARCHITECTURE IMPROVEMENTS (3.1.x)
+- full alignment with SIRIUS LOCAL AI 3.1.x  
+- unified module structure  
+- deterministic event lifecycle  
+- improved hybrid input pipeline  
+- stronger safety sandbox  
+- improved fallback logic  
+- groundwork for 4.0 Secure Online Envoy  
+
+---
+
+# 🟪 STATUS
+GAMA 3.1.0 is a **stable runtime release**,  
+fully aligned with the SIRIUS LOCAL AI 3.1.x ecosystem.
+
+📘 **Documentation for version 3.1.0 is public.**  
+🔒 **Source code may be private under SUL 3.0.0.**
+
+---
+
+# 🟪 SIRIUS LOCAL AI GAMA — CHANGELOG (ENGLISH EDITION)
 Version: **2.0.0 → 3.0.0**
 
 ---

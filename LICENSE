@@ -1,5 +1,5 @@
-# SIRIUS Unified License (SUL)
-Version: 3.0.0  
+# SIRIUS Unified License (SUL)  
+Version: **3.1.0**  
 Copyright (c) 2026 Richard Pizem
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -9,9 +9,9 @@ following conditions:
 
 ---------------------------------------------------------------------
 
-## 📘 Public Documentation Notice (Effective from Version 3.0.0)
+## 📘 Public Documentation Notice (Effective from Version 3.1.0)
 All **documentation, specifications, and public-facing technical materials**
-for SIRIUS LOCAL AI GAMA **remain PUBLIC** for transparency, education,
+for SIRIUS LOCAL AI GAMA remain **PUBLIC** for transparency, education,
 and ecosystem visibility.
 
 This includes:
@@ -21,7 +21,7 @@ This includes:
 - module overviews  
 - public API descriptions  
 - roadmap  
-- non-sensitive technical explanations  
+- non‑sensitive technical explanations  
 
 However:
 
@@ -29,7 +29,7 @@ However:
 implementation details may be **private**, protected, or restricted under SUL.
 
 Public documentation does **not** grant permission to access, extract, copy,
-or reverse-engineer the private runtime or any part of the Software.
+or reverse‑engineer the private runtime or any part of the Software.
 
 ---------------------------------------------------------------------
 
@@ -38,8 +38,8 @@ The Software, including all modules, components, files, subsystems, runtimes,
 knowledge packs, engines, and any other part, may NOT be used, copied,
 modified, redistributed, or integrated separately.
 
-No part of the Software may be extracted or reused independently.
-The Software may only be used and distributed as a complete, unified system.
+No part of the Software may be extracted or reused independently.  
+The Software may only be used and distributed as a **complete, unified system**.
 
 The following actions are strictly prohibited:
 - extracting modules or components  
@@ -51,8 +51,8 @@ The following actions are strictly prohibited:
 ---------------------------------------------------------------------
 
 ## 2. Trademark Restriction
-The names "SIRIUS LOCAL AI", "SIRIUS", "GAMA", "GAMA Runtime",
-and all related branding, logos, icons, UI identity, or visual elements
+The names **"SIRIUS LOCAL AI"**, **"SIRIUS"**, **"GAMA"**, **"GAMA Runtime"**,  
+and all related branding, logos, icons, UI identity, or visual elements  
 may NOT be used without prior written permission from the copyright holder.
 
 This includes all variants and derivatives.
@@ -69,7 +69,7 @@ This includes, but is not limited to:
 - enterprise integrations  
 - resale of modules, packs, or runtime components  
 - commercial consulting, training, or integration services  
-- server-side inference or remote-access AI systems  
+- server‑side inference or remote‑access AI systems  
 
 ---------------------------------------------------------------------
 
@@ -87,13 +87,28 @@ Partial redistribution is not allowed.
 The Software may NOT be used to create:
 - harmful, deceptive, or unsafe systems  
 - surveillance or biometric tracking systems  
-- cloud-based AI services  
+- cloud‑based AI services  
 - external AI model training pipelines  
 - systems bypassing identity or safety layers  
+- hybrid‑unsafe systems violating SIRIUS 3.x rules  
 
 ---------------------------------------------------------------------
 
-## 6. Non‑Affiliation Clause
+## 6. Hybrid‑Safe Architecture Clause (New in 3.1.0)
+All systems built on top of the Software must respect the **Hybrid‑Safe Architecture**:
+
+- online data is always **low‑trust**  
+- no untrusted data may reach offline reasoning, packs, or vision modules  
+- Secure Online Envoy (if used) must remain isolated and outbound‑only  
+- Quarantine Pipeline must sanitize all external data  
+- offline core must remain fully air‑gapped  
+- no cloud inference, telemetry, or remote execution  
+
+Any attempt to bypass hybrid‑safe rules voids the license.
+
+---------------------------------------------------------------------
+
+## 7. Non‑Affiliation Clause
 Use of the Software does NOT grant:
 - affiliation with the SIRIUS ecosystem  
 - endorsement by the author  
@@ -104,7 +119,7 @@ Any such claims require written approval.
 
 ---------------------------------------------------------------------
 
-## 7. Warranty Disclaimer
+## 8. Warranty Disclaimer
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.

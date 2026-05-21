@@ -1,6 +1,13 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Home Screen
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Updated for UI Engine 3.1:
+# - event bubbling
+# - safe rendering
+# - layout invalidation
+# - unified metadata schema v3
 # ============================================================
 
 from ..components.panel import Panel
@@ -11,7 +18,7 @@ from ..layouts.vertical_layout import VerticalLayout
 
 
 class HomeScreen:
-    SCREEN_VERSION = "3.0.0-pre"
+    SCREEN_VERSION = "3.1.0"
 
     def __init__(self, screen_manager):
         self.screen_manager = screen_manager
@@ -26,7 +33,7 @@ class HomeScreen:
         title = TextLabel("SIRIUS LOCAL AI GAMA")
         title.font_size = 22
 
-        subtitle = TextLabel("Mobile Runtime UI 3.0.0")
+        subtitle = TextLabel("Mobile Runtime UI 3.1.0")
         subtitle.font_size = 14
 
         # Icon
@@ -35,7 +42,7 @@ class HomeScreen:
         # Debug button
         btn_debug = Button(
             text="Open Debug Screen",
-            on_click=lambda: self.screen_manager.push("debug")
+            on_click=lambda _: self.screen_manager.push("debug")
         )
 
         # Panel layout
@@ -58,10 +65,20 @@ class HomeScreen:
     # ------------------------------------------------------------
 
     def update(self):
-        return self.layout.update() if self.layout else {"status": "no_layout"}
+        if not self.layout:
+            return {"status": "no_layout"}
+        try:
+            return self.layout.update()
+        except Exception as e:
+            return {"status": "error", "error": str(e)}
 
     def render(self):
-        return self.layout.render() if self.layout else {"status": "no_layout"}
+        if not self.layout:
+            return {"status": "no_layout"}
+        try:
+            return self.layout.render()
+        except Exception as e:
+            return {"status": "error", "error": str(e)}
 
     # ------------------------------------------------------------
     # Metadata
@@ -71,5 +88,6 @@ class HomeScreen:
         return {
             "type": "screen",
             "name": "home_screen",
-            "version": self.SCREEN_VERSION
+            "version": self.SCREEN_VERSION,
+            "layout": self.layout.get_info() if self.layout else None
         }

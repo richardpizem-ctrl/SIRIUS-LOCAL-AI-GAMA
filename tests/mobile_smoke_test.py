@@ -1,6 +1,6 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Runtime Smoke Test
-# Version: 3.0.0-pre
+# Version: 3.1.0
 # ============================================================
 
 from runtime_mobile.core.runtime_core import MobileRuntimeCore
@@ -17,6 +17,10 @@ from runtime_mobile.vision_entry import MobileVisionEntry
 from runtime_mobile.security.security_entry import MobileSecurityEntry
 
 
+# ------------------------------------------------------------
+# Dummy Vision Engine (for testing)
+# ------------------------------------------------------------
+
 class DummyVisionEngine:
     def ocr(self, image):
         return "dummy ocr text"
@@ -30,6 +34,10 @@ class DummyVisionEngine:
     def homework(self, image):
         return {"solution": "42"}
 
+
+# ------------------------------------------------------------
+# Runtime Builder
+# ------------------------------------------------------------
 
 def build_runtime():
     context = MobileRuntimeContext()
@@ -50,9 +58,16 @@ def build_runtime():
         security=security,
         packs=packs,
     )
-    core.initialize()
+
+    init = core.initialize()
+    assert init["status"] == "initialized"
+
     return core
 
+
+# ------------------------------------------------------------
+# Smoke Test
+# ------------------------------------------------------------
 
 if __name__ == "__main__":
     runtime = build_runtime()

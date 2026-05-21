@@ -1,14 +1,19 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Event Types
-# Version: 3.0.0-pre
+# Version: 3.1.0
 # ============================================================
 
 class MobileEventTypes:
     """
-    Centralized list of event type constants for the mobile runtime.
+    Centralized list of event type constants for the GAMA 3.1 runtime.
+    Includes new event types for:
+    - SCENE v1
+    - Hybrid Schoolwork v1
+    - Multi-intent routing
+    - Diagnostics v3
     """
 
-    VERSION = "3.0.0-pre"
+    VERSION = "3.1.0"
 
     # --------------------------------------------------------
     # System / Runtime
@@ -18,12 +23,14 @@ class MobileEventTypes:
     SHOW_HELP = "SHOW_HELP"
     HEARTBEAT = "HEARTBEAT"
     RUNTIME_INFO = "RUNTIME_INFO"
+    SYSTEM_TRACE = "SYSTEM_TRACE"          # NEW (Diagnostics v3)
 
     # --------------------------------------------------------
-    # Assistant
+    # Assistant / Text
     # --------------------------------------------------------
     ASSISTANT = "ASSISTANT"
     TEXT_QUERY = "TEXT_QUERY"
+    MULTI_INTENT = "MULTI_INTENT"          # NEW (multi-intent routing)
 
     # --------------------------------------------------------
     # Device Diagnostics
@@ -53,8 +60,14 @@ class MobileEventTypes:
     VISION = "VISION"
     OCR = "OCR"
     DETECT = "DETECT"
-    SCENE = "SCENE"
+    SCENE = "SCENE"                         # UPDATED (SCENE v1)
+    ANALYZE = "ANALYZE"                     # NEW (Vision pipeline v3)
+
+    # --------------------------------------------------------
+    # Schoolwork / Hybrid Input
+    # --------------------------------------------------------
     HOMEWORK = "HOMEWORK"
+    SCHOOLWORK_HYBRID = "SCHOOLWORK_HYBRID"  # NEW (Hybrid input v1)
 
     # --------------------------------------------------------
     # Knowledge Packs

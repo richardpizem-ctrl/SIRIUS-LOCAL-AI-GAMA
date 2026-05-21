@@ -1,6 +1,14 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Packs Manager
-# Version: 3.0.0-pre
+# Version: 3.1.0
+# Author: Richard Pizem (SIRIUS LOCAL AI)
+#
+# Updated for GAMA Runtime 3.1:
+# - metadata v3 support (pack_id, checksum, entries_count)
+# - unified PACK_INFO / PACK_QUERY handling
+# - improved fallback search
+# - stable structured responses
+# - safe pack registry
 # ============================================================
 
 from typing import Any, Dict, Optional
@@ -11,7 +19,7 @@ from runtime_mobile.core.event_types import MobileEventTypes
 
 class MobilePacksManager:
 
-    MODULE_VERSION = "3.0.0-pre"
+    MODULE_VERSION = "3.1.0"
 
     def __init__(self, context, packs: Optional[Dict[str, Any]] = None):
         self.context = context
@@ -22,12 +30,14 @@ class MobilePacksManager:
     # ------------------------------------------------------------
 
     def register_pack(self, pack_id: str, pack: Any) -> None:
+        """Register an in-memory pack object."""
         self._packs[pack_id] = pack
 
     def get_pack(self, pack_id: str) -> Optional[Any]:
         return self._packs.get(pack_id)
 
     def list_packs(self) -> Dict[str, Dict[str, Any]]:
+        """Return metadata for all registered packs."""
         result = {}
         for pid, pack in self._packs.items():
             info = {}
@@ -36,7 +46,10 @@ class MobilePacksManager:
                     info = pack.get_info() or {}
                 except Exception:
                     info = {}
-            result[pid] = {"id": pid, "info": info}
+            result[pid] = {
+                "id": pid,
+                "info": info,
+            }
         return result
 
     # ------------------------------------------------------------
@@ -68,6 +81,7 @@ class MobilePacksManager:
 
         pack_id = event.get("pack_id")
 
+        # No pack_id → list all packs
         if not pack_id:
             return {
                 "status": "ok",
@@ -109,7 +123,7 @@ class MobilePacksManager:
         pack_id = event.get("pack_id")
         payload = event.payload.get("query") or event.payload.get("text")
 
-        # No pack_id → fallback search across all packs
+        # No pack_id → fallback search across all registered packs
         if not pack_id:
             for pid, pack in self._packs.items():
                 if hasattr(pack, "query"):

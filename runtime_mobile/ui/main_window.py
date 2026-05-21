@@ -1,11 +1,11 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile UI Main Window
-# Version: 3.0.0-pre
+# Version: 3.1.0
 # ============================================================
 
 class MobileMainWindow:
 
-    UI_VERSION = "3.0.0-pre"
+    UI_VERSION = "3.1.0"
 
     def __init__(self, context):
         self.context = context
@@ -20,6 +20,12 @@ class MobileMainWindow:
         # Attached UI components (layouts or components)
         self.components = []
 
+        # Window state flags (UI Engine 3.1)
+        self.visible = True
+        self.dirty = True
+        self.needs_layout = True
+        self.needs_render = True
+
     # ------------------------------------------------------------
     # Lifecycle
     # ------------------------------------------------------------
@@ -28,7 +34,10 @@ class MobileMainWindow:
         initialized = []
         for c in self.components:
             if hasattr(c, "initialize"):
-                initialized.append(c.initialize())
+                try:
+                    initialized.append(c.initialize())
+                except Exception as e:
+                    initialized.append({"error": str(e), "component": c.__class__.__name__})
 
         return {
             "status": "initialized",
@@ -45,7 +54,10 @@ class MobileMainWindow:
         updates = []
         for c in self.components:
             if hasattr(c, "update"):
-                updates.append(c.update())
+                try:
+                    updates.append(c.update())
+                except Exception as e:
+                    updates.append({"error": str(e), "component": c.__class__.__name__})
 
         return {
             "status": "updated",
@@ -56,7 +68,12 @@ class MobileMainWindow:
         rendered = []
         for c in self.components:
             if hasattr(c, "render"):
-                rendered.append(c.render())
+                try:
+                    rendered.append(c.render())
+                except Exception as e:
+                    rendered.append({"error": str(e), "component": c.__class__.__name__})
+
+        self.needs_render = False
 
         return {
             "status": "rendered",
@@ -65,6 +82,7 @@ class MobileMainWindow:
             "y": self.y,
             "width": self.width,
             "height": self.height,
+            "visible": self.visible,
             "components": rendered
         }
 
@@ -72,7 +90,10 @@ class MobileMainWindow:
         shutdowns = []
         for c in self.components:
             if hasattr(c, "shutdown"):
-                shutdowns.append(c.shutdown())
+                try:
+                    shutdowns.append(c.shutdown())
+                except Exception as e:
+                    shutdowns.append({"error": str(e), "component": c.__class__.__name__})
 
         return {
             "status": "shutdown",
@@ -86,9 +107,15 @@ class MobileMainWindow:
 
     def add_component(self, component):
         self.components.append(component)
+        self.needs_layout = True
+        self.dirty = True
 
         if hasattr(component, "initialize"):
-            component.initialize()
+            try:
+                component.initialize()
+            except Exception:
+                # Initialization errors are reported via initialize(), not here
+                pass
 
         return {
             "status": "component_added",
@@ -98,9 +125,14 @@ class MobileMainWindow:
     def remove_component(self, component):
         if component in self.components:
             if hasattr(component, "shutdown"):
-                component.shutdown()
+                try:
+                    component.shutdown()
+                except Exception:
+                    pass
 
             self.components.remove(component)
+            self.needs_layout = True
+            self.dirty = True
 
             return {
                 "status": "component_removed",
@@ -113,18 +145,27 @@ class MobileMainWindow:
         }
 
     # ------------------------------------------------------------
-    # Event Routing
+    # Event Routing (with bubbling)
     # ------------------------------------------------------------
 
     def on_event(self, event):
         results = []
         for c in self.components:
             if hasattr(c, "on_event"):
-                results.append(c.on_event(event))
+                try:
+                    results.append(c.on_event(event))
+                except Exception as e:
+                    results.append({
+                        "status": "error",
+                        "error": str(e),
+                        "component": c.__class__.__name__
+                    })
 
         return {
             "status": "events_forwarded",
-            "results": results
+            "window": self.title,
+            "results": results,
+            "bubble": True
         }
 
     # ------------------------------------------------------------
@@ -139,5 +180,11 @@ class MobileMainWindow:
             "x": self.x,
             "y": self.y,
             "width": self.width,
-            "height": self.height
+            "height": self.height,
+            "visible": self.visible,
+            "flags": {
+                "dirty": self.dirty,
+                "needs_layout": self.needs_layout,
+                "needs_render": self.needs_render,
+            }
         }

@@ -1,9 +1,9 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Runtime Entry Point
-# Version: 3.0.0-pre
+# Version: 3.1.0
 # Author: Richard Pizem (SIRIUS LOCAL AI)
 #
-# Minimal bootstrap for the mobile runtime.
+# Bootstrap for the mobile runtime.
 # Wires:
 #   - runtime context
 #   - dispatcher
@@ -71,5 +71,8 @@ if __name__ == "__main__":
     runtime = create_runtime()
     core = runtime["runtime_core"]
 
-    init_info = core.initialize()
-    print("[RUNTIME INIT]", init_info)
+    try:
+        init_info = core.initialize()
+        print("[RUNTIME INIT]", init_info)
+    except Exception as e:
+        print("[RUNTIME INIT ERROR]", str(e))

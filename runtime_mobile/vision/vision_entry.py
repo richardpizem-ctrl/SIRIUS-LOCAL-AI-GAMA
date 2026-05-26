@@ -1,10 +1,11 @@
 # ============================================================
 # SIRIUS LOCAL AI GAMA - Mobile Vision Entry
-# Version: 3.1.0
+# Version: 3.2.0
 # Author: Richard Pizem (SIRIUS LOCAL AI)
 # ============================================================
 
 from runtime_mobile.core.event_types import MobileEventTypes
+from vision.vision_engine_v3 import VisionEngineV3
 
 
 class VisionEntry:
@@ -13,10 +14,11 @@ class VisionEntry:
     Handles OCR, object detection, scene analysis and homework mode.
     """
 
-    MODULE_VERSION = "3.1.0"
+    MODULE_VERSION = "3.2.0"
 
     def __init__(self, context):
         self.context = context
+        self.engine = VisionEngineV3()   # ← NEW ENGINE
 
     # ------------------------------------------------------------
     # Helpers
@@ -28,22 +30,11 @@ class VisionEntry:
             return None, {"status": "error", "reason": "no_image"}
         return image, None
 
-    def _get_engine(self):
-        engine = getattr(self.context, "vision_engine", None)
-        if engine is None:
-            return None, {"status": "error", "reason": "no_vision_engine"}
-        return engine, None
-
     # ------------------------------------------------------------
-    # Main Event Handler (required by runtime)
+    # Main Event Handler
     # ------------------------------------------------------------
 
     def on_event(self, event):
-        """
-        Unified event handler for the runtime dispatcher.
-        Supports both MobileEvent and dict events.
-        """
-
         etype = event.type if hasattr(event, "type") else event.get("type")
 
         if etype == MobileEventTypes.OCR:
@@ -73,19 +64,15 @@ class VisionEntry:
         if err:
             return err
 
-        engine, err = self._get_engine()
-        if err:
-            return err
-
         try:
-            text = engine.ocr(image)
+            result = self.engine.ocr(image)
         except Exception as e:
             return {"status": "error", "reason": "ocr_failed", "error": str(e)}
 
         return {
             "status": "ok",
             "type": "ocr_result",
-            "text": text
+            "text": result.get("text", "")
         }
 
     # ------------------------------------------------------------
@@ -97,19 +84,15 @@ class VisionEntry:
         if err:
             return err
 
-        engine, err = self._get_engine()
-        if err:
-            return err
-
         try:
-            result = engine.detect(image)
+            result = self.engine.detect(image)
         except Exception as e:
             return {"status": "error", "reason": "detect_failed", "error": str(e)}
 
         return {
             "status": "ok",
             "type": "detection_result",
-            "objects": result
+            "objects": result.get("objects", [])
         }
 
     # ------------------------------------------------------------
@@ -121,12 +104,8 @@ class VisionEntry:
         if err:
             return err
 
-        engine, err = self._get_engine()
-        if err:
-            return err
-
         try:
-            result = engine.analyze(image)
+            result = self.engine.analyze(image)
         except Exception as e:
             return {"status": "error", "reason": "scene_failed", "error": str(e)}
 
@@ -145,12 +124,8 @@ class VisionEntry:
         if err:
             return err
 
-        engine, err = self._get_engine()
-        if err:
-            return err
-
         try:
-            result = engine.homework(image)
+            result = self.engine.homework(image)
         except Exception as e:
             return {"status": "error", "reason": "homework_failed", "error": str(e)}
 
@@ -168,7 +143,7 @@ class VisionEntry:
         return {
             "module": "vision",
             "version": self.MODULE_VERSION,
-            "engine_attached": hasattr(self.context, "vision_engine"),
+            "engine": self.engine.get_info(),
             "supported_events": [
                 MobileEventTypes.OCR,
                 MobileEventTypes.DETECT,

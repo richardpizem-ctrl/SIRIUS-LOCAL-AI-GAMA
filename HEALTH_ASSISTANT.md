@@ -1,19 +1,20 @@
-# 🏥 SIRIUS LOCAL AI GAMA – Health Assistant 3.1  
-Version: **3.1.0**  
-Offline healthcare module for GAMA 3.1.0  
+# 🏥 SIRIUS LOCAL AI GAMA – Health Assistant 3.2  
+Version: **3.2.0**  
+Offline healthcare module for GAMA 3.2.0  
 Designed for safe, family‑friendly, privacy‑focused use **without diagnostics**.
 
-Health Assistant 3.1 introduces **Metadata v3.1**, **EV3.1 health events**,  
-**unified result schema v3.1**, **improved fallback logic**,  
-**restricted‑mode v3.1**, **sandbox isolation v3.1**,  
-**PACK_SUGGEST‑aware safety**, and enhanced hybrid‑safe health reasoning.
+Health Assistant 3.2 introduces **Metadata v3.2**, **EV3.2 health events**,  
+**unified result schema v3.2**, **improved fallback logic**,  
+**restricted‑mode v3.2**, **sandbox isolation v3.2**,  
+**VisionEngineV3 HOMEWORK/OCR integration**,  
+**PACK_SUGGEST‑aware safety v3.2**, and enhanced hybrid‑safe health reasoning.
 
 The module **never provides diagnoses** and operates 100% offline.
 
 ---
 
 # 🎯 Module Purpose
-Health Assistant 3.1 provides:
+Health Assistant 3.2 provides:
 
 - offline processing of medical documents  
 - safe and reliable health information  
@@ -21,11 +22,12 @@ Health Assistant 3.1 provides:
 - medication and dosage information  
 - family‑safe health behavior recommendations  
 - offline symptom explanation (non‑diagnostic)  
-- deterministic health reasoning v3.1  
-- metadata v3.1 integration  
+- deterministic health reasoning v3.2  
+- metadata v3.2 integration  
 - restricted/sandbox enforcement  
 - hybrid‑safe health input handling  
 - PACK_SUGGEST health‑safe filtering  
+- VisionEngineV3 health‑document routing  
 
 The module **never**:
 - identifies diseases  
@@ -35,58 +37,59 @@ The module **never**:
 
 ---
 
-# 🧩 Module Architecture (v3.1)
+# 🧩 Module Architecture (v3.2)
 
 ## Components
-- **HealthAssistantEntry_v3.1** – main entry point  
-- **Health Knowledge Packs v3.1** – curated, deterministic health data  
-- **Health OCR Pipeline v3.1** – OCR for medical documents  
-- **First Aid Logic v3.1** – safe offline first‑aid rules  
-- **Medication Info Engine v3.1** – dosage + warnings  
-- **Symptom Explanation Engine v3.1** – non‑diagnostic explanations  
-- **Health Safety Layer v3.1** – filters unsafe content  
-- **Health Diagnostics Logger v3.1** – logs safe events  
-- **Hybrid‑Safe Gatekeeper v3.1** – low‑trust enforcement  
-- **Metadata v3.1 Generator** – EV3.1 tagging  
-- **Unified Result Schema Engine v3.1**  
+- **HealthAssistantEntry_v3.2** – main entry point  
+- **Health Knowledge Packs v3.2** – curated, deterministic health data  
+- **Health OCR Pipeline v3.2** – OCR for medical documents (VisionEngineV3)  
+- **First Aid Logic v3.2** – safe offline first‑aid rules  
+- **Medication Info Engine v3.2** – dosage + warnings  
+- **Symptom Explanation Engine v3.2** – non‑diagnostic explanations  
+- **Health Safety Layer v3.2** – filters unsafe content  
+- **Health Diagnostics Logger v3.2** – logs safe events  
+- **Hybrid‑Safe Gatekeeper v3.2** – low‑trust enforcement  
+- **Metadata v3.2 Generator** – EV3.2 tagging  
+- **Unified Result Schema Engine v3.2**  
 
 ---
 
-# 🧬 Event Types (EV3.1)
+# 🧬 Event Types (EV3.2)
 
 | Event Type | Purpose |
 |-----------|---------|
 | `HEALTH_QUERY` | general health questions |
-| `HEALTH_DOC_OCR` | OCR of medical documents |
+| `HEALTH_DOC_OCR` | OCR of medical documents (VisionEngineV3) |
 | `HEALTH_FIRST_AID` | first‑aid and safety procedures |
 | `HEALTH_MEDICATION_INFO` | medication and dosage information |
 | `HEALTH_SYMPTOM_INFO` | safe, non‑diagnostic symptom explanations |
 | `HEALTH_TERM_EXPLAIN` | explain medical terms in family‑safe form |
-| `HEALTH_EVENT_V3_1` | unified health event with metadata v3.1 |
+| `HEALTH_EVENT_V3_2` | unified health event with metadata v3.2 |
 
 All events include:
-- event_version: EV3.1  
+- event_version: **EV3.2**  
 - trust_level  
 - restricted_mode flag  
 - sandbox_enforced flag  
 - PACK_SUGGEST safety flags  
-- metadata v3.1  
-- unified result schema v3.1  
+- VisionEngineV3 safety flags  
+- metadata v3.2  
+- unified result schema v3.2  
 
 ---
 
-# 🏗 HealthAssistantEntry – Behavior (v3.1)
+# 🏗 HealthAssistantEntry – Behavior (v3.2)
 
-## 1) OCR of medical documents
+## 1) OCR of medical documents (VisionEngineV3)
 - prescriptions  
 - medical reports  
 - dosage instructions  
 - allergy cards  
 - vaccination cards  
 - discharge summaries  
-- metadata v3.1 + low‑trust tagging  
+- metadata v3.2 + low‑trust tagging  
 - restricted/sandbox enforcement  
-- unified result schema v3.1  
+- unified result schema v3.2  
 
 ## 2) Medication information
 - dosage  
@@ -94,7 +97,7 @@ All events include:
 - interactions (non‑diagnostic)  
 - age‑safe usage guidelines  
 - storage instructions  
-- metadata v3.1  
+- metadata v3.2  
 - PACK_SUGGEST safety filtering  
 
 ## 3) First aid
@@ -105,8 +108,8 @@ All events include:
 - safety procedures  
 - poisoning basics (safe, non‑clinical)  
 - emergency steps for children  
-- deterministic first‑aid rules v3.1  
-- metadata v3.1  
+- deterministic first‑aid rules v3.2  
+- metadata v3.2  
 
 ## 4) Health knowledge
 - explanation of medical terms  
@@ -114,12 +117,12 @@ All events include:
 - family‑friendly health information  
 - symptom explanations (non‑diagnostic)  
 - hygiene & prevention guidance  
-- metadata v3.1  
-- unified result schema v3.1  
+- metadata v3.2  
+- unified result schema v3.2  
 
 ---
 
-# 📦 Health Knowledge Pack (v3.1 Specification)
+# 📦 Health Knowledge Pack (v3.2 Specification)
 
 Each Health Pack contains:
 
@@ -136,14 +139,14 @@ All packs are:
 - deterministic  
 - curated  
 - family‑safe  
-- validated by the Health Safety Layer v3.1  
-- metadata v3.1 compliant  
-- pack integrity validated v3.1  
+- validated by the Health Safety Layer v3.2  
+- metadata v3.2 compliant  
+- pack integrity validated v3.2  
 - PACK_SUGGEST‑aware  
 
 ---
 
-# 🔒 Safety Principles (v3.1)
+# 🔒 Safety Principles (v3.2)
 - no diagnoses  
 - all processing offline  
 - deterministic output  
@@ -152,14 +155,15 @@ All packs are:
 - no treatment plans  
 - no medical decision‑making  
 - strict filtering of unsafe or ambiguous content  
-- restricted‑mode enforcement v3.1  
-- sandbox isolation v3.1  
-- low‑trust classification v3.1  
+- restricted‑mode enforcement v3.2  
+- sandbox isolation v3.2  
+- low‑trust classification v3.2  
 - PACK_SUGGEST safety filtering  
+- VisionEngineV3 safety integration  
 
 ---
 
-# 🧱 Health Safety Layer (v3.1)
+# 🧱 Health Safety Layer (v3.2)
 Ensures:
 
 - removal of diagnostic language  
@@ -169,12 +173,13 @@ Ensures:
 - fallback to general safety rules  
 - restricted/sandbox enforcement  
 - PACK_SUGGEST safety rules  
-- metadata v3.1 tagging  
-- unified result schema v3.1  
+- VisionEngineV3 unsafe‑content filtering  
+- metadata v3.2 tagging  
+- unified result schema v3.2  
 
 ---
 
-# 🩺 Symptom Explanation Engine (v3.1)
+# 🩺 Symptom Explanation Engine (v3.2)
 Provides **non‑diagnostic** explanations:
 
 - what a symptom *generally* means  
@@ -190,56 +195,57 @@ Never:
 
 ---
 
-# 🗺 Integration into GAMA 3.1
+# 🗺 Integration into GAMA 3.2
 
-Health Assistant 3.1 integrates with:
+Health Assistant 3.2 integrates with:
 
-- **Runtime Core 3.1**  
-- **Unified Event Architecture 3.1.x**  
-- **LAN Offline Bridge 3.1**  
-- **Device Diagnostics Mobile 3.1**  
-- **Vision Engine 3.1**  
-- **Workflow Engine Mobile 3.1**  
-- **Knowledge Pack System 3.1**  
-- **Security Family 3.1**  
+- **Runtime Core 3.2**  
+- **Unified Event Architecture 3.2.x**  
+- **LAN Offline Bridge 3.2**  
+- **Device Diagnostics Mobile 3.2**  
+- **VisionEngineV3**  
+- **Workflow Engine Mobile 3.2**  
+- **Knowledge Pack System 3.2**  
+- **Security Family 3.2**  
 - **Hybrid‑Safe Pipeline**  
-- **Unified Result Schema v3.1**  
+- **Unified Result Schema v3.2**  
 
 ---
 
-# 🔁 Health Assistant Execution Cycle (v3.1.0)
+# 🔁 Health Assistant Execution Cycle (v3.2.0)
 
-1. Runtime sends a HEALTH_EVENT (EV3.1).  
+1. Runtime sends a HEALTH_EVENT (EV3.2).  
 2. HealthAssistantEntry identifies event type.  
-3. If OCR → run Health OCR Pipeline v3.1.  
-4. If medication → load medication pack v3.1.  
-5. If first‑aid → load first‑aid pack v3.1.  
-6. If symptom info → Symptom Explanation Engine v3.1.  
-7. Health Safety Layer v3.1 filters unsafe content.  
-8. Metadata v3.1 is added (trust, restricted, sandbox, PACK_SUGGEST).  
-9. Output formatted using unified result schema v3.1.  
-10. Diagnostics Logger v3.1 records the event.  
+3. If OCR → run Health OCR Pipeline v3.2 (VisionEngineV3).  
+4. If medication → load medication pack v3.2.  
+5. If first‑aid → load first‑aid pack v3.2.  
+6. If symptom info → Symptom Explanation Engine v3.2.  
+7. Health Safety Layer v3.2 filters unsafe content.  
+8. Metadata v3.2 is added (trust, restricted, sandbox, PACK_SUGGEST, VisionEngineV3).  
+9. Output formatted using unified result schema v3.2.  
+10. Diagnostics Logger v3.2 records the event.  
 11. Response returned to Runtime.  
 
 ---
 
-# 🟪 NEW IN VERSION 3.1.0
-- metadata v3.1  
-- event versioning EV3.1  
-- unified result schema v3.1  
-- PACK_SUGGEST safety filtering  
+# 🟪 NEW IN VERSION 3.2.0
+- metadata v3.2  
+- event versioning EV3.2  
+- unified result schema v3.2  
+- PACK_SUGGEST safety filtering v3.2  
+- VisionEngineV3 integration  
 - improved hybrid‑safe input handling  
 - improved fallback logic  
-- pack priority v3.1  
-- pack integrity v3.1  
-- deterministic health reasoning v3.1  
+- pack priority v3.2  
+- pack integrity v3.2  
+- deterministic health reasoning v3.2  
 - expanded safety filtering  
-- restricted‑mode v3.1  
-- sandbox isolation v3.1  
-- low‑trust classification v3.1  
-- diagnostics expansion v3.1  
+- restricted‑mode v3.2  
+- sandbox isolation v3.2  
+- low‑trust classification v3.2  
+- diagnostics expansion v3.2  
 
 ---
 
-# ✔ GAMA Health Assistant 3.1 — COMPLETE  
-Fully aligned with the SIRIUS LOCAL AI GAMA 3.1.x ecosystem.
+# ✔ GAMA Health Assistant 3.2 — COMPLETE  
+Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.

@@ -1,29 +1,40 @@
-# 🔐 SIRIUS LOCAL AI GAMA – Security Policy (v3.1.0)
+# 🔐 SIRIUS LOCAL AI GAMA – Security Policy  
+**Version:** 3.2.0  
+**Architecture:** Offline, Deterministic, Hybrid‑Safe  
+**Aligned With:** Runtime 3.2, Event Engine 3.2.x, VisionEngineV3, Security Family 3.2, Hybrid‑Safe Pipeline 3.2
 
 SIRIUS LOCAL AI GAMA is a fully offline, privacy‑first mobile AI runtime.  
-This security policy defines how vulnerabilities are reported, validated, and resolved in version **3.1.0**, aligned with the **Unified Event Architecture 3.1.x**, **Metadata v3.1**, **Restricted Mode v3.1**, **Sandbox Enforcement v3.1**, **PACK_SUGGEST safety**, and the **Hybrid‑Safe Pipeline**.
+This security policy defines how vulnerabilities are reported, validated, and resolved in **version 3.2.0**, aligned with:
+
+- Unified Event Architecture 3.2.x  
+- Metadata v3.2  
+- Restricted Mode v3.2  
+- Sandbox Enforcement v3.2  
+- PACK_SUGGEST safety v3.2  
+- Hybrid‑Safe Pipeline 3.2  
+- VisionEngineV3 low‑trust rules  
 
 ---
 
 # 🛡 1. Supported Versions
 
-Only the latest stable version of GAMA receives security updates.
+Only the latest stable version of GAMA receives full security updates.
 
 | Version | Supported |
 |--------|-----------|
-| **GAMA 3.1.x** | ✔ Yes |
-| **GAMA 3.0.x** | ✔ Yes (security fixes only) |
-| **GAMA 2.x** | ✖ No (critical fixes only) |
+| **GAMA 3.2.x** | ✔ Full support |
+| **GAMA 3.1.x** | ✔ Security fixes only |
+| **GAMA 3.0.x** | ✖ Critical fixes only |
+| **GAMA 2.x** | ✖ No |
 | **GAMA 1.x** | ✖ No |
-| **GAMA 0.x** | ✖ No |
 
-Older versions may contain unresolved vulnerabilities and should not be used in production environments.
+Older versions may contain unresolved vulnerabilities and should not be used in production.
 
 ---
 
 # 🚨 2. Reporting a Vulnerability
 
-If you discover a security vulnerability, please report it **privately**.
+If you discover a security vulnerability, report it **privately**.
 
 ### ✔ Recommended method  
 Open a **private GitHub issue** in this repository.
@@ -31,199 +42,194 @@ Open a **private GitHub issue** in this repository.
 ### ✔ Alternative contact  
 Maintainer: **@richardpizem-ctrl**
 
-Please include:
+Include:
 
-- clear description of the issue  
-- steps to reproduce  
+- clear description  
+- reproduction steps  
 - potential impact  
-- affected modules or files  
+- affected modules  
 - logs or screenshots (if available)  
 
-All reports will be reviewed as soon as possible.
+All reports are reviewed promptly.
 
 ---
 
 # 🧭 3. Responsible Disclosure Guidelines
 
-To protect users and contributors, please follow these rules:
-
 ### ✔ Do:
-- report vulnerabilities privately  
-- allow reasonable time for investigation  
-- provide clear technical details  
+- report privately  
+- allow time for investigation  
+- provide technical details  
 - include reproduction steps  
 - keep communication confidential  
 
 ### ✖ Do NOT:
-- publicly disclose the vulnerability before it is fixed  
-- exploit the vulnerability beyond what is necessary  
-- share the vulnerability with third parties  
-- use the vulnerability to access unauthorized data  
+- disclose publicly before fix  
+- exploit the vulnerability  
+- share with third parties  
+- access unauthorized data  
 
 ---
 
-# 🛠 4. How We Handle Vulnerabilities
+# 🛠 4. Vulnerability Handling Process
 
-When a vulnerability is reported:
-
-1. **Acknowledgment** – Maintainer confirms receipt  
-2. **Assessment** – Severity and impact are evaluated  
-3. **Reproduction** – Issue is reproduced in a controlled environment  
-4. **Fix Development** – Patch or mitigation is created  
-5. **Verification** – Fix is tested  
-6. **Release** – Security update is published  
-7. **Disclosure** – A short summary appears in the changelog  
+1. **Acknowledgment**  
+2. **Assessment** (severity, impact)  
+3. **Reproduction**  
+4. **Fix Development**  
+5. **Verification**  
+6. **Release**  
+7. **Changelog Disclosure**  
 
 ---
 
-# 🧱 5. Security Scope (Updated for 3.1.0)
+# 🧱 5. Security Scope (Updated for 3.2.0)
 
-This policy covers vulnerabilities related to:
+Covered:
 
-- deterministic runtime core v3.1  
-- unified event architecture 3.1.x  
-- restricted mode v3.1  
-- sandbox enforcement v3.1  
-- hybrid‑safe pipeline  
+- deterministic runtime core v3.2  
+- unified event architecture 3.2.x  
+- restricted mode v3.2  
+- sandbox enforcement v3.2  
+- hybrid‑safe pipeline 3.2  
 - offline reasoning engine  
-- workflow engine 3.1  
-- vision engine 3.1  
-- schoolwork mode 3.1  
-- health assistant 3.1  
-- knowledge packs 3.1  
-- PACK_SUGGEST safety  
+- workflow engine 3.2  
+- VisionEngineV3  
+- schoolwork mode 3.2  
+- health assistant 3.2  
+- knowledge packs 3.2  
+- PACK_SUGGEST safety v3.2  
 - module privilege isolation  
-- event metadata engine v3.1  
+- event metadata engine v3.2  
 - LAN Offline Bridge  
-- diagnostics engine v3.1  
+- diagnostics engine v3.2  
 - low‑trust input handling  
 
-It does **not** cover:
+Not covered:
 
 - feature requests  
 - UI bugs  
 - performance issues  
 - expected behavior differences  
 
-These should be reported via normal GitHub issues.
-
 ---
 
-# 🔒 6. Safe Development Practices (Updated for 3.1.0)
+# 🔒 6. Safe Development Practices (v3.2.0)
 
-Contributors must follow these principles:
+Contributors must follow:
 
 - no cloud APIs  
 - no telemetry  
 - no remote code execution  
 - no unsafe eval/exec  
-- strict separation of UI and logic  
+- strict UI/logic separation  
 - no untrusted code execution  
 - minimal dependencies  
 - deterministic behavior  
 - sandboxed processing  
 - no dynamic imports  
-- no privileged module escalation  
+- no privileged escalation  
 - strict validation of all external data  
 - no network calls except LAN Offline Bridge  
-- no access to PC runtime without explicit pairing  
-- all hybrid inputs treated as **low‑trust**  
+- no PC runtime access without pairing  
+- all hybrid inputs = **low‑trust**  
 - PACK_SUGGEST safety enforcement  
 - restricted/sandbox enforcement for all modules  
+- VisionEngineV3 low‑trust enforcement  
 
 ---
 
-# 🟪 6.5 Hybrid‑Safe Architecture (Core of GAMA 4.0 — Adopted in 3.1)
+# 🟪 6.5 Hybrid‑Safe Architecture (Core of GAMA 4.0 — Adopted in 3.2)
 
-GAMA 3.1 integrates the **hybrid‑safe foundation** of the upcoming 4.0 architecture.
+GAMA 3.2 integrates the **hybrid‑safe foundation** of the upcoming 4.0 architecture.
 
 ## 🟦 Secure Online Envoy (Isolated Online Agent)
-- runs in a fully isolated sandbox  
-- outbound‑only access  
-- fetches text, JSON, structured data  
-- cannot access local files, models, or APIs  
-- cannot send local data outward  
-- always classified as **low‑trust**  
+- fully isolated sandbox  
+- outbound‑only  
+- fetches text/JSON only  
+- no access to local files, models, APIs  
+- no outbound local data  
+- always **low‑trust**  
 - PACK_SUGGEST safety rules applied  
 
-## 🟩 Quarantine Pipeline (Data Sanitization Layer)
-All data returned by the envoy is processed through a strict quarantine:
+## 🟩 Quarantine Pipeline 3.2
+All external data is sanitized:
 
 - script & HTML removal  
 - format validation  
 - size limits  
 - text cleaning  
-- security filtering  
-- only clean text + JSON allowed  
-- integration with Security Family 3.1  
+- safety filtering  
+- deterministic sanitization rules  
+- Security Family 3.2 integration  
 
-Offline modules **never** interact with untrusted data.
+Offline modules **never** touch untrusted data.
 
-## 🟧 Offline Core Remains Fully Air‑Gapped
-- inference offline  
-- reasoning offline  
-- knowledge packs offline  
+## 🟧 Offline Core Air‑Gap
+- offline inference  
+- offline reasoning  
+- offline knowledge packs  
 - no cloud calls  
 - no telemetry  
 - no outbound data  
 
 ---
 
-# 🛡 6.6 Security Family Integration (v3.1)
+# 🛡 6.6 Security Family Integration (v3.2)
 
-Security Family enforces additional rules for hybrid‑safe mode:
+Security Family enforces:
 
-- envoy data is always low‑trust  
+- envoy data = low‑trust  
 - no remote code execution  
 - no dynamic evaluation  
 - no cross‑module privilege escalation  
-- no direct access to runtime context  
+- no direct runtime context access  
 - quarantine rejects unsafe data  
 - PACK_SUGGEST violations logged  
-- restricted mode v3.1 automatically enabled on anomalies  
+- restricted mode auto‑enabled on anomalies  
+- VisionEngineV3 unsafe‑content filtering  
 
 ---
 
-# 🧪 6.7 Security Testing Requirements (Updated for 3.1.0)
+# 🧪 6.7 Security Testing Requirements (v3.2)
 
 All contributors must ensure:
 
-- static analysis of all modules  
+- static analysis  
 - no unsafe dependencies  
-- no network calls except LAN Offline Bridge  
+- no network calls except LAN Bridge  
 - deterministic execution paths  
 - reproducible builds  
-- no hidden telemetry  
+- no telemetry  
 - no analytics libraries  
 - no external SDKs  
 - diagnostics logs must not contain sensitive data  
 - restricted/sandbox behavior must be testable  
-- hybrid‑safe pipeline must be validated  
-- PACK_SUGGEST safety must be validated  
+- hybrid‑safe pipeline validated  
+- PACK_SUGGEST safety validated  
+- VisionEngineV3 low‑trust validation  
 
 ---
 
-# 🛡 6.8 Behavioral Safety Policy (v3.1)
-
-GAMA 3.1 includes a fully formalized behavioral safety layer.
+# 🛡 6.8 Behavioral Safety Policy (v3.2)
 
 ## 🔐 Behavioral Determinism
 - no hallucinations  
 - no unverified claims  
-- if uncertain → respond “I don’t know”  
-- deterministic reasoning sequences  
+- if uncertain → “I don’t know”  
+- deterministic reasoning  
 - safe fallback behavior  
-- metadata v3.1 trace  
-- unified result schema v3.1  
+- metadata v3.2 trace  
+- unified result schema v3.2  
 
 ## 👨‍👩‍👧 Family‑Safe Rules
-- child‑safe content filters  
+- child‑safe filters  
 - blocking sensitive topics  
 - safe offline explanations  
 - limited reasoning for minors  
 
 ## 🔍 Local Ethical Filters
-- all filters run locally  
+- all filters offline  
 - no cloud requests  
 - no external APIs  
 - no data transmission  
@@ -235,8 +241,8 @@ GAMA 3.1 includes a fully formalized behavioral safety layer.
 - no access outside allowed scope  
 
 ## 🚫 Behavioral Limits
-- no medical, legal, or dangerous advice  
-- no harmful content generation  
+- no medical/legal/dangerous advice  
+- no harmful content  
 - no autonomous decisions  
 - no manipulation or persuasion  
 
@@ -244,9 +250,9 @@ GAMA 3.1 includes a fully formalized behavioral safety layer.
 - reasoning traces  
 - security logs  
 - restricted mode logs  
-- sandbox enforcement logs  
+- sandbox logs  
 - PACK_SUGGEST logs  
-- deterministic repeatable outputs  
+- deterministic repeatability  
 
 ---
 

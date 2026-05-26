@@ -2,117 +2,83 @@
 SIRIUS LOCAL AI GAMA – Event Compatibility Layer v3
 Mobile Runtime 3.2.0
 
-This module provides:
-- backward compatibility for legacy events
-- payload normalization
-- safety rules for deprecated event formats
-- preparation for Event Engine 4.0
+Converts:
+- legacy events → modern events
+- legacy payloads → normalized payloads
+
+Ensures compatibility with:
+- Hybrid Router 3.2
+- VisionEngineV3
+- Event Diagnostics v3
 """
 
-COMPAT_LAYER_VERSION = "3.2.0"
+from runtime_mobile.core.event_types import MobileEventTypes
+
+
+COMPAT_VERSION = "3.2.0"
 
 
 # ---------------------------------------------------------
-# Legacy → modern payload converters
+# Compatibility Resolution
 # ---------------------------------------------------------
 
-def convert_legacy_analyze(payload: dict) -> dict:
+def resolve_compatibility(event_type: str, payload: dict):
     """
-    Convert legacy ANALYZE/ANALYZE_V1 payloads to SCENE format.
+    Convert legacy event names and payload formats into
+    modern MobileEventTypes and normalized payloads.
     """
-    if not payload:
-        return {"type": "scene"}
 
-    return {
-        "type": "scene",
-        "objects": payload.get("objects", []),
-        "text": payload.get("text", ""),
-        "confidence": payload.get("confidence", 0.0),
-    }
-
-
-def convert_legacy_ocr(payload: dict) -> dict:
-    """
-    Convert legacy OCR payloads to HOMEWORK format.
-    """
-    if not payload:
-        return {"type": "homework"}
-
-    return {
-        "type": "homework",
-        "text": payload.get("text", ""),
-        "lines": payload.get("lines", []),
-        "language": payload.get("language", "unknown"),
-    }
-
-
-# ---------------------------------------------------------
-# Compatibility dispatcher
-# ---------------------------------------------------------
-
-def normalize_payload(event_name: str, payload: dict) -> dict:
-    """
-    Normalize payloads for legacy events.
-    """
-    if event_name in ("ANALYZE", "ANALYZE_V1"):
-        return convert_legacy_analyze(payload)
-
-    if event_name == "OCR":
-        return convert_legacy_ocr(payload)
-
-    # No conversion needed
-    return payload
-
-
-# ---------------------------------------------------------
-# Safety rules for deprecated events
-# ---------------------------------------------------------
-
-def is_legacy_event(event_name: str) -> bool:
-    """
-    Check if the event is considered legacy.
-    """
-    return event_name in ("ANALYZE", "ANALYZE_V1", "OCR")
-
-
-def legacy_event_warning(event_name: str) -> str:
-    """
-    Return a warning message for deprecated events.
-    """
-    return f"Warning: Event '{event_name}' is deprecated and converted automatically."
-
-
-# ---------------------------------------------------------
-# Main compatibility resolver
-# ---------------------------------------------------------
-
-def resolve_compatibility(event_name: str, payload: dict) -> tuple:
-    """
-    Resolve compatibility:
-    - detect legacy events
-    - convert payloads
-    - return (normalized_event_name, normalized_payload, warning)
-    """
     warning = None
 
-    if is_legacy_event(event_name):
-        warning = legacy_event_warning(event_name)
+    # -----------------------------------------------------
+    # Legacy → Modern Vision Events
+    # -----------------------------------------------------
 
-    normalized_payload = normalize_payload(event_name, payload)
+    legacy_map = {
+        "VISION_SCENE": MobileEventTypes.SCENE,
+        "VISION_DETECT": MobileEventTypes.DETECT,
+        "VISION_OCR": MobileEventTypes.OCR,
+        "VISION_HOMEWORK": MobileEventTypes.HOMEWORK,
+        "IMG_SCENE": MobileEventTypes.SCENE,
+        "IMG_DETECT": MobileEventTypes.DETECT,
+        "IMG_OCR": MobileEventTypes.OCR,
+        "IMG_HW": MobileEventTypes.HOMEWORK,
+    }
 
-    # Event name normalization is handled by event_versioning_3
-    return event_name, normalized_payload, warning
+    if event_type in legacy_map:
+        warning = f"Legacy event '{event_type}' converted to '{legacy_map[event_type]}'"
+        event_type = legacy_map[event_type]
+
+    # -----------------------------------------------------
+    # Normalize payload
+    # -----------------------------------------------------
+
+    if payload is None:
+        payload = {}
+
+    # Ensure payload contains image if needed
+    if event_type in (
+        MobileEventTypes.SCENE,
+        MobileEventTypes.DETECT,
+        MobileEventTypes.OCR,
+        MobileEventTypes.HOMEWORK,
+    ):
+        if "image" not in payload:
+            payload["image"] = None
+
+    return event_type, payload, warning
 
 
 # ---------------------------------------------------------
-# Diagnostics helper
+# Metadata
 # ---------------------------------------------------------
 
 def get_compat_info() -> dict:
-    """
-    Return compatibility layer metadata.
-    """
     return {
-        "version": COMPAT_LAYER_VERSION,
-        "legacy_events": ["ANALYZE", "ANALYZE_V1", "OCR"],
+        "version": COMPAT_VERSION,
+        "supports": [
+            "legacy_vision_events",
+            "modern_vision_events",
+            "payload_normalization",
+        ],
     }

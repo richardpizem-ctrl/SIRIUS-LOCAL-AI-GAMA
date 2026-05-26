@@ -2,94 +2,73 @@
 SIRIUS LOCAL AI GAMA – Event Versioning v3
 Mobile Runtime 3.2.0
 
-This module provides:
-- event mapping by version
-- backward compatibility for 3.0 → 3.1 → 3.2
-- event payload validation
-- safety rules for legacy events
-- preparation for Event Engine 4.0
+Resolves:
+- final event version
+- normalization of event names
+- compatibility with VisionEngineV3
 """
 
-EVENT_VERSION = "3.2.0"
+from runtime_mobile.core.event_types import MobileEventTypes
+
+
+VERSIONING_VERSION = "3.2.0"
+
 
 # ---------------------------------------------------------
-# Supported event versions
+# Event Version Resolution
 # ---------------------------------------------------------
 
-SUPPORTED_EVENT_VERSIONS = {
-    "3.0": ["TEXT", "VISION", "PACK_QUERY"],
-    "3.1": ["TEXT", "VISION", "PACK_QUERY", "PACK_SUGGEST"],
-    "3.2": [
+def resolve_event(event_type: str) -> str:
+    """
+    Normalize event names and ensure they match MobileEventTypes.
+    """
+
+    if not event_type:
+        return "UNKNOWN"
+
+    # Normalize to uppercase
+    event_type = event_type.upper()
+
+    # Direct matches
+    if event_type in (
+        MobileEventTypes.SCENE,
+        MobileEventTypes.DETECT,
+        MobileEventTypes.OCR,
+        MobileEventTypes.HOMEWORK,
         "TEXT",
-        "VISION",
-        "PACK_QUERY",
-        "PACK_SUGGEST",
-        "SCENE",
-        "HOMEWORK",
-        "SECURITY_ALERT",
-    ],
-}
+    ):
+        return event_type
 
-# ---------------------------------------------------------
-# Legacy → modern event name mapping
-# ---------------------------------------------------------
+    # Legacy → Modern fallback
+    legacy_map = {
+        "VISION_SCENE": MobileEventTypes.SCENE,
+        "VISION_DETECT": MobileEventTypes.DETECT,
+        "VISION_OCR": MobileEventTypes.OCR,
+        "VISION_HOMEWORK": MobileEventTypes.HOMEWORK,
+        "IMG_SCENE": MobileEventTypes.SCENE,
+        "IMG_DETECT": MobileEventTypes.DETECT,
+        "IMG_OCR": MobileEventTypes.OCR,
+        "IMG_HW": MobileEventTypes.HOMEWORK,
+    }
 
-EVENT_COMPAT_MAP = {
-    "ANALYZE": "SCENE",
-    "ANALYZE_V1": "SCENE",
-    "OCR": "HOMEWORK",
-}
+    if event_type in legacy_map:
+        return legacy_map[event_type]
 
-# ---------------------------------------------------------
-# Event validation
-# ---------------------------------------------------------
-
-def validate_event(event_name: str, version: str) -> bool:
-    """
-    Check if the event exists in the given runtime version.
-    """
-    if version not in SUPPORTED_EVENT_VERSIONS:
-        return False
-
-    return event_name in SUPPORTED_EVENT_VERSIONS[version]
+    # Unknown event
+    return "UNKNOWN"
 
 
 # ---------------------------------------------------------
-# Normalize legacy event names
+# Metadata
 # ---------------------------------------------------------
 
-def normalize_event(event_name: str) -> str:
-    """
-    Convert legacy event names to their modern equivalents.
-    """
-    return EVENT_COMPAT_MAP.get(event_name, event_name)
-
-
-# ---------------------------------------------------------
-# Main resolver
-# ---------------------------------------------------------
-
-def resolve_event(event_name: str, version: str = "3.2") -> str:
-    """
-    Resolve an event:
-    - normalize legacy names
-    - validate against version
-    - return normalized event or UNSUPPORTED_EVENT
-    """
-    normalized = normalize_event(event_name)
-
-    if not validate_event(normalized, version):
-        return "UNSUPPORTED_EVENT"
-
-    return normalized
-
-
-# ---------------------------------------------------------
-# Diagnostics helper
-# ---------------------------------------------------------
-
-def get_supported_events():
-    """
-    Return all supported events for version 3.2.
-    """
-    return SUPPORTED_EVENT_VERSIONS["3.2"]
+def get_versioning_info() -> dict:
+    return {
+        "version": VERSIONING_VERSION,
+        "supports": [
+            "vision_events",
+            "legacy_conversion",
+            "text_events",
+            "normalized_event_names",
+        ],
+    }

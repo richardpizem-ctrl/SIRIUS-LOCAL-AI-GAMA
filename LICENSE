@@ -1,5 +1,5 @@
 # SIRIUS Unified License (SUL)  
-Version: **3.1.0**  
+Version: **3.2.0**  
 Copyright (c) 2026 Richard Pizem
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -9,7 +9,7 @@ following conditions:
 
 ---------------------------------------------------------------------
 
-## 📘 Public Documentation Notice (Effective from Version 3.1.0)
+## 📘 Public Documentation Notice (Effective from Version 3.2.0)
 All **documentation, specifications, and public-facing technical materials**
 for SIRIUS LOCAL AI GAMA remain **PUBLIC** for transparency, education,
 and ecosystem visibility.
@@ -90,19 +90,43 @@ The Software may NOT be used to create:
 - cloud‑based AI services  
 - external AI model training pipelines  
 - systems bypassing identity or safety layers  
-- hybrid‑unsafe systems violating SIRIUS 3.x rules  
+- hybrid‑unsafe systems violating SIRIUS 3.x / 3.2 rules  
 
 ---------------------------------------------------------------------
 
-## 6. Hybrid‑Safe Architecture Clause (New in 3.1.0)
-All systems built on top of the Software must respect the **Hybrid‑Safe Architecture**:
+## 6. Hybrid‑Safe Architecture Clause (Updated for 3.2.0)
+All systems built on top of the Software must respect the **Hybrid‑Safe Architecture 3.2**:
 
-- online data is always **low‑trust**  
-- no untrusted data may reach offline reasoning, packs, or vision modules  
-- Secure Online Envoy (if used) must remain isolated and outbound‑only  
-- Quarantine Pipeline must sanitize all external data  
-- offline core must remain fully air‑gapped  
-- no cloud inference, telemetry, or remote execution  
+### 🔹 6.1 Low‑Trust Data Rules
+- all online data is always **low‑trust**  
+- low‑trust data must never reach offline reasoning, packs, or vision modules  
+- low‑trust data must pass through **Quarantine Pipeline 3.2**  
+
+### 🔹 6.2 Secure Online Envoy (v4‑Ready)
+If used, the Envoy must:
+- run in a fully isolated sandbox  
+- be outbound‑only  
+- fetch only text/JSON  
+- never access local files, models, or APIs  
+- never send local data outward  
+- always be treated as **low‑trust**  
+
+### 🔹 6.3 Quarantine Pipeline 3.2
+All external data must be sanitized:
+- script & HTML removal  
+- format validation  
+- size limits  
+- text cleaning  
+- safety filtering  
+- deterministic sanitization rules  
+
+### 🔹 6.4 Offline Core Isolation
+The offline core must remain:
+- fully air‑gapped  
+- free of cloud inference  
+- free of telemetry  
+- free of remote execution  
+- free of external model calls  
 
 Any attempt to bypass hybrid‑safe rules voids the license.
 

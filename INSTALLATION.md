@@ -1,86 +1,90 @@
-# 📦 SIRIUS LOCAL AI GAMA – Installation Guide
-**Version:** 3.1.0  
+# 📦 SIRIUS LOCAL AI GAMA – Installation Guide  
+**Version:** 3.2.0  
 **Platform:** Android / iOS  
-**Runtime:** 100% offline, modular, privacy‑first
+**Runtime:** 100% offline, modular, privacy‑first  
+**Architecture:** Fully aligned with Runtime 3.2, Event Engine 3.2, VisionEngineV3, Hybrid‑Safe Pipeline 3.2
 
 ---
 
-## 🔧 Requirements
+# 🔧 Requirements
 
-### **Mobile OS**
+## Mobile OS
 - Android 8.0+
 - iOS 14+
 
-### **Hardware**
-- CPU: ARM64
-- RAM: 2 GB minimum (4 GB recommended)
-- Storage: 50–200 MB depending on installed packs
+## Hardware
+- CPU: ARM64  
+- RAM: 2 GB minimum (4 GB recommended)  
+- Storage: 50–250 MB depending on installed packs  
 
-### **Runtime Dependencies**
-- SIRIUS Local AI Core Runtime
-- Vision Engine (optional)
-- Knowledge Packs (optional)
-- Embedded Python modules (bundled in the app)
+## Runtime Dependencies
+- SIRIUS Local AI Core Runtime 3.2  
+- VisionEngineV3 (optional)  
+- Knowledge Packs 3.2 (optional)  
+- Embedded Python modules (bundled)  
+- Hybrid‑Safe Pipeline 3.2  
 
 ---
 
-## 📥 Installation (Android)
+# 📥 Installation (Android)
 
-### **1. Download APK**
-Download the latest build from GitHub Releases:
+## 1. Download APK
+From GitHub Releases:
 
 ```
 Releases → SIRIUS LOCAL AI GAMA → Assets → *.apk
 ```
 
-### **2. Enable Unknown Sources**
+## 2. Enable Unknown Sources
 Android → Settings → Security → *Install unknown apps*
 
-### **3. Install the App**
+## 3. Install the App
 Open the APK → Install
 
-### **4. First Launch**
+## 4. First Launch
 The app will automatically:
-- initialize the runtime
-- load all modules
-- create the local context
-- start the NL Router
+- initialize Runtime Core 3.2  
+- load all modules  
+- create the local context  
+- start NL Router 3.2  
+- enable Hybrid‑Safe Pipeline  
 
 ---
 
-## 🍏 Installation (iOS)
+# 🍏 Installation (iOS)
 
-### **1. Open the project in Xcode**
+## 1. Open the project in Xcode
 ```
 File → Open → SIRIUS-LOCAL-AI-GAMA
 ```
 
-### **2. Configure Signing**
+## 2. Configure Signing
 Xcode → Signing & Capabilities → Team → your Apple ID
 
-### **3. Build & Run**
-Select your iPhone/iPad → Run
+## 3. Build & Run
+Select your device → Run
 
-### **4. First Launch**
+## 4. First Launch
 iOS will automatically create:
-- local storage
-- runtime context
-- vision pipeline (if enabled)
+- secure local storage  
+- runtime context  
+- VisionEngineV3 pipeline (if enabled)  
+- hybrid‑safe sandbox  
 
 ---
 
-## 📚 Installing Knowledge Packs
+# 📚 Installing Knowledge Packs (v3.2)
 
-### **1. Copy packs into:**
+## 1. Copy packs into:
 ```
 /packs/
 ```
 
-### **2. Restart the app**
-Pack Manager will auto‑load them.
+## 2. Restart the app  
+Pack Manager v3.2 will auto‑load them.
 
-### **3. Verify installation**
-Inside the app, type:
+## 3. Verify installation  
+Inside the app:
 
 ```
 lookup: packs
@@ -88,27 +92,33 @@ lookup: packs
 
 ---
 
-## 👁 Installing Vision Engine
+# 👁 Installing VisionEngineV3 (OCR / Scene / Homework)
 
-### **1. Copy model files into:**
+## 1. Copy model files into:
 ```
 /vision/models/
 ```
 
-### **2. Enable Vision in config**
+## 2. Enable Vision in config
 Edit `runtime_config.json`:
 
 ```json
 {
-  "vision_enabled": true
+  "vision_enabled": true,
+  "vision_engine": "v3"
 }
 ```
 
-### **3. Restart the app**
+## 3. Restart the app  
+VisionEngineV3 will initialize with:
+- OCR v3.2  
+- Scene v3.2  
+- Homework detection v3.2  
+- Hybrid‑Safe sandbox  
 
 ---
 
-## 🧪 Smoke Test (optional)
+# 🧪 Smoke Test (optional)
 
 Run:
 
@@ -120,35 +130,38 @@ Expected output:
 
 ```
 OCR RESULT: ok
+Hybrid-Safe: ok
 Smoke test passed.
 ```
 
 ---
 
-## 🛠 Troubleshooting
+# 🛠 Troubleshooting (v3.2)
 
 | Issue | Solution |
 |-------|----------|
-| Vision Engine not detected | Check `/vision/models/` |
+| VisionEngineV3 not detected | Check `/vision/models/` + restart |
 | Packs not loading | Check `/packs/` + restart |
 | Runtime crash | Delete `runtime_state/` |
 | OCR not working | Missing model or camera permission |
+| Hybrid‑Safe block | Check quarantine logs in `/logs/hybrid_safe/` |
 
 ---
 
-## 🧩 Additional Documentation
+# 🧩 Additional Documentation (3.2)
 
 - `README.md` – Overview  
-- `ARCHITECTURE.md` – System design  
-- `RUNTIME.md` – Runtime internals  
-- `SECURITY.md` – Security Engine  
-- `VISION.md` – Vision Engine  
-- `EVENTS.md` – Event Types 3.1.0  
+- `ARCHITECTURE_3.2.md` – System design  
+- `RUNTIME_3.2.md` – Runtime internals  
+- `SECURITY_3.2.md` – Security Engine  
+- `VISION_3.2.md` – VisionEngineV3  
+- `EVENTS_3.2.md` – Event Types 3.2  
+- `KNOWLEDGE_PACKS_3.2.md` – Pack system  
 - `CHANGELOG.md` – Version history  
 
 ---
 
-## 🏁 Done
+# 🏁 Done
 
-SIRIUS LOCAL AI GAMA is now fully installed and ready to run.  
+SIRIUS LOCAL AI GAMA 3.2 is now fully installed and ready to run.  
 100% offline. 100% secure. 100% yours.

@@ -1,10 +1,10 @@
 # 📘 Code of Conduct  
-### SIRIUS LOCAL AI GAMA — Version 3.1.0
+### SIRIUS LOCAL AI GAMA — Version 3.2.0
 
 This Code of Conduct defines safe, respectful, and responsible behavior within the **SIRIUS LOCAL AI GAMA** project.  
-GAMA follows the SIRIUS ecosystem principles of **privacy, safety, determinism, modularity, and offline‑first design**, extended with **hybrid‑safe rules** introduced in the 3.x and 3.1.x architecture.
+GAMA follows the SIRIUS ecosystem principles of **privacy, safety, determinism, modularity, and offline‑first design**, extended with **hybrid‑safe rules** introduced in the 3.x architecture and strengthened in **3.2.0**.
 
-Version **3.1.0** strengthens hybrid‑safe boundaries, SUL compliance, module isolation, and deterministic behavior across all runtime components.
+Version **3.2.0** reinforces hybrid‑safe boundaries, SUL compliance, module isolation, deterministic behavior, and full compatibility with the **Mobile Runtime 3.2.0** event and vision pipeline.
 
 ---
 
@@ -23,7 +23,7 @@ All contributors and users agree to uphold:
 - **Modularity** – isolated, replaceable components  
 - **Hybrid‑safe architecture** – strict separation of offline and online data  
 - **SUL Compliance** – respect for the SIRIUS Unified License (SUL 3.x)  
-- **3.1 Runtime Integrity** – all modules must follow the unified event lifecycle v3.1  
+- **3.2 Runtime Integrity** – all modules must follow the unified event lifecycle v3.2  
 
 ---
 
@@ -43,7 +43,8 @@ Contributors and users should:
 - document changes clearly  
 - test modules in restricted, offline, and hybrid‑safe environments  
 - respect SUL 3.x license boundaries  
-- ensure compatibility with **Runtime 3.1.0** and the unified event schema  
+- ensure compatibility with **Runtime 3.2.0** and the unified event schema  
+- ensure outputs follow **Result Schema v3.2**  
 
 ---
 
@@ -64,7 +65,8 @@ Strictly prohibited:
 - injecting untrusted data into offline modules  
 - attempts to bypass the Quarantine Pipeline  
 - attempts to extract, reuse, or repackage runtime components (SUL violation)  
-- attempts to bypass **3.1.x event lifecycle** or module isolation rules  
+- attempts to bypass **3.2 event lifecycle**, routing, or module isolation rules  
+- attempts to interfere with VisionEngineV3 or hybrid routing safety  
 
 Violations may result in contribution removal, access restrictions, or license enforcement.
 
@@ -78,14 +80,15 @@ Contributors must:
 - ensure deterministic, offline‑safe and hybrid‑safe behavior  
 - test modules in restricted environments  
 - respect OWNER / FAMILY / STRANGER identity rules  
-- maintain compatibility with GAMA 3.1.x  
+- maintain compatibility with GAMA 3.2.x  
 - avoid unnecessary complexity  
 - ensure hybrid‑input safety  
 - include diagnostics logging where required  
 - validate knowledge packs and metadata  
-- follow event architecture standards (3.1.x)  
+- follow event architecture standards (3.2.x)  
 - comply with SUL 3.x licensing rules  
-- ensure module outputs follow unified **Result Schema v3.1**  
+- ensure module outputs follow unified **Result Schema v3.2**  
+- ensure compatibility with **VisionEngineV3** and the hybrid router  
 
 ---
 
@@ -101,8 +104,9 @@ Maintainers will:
 - guide contributors toward best practices  
 - ensure module isolation and deterministic behavior  
 - verify SECURITY FAMILY and SUL compliance  
-- maintain architectural consistency across the 3.1.x ecosystem  
-- ensure all modules follow the **3.1 Runtime Pipeline**  
+- maintain architectural consistency across the 3.2.x ecosystem  
+- ensure all modules follow the **3.2 Runtime Pipeline**  
+- ensure compatibility with VisionEngineV3 and Event Engine 3.2  
 
 ---
 
@@ -121,7 +125,8 @@ This Code of Conduct applies to:
 - Vision, Schoolwork, Health, and Diagnostics modules  
 - hybrid‑safe envoy interactions  
 - all components covered by SUL 3.x  
-- all modules participating in the **3.1.x event lifecycle**  
+- all modules participating in the **3.2.x event lifecycle**  
+- all modules interacting with **VisionEngineV3**  
 
 ---
 
@@ -137,9 +142,9 @@ Maintainers will review reports confidentially and take appropriate action.
 
 ---
 
-# 🟪 8. Hybrid‑Safe Architecture (3.1.x Standard)
+# 🟪 8. Hybrid‑Safe Architecture (3.2.x Standard)
 
-GAMA 3.1.x enforces stricter hybrid‑safe rules:
+GAMA 3.2.x enforces strict hybrid‑safe rules:
 
 - all online data is **low‑trust**  
 - envoy output must pass through the **Quarantine Pipeline**  
@@ -147,8 +152,9 @@ GAMA 3.1.x enforces stricter hybrid‑safe rules:
 - no untrusted data may reach reasoning, packs, or vision modules  
 - hybrid modules must use deterministic, sandboxed execution  
 - no direct online → offline data flow is allowed  
-- all hybrid‑safe modules must follow **Hybrid Safety Layer v3.1**  
-- all cross‑module communication must follow **Event Schema v3.1**  
+- all hybrid‑safe modules must follow **Hybrid Safety Layer v3.2**  
+- all cross‑module communication must follow **Event Schema v3.2**  
+- all vision events must follow **VisionEngineV3 safety constraints**  
 
 Any attempt to bypass hybrid‑safe rules is prohibited.
 
@@ -163,7 +169,8 @@ By contributing to **SIRIUS LOCAL AI GAMA**, you agree to:
 - respect hybrid‑safe boundaries  
 - support a respectful and inclusive environment  
 - follow all architecture, safety, privacy, and SUL licensing rules  
-- maintain compatibility with the **3.1.x runtime architecture**  
+- maintain compatibility with the **3.2.x runtime architecture**  
+- ensure all modules behave deterministically and safely  
 
 SIRIUS LOCAL AI GAMA exists to provide **safe, private, offline AI for everyone** —  
 and this Code of Conduct ensures it stays that way.

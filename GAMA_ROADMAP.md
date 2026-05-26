@@ -1,5 +1,5 @@
 # 🚀 SIRIUS LOCAL AI GAMA – Roadmap  
-Version: **3.1.0**
+Version: **3.2.0**
 
 ---
 
@@ -141,67 +141,80 @@ Version: **3.1.0**
 
 ---
 
-# 🟦 GAMA 3.x – UPCOMING RELEASES
+# 🟦 GAMA 3.x – CURRENT & UPCOMING RELEASES
 
-## 🟩 GAMA 3.1.0 (CURRENT RELEASE)
+## 🟩 GAMA 3.1.0
 **Stability, metadata, routing, hybrid‑safe improvements**
 
-### 🔹 Runtime & Core
-- Runtime Core 3.1 (stability pass)  
+- Runtime Core 3.1  
 - unified result schema v3.1  
-- improved fallback logic  
-- runtime_info event  
-- safer reset()  
-- extended debug metadata  
-
-### 🔹 NL Router 3.1
 - PACK_SUGGEST support  
-- improved multi‑intent routing  
-- reduced event collisions  
+- improved fallback logic  
+- ANALYZE → SCENE alias stabilization  
 - metadata v3.1  
 - hybrid‑safe routing improvements  
-
-### 🔹 Vision Engine 3.1
-- ANALYZE → SCENE alias stabilization  
-- improved OCR fallback  
-- deterministic preprocessing  
-- unified error schema v3.1  
-
-### 🔹 Knowledge Packs 3.1
-- PACK_SUGGEST prefix search  
-- metadata v3.1  
 - pack priority v3.1  
 - compatibility flags v3.1  
-- improved fallback reasoning  
-
-### 🔹 Security Family 3.1
-- extended restricted mode  
-- improved unsafe‑text filter  
 - SECURITY_ALERT stabilization  
 - hybrid‑safe enforcement v3.1  
 
-### 🔹 Diagnostics 3.1
-- PACK_SUGGEST logs  
-- hybrid‑safe logs  
-- unified metadata trace v3.1  
-
 ---
 
-## 🟩 GAMA 3.2.0
-- Hybrid‑safe routing v3  
-- Event Versioning v3 (full)  
-- Diagnostics v3 (example hits + pack usage)  
-- Vision Engine: ANALYZE v2  
-- Pack compatibility flags v3  
-- Schoolwork Mode: OCR integration v2  
+## 🟩 GAMA 3.2.0 (CURRENT RELEASE)
+**Modern Runtime Pipeline + VisionEngineV3**
+
+### 🔹 Runtime & Core
+- Runtime Core 3.2  
+- System Layer 3.2  
+- Hybrid Router 3.2  
+- Event Engine 3.2  
+- deterministic routing v3.2  
+- unified result schema v3.2  
+- improved fallback logic  
+- runtime_info v3.2  
+
+### 🔹 VisionEngineV3
+- SCENE event  
+- DETECT event  
+- OCR event  
+- HOMEWORK event  
+- deterministic preprocessing  
+- normalized output schema  
+- hybrid‑safe vision flow  
+
+### 🔹 Knowledge Packs 3.2
+- metadata v3.2  
+- pack priority v3.2  
+- compatibility flags v3.2  
+- PACK_SUGGEST improvements  
+- deterministic pack routing v3.2  
+
+### 🔹 NL Router 3.2
+- SCENE / DETECT / OCR / HOMEWORK routing  
+- PACK_SUGGEST v3.2  
+- metadata v3.2  
+- EV3.2 event mapping  
+- reduced routing collisions  
+
+### 🔹 Security Family 3.2
+- restricted mode v3.2  
+- sandbox enforcement v3.2  
+- quarantine pipeline v3.2  
+- hybrid‑safe enforcement v3.2  
+
+### 🔹 Diagnostics 3.2
+- expanded pack usage logs  
+- example hits v3.2  
+- hybrid‑safe logs v3.2  
+- metadata trace v3.2  
 
 ---
 
 ## 🟩 GAMA 3.3.0
-- Quarantine pipeline v3  
-- Sandbox enforcement v3  
-- Restricted mode v3  
-- Vision Engine deterministic flow v3  
+- Quarantine pipeline v3 (full)  
+- Sandbox enforcement v3 (full)  
+- Restricted mode v3 (full)  
+- VisionEngine deterministic flow v3  
 - Pack integrity v3 (full)  
 - Schoolwork Mode: deterministic academic reasoning  
 

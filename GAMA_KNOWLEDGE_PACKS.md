@@ -1,8 +1,12 @@
-# 🧩 GAMA Knowledge Packs — Version 3.1.0
+# 🧩 GAMA Knowledge Packs — Version 3.2.0
 
 Knowledge Packs provide **offline structured knowledge modules** used by the GAMA Runtime, Unified Event System, Schoolwork Mode, and Reasoning Engine.  
-Version **3.1.0** extends the 3.0 architecture with **PACK_SUGGEST**, improved deterministic routing,  
-**Metadata v3.1**, stricter hybrid‑safe rules, and full compatibility with the **SIRIUS 3.1.x architecture**.
+Version **3.2.0** extends the 3.1 architecture with **deterministic PACK routing**,  
+**Metadata v3.2**, improved hybrid‑safe enforcement, PACK_SUGGEST refinements,  
+and full compatibility with the **SIRIUS 3.2.x architecture**.
+
+This version is aligned with **Runtime Mobile 3.2.0**, **Event Engine 3.2**,  
+and the new **VisionEngineV3** pipeline.
 
 ---
 
@@ -14,9 +18,11 @@ Version **3.1.0** extends the 3.0 architecture with **PACK_SUGGEST**, improved d
 - reduce dependency on online sources  
 - ensure explainable, rule‑based reasoning  
 - support hybrid reasoning (rules + examples)  
-- integrate with unified event architecture 3.1  
+- integrate with unified event architecture 3.2  
 - support pack priority and compatibility flags  
-- support PACK_SUGGEST prefix search (new in 3.1)  
+- support PACK_SUGGEST prefix search  
+- enforce hybrid‑safe metadata rules  
+- ensure deterministic PACK routing  
 
 ---
 
@@ -34,7 +40,7 @@ Version **3.1.0** extends the 3.0 architecture with **PACK_SUGGEST**, improved d
 
 ---
 
-# 🏗 Structure (v3.1)
+# 🏗 Structure (v3.2)
 Each pack contains:
 
 - **metadata.json** — pack info, version, subject, language, priority, compatibility flags, hybrid‑safe flags  
@@ -42,17 +48,17 @@ Each pack contains:
 - **rules.json** — logic rules, transformations, validation, rule chaining  
 - **examples.json** — demonstrations, patterns, similarity samples  
 
-All components follow **Metadata v3.1** and **Pack Schema v3.1**.
+All components follow **Metadata v3.2** and **Pack Schema v3.2**.
 
 ---
 
 # 🏷 Version
-**GAMA Knowledge Packs — v3.1.0**  
-(fully compatible with Runtime 3.1.0 and Unified Event Architecture 3.1.x)
+**GAMA Knowledge Packs — v3.2.0**  
+(fully compatible with Runtime 3.2.0 and Unified Event Architecture 3.2.x)
 
 ---
 
-# 🔄 Knowledge Pack Flow (v3.1.0)
+# 🔄 Knowledge Pack Flow (v3.2.0)
 
 1. Runtime receives a PACK_QUERY or PACK_SUGGEST event.  
 2. Pack Loader locates the requested pack.  
@@ -66,25 +72,26 @@ All components follow **Metadata v3.1** and **Pack Schema v3.1**.
 
 ---
 
-# 🧩 Knowledge Pack Components (v3.1)
+# 🧩 Knowledge Pack Components (v3.2)
 
-## 1. Pack Loader (v3.1)
+## 1. Pack Loader (v3.2)
 Responsible for loading packs from local storage.
 
 - path resolution  
 - version checking  
 - fallback handling  
 - memory caching  
-- pack integrity validation v3.1  
+- pack integrity validation v3.2  
 - pack compatibility flags  
 - hybrid‑safe flags  
 - auto‑load support  
 - deterministic pack selection  
 - PACK_SUGGEST prefix routing  
+- improved PACK priority scoring  
 
 ---
 
-## 2. Metadata Parser (v3.1)
+## 2. Metadata Parser (v3.2)
 Reads metadata.json and extracts:
 
 - pack type  
@@ -94,13 +101,14 @@ Reads metadata.json and extracts:
 - dependencies  
 - minimum runtime version  
 - pack priority (0.0 – 1.0)  
-- compatibility flags v3.1  
+- compatibility flags v3.2  
 - hybrid‑safe flags  
 - deterministic routing hints  
+- PACK_SUGGEST optimization hints  
 
 ---
 
-## 3. Knowledge Engine (v3.1)
+## 3. Knowledge Engine (v3.2)
 Processes knowledge.json.
 
 - structured facts  
@@ -110,27 +118,28 @@ Processes knowledge.json.
 - entities  
 - domain‑specific schemas  
 - deterministic mapping  
-- metadata v3.1 integration  
+- metadata v3.2 integration  
 - hybrid‑safe filtering  
+- improved fallback logic  
 
 ---
 
-## 4. Rule Engine (v3.1)
+## 4. Rule Engine (v3.2)
 Applies rules.json to guide reasoning.
 
 - pattern matching  
 - logic rules  
 - transformation rules  
 - validation rules  
-- rule chaining v3.1  
+- rule chaining v3.2  
 - rule priority  
 - hybrid reasoning support  
-- Runtime 3.1 rule compatibility  
+- Runtime 3.2 rule compatibility  
 - deterministic rule selection  
 
 ---
 
-## 5. Example Engine (v3.1)
+## 5. Example Engine (v3.2)
 Uses examples.json for:
 
 - demonstrations  
@@ -144,7 +153,7 @@ Uses examples.json for:
 
 ---
 
-## 6. Diagnostics Logger (v3.1)
+## 6. Diagnostics Logger (v3.2)
 Tracks pack usage.
 
 - pack name  
@@ -158,10 +167,11 @@ Tracks pack usage.
 - metadata validation results  
 - PACK_SUGGEST usage  
 - hybrid‑safe compliance  
+- PACK priority routing logs  
 
 ---
 
-# 🔁 Knowledge Pack Execution Cycle (v3.1.0)
+# 🔁 Knowledge Pack Execution Cycle (v3.2.0)
 
 1. Runtime receives PACK_QUERY or PACK_SUGGEST.  
 2. Pack Loader locates the pack.  
@@ -176,21 +186,22 @@ Tracks pack usage.
 
 ---
 
-# 🟪 NEW IN VERSION 3.1.0
-- metadata v3.1  
-- pack priority v3.1  
-- compatibility flags v3.1  
-- hybrid‑safe flags  
-- PACK_SUGGEST (prefix search)  
-- improved deterministic pack routing  
-- unified result schema v3.1  
-- rule chaining v3.1  
-- example‑based fallback v3.1  
-- diagnostics expansion v3.1  
-- pack integrity checks v3.1  
-- unified event architecture 3.1 integration  
+# 🟪 NEW IN VERSION 3.2.0
+- metadata v3.2  
+- pack priority v3.2  
+- compatibility flags v3.2  
+- hybrid‑safe flags v3.2  
+- improved PACK_SUGGEST prefix search  
+- deterministic PACK routing v3.2  
+- unified result schema v3.2  
+- rule chaining v3.2  
+- example‑based fallback v3.2  
+- diagnostics expansion v3.2  
+- pack integrity checks v3.2  
+- unified event architecture 3.2 integration  
+- full compatibility with Runtime Mobile 3.2.0  
 
 ---
 
-# ✔ GAMA Knowledge Packs 3.1 — COMPLETE  
-Fully aligned with the SIRIUS LOCAL AI GAMA 3.1.x ecosystem.
+# ✔ GAMA Knowledge Packs 3.2 — COMPLETE  
+Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.

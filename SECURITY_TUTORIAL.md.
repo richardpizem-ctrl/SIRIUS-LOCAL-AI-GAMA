@@ -1,31 +1,35 @@
-# 🛡 SIRIUS Local AI GAMA — Security Tutorial (v3.1.0)
+# 🛡 SIRIUS Local AI GAMA — Security Tutorial  
+**Version:** 3.2.0  
+**Architecture:** Offline, Deterministic, Hybrid‑Safe  
+**Aligned With:** Runtime 3.2, Security Family 3.2, VisionEngineV3, Event Engine 3.2.x, Metadata v3.2
 
 SIRIUS LOCAL AI GAMA is a fully offline, deterministic, privacy‑first mobile AI runtime for Android and iOS.  
-Version **3.1.0** introduces an expanded unified security architecture built on:
+Version **3.2.0** expands the unified security architecture with:
 
-- **Restricted Mode v3.1**  
-- **Sandbox Enforcement v3.1**  
-- **Hybrid‑Safe Pipeline v3.1**  
-- **Metadata v3.1**  
-- **Unified Event Architecture 3.1.x**  
-- **Unified Result Schema v3.1**  
-- **Low‑Trust Classification v3.1**  
-- **PACK_SUGGEST Safety Layer**  
+- **Restricted Mode v3.2**  
+- **Sandbox Enforcement v3.2**  
+- **Hybrid‑Safe Pipeline v3.2**  
+- **Metadata v3.2**  
+- **Unified Event Architecture 3.2.x**  
+- **Unified Result Schema v3.2**  
+- **Low‑Trust Classification v3.2**  
+- **PACK_SUGGEST Safety Layer v3.2**  
+- **VisionEngineV3 Low‑Trust Enforcement**  
 
-This tutorial explains how GAMA maintains behavioral safety, privacy, and deterministic execution across all modules in version 3.1.0.
+This tutorial explains how GAMA maintains behavioral safety, privacy, and deterministic execution across all modules in version 3.2.0.
 
 ---
 
-# 🔐 Key Security Principles (v3.1)
+# 🔐 Key Security Principles (v3.2)
 
 ## **1. Fully Offline Operation**
 GAMA operates entirely offline, eliminating cloud‑based risks.
 
-- No internet access  
-- No cloud inference  
-- No remote data fetching  
-- No telemetry  
-- No online prompt injection  
+- no internet access  
+- no cloud inference  
+- no remote data fetching  
+- no telemetry  
+- no online prompt injection  
 
 Offline execution ensures deterministic behavior and prevents external manipulation.
 
@@ -37,25 +41,26 @@ GAMA enforces identity‑aware safety modes:
 - **OWNER**  
 - **FAMILY**  
 - **STRANGER**  
-- **RESTRICTED (v3.1)**  
+- **RESTRICTED (v3.2)**  
 
-Each module respects identity‑based privilege rules, ensuring safe behavior in shared environments.
-
-Restricted Mode v3.1 activates automatically when:
+Restricted Mode v3.2 activates automatically when:
 
 - unsafe intent is detected  
 - low‑trust input is processed  
 - PACK_SUGGEST violations occur  
-- anomalies appear  
+- hybrid‑safe anomalies appear  
 - sandbox violations are detected  
+- VisionEngineV3 flags unsafe content  
+
+Each module respects identity‑based privilege rules, ensuring safe behavior in shared environments.
 
 ---
 
 ## **3. Child‑Safe & Family‑Safe Filters**
 Modules such as:
 
-- **Schoolwork Mode 3.1**  
-- **Health Assistant 3.1**  
+- **Schoolwork Mode 3.2**  
+- **Health Assistant 3.2**  
 
 operate under deterministic, filtered workflows designed to protect minors.
 
@@ -76,10 +81,11 @@ GAMA continuously evaluates:
 - potential unsafe intentions  
 - hybrid‑input anomalies  
 - PACK_SUGGEST triggers  
+- VisionEngineV3 unsafe‑content signals  
 
 If a risk is detected:
 
-- Restricted Mode v3.1 activates  
+- Restricted Mode v3.2 activates  
 - reasoning is limited  
 - unsafe outputs are blocked  
 - sandbox enforcement is applied  
@@ -87,9 +93,9 @@ If a risk is detected:
 ---
 
 ## **5. Modular Design & Privilege Isolation**
-Every module (Vision, OCR, Schoolwork, Packs, Health, Workflow Engine) runs inside a **sandbox**.
+Every module (VisionEngineV3, OCR, Schoolwork, Packs, Health, Workflow Engine) runs inside a **sandbox**.
 
-Sandbox v3.1 guarantees:
+Sandbox v3.2 guarantees:
 
 - no cross‑module interference  
 - no privilege escalation  
@@ -99,22 +105,23 @@ Sandbox v3.1 guarantees:
 
 ---
 
-## **6. Knowledge Packs with Compliance‑Aware Filtering (v3.1)**
-Knowledge Packs 3.1 are:
+## **6. Knowledge Packs with Compliance‑Aware Filtering (v3.2)**
+Knowledge Packs 3.2 are:
 
 - offline  
 - deterministic  
 - pre‑validated  
 - family‑safe  
-- metadata v3.1 compliant  
+- metadata v3.2 compliant  
 - integrity‑checked  
 - PACK_SUGGEST‑aware  
+- hybrid‑safe validated  
 
 Packs cannot introduce unsafe content or bypass safety layers.
 
 ---
 
-## **7. Deterministic Execution (v3.1)**
+## **7. Deterministic Execution (v3.2)**
 Given the same input, GAMA always produces the same output.
 
 Determinism eliminates:
@@ -124,11 +131,11 @@ Determinism eliminates:
 - unpredictable reasoning  
 - inconsistent behavior  
 
-All reasoning paths are logged via **reasoning_trace v3.1** and **unified result schema v3.1**.
+All reasoning paths are logged via **reasoning_trace v3.2** and **unified result schema v3.2**.
 
 ---
 
-## **8. Hybrid‑Safe Pipeline (v3.1)**
+## **8. Hybrid‑Safe Pipeline (v3.2)**
 All hybrid inputs (OCR + text, dict events, external data) are treated as **low‑trust**.
 
 Hybrid‑safe pipeline includes:
@@ -137,9 +144,10 @@ Hybrid‑safe pipeline includes:
 - sandbox enforcement  
 - restricted‑mode activation  
 - PACK_SUGGEST safety  
-- metadata v3.1 tagging  
+- VisionEngineV3 low‑trust enforcement  
+- metadata v3.2 tagging  
 - deterministic fallback normalization  
-- unified result schema v3.1  
+- unified result schema v3.2  
 
 ---
 
@@ -155,19 +163,20 @@ This eliminates:
 
 ---
 
-# 🧾 Summary Assessment (v3.1)
+# 🧾 Summary Assessment (v3.2)
 
-From a behavioral safety perspective, GAMA 3.1 demonstrates **industry‑leading safety guarantees** due to:
+From a behavioral safety perspective, GAMA 3.2 demonstrates **industry‑leading safety guarantees** due to:
 
 - fully offline deterministic architecture  
 - identity‑aware and privilege‑aware module execution  
-- restricted mode v3.1 + sandbox enforcement  
-- hybrid‑safe pipeline v3.1  
-- PACK_SUGGEST safety  
+- restricted mode v3.2 + sandbox enforcement  
+- hybrid‑safe pipeline v3.2  
+- PACK_SUGGEST safety v3.2  
+- VisionEngineV3 low‑trust enforcement  
 - child‑safe and intent‑aware filtering  
 - strict modular isolation  
-- metadata v3.1 traceability  
-- unified result schema v3.1  
+- metadata v3.2 traceability  
+- unified result schema v3.2  
 
 These design choices ensure controlled, predictable, and safe interactions suitable for family, educational, and sensitive environments.
 
@@ -175,20 +184,20 @@ These design choices ensure controlled, predictable, and safe interactions suita
 
 # 📚 Documentation References
 
-- Security Family 3.1  
-- Runtime Core 3.1  
-- Vision Engine 3.1  
-- Schoolwork Mode 3.1  
-- Health Assistant 3.1  
-- Knowledge Packs 3.1  
-- Unified Event Architecture 3.1.x  
-- Unified Result Schema v3.1  
+- Security Family 3.2  
+- Runtime Core 3.2  
+- VisionEngineV3  
+- Schoolwork Mode 3.2  
+- Health Assistant 3.2  
+- Knowledge Packs 3.2  
+- Unified Event Architecture 3.2.x  
+- Unified Result Schema v3.2  
 
 ---
 
 # ✅ Conclusion
 
-The behavioral and architectural safety of SIRIUS Local AI GAMA 3.1 is built on:
+The behavioral and architectural safety of SIRIUS Local AI GAMA 3.2 is built on:
 
 - offline isolation  
 - deterministic reasoning  
@@ -197,7 +206,8 @@ The behavioral and architectural safety of SIRIUS Local AI GAMA 3.1 is built on:
 - restricted‑mode protection  
 - hybrid‑safe processing  
 - PACK_SUGGEST safety  
-- metadata v3.1 traceability  
-- unified result schema v3.1  
+- VisionEngineV3 low‑trust enforcement  
+- metadata v3.2 traceability  
+- unified result schema v3.2  
 
-GAMA 3.1 aligns with best practices for privacy‑focused, family‑safe, fully offline AI systems.
+GAMA 3.2 aligns with best practices for privacy‑focused, family‑safe, fully offline AI systems.

@@ -2,13 +2,20 @@
 Version: **3.2.0**  
 Copyright (c) 2026 Richard Pizem
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to use
-the Software exclusively as a complete, indivisible whole, subject to the
-following conditions:
+---------------------------------------------------------------------
+## 🔒 Retroactive Protection Clause (Effective for ALL versions ≥ 3.0.0)
+This license applies **retroactively** to **all SIRIUS versions starting from 3.0.0**,  
+including 3.0.0, 3.1.0, 3.2.0 and all future 3.x releases.
+
+All components introduced in or after version 3.0.0 — including but not limited to  
+the **Self‑Repair Layer**, **Deterministic Runtime**, **Event Engine**,  
+**Vision Engine**, **Pack Integrity System**, **Security Sandbox**,  
+and **Restricted Mode** — are fully protected under SUL.
+
+No part of these systems may be copied, extracted, reused, reverse‑engineered,  
+or integrated into any external project, whether commercial or non‑commercial.
 
 ---------------------------------------------------------------------
-
 ## 📘 Public Documentation Notice (Effective from Version 3.2.0)
 All **documentation, specifications, and public-facing technical materials**
 for SIRIUS LOCAL AI GAMA remain **PUBLIC** for transparency, education,
@@ -32,7 +39,6 @@ Public documentation does **not** grant permission to access, extract, copy,
 or reverse‑engineer the private runtime or any part of the Software.
 
 ---------------------------------------------------------------------
-
 ## 1. Indivisible Project Restriction
 The Software, including all modules, components, files, subsystems, runtimes,
 knowledge packs, engines, and any other part, may NOT be used, copied,
@@ -49,7 +55,6 @@ The following actions are strictly prohibited:
 - repackaging or rebranding individual subsystems  
 
 ---------------------------------------------------------------------
-
 ## 2. Trademark Restriction
 The names **"SIRIUS LOCAL AI"**, **"SIRIUS"**, **"GAMA"**, **"GAMA Runtime"**,  
 and all related branding, logos, icons, UI identity, or visual elements  
@@ -58,7 +63,6 @@ may NOT be used without prior written permission from the copyright holder.
 This includes all variants and derivatives.
 
 ---------------------------------------------------------------------
-
 ## 3. Commercial Use Restriction
 The Software may NOT be sold, monetized, or included in any paid product
 or service without obtaining a commercial license.
@@ -72,7 +76,6 @@ This includes, but is not limited to:
 - server‑side inference or remote‑access AI systems  
 
 ---------------------------------------------------------------------
-
 ## 4. Redistribution Requirements
 Any redistribution of the Software must:
 - include this license in full  
@@ -82,7 +85,6 @@ Any redistribution of the Software must:
 Partial redistribution is not allowed.
 
 ---------------------------------------------------------------------
-
 ## 5. Safety & Integrity Requirements
 The Software may NOT be used to create:
 - harmful, deceptive, or unsafe systems  
@@ -93,7 +95,6 @@ The Software may NOT be used to create:
 - hybrid‑unsafe systems violating SIRIUS 3.x / 3.2 rules  
 
 ---------------------------------------------------------------------
-
 ## 6. Hybrid‑Safe Architecture Clause (Updated for 3.2.0)
 All systems built on top of the Software must respect the **Hybrid‑Safe Architecture 3.2**:
 
@@ -131,7 +132,6 @@ The offline core must remain:
 Any attempt to bypass hybrid‑safe rules voids the license.
 
 ---------------------------------------------------------------------
-
 ## 7. Non‑Affiliation Clause
 Use of the Software does NOT grant:
 - affiliation with the SIRIUS ecosystem  
@@ -142,7 +142,6 @@ Use of the Software does NOT grant:
 Any such claims require written approval.
 
 ---------------------------------------------------------------------
-
 ## 8. Warranty Disclaimer
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

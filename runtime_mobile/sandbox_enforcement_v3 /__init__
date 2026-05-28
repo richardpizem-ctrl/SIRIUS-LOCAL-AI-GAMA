@@ -1,0 +1,30 @@
+"""
+sandbox_enforcement_v3
+----------------------
+Sandbox enforcement module for SIRIUS Mobile Runtime 3.3.0.
+
+Responsibilities:
+- Enforce strict sandbox boundaries for runtime modules
+- Control permissions for sensitive operations
+- Monitor and detect sandbox violations
+- Provide deterministic, auditable behavior
+
+This package is fully deterministic:
+- No dynamic imports
+- No reflection
+- No eval/exec
+Prepared for Self‑Repair Layer 4.4.
+"""
+
+from .sandbox_core import SandboxCore
+from .sandbox_permissions import SandboxPermissions
+from .sandbox_monitor import SandboxMonitor
+from .sandbox_violation_handler import SandboxViolationHandler
+
+__all__ = [
+    "SandboxCore",
+    "SandboxPermissions",
+    "SandboxMonitor",
+    "SandboxViolationHandler",
+]
+

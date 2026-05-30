@@ -59,7 +59,7 @@ class ReasoningEngine:
             "subject": subject,
             "normalized": normalized,
             "steps": steps.build(),
-            "explanation": explanation
+            "explanation": explanation,
         }
 
     def _apply_reasoning(self, subject: str, text: str, steps: ReasoningSteps, pack_data: dict):
@@ -75,11 +75,14 @@ class ReasoningEngine:
         elif subject == "language":
             steps.add("Analyzing sentence structure.")
             steps.add("Applying grammar rules from knowledge pack.")
+            steps.extend(pack_data.get("rules", []))
 
         elif subject == "science":
             steps.add("Identifying scientific concepts.")
             steps.add("Applying domain-specific rules from knowledge pack.")
+            steps.extend(pack_data.get("rules", []))
 
         else:
             steps.add("General reasoning applied.")
             steps.add("Using fallback educational rules.")
+            steps.extend(pack_data.get("rules", []))

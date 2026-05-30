@@ -1,8 +1,8 @@
 # 📦 SIRIUS LOCAL AI GAMA – Installation Guide  
-**Version:** 3.2.0  
+**Version:** 3.4.0  
 **Platform:** Android / iOS  
 **Runtime:** 100% offline, modular, privacy‑first  
-**Architecture:** Fully aligned with Runtime 3.2, Event Engine 3.2, VisionEngineV3, Hybrid‑Safe Pipeline 3.2
+**Architecture:** Fully aligned with Runtime 3.4, Event Engine 3.4, VisionEngineV3, Hybrid‑Safe Pipeline 3.4
 
 ---
 
@@ -18,150 +18,88 @@
 - Storage: 50–250 MB depending on installed packs  
 
 ## Runtime Dependencies
-- SIRIUS Local AI Core Runtime 3.2  
+- SIRIUS Local AI Core Runtime 3.4  
 - VisionEngineV3 (optional)  
-- Knowledge Packs 3.2 (optional)  
+- Knowledge Packs 3.4 (optional)  
 - Embedded Python modules (bundled)  
-- Hybrid‑Safe Pipeline 3.2  
+- Deterministic Event Engine 3.4  
+- Hybrid‑Safe Pipeline 3.4
 
 ---
 
-# 📥 Installation (Android)
+# 📥 Installation Steps
 
-## 1. Download APK
-From GitHub Releases:
+## 1. Download the GAMA Package
+Download the latest **SIRIUS LOCAL AI GAMA 3.4.0** release from the official repository.  
+The package includes:
+- `/runtime/` – Core Runtime 3.4  
+- `/vision/` – VisionEngineV3  
+- `/packs/` – Knowledge Packs 3.4  
+- `/config/` – System configuration  
+- `/python/` – Embedded Python modules  
 
-```
-Releases → SIRIUS LOCAL AI GAMA → Assets → *.apk
-```
+## 2. Extract the Package
+Unzip the downloaded archive into your device’s application directory.  
+All modules are self‑contained and require no internet access.
 
-## 2. Enable Unknown Sources
-Android → Settings → Security → *Install unknown apps*
+## 3. Grant Local Permissions
+To ensure full offline functionality:
+- Enable local storage access  
+- Enable camera access (for VisionEngineV3)  
+- Disable battery optimization (recommended)
 
-## 3. Install the App
-Open the APK → Install
+No network permissions are required.
 
-## 4. First Launch
-The app will automatically:
-- initialize Runtime Core 3.2  
-- load all modules  
-- create the local context  
-- start NL Router 3.2  
-- enable Hybrid‑Safe Pipeline  
+## 4. Launch the Runtime
+Start the app.  
+The system automatically:
+- Loads Runtime 3.4  
+- Initializes Event Engine 3.4  
+- Activates Hybrid‑Safe Pipeline  
+- Registers VisionEngineV3 (if installed)  
+- Loads Knowledge Packs 3.4  
 
----
-
-# 🍏 Installation (iOS)
-
-## 1. Open the project in Xcode
-```
-File → Open → SIRIUS-LOCAL-AI-GAMA
-```
-
-## 2. Configure Signing
-Xcode → Signing & Capabilities → Team → your Apple ID
-
-## 3. Build & Run
-Select your device → Run
-
-## 4. First Launch
-iOS will automatically create:
-- secure local storage  
-- runtime context  
-- VisionEngineV3 pipeline (if enabled)  
-- hybrid‑safe sandbox  
+Startup time: **0.2–0.6 s** depending on device.
 
 ---
 
-# 📚 Installing Knowledge Packs (v3.2)
+# 🧩 Optional Components
 
-## 1. Copy packs into:
-```
-/packs/
-```
+## VisionEngineV3
+Enables:
+- Deterministic OCR  
+- Homework extraction  
+- Safe semantic metadata  
+- Vision Flow v3 scenes  
 
-## 2. Restart the app  
-Pack Manager v3.2 will auto‑load them.
+## Knowledge Packs 3.4
+Add domain‑specific reasoning:
+- Math  
+- Languages  
+- Schoolwork  
+- Family Safety  
+- Local Rules  
 
-## 3. Verify installation  
-Inside the app:
-
-```
-lookup: packs
-```
-
----
-
-# 👁 Installing VisionEngineV3 (OCR / Scene / Homework)
-
-## 1. Copy model files into:
-```
-/vision/models/
-```
-
-## 2. Enable Vision in config
-Edit `runtime_config.json`:
-
-```json
-{
-  "vision_enabled": true,
-  "vision_engine": "v3"
-}
-```
-
-## 3. Restart the app  
-VisionEngineV3 will initialize with:
-- OCR v3.2  
-- Scene v3.2  
-- Homework detection v3.2  
-- Hybrid‑Safe sandbox  
+## Security Engine 3.4
+Provides:
+- SchoolMode v2  
+- StrangerMode v2  
+- TimeLimits v2  
+- Family Behavior Rules  
+- Optional Health Assistant v1.1  
 
 ---
 
-# 🧪 Smoke Test (optional)
-
-Run:
-
-```bash
-python tests/mobile_smoke_test.py
-```
-
-Expected output:
-
-```
-OCR RESULT: ok
-Hybrid-Safe: ok
-Smoke test passed.
-```
-
----
-
-# 🛠 Troubleshooting (v3.2)
-
-| Issue | Solution |
-|-------|----------|
-| VisionEngineV3 not detected | Check `/vision/models/` + restart |
-| Packs not loading | Check `/packs/` + restart |
-| Runtime crash | Delete `runtime_state/` |
-| OCR not working | Missing model or camera permission |
-| Hybrid‑Safe block | Check quarantine logs in `/logs/hybrid_safe/` |
-
----
-
-# 🧩 Additional Documentation (3.2)
-
-- `README.md` – Overview  
-- `ARCHITECTURE_3.2.md` – System design  
-- `RUNTIME_3.2.md` – Runtime internals  
-- `SECURITY_3.2.md` – Security Engine  
-- `VISION_3.2.md` – VisionEngineV3  
-- `EVENTS_3.2.md` – Event Types 3.2  
-- `KNOWLEDGE_PACKS_3.2.md` – Pack system  
+# 📚 Documentation Included
+- `RUNTIME_3.4.md` – Core Runtime  
+- `SECURITY_3.4.md` – Security Engine  
+- `VISION_3.4.md` – VisionEngineV3  
+- `EVENTS_3.4.md` – Event Types 3.4  
+- `KNOWLEDGE_PACKS_3.4.md` – Pack system  
 - `CHANGELOG.md` – Version history  
 
 ---
 
 # 🏁 Done
-
-SIRIUS LOCAL AI GAMA 3.2 is now fully installed and ready to run.  
+SIRIUS LOCAL AI GAMA 3.4 is now fully installed and ready to run.  
 100% offline. 100% secure. 100% yours.

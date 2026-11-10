@@ -8,7 +8,9 @@ from runtime_mobile.main import create_runtime
 
 
 def main():
-    core = create_runtime()["runtime_core"]
+    runtime = create_runtime()
+    core = runtime["runtime_core"]
+    router = runtime["nl_router"]
     startup = core.initialize()
 
     window = tk.Tk()
@@ -37,6 +39,26 @@ def main():
     ttk.Button(
         controls, text="Stav Runtime", command=lambda: show(core.get_info())
     ).pack(side="left")
+
+    input_row = ttk.Frame(window, padding=10)
+    input_row.pack(fill="x", before=output)
+    entry = ttk.Entry(input_row)
+    entry.pack(side="left", fill="x", expand=True, padx=(0, 8))
+
+    def submit(event=None):
+        text = entry.get().strip()
+        if text and startup["status"] == "initialized":
+            show(core.handle_event(router.route(text)))
+            entry.delete(0, tk.END)
+            entry.focus_set()
+        return "break"
+
+    send_button = ttk.Button(input_row, text="Odoslať", command=submit)
+    send_button.pack(side="left")
+    for control in (entry, send_button):
+        control.bind("<Return>", submit)
+        control.bind("<KP_Enter>", submit)
+    entry.focus_set()
 
     show(startup)
     window.mainloop()

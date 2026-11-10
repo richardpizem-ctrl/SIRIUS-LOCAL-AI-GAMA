@@ -6,6 +6,7 @@
 
 from runtime_mobile.core.event import MobileEvent
 from runtime_mobile.core.event_types import MobileEventTypes
+from runtime_mobile.knowledge_packs.kg_lookup import query_school_graph
 
 
 class MobileRuntimeDispatcher:
@@ -61,6 +62,9 @@ class MobileRuntimeDispatcher:
             MobileEventTypes.PACK_INFO,
             MobileEventTypes.PACK_QUERY,
         ):
+            school_query = event.payload.get("school_kg_query")
+            if et == MobileEventTypes.PACK_QUERY and school_query is not None:
+                return query_school_graph(self.context.pack_manager, **school_query)
             if hasattr(self.context.packs, "handle_event"):
                 return self.context.packs.handle_event(event)
             if hasattr(self.context.packs, "query"):

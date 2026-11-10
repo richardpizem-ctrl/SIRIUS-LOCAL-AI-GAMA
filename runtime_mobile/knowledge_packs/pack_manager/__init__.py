@@ -9,7 +9,7 @@
 # - Consistent metadata header
 # ============================================================
 
-from .pack_manager import MobilePackManager
+from .pack_manager import PackManager as MobilePackManager
 
 __all__ = [
     "MobilePackManager",

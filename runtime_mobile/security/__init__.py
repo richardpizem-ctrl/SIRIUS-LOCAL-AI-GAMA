@@ -16,8 +16,8 @@
 # - consistent metadata header
 # ============================================================
 
-from .security_module import SecurityModule
-from .security_entry import SecurityEntry
+from modules.security_module import SecurityModule
+from .security_entry import MobileSecurityEntry as SecurityEntry
 from runtime_mobile.core.permissions import MobilePermissions
 
 __all__ = [

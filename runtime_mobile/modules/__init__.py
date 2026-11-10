@@ -11,16 +11,16 @@
 # ============================================================
 
 # Core base module
-from runtime_mobile.modules.base_module import BaseModule
+from modules.base_module import BaseModule
 
 # Knowledge system
-from runtime_mobile.modules.knowledge_module import KnowledgeModule
+from modules.knowledge_module import KnowledgeModule
 
 # Security system
-from runtime_mobile.modules.security_module import SecurityModule
+from modules.security_module import SecurityModule
 
 # Vision system
-from runtime_mobile.modules.vision_module import VisionModule
+from modules.vision_module import VisionModule
 
 # Diagnostics v3
 from runtime_mobile.diagnostics.diagnostics_entry import MobileDiagnostics

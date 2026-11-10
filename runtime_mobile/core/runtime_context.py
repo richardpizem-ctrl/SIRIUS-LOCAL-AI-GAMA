@@ -4,10 +4,10 @@
 # Author: Richard Pizem (SIRIUS LOCAL AI)
 # ============================================================
 
-from runtime_mobile.security.security_module import SecurityModule
-from runtime_mobile.vision.vision_module import VisionModule
-from runtime_mobile.knowledge.knowledge_module import KnowledgeModule
-from runtime_mobile.permissions.permissions import MobilePermissions
+from modules.security_module import SecurityModule
+from modules.vision_module import VisionModule
+from modules.knowledge_module import KnowledgeModule
+from runtime_mobile.core.permissions import MobilePermissions
 from runtime_mobile.knowledge_packs.pack_manager.pack_manager import PackManager
 
 
@@ -40,6 +40,7 @@ class MobileRuntimeContext:
         # Module Instances
         self.security = None
         self.vision = None
+        self.vision_engine = None
         self.packs = None
 
         # Optional modules
@@ -87,6 +88,9 @@ class MobileRuntimeContext:
     # ------------------------------------------------------------
     # Accessors
     # ------------------------------------------------------------
+
+    def get_vision_engine(self):
+        return self.vision_engine
 
     def get_security_profile(self):
         return self.permissions.get_profile()

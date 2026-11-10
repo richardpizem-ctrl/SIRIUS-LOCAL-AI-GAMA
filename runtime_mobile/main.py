@@ -19,7 +19,7 @@ from runtime_mobile.core.runtime_dispatcher import MobileRuntimeDispatcher
 from runtime_mobile.core.runtime_core import MobileRuntimeCore
 from runtime_mobile.core.router_mobile import MobileNLRouter
 
-from runtime_mobile.ui.ui_manager import UIManager
+from runtime_mobile.ui.manager import UIManager
 from runtime_mobile.ui.screen_manager import ScreenManager
 from runtime_mobile.ui.screens.home_screen import HomeScreen
 from runtime_mobile.ui.screens.debug_screen import DebugScreen

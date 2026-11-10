@@ -5,6 +5,7 @@ from tkinter import ttk
 from runtime_mobile.core.event import MobileEvent
 from runtime_mobile.core.event_types import MobileEventTypes
 from runtime_mobile.main import create_runtime
+from runtime_mobile.envoy_client import lookup_beta_entity
 
 
 def main():
@@ -55,6 +56,11 @@ def main():
 
     send_button = ttk.Button(input_row, text="Odoslať", command=submit)
     send_button.pack(side="left")
+
+    def read_beta():
+        show(lookup_beta_entity(entry.get()))
+
+    ttk.Button(input_row, text="Čítať z BETA", command=read_beta).pack(side="left", padx=(8, 0))
     for control in (entry, send_button):
         control.bind("<Return>", submit)
         control.bind("<KP_Enter>", submit)

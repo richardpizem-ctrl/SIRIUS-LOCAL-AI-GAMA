@@ -1,0 +1,42 @@
+{
+  "name": "gama_school_kg",
+  "version": "1.0.0",
+  "language": "sk",
+  "entries": {
+    "kg.school.sk": {
+      "schema_version": 1,
+      "graph": {
+        "nodes": [
+          1101,
+          1102
+        ],
+        "edges": [
+          {
+            "source": 1101,
+            "rel": 50,
+            "target": 1102,
+            "provenance": 1
+          }
+        ]
+      },
+      "entities": {
+        "1101": "fotosyntéza",
+        "1102": "kyslík"
+      },
+      "relations": {
+        "50": "vytvára"
+      },
+      "lexicon": {
+        "fotosyntéza": [
+          1101
+        ],
+        "kyslík": [
+          1102
+        ]
+      },
+      "sources": {
+        "1": "GAMA - zakladny skolsky balík"
+      }
+    }
+  }
+}

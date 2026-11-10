@@ -16,11 +16,24 @@ from runtime_mobile.core.event import MobileEvent
 from runtime_mobile.core.event_types import MobileEventTypes
 
 
+from runtime_mobile.knowledge_packs.kg_lookup import parse_school_question
+
+
 class MobileNLRouter:
 
     ROUTER_VERSION = "3.1.0"
 
     def route(self, text: str) -> MobileEvent:
+
+        school_question = parse_school_question(text)
+        if school_question is not None:
+            entity, relation = school_question
+            return MobileEvent(
+                MobileEventTypes.PACK_QUERY,
+                raw_input=text,
+                source="nlrouter",
+                school_kg_query={"entity": entity, "relation": relation},
+            )
 
         # Validate input
         if not text or not isinstance(text, str):

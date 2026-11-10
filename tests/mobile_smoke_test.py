@@ -6,16 +6,8 @@
 from runtime_mobile.core.runtime_core import MobileRuntimeCore
 from runtime_mobile.core.runtime_context import MobileRuntimeContext
 from runtime_mobile.core.runtime_dispatcher import MobileRuntimeDispatcher
-from runtime_mobile.core.router_mobile import MobileNLRouter
 from runtime_mobile.core.event_types import MobileEventTypes
 from runtime_mobile.core.mobile_event import MobileEvent
-
-from runtime_mobile.core.permissions import MobilePermissions
-from runtime_mobile.pack_manager import MobilePackManager
-from runtime_mobile.knowledge_packs.packs_mobile import MobileKnowledgePacks
-from runtime_mobile.vision_entry import MobileVisionEntry
-from runtime_mobile.security.security_entry import MobileSecurityEntry
-
 
 # ------------------------------------------------------------
 # Dummy Vision Engine (for testing)
@@ -41,26 +33,14 @@ class DummyVisionEngine:
 
 def build_runtime():
     context = MobileRuntimeContext()
-    context.permissions = MobilePermissions()
-    context.pack_manager = MobilePackManager()
     context.vision_engine = DummyVisionEngine()
 
-    vision = MobileVisionEntry(context)
-    security = MobileSecurityEntry(context)
-    packs = MobileKnowledgePacks(context)
-
-    router = MobileNLRouter()
     dispatcher = MobileRuntimeDispatcher(context)
 
-    core = MobileRuntimeCore(context, dispatcher, router)
-    core.load_modules(
-        vision=vision,
-        security=security,
-        packs=packs,
-    )
+    core = MobileRuntimeCore(context, dispatcher)
 
     init = core.initialize()
-    assert init["status"] == "initialized"
+    assert init["status"] == "initialized", init
 
     return core
 
@@ -69,17 +49,21 @@ def build_runtime():
 # Smoke Test
 # ------------------------------------------------------------
 
-if __name__ == "__main__":
+def test_mobile_ocr():
     runtime = build_runtime()
 
     # Simulate OCR event
     event = MobileEvent(MobileEventTypes.OCR, image="dummy")
-    result = runtime.dispatcher.dispatch(event)
+    result = runtime.handle_event(event)
 
     print("OCR RESULT:", result)
 
-    assert result["status"] == "ok"
-    assert result["type"] == "ocr_result"
+    assert result["status"] == "ok", result
+    assert result["type"] == "ocr"
     assert result["text"] == "dummy ocr text"
 
     print("Smoke test passed.")
+
+
+if __name__ == "__main__":
+    test_mobile_ocr()

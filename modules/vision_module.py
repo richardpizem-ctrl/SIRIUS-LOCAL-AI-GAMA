@@ -50,7 +50,10 @@ class VisionModule(BaseModule):
         else:
             payload = event
 
-        vtype = payload.get("type")
+        event_type = getattr(event, "type", None)
+        if isinstance(event_type, str):
+            event_type = event_type.lower()
+        vtype = payload.get("type", event_type)
         image = payload.get("image")
 
         if not self.engine:

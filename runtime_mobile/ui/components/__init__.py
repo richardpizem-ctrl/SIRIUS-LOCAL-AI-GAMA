@@ -11,11 +11,11 @@
 # - ready for Layout Engine 3.1 and Animation Engine 3.1
 # ============================================================
 
-from .base_component import BaseComponent
+from .base_component import BaseUIComponent as BaseComponent
 from .button import Button
 from .container import Container
 from .icon import Icon
-from .image import ImageComponent
+from .image import Image as ImageComponent
 from .input_field import InputField
 from .panel import Panel
 from .scroll_view import ScrollView

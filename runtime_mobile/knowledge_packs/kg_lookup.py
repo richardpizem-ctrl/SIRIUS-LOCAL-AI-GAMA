@@ -35,6 +35,12 @@ def parse_school_question(text: str):
     parts = text.strip().rstrip("?").split(maxsplit=2)
     if len(parts) == 3 and without_accents(" ".join(parts[:2])) == "co vytvara":
         return parts[2], parts[1]
+
+    if len(parts) == 3 and without_accents(" ".join(parts[:2])) == "povedz mi":
+        topic = parts[2].split(maxsplit=1)
+        if len(topic) == 2 and normalize(topic[0]) == "o":
+            return topic[1], "je"
+
     return None
 
 
@@ -54,9 +60,16 @@ def query_school_graph(pack_manager, entity: str, relation: str) -> dict:
         })
 
     if len(ids) > 1:
-        return {"status": "ambiguous", "candidates": [
-            kg["entities"][str(entity_id)] for entity_id in ids
-        ]}
+        candidates = [kg["entities"][str(entity_id)] for entity_id in ids]
+        choices = " alebo ".join(f"„{name}“" for name in candidates)
+        return {
+            "status": "ambiguous",
+            "candidates": candidates,
+            "message": (
+                f"Ktorý význam máš na mysli? {choices}? "
+                "Zopakuj otázku s presnejším názvom."
+            ),
+        }
 
     relation_ids = [
         int(key) for key, label in kg["relations"].items()

@@ -6,33 +6,42 @@
     "kg.school.sk": {
       "schema_version": 1,
       "graph": {
-        "nodes": [
-          1101,
-          1102
-        ],
+        "nodes": [1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108],
         "edges": [
-          {
-            "source": 1101,
-            "rel": 50,
-            "target": 1102,
-            "provenance": 1
-          }
+          {"source": 1101, "rel": 50, "target": 1102, "provenance": 1},
+          {"source": 1103, "rel": 51, "target": 1104, "provenance": 1},
+          {"source": 1105, "rel": 51, "target": 1107, "provenance": 1},
+          {"source": 1106, "rel": 51, "target": 1108, "provenance": 1}
         ]
       },
       "entities": {
         "1101": "fotosyntéza",
-        "1102": "kyslík"
+        "1102": "kyslík",
+        "1103": "auto",
+        "1104": "vozidlo",
+        "1105": "počítačová myš",
+        "1106": "myš domová",
+        "1107": "vstupné zariadenie",
+        "1108": "hlodavec"
       },
       "relations": {
-        "50": "vytvára"
+        "50": "vytvára",
+        "51": "je"
       },
       "lexicon": {
-        "fotosyntéza": [
-          1101
-        ],
-        "kyslík": [
-          1102
-        ]
+        "fotosyntéza": [1101],
+        "kyslík": [1102],
+        "auto": [1103],
+        "aute": [1103],
+        "vozidlo": [1104],
+        "myš": [1105, 1106],
+        "myši": [1105, 1106],
+        "počítačová myš": [1105],
+        "počítačovej myši": [1105],
+        "myš domová": [1106],
+        "myši domovej": [1106],
+        "vstupné zariadenie": [1107],
+        "hlodavec": [1108]
       },
       "sources": {
         "1": "GAMA - zakladny skolsky balík"

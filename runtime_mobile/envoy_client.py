@@ -16,7 +16,14 @@ def lookup_beta_entity(entity):
         body = response.read(32769)
         if len(body) > 32768:
             return {'status': 'error', 'reason': 'response_too_large'}
-        return json.loads(body)
+        payload = json.loads(body)
+        if not isinstance(payload, dict):
+            return {'status': 'error', 'reason': 'invalid_response'}
+        if 'schema_version' in payload:
+            version = payload['schema_version']
+            if type(version) is not int or version != 1:
+                return {'status': 'error', 'reason': 'unsupported_schema_version'}
+        return payload
     except (OSError, HTTPException):
         return {'status': 'unavailable', 'message': 'Most BETA je nedostupny.'}
     except ValueError:

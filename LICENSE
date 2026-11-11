@@ -1,153 +1,21 @@
-# SIRIUS Unified License (SUL)  
+# MIT License  
 Version: **3.2.0**  
 Copyright (c) 2026 Richard Pizem
 
----------------------------------------------------------------------
-## 🔒 Retroactive Protection Clause (Effective for ALL versions ≥ 3.0.0)
-This license applies **retroactively** to **all SIRIUS versions starting from 3.0.0**,  
-including 3.0.0, 3.1.0, 3.2.0 and all future 3.x releases.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-All components introduced in or after version 3.0.0 — including but not limited to  
-the **Self‑Repair Layer**, **Deterministic Runtime**, **Event Engine**,  
-**Vision Engine**, **Pack Integrity System**, **Security Sandbox**,  
-and **Restricted Mode** — are fully protected under SUL.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-No part of these systems may be copied, extracted, reused, reverse‑engineered,  
-or integrated into any external project, whether commercial or non‑commercial.
-
----------------------------------------------------------------------
-## 📘 Public Documentation Notice (Effective from Version 3.2.0)
-All **documentation, specifications, and public-facing technical materials**
-for SIRIUS LOCAL AI GAMA remain **PUBLIC** for transparency, education,
-and ecosystem visibility.
-
-This includes:
-- README  
-- CHANGELOG  
-- architecture descriptions  
-- module overviews  
-- public API descriptions  
-- roadmap  
-- non‑sensitive technical explanations  
-
-However:
-
-### 🔒 The **source code**, internal modules, runtime components, and all
-implementation details may be **private**, protected, or restricted under SUL.
-
-Public documentation does **not** grant permission to access, extract, copy,
-or reverse‑engineer the private runtime or any part of the Software.
-
----------------------------------------------------------------------
-## 1. Indivisible Project Restriction
-The Software, including all modules, components, files, subsystems, runtimes,
-knowledge packs, engines, and any other part, may NOT be used, copied,
-modified, redistributed, or integrated separately.
-
-No part of the Software may be extracted or reused independently.  
-The Software may only be used and distributed as a **complete, unified system**.
-
-The following actions are strictly prohibited:
-- extracting modules or components  
-- integrating parts into other projects  
-- reusing components outside the SIRIUS ecosystem  
-- forking or distributing only selected modules  
-- repackaging or rebranding individual subsystems  
-
----------------------------------------------------------------------
-## 2. Trademark Restriction
-The names **"SIRIUS LOCAL AI"**, **"SIRIUS"**, **"GAMA"**, **"GAMA Runtime"**,  
-and all related branding, logos, icons, UI identity, or visual elements  
-may NOT be used without prior written permission from the copyright holder.
-
-This includes all variants and derivatives.
-
----------------------------------------------------------------------
-## 3. Commercial Use Restriction
-The Software may NOT be sold, monetized, or included in any paid product
-or service without obtaining a commercial license.
-
-This includes, but is not limited to:
-- paid mobile apps  
-- SaaS, cloud, or hosted services  
-- enterprise integrations  
-- resale of modules, packs, or runtime components  
-- commercial consulting, training, or integration services  
-- server‑side inference or remote‑access AI systems  
-
----------------------------------------------------------------------
-## 4. Redistribution Requirements
-Any redistribution of the Software must:
-- include this license in full  
-- preserve the project structure without modification  
-- distribute the Software ONLY as a complete whole  
-
-Partial redistribution is not allowed.
-
----------------------------------------------------------------------
-## 5. Safety & Integrity Requirements
-The Software may NOT be used to create:
-- harmful, deceptive, or unsafe systems  
-- surveillance or biometric tracking systems  
-- cloud‑based AI services  
-- external AI model training pipelines  
-- systems bypassing identity or safety layers  
-- hybrid‑unsafe systems violating SIRIUS 3.x / 3.2 rules  
-
----------------------------------------------------------------------
-## 6. Hybrid‑Safe Architecture Clause (Updated for 3.2.0)
-All systems built on top of the Software must respect the **Hybrid‑Safe Architecture 3.2**:
-
-### 🔹 6.1 Low‑Trust Data Rules
-- all online data is always **low‑trust**  
-- low‑trust data must never reach offline reasoning, packs, or vision modules  
-- low‑trust data must pass through **Quarantine Pipeline 3.2**  
-
-### 🔹 6.2 Secure Online Envoy (v4‑Ready)
-If used, the Envoy must:
-- run in a fully isolated sandbox  
-- be outbound‑only  
-- fetch only text/JSON  
-- never access local files, models, or APIs  
-- never send local data outward  
-- always be treated as **low‑trust**  
-
-### 🔹 6.3 Quarantine Pipeline 3.2
-All external data must be sanitized:
-- script & HTML removal  
-- format validation  
-- size limits  
-- text cleaning  
-- safety filtering  
-- deterministic sanitization rules  
-
-### 🔹 6.4 Offline Core Isolation
-The offline core must remain:
-- fully air‑gapped  
-- free of cloud inference  
-- free of telemetry  
-- free of remote execution  
-- free of external model calls  
-
-Any attempt to bypass hybrid‑safe rules voids the license.
-
----------------------------------------------------------------------
-## 7. Non‑Affiliation Clause
-Use of the Software does NOT grant:
-- affiliation with the SIRIUS ecosystem  
-- endorsement by the author  
-- permission to claim compatibility  
-- permission to use SIRIUS branding  
-
-Any such claims require written approval.
-
----------------------------------------------------------------------
-## 8. Warranty Disclaimer
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR
-OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE
-USE OR OTHER DEALINGS IN THE SOFTWARE.
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -75,8 +75,21 @@ def query_school_graph(pack_manager, entity: str, relation: str) -> dict:
         int(key) for key, label in kg["relations"].items()
         if without_accents(label) == without_accents(relation)
     ]
+    not_found_message = "V školskom balíku som k tejto otázke nenašiel odpoveď."
     if not ids or len(relation_ids) != 1:
-        return {"status": "not_found", "entity": entity, "relation": relation}
+        return {
+            "status": "not_found",
+            "entity": entity,
+            "relation": relation,
+            "message": not_found_message,
+        }
 
     matches = lookup_school_relation(pack_manager, ids[0], relation_ids[0])
-    return {"status": "ok" if matches else "not_found", "results": matches}
+    if not matches:
+        return {
+            "status": "not_found",
+            "results": matches,
+            "message": not_found_message,
+        }
+
+    return {"status": "ok", "results": matches}

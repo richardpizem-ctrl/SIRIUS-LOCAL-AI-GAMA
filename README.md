@@ -52,29 +52,18 @@ NOT GAMA simulation, NOT multi‑agent simulator.
 
 ![version](https://img.shields.io/badge/version-3.2.0-purple?style=for-the-badge)
 ![offline](https://img.shields.io/badge/100%25-OFFLINE-blueviolet?style=for-the-badge)
-![license](https://img.shields.io/badge/license-SUL--3.2.0-green?style=for-the-badge)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
 
-# ⚠️ LICENSE UPDATE NOTICE — VERSION 3.2.0
+# ⚠️ LICENSE NOTICE — VERSION 3.2.0
 
 Starting from **SIRIUS LOCAL AI GAMA v3.2.0**,  
-the project uses the updated:
+the project is licensed under the open-source:
 
-# 🔒 **SIRIUS Unified License (SUL) — Version 3.2.0**
+# 📜 **MIT License**
 
-This license:
-
-- protects the project as **one indivisible whole**  
-- forbids using **individual modules** outside the ecosystem  
-- forbids extracting or reusing runtime components  
-- forbids commercial use without a license  
-- forbids rebranding or repackaging  
-- enforces **Hybrid‑Safe Architecture 3.2**  
-- preserves the integrity of the SIRIUS architecture  
-
-📘 **Documentation remains PUBLIC.**  
-Only the source code may be private.
+This project is open-source and freely available for use, modification, and distribution under the terms of the MIT License. See the [LICENSE](LICENSE) file for full details.
 
 ---
 
@@ -83,4 +72,4 @@ Only the source code may be private.
 **Status:** Stable, production‑ready  
 **Release Date:** 2026‑05‑21  
 **Runtime Architecture:** Offline, Modular, Deterministic, Hybrid‑Safe  
-**Mobile Platforms:** Android / iOS  
+**Mobile Platforms:** Android / iOS

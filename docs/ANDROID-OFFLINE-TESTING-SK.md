@@ -1,5 +1,7 @@
 # GAMA na Androide a plán prepojenia s BETA cez ENVOY
 
+[English version](ANDROID-OFFLINE-TESTING.md)
+
 Tento návod je pre testerov SIRIUS LOCAL AI. Opisuje overenie lokálnych znalostných dotazov v GAMA na Androide a plánovaný spôsob, akým by sa mobilná GAMA mohla cez ENVOY pýtať desktopovej BETA.
 
 ## Čo si pripraviť

@@ -1,4 +1,13 @@
-# 🔍 GAMA Vision Engine (OCR) — Version 3.2.0
+# GAMA Vision Engine and OCR
+
+## Vision Flow in runtime v3.4.0
+
+The [v3.4.0 release](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0) describes the deterministic scene, OCR, detection, homework and fallback components in [Vision Flow v3](runtime_mobile/vision_deterministic_flow_v3/). The [mobile smoke test](tests/mobile_smoke_test.py) injects a dummy vision engine because the default [runtime context](runtime_mobile/core/runtime_context.py) initializes its vision engine to `None`.
+
+The Android 0.1.3 device test covers typed questions. A real camera or image OCR test is still open as part of [integration verification](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/issues/42).
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
 
 The Vision Engine provides **offline OCR, document analysis, object detection, scene understanding, and homework recognition** for GAMA 3.2.0.  
 It is fully deterministic, ARM‑optimized, hybrid‑safe, PACK_SUGGEST‑aware, and deeply integrated with the **Unified Event Architecture 3.2.x** and **VisionEngineV3**.
@@ -266,3 +275,5 @@ Tracks OCR events.
 
 # ✔ GAMA Vision Engine 3.2 — COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

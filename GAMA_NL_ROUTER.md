@@ -1,4 +1,13 @@
-# 🧭 GAMA NL Router — Version 3.2.0
+# GAMA natural-language router
+
+## Android 0.1.3 routing on main
+
+The Android bootstrap uses [MobileNLRouter](runtime_mobile/core/router_mobile.py). The [knowledge lookup parser](runtime_mobile/knowledge_packs/kg_lookup.py) handles supported Slovak patterns and maps a question to an entity and relationship. For the water pack, the handler recognizes explicit question patterns and normalizes case, whitespace and accents. Unknown facts return a no-answer result rather than inventing a fact.
+
+Use the [offline questions](docs/ANDROID-OFFLINE-TESTING.md#run-the-offline-test) as reproducible examples.
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
 
 The NL Router in **GAMA 3.2.0** is responsible for interpreting user input, classifying intent, and routing tasks through the **Unified Event Architecture 3.2.x**.  
 It supports hybrid inputs, deterministic routing, metadata v3.2, PACK_SUGGEST routing, improved fallback logic, VisionEngineV3 routing, and full safety‑aware routing.
@@ -207,3 +216,5 @@ Tracks routing decisions.
 
 # ✔ GAMA NL Router 3.2 — COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

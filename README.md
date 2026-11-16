@@ -1,75 +1,34 @@
-<!-- ========================================================= -->
-<!-- 🔍 SEO & SEARCH ENGINE CLARIFICATION BLOCK (ANTI‑CONFUSION) -->
-<!-- ========================================================= -->
+# SIRIUS LOCAL AI GAMA
 
-# ❗ IMPORTANT — NOT RELATED TO HENGBOT, GAMA SIMULATION, OR ANY HARDWARE PRODUCTS
+GAMA is the mobile runtime in the SIRIUS LOCAL AI project. Its Android debug app answers supported Slovak questions from local knowledge packs and displays the source of each stored fact. The runtime repository also contains components for structured events, Vision Flow and schoolwork reasoning.
 
-SIRIUS LOCAL AI GAMA is **not a hardware device**, **not a robot**,  
-and has **no connection** to:
+| What | Version and status |
+| --- | --- |
+| Published runtime | [v3.4.0 release](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0) |
+| Android test build on `main` | **0.1.3**, ARM64 debug APK. Two offline scenarios were verified on a physical phone. |
+| BETA integration | A GAMA-to-BETA query through ENVOY is a planned integration test. |
+| iOS | The mobile architecture includes iOS as a target. This guide provides a verified test path for Android. |
 
-- Hengbot “Sirius” robotic dog  
-- Hengbot AI products  
-- any robotics hardware  
-- any commercial “Sirius” branded devices  
-- the **GAMA Simulation Platform** (multi‑agent simulator)  
-- any academic or research simulation software named “GAMA”  
+## Quick Start
 
-Some search engines may incorrectly merge unrelated products because they share  
-the words **“Sirius”** or **“Gama”**.
+1. Obtain `siriusgama-0.1.3-arm64-v8a-debug.apk` from the maintainer or follow the [build instructions](INSTALLATION.md).
+2. Install it on an ARM64 Android phone, enable airplane mode and turn off Wi-Fi.
+3. Open **SIRIUS GAMA**, enter **Pri akej teplote mrzne čistá voda?**, and tap **Opýtať sa**. Expect **0 °C** with USGS Water Science School as the source.
+4. See the [English tester guide](docs/ANDROID-OFFLINE-TESTING.md) or [slovenský návod](docs/ANDROID-OFFLINE-TESTING-SK.md) for the full test cases and expected outcomes.
 
-To avoid confusion:
+## Documentation
 
-**GAMA is 100% independent software — a mobile offline AI runtime for Android/iOS.  
-It is NOT a simulator, NOT a robot, NOT a hardware product, and NOT related to Hengbot.**
+| Topic | Start here |
+| --- | --- |
+| Architecture and code locations | [Architecture](GAMA_ARCHITECTURE.md), [folder structure](GAMA_FOLDER_STRUCTURE.md), [module map](GAMA_MODULE_MAP.md) |
+| Runtime and input | [Runtime](GAMA_RUNTIME.md), [natural-language router](GAMA_NL_ROUTER.md) |
+| Local content | [Knowledge packs](GAMA_KNOWLEDGE_PACKS.md), [knowledge graphs](GAMA_KNOWLEDGE_GRAPHS.md) |
+| OCR and schoolwork | [Vision Engine](GAMA_VISION_ENGINE.md), [Schoolwork Mode](GAMA_SCHOOLWORK_MODE.md) |
+| Security and contributions | [Security policy](SECURITY.md), [security tutorial](SECURITY_TUTORIAL.md), [Security Family](GAMA_SECURITY_FAMILY.md), [contributing](CONTRIBUTING.md), [code of conduct](CODE_OF_CONDUCT.md) |
+| Project status | [Changelog](CHANGELOG.md), [roadmap](GAMA_ROADMAP.md), [project vision](GAMA_VISION.md), [historical milestone](GAMA_MILESTONE_3.0.0-PRE_SUMMARY.md) |
 
-This project is part of the **SIRIUS LOCAL AI ecosystem**, created and maintained  
-as a standalone offline AI runtime.
+[BETA Windows Preview](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-BETA) uses its own local knowledge graphs and offers optional web lookups through ENVOY with user approval. The [Android guide](docs/ANDROID-OFFLINE-TESTING.md#how-beta-and-envoy-fit-in) describes the proposed first cross-device test. Follow [issue #42](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/issues/42) for the broader integration work.
 
----
+## Project identity and license
 
-<!-- ========================================================= -->
-<!-- 🔍 SEO META DESCRIPTION (FOR GOOGLE, BING & COPILOT SEARCH) -->
-<!-- ========================================================= -->
-
-**SEO‑META:**  
-SIRIUS LOCAL AI GAMA is a fully offline mobile AI runtime for Android/iOS.  
-Not hardware. Not a robot. Not related to Hengbot.  
-Not related to the GAMA Simulation Platform.  
-A deterministic, modular, privacy‑first AI system.  
-Part of the SIRIUS LOCAL AI ecosystem.
-
-**SEO‑KEYWORDS:**  
-Sirius Local AI, GAMA, offline AI runtime, mobile AI, Android AI, iOS AI,  
-SIRIUS ecosystem, offline reasoning, OCR mobile AI, knowledge packs,  
-LAN offline bridge, deterministic AI, privacy‑first AI, NOT Hengbot,  
-NOT robotic dog, NOT hardware, NOT consumer device,  
-NOT GAMA simulation, NOT multi‑agent simulator.
-
----
-
-# 🟪 SIRIUS LOCAL AI GAMA — Version 3.2.0  
-### Mobile Offline AI Runtime (Android / iOS)
-
-![version](https://img.shields.io/badge/version-3.2.0-purple?style=for-the-badge)
-![offline](https://img.shields.io/badge/100%25-OFFLINE-blueviolet?style=for-the-badge)
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
----
-
-# ⚠️ LICENSE NOTICE — VERSION 3.2.0
-
-Starting from **SIRIUS LOCAL AI GAMA v3.2.0**,  
-the project is licensed under the open-source:
-
-# 📜 **MIT License**
-
-This project is open-source and freely available for use, modification, and distribution under the terms of the MIT License. See the [LICENSE](LICENSE) file for full details.
-
----
-
-# 🟪 Version
-**Current Release:** `3.2.0`  
-**Status:** Stable, production‑ready  
-**Release Date:** 2026‑05‑21  
-**Runtime Architecture:** Offline, Modular, Deterministic, Hybrid‑Safe  
-**Mobile Platforms:** Android / iOS
+SIRIUS LOCAL AI GAMA is independent software. It has no connection to Hengbot's Sirius robot, the GAMA Simulation Platform, or similarly named hardware products. The project is distributed under the [MIT License](LICENSE).

@@ -1,4 +1,14 @@
-# 🧩 SIRIUS LOCAL AI GAMA – Architecture 3.2  
+# GAMA architecture
+
+## Runtime v3.4.0 and the Android entry point
+
+The published runtime includes Vision Flow v3, unified schoolwork events, and trace logging. The Android 0.1.3 app on `main` starts in [main.py](main.py). [runtime_mobile/main.py](runtime_mobile/main.py) creates the runtime context, natural-language router, dispatcher and core.
+
+For local text queries the path is **Kivy panel → MobileNLRouter → MobileRuntimeCore → dispatcher → local knowledge lookup → panel**. The [knowledge-graph guide](GAMA_KNOWLEDGE_GRAPHS.md) explains how a question resolves to pack data. The [tester guide](docs/ANDROID-OFFLINE-TESTING.md) marks which paths were tested on Android.
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
+
 Version: **3.2.0**
 
 GAMA 3.2 is a fully unified, deterministic, offline‑first mobile runtime built on the **SIRIUS 3.x ecosystem architecture**.  
@@ -210,3 +220,5 @@ GAMA 3.2 introduces stricter deterministic behavioral rules.
 # ✔ GAMA 3.2 — ARCHITECTURE LOCKED  
 The architecture is unified, deterministic, hybrid‑safe, and fully aligned with the SIRIUS LOCAL AI 3.2.x ecosystem.  
 This version finalizes the 3.x architecture and prepares the system for **Runtime 4.0** and **Self‑Repair Layer 4.4**.
+
+</details>

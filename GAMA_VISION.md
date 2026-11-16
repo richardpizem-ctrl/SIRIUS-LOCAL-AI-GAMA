@@ -1,4 +1,12 @@
-# 🌟 SIRIUS LOCAL AI GAMA – Vision 3.2  
+# GAMA project vision
+
+## Current direction
+
+The runtime baseline is [v3.4.0](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0). Android 0.1.3 demonstrates sourced Slovak lookup offline. Near-term work is to make knowledge packs easier to extend, test real OCR input with the same lookup path, and validate a read-only ENVOY query to BETA. Follow the [roadmap](GAMA_ROADMAP.md) for the order and test outcomes.
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
+
 Version: **3.2.0**
 
 The GAMA Vision Engine 3.2 is the fully offline, deterministic, hybrid‑safe visual processing subsystem of the SIRIUS LOCAL AI GAMA ecosystem.  
@@ -244,3 +252,5 @@ Vision Engine 3.2 introduces **VisionEngineV3**, a unified deterministic vision 
 
 # ✔ GAMA Vision Engine 3.2 — COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

@@ -1,4 +1,12 @@
-# 🛡 SIRIUS Local AI GAMA — Security Tutorial  
+# GAMA security tutorial
+
+## Current verification scope
+
+For runtime v3.4.0, the release documents semantic trace records. The [trace schema](runtime_mobile/trace_logs_v3/trace_schema_v3.py) defines their fields. Follow the [Android offline guide](docs/ANDROID-OFFLINE-TESTING.md) to verify a local query with connectivity disabled. For reporting, use the [security policy](SECURITY.md).
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
+
 **Version:** 3.2.0  
 **Architecture:** Offline, Deterministic, Hybrid‑Safe  
 **Aligned With:** Runtime 3.2, Security Family 3.2, VisionEngineV3, Event Engine 3.2.x, Metadata v3.2
@@ -211,3 +219,5 @@ The behavioral and architectural safety of SIRIUS Local AI GAMA 3.2 is built on:
 - unified result schema v3.2  
 
 GAMA 3.2 aligns with best practices for privacy‑focused, family‑safe, fully offline AI systems.
+
+</details>

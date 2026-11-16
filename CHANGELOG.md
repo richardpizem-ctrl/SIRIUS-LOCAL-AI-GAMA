@@ -1,4 +1,19 @@
-# 🟪 SIRIUS LOCAL AI GAMA — CHANGELOG (ENGLISH EDITION)
+# GAMA changelog
+
+## Android debug 0.1.3 (main)
+
+- Added a Slovak water pack with sourced answers for freezing, boiling and condensation.
+- Extended the school graph with photosynthesis questions and a multi-fact explanation.
+- Verified freezing and the no-answer case offline on an Android phone. See [PR #49](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/pull/49) and the [test guide](docs/ANDROID-OFFLINE-TESTING.md).
+
+## Runtime v3.4.0
+
+The [v3.4.0 release](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0) describes Vision Flow v3, a unified Schoolwork event schema, and structured trace logging. The runtime version and Android package version follow separate histories.
+
+## Runtime v3.3.0 Schoolwork module
+
+The [v3.3.0 Schoolwork release](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.3.0-schoolwork-reasoning) introduced the deterministic schoolwork reasoning module, including input normalization, pack integration and explanations.
+
 Versions: **2.0.0 → 3.0.0 → 3.1.0 → 3.2.0**
 
 ---
@@ -123,4 +138,3 @@ and full alignment with the 3.1.x event system.
 
 # 📌 Version 2.0.0 — (Stable Release)
 *(unchanged from original)*
-

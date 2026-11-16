@@ -1,4 +1,19 @@
-# 🚀 SIRIUS LOCAL AI GAMA – Roadmap  
+# GAMA roadmap
+
+## Status and next milestones
+
+| Item | Status |
+| --- | --- |
+| Runtime v3.4.0 | Released with Vision Flow v3, unified events and trace logging. |
+| Android 0.1.3 | Offline sourced answer and missing-answer handling verified on a phone. |
+| Knowledge packs | Move question patterns and pack selection toward data so new topics require fewer Python changes. |
+| OCR to knowledge lookup | Verify that an image-derived question can use the same lookup path as typed input. |
+| GAMA to BETA through ENVOY | Verify a user-approved read-only query, denial and an unavailable BETA instance. |
+| Full integration | Track cross-device, runtime and compatibility verification in [issue #42](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/issues/42). |
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
+
 Version: **3.2.0**
 
 ---
@@ -279,3 +294,5 @@ Mobile ↔ PC communication over **local Wi‑Fi only**:
 - PC = heavy reasoning, diagnostics, WIN‑CAP, FS‑AGENT  
 
 No internet required.
+
+</details>

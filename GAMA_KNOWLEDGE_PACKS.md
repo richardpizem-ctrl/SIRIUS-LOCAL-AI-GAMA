@@ -1,4 +1,13 @@
-# 🧩 GAMA Knowledge Packs — Version 3.2.0
+# GAMA knowledge packs
+
+## Packs shipped in the Android 0.1.3 source
+
+[School graph](runtime_mobile/knowledge_packs/data/gama_school_kg.json) contains classroom examples such as photosynthesis, while [water graph](runtime_mobile/knowledge_packs/data/gama_water_kg.json) contains sourced phase-change facts. The [pack manager](runtime_mobile/knowledge_packs/pack_manager/pack_manager.py) loads JSON packs and exposes their entries. The [lookup](runtime_mobile/knowledge_packs/kg_lookup.py) selects a graph for supported question patterns and returns the answer with edge provenance.
+
+The graph schema and package versions serve different purposes. See [knowledge graphs](GAMA_KNOWLEDGE_GRAPHS.md) for the schema and [Android testing](docs/ANDROID-OFFLINE-TESTING.md) for the cases verified on device.
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
 
 Knowledge Packs provide **offline structured knowledge modules** used by the GAMA Runtime, Unified Event System, Schoolwork Mode, and Reasoning Engine.  
 Version **3.2.0** extends the 3.1 architecture with **deterministic PACK routing**,  
@@ -205,3 +214,5 @@ Tracks pack usage.
 
 # ✔ GAMA Knowledge Packs 3.2 — COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

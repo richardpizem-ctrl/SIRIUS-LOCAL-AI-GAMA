@@ -1,4 +1,8 @@
-# How SIRIUS GAMA’s local knowledge graph works
+# GAMA local knowledge graphs
+
+## Android 0.1.3 examples
+
+The [water graph](runtime_mobile/knowledge_packs/data/gama_water_kg.json) uses the same graph schema as the school pack. For the freezing question, the returned answer is `0 °C` with its USGS source. The school graph can return both oxygen and sugars for the photosynthesis question. The [Android tester guide](docs/ANDROID-OFFLINE-TESTING.md) identifies which questions were tested on the phone and which were checked in the terminal.
 
 SIRIUS GAMA can answer supported Slovak school questions from a local knowledge pack. The Windows panel accepts a question such as “Povedz mi o aute” (“Tell me about the car”), looks up a stored relationship, and shows the answer together with its source.
 

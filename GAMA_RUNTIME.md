@@ -1,4 +1,13 @@
-# ⚙️ GAMA Runtime Core — Version 3.2.0
+# GAMA runtime
+
+## Runtime v3.4.0 and the current bootstrap
+
+The [runtime release](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0) documents a v3 event model and semantic trace logging. On `main`, [create_runtime](runtime_mobile/main.py) wires context, router and dispatcher. [MobileRuntimeCore](runtime_mobile/core/runtime_core.py) initializes the local runtime and accepts routed events. The Android UI uses this bootstrap for offline text questions.
+
+For an executable example, see [the runtime smoke test](tests/mobile_smoke_test.py). For verified behavior on a physical device, see [Android offline testing](docs/ANDROID-OFFLINE-TESTING.md).
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
 
 The GAMA Runtime Core is the **central execution layer** of the SIRIUS LOCAL AI GAMA 3.x ecosystem.  
 It provides deterministic task execution, unified event routing, hybrid‑safe processing, PACK_SUGGEST support, VisionEngineV3 routing, and full offline autonomy.
@@ -275,3 +284,5 @@ Produces consistent, deterministic output format.
 
 # ✔ GAMA Runtime Core 3.2 — COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

@@ -1,7 +1,9 @@
 # 🔐 SIRIUS LOCAL AI GAMA – Security Policy  
-**Version:** 3.2.0  
+**Historical policy baseline:** 3.2.0
 **Architecture:** Offline, Deterministic, Hybrid‑Safe  
 **Aligned With:** Runtime 3.2, Event Engine 3.2.x, VisionEngineV3, Security Family 3.2, Hybrid‑Safe Pipeline 3.2
+
+For the current runtime release, see [v3.4.0](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0). The scope of the Android debug test is in the [offline tester guide](docs/ANDROID-OFFLINE-TESTING.md).
 
 SIRIUS LOCAL AI GAMA is a fully offline, privacy‑first mobile AI runtime.  
 This security policy defines how vulnerabilities are reported, validated, and resolved in **version 3.2.0**, aligned with:
@@ -16,7 +18,7 @@ This security policy defines how vulnerabilities are reported, validated, and re
 
 ---
 
-# 🛡 1. Supported Versions
+# 🛡 1. Supported Versions (historical 3.2.0 table)
 
 Only the latest stable version of GAMA receives full security updates.
 
@@ -37,7 +39,7 @@ Older versions may contain unresolved vulnerabilities and should not be used in 
 If you discover a security vulnerability, report it **privately**.
 
 ### ✔ Recommended method  
-Open a **private GitHub issue** in this repository.
+Use the repository’s private vulnerability reporting option if it is available. Otherwise, contact the maintainer privately.
 
 ### ✔ Alternative contact  
 Maintainer: **@richardpizem-ctrl**

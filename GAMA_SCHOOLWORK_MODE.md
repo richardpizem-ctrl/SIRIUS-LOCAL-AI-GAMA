@@ -1,4 +1,11 @@
-# 🎓 GAMA Schoolwork Mode — Version 3.2.0
+# GAMA Schoolwork Mode
+
+## Published Schoolwork reasoning and runtime v3.4.0
+
+The [v3.3.0 Schoolwork release](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.3.0-schoolwork-reasoning) documents normalization, subject detection, pack integration and explanations in [schoolwork_reasoning_v3](runtime_mobile/schoolwork_reasoning_v3/). Runtime v3.4.0 adds unified event definitions for text, vision and pack inputs. The [Android 0.1.3 report](docs/ANDROID-OFFLINE-TESTING.md) verifies text knowledge lookups. A full Schoolwork workflow on a physical device remains a separate test.
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
 
 Schoolwork Mode provides **offline, deterministic academic reasoning** for students in GAMA 3.2.0.  
 It integrates with the Unified Event Architecture 3.2.x, Metadata v3.2, Knowledge Packs 3.2,  
@@ -209,3 +216,5 @@ Tracks Schoolwork events.
 
 # ✔ GAMA Schoolwork Mode 3.2 — COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

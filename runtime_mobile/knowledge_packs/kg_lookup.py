@@ -1,8 +1,23 @@
 import unicodedata
 
 
-def lookup_school_relation(pack_manager, entity_id: int, relation_id: int) -> list[dict]:
-    kg = pack_manager.get_entry("gama_school_kg", "kg.school.sk")
+WATER_QUESTIONS = {
+    "pri akej teplote mrzne cista voda": ("voda", "bod mrznutia"),
+    "pri akej teplote vrie pri normalnom atmosferickom tlaku": ("voda", "bod varu"),
+    "pri akej teplote vrie voda pri normalnom atmosferickom tlaku": ("voda", "bod varu"),
+    "co vznika pri kondenzacii vodnej pary": ("vodná para", "produkt kondenzácie"),
+}
+WATER_RELATIONS = {relation for _, relation in WATER_QUESTIONS.values()}
+
+
+def _get_graph(pack_manager, relation):
+    if relation in WATER_RELATIONS:
+        return pack_manager.get_entry("gama_water_kg", "kg.water.sk")
+    return pack_manager.get_entry("gama_school_kg", "kg.school.sk")
+
+
+def lookup_school_relation(pack_manager, entity_id: int, relation_id: int, relation: str = "") -> list[dict]:
+    kg = _get_graph(pack_manager, relation)
     if kg is None or kg.get("schema_version") != 1:
         raise ValueError("Školský KG chýba alebo má nepodporovanú verziu.")
 
@@ -32,9 +47,17 @@ def parse_school_question(text: str):
     if not isinstance(text, str):
         return None
 
-    parts = text.strip().rstrip("?").split(maxsplit=2)
-    if len(parts) == 3 and without_accents(" ".join(parts[:2])) == "co vytvara":
-        return parts[2], parts[1]
+    question = " ".join(without_accents(text.strip().rstrip("?.!")).split())
+    if question in WATER_QUESTIONS:
+        return WATER_QUESTIONS[question]
+
+    parts = text.strip().rstrip("?.!").split(maxsplit=2)
+    if len(parts) == 3:
+        prefix = without_accents(" ".join(parts[:2]))
+        if prefix in {"co je", "co su"}:
+            return parts[2], "je"
+        if prefix in {"co vytvara", "co vyuziva"}:
+            return parts[2], parts[1]
 
     if len(parts) == 3 and without_accents(" ".join(parts[:2])) == "povedz mi":
         topic = parts[2].split(maxsplit=1)
@@ -45,7 +68,7 @@ def parse_school_question(text: str):
 
 
 def query_school_graph(pack_manager, entity: str, relation: str) -> dict:
-    kg = pack_manager.get_entry("gama_school_kg", "kg.school.sk")
+    kg = _get_graph(pack_manager, relation)
     if kg is None or kg.get("schema_version") != 1:
         return {"status": "error", "reason": "school_kg_unavailable"}
 
@@ -84,7 +107,7 @@ def query_school_graph(pack_manager, entity: str, relation: str) -> dict:
             "message": not_found_message,
         }
 
-    matches = lookup_school_relation(pack_manager, ids[0], relation_ids[0])
+    matches = lookup_school_relation(pack_manager, ids[0], relation_ids[0], relation)
     if not matches:
         return {
             "status": "not_found",
@@ -92,4 +115,12 @@ def query_school_graph(pack_manager, entity: str, relation: str) -> dict:
             "message": not_found_message,
         }
 
+    if without_accents(relation) == "je":
+        for label, heading in (("využíva", "Využíva"), ("vytvára", "Vytvára")):
+            for key, relation_label in kg["relations"].items():
+                if relation_label == label:
+                    matches.extend(
+                        {**fact, "answer": f'{heading}: {fact["answer"]}'}
+                        for fact in lookup_school_relation(pack_manager, ids[0], int(key))
+                    )
     return {"status": "ok", "results": matches}

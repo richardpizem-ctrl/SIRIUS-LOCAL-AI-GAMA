@@ -1,4 +1,11 @@
-# 🛡 GAMA Security Family — Version 3.2.0
+# GAMA Security Family
+
+## Runtime v3.4.0 context
+
+The runtime repository contains [security entry points](runtime_mobile/security/), [restricted mode](runtime_mobile/restricted_mode_v3/) and [quarantine components](runtime_mobile/quarantine_pipeline_v3/). The offline Android text test establishes that the tested lookup works without network access. Device-wide enforcement and the full Security Family feature set require their own integration tests. See the [security tutorial](SECURITY_TUTORIAL.md) and [issue #42](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/issues/42).
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
 
 The Security Family is the **central safety subsystem** of the SIRIUS LOCAL AI GAMA 3.x ecosystem.  
 It enforces deterministic safety rules, restricted‑mode behavior, sandbox isolation,  
@@ -310,3 +317,5 @@ If anomaly detected:
 
 # ✔ GAMA Security Family 3.2 — COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

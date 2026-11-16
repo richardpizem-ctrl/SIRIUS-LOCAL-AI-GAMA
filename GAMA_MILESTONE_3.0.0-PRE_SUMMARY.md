@@ -1,4 +1,10 @@
-# SIRIUS LOCAL AI GAMA  
+# Historical GAMA milestone summary
+
+This file preserves the earlier architecture and milestone record. For the v3.4.0 runtime and the verified Android 0.1.3 test scope, start with the [README](README.md) and [changelog](CHANGELOG.md).
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
+
 ## Milestone Summary — Version 3.2.0  
 ### Full Architecture Overview & Completion Report
 
@@ -274,3 +280,5 @@ This version prepares the system for **Runtime 4.0** and **Self‑Repair Layer 4
 
 # 🎉 Milestone 3.2.0 — COMPLETE  
 The system is fully stabilized, unified, deterministic, hybrid‑safe, and ready for **Runtime 4.0** and **Self‑Repair Layer 4.4**.
+
+</details>

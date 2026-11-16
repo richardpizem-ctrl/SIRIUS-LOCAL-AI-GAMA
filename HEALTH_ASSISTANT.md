@@ -1,4 +1,10 @@
-# 🏥 SIRIUS LOCAL AI GAMA – Health Assistant 3.2  
+# GAMA Health Assistant design notes
+
+This page preserves the earlier Health Assistant design. The verified Android 0.1.3 workflow covers school knowledge questions. A Health Assistant workflow is outside that verification. See the [Android test scope](docs/ANDROID-OFFLINE-TESTING.md) and [roadmap](GAMA_ROADMAP.md).
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
+
 Version: **3.2.0**  
 Offline healthcare module for GAMA 3.2.0  
 Designed for safe, family‑friendly, privacy‑focused use **without diagnostics**.
@@ -249,3 +255,5 @@ Health Assistant 3.2 integrates with:
 
 # ✔ GAMA Health Assistant 3.2 — COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

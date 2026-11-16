@@ -1,4 +1,8 @@
-# 🤝 Contributing to SIRIUS LOCAL AI GAMA — Version 3.2.0
+# Contributing to SIRIUS LOCAL AI GAMA
+## Start here
+
+Base changes on `main` and use the [current folder map](GAMA_FOLDER_STRUCTURE.md). For runtime changes run the smoke test in the [installation guide](INSTALLATION.md). For Android knowledge changes, include the APK version and actual device results from the [offline tester guide](docs/ANDROID-OFFLINE-TESTING.md). The released runtime is v3.4.0 and the Android debug package on `main` is 0.1.3.
+
 
 Thank you for your interest in contributing to **SIRIUS LOCAL AI GAMA**, the fully offline, hybrid‑safe mobile AI runtime of the SIRIUS ecosystem.
 
@@ -37,7 +41,7 @@ All contributions must respect the core SIRIUS principles:
 
 ---
 
-# 📁 2. Repository Structure (Updated for 3.2.0)
+# 📁 2. Repository Structure (3.2.0 reference)
 
 ```
 /runtime_mobile        – Mobile Runtime 3.2 (event engine, system layer, hybrid router)

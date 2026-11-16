@@ -6,7 +6,7 @@ This guide helps testers reproduce local knowledge queries in SIRIUS GAMA for An
 
 ## Get the test build
 
-Use an ARM64 Android phone and obtain `siriusgama-0.1.3-arm64-v8a-debug.apk` from the project maintainer. **0.1.3** is the version of the local Android test build. **v3.4.0** identifies the published [GAMA runtime release](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0). The tested water pack, `gama_water_kg.json`, was part of the local Android build. To reproduce the test, use that APK or its matching local sources.
+Use an ARM64 Android phone and obtain `siriusgama-0.1.3-arm64-v8a-debug.apk` from the project maintainer. **0.1.3** is the version of the local Android test build. **v3.4.0** identifies the published [GAMA runtime release](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0). The tested water pack, `gama_water_kg.json`, was part of the local Android build. To reproduce the test, use that APK or [build it from main](../INSTALLATION.md#build-a-debug-apk-from-source). The water pack and Android version update landed in [PR #49](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/pull/49).
 
 ## Run the offline test
 

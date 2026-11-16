@@ -8,7 +8,7 @@ Tento návod je pre testerov SIRIUS LOCAL AI. Opisuje overenie lokálnych znalos
 
 - Android telefón s architektúrou ARM64 a lokálny testovací súbor `siriusgama-0.1.3-arm64-v8a-debug.apk` od správcu projektu.
 - Označenie **0.1.3** patrí lokálnemu Android APK. Označenie **v3.4.0** na stránke [GAMA Releases](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/releases/tag/v3.4.0) patrí vydaniu runtime. Tento návod nepridáva APK do GitHub Releases.
-- Testovací balík o vode bol overený v lokálnom projekte. Súbor `gama_water_kg.json` v čase písania nebol dostupný na predvolenej vetve repozitára. Pri reprodukcii použite uvedené APK alebo zodpovedajúce lokálne zdroje.
+- Testovací balík o vode bol overený v lokálnom projekte. Súbor `gama_water_kg.json` aj nastavenie verzie APK sú vo vetve `main` po zlúčení [PR #49](https://github.com/richardpizem-ctrl/SIRIUS-LOCAL-AI-GAMA/pull/49). Pri reprodukcii použite uvedené APK alebo ho [zostavte zo zdroja](../INSTALLATION.md#build-a-debug-apk-from-source).
 
 ## Offline test GAMA
 

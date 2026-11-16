@@ -1,4 +1,21 @@
-# 📁 SIRIUS LOCAL AI GAMA – Folder Structure  
+# GAMA folder structure
+
+## Source tree on main
+
+| Path | Role |
+| --- | --- |
+| [main.py](main.py), [buildozer.spec](buildozer.spec) | Android debug UI and packaging |
+| [runtime_mobile/core/](runtime_mobile/core/) | Context, events, router, runtime and dispatcher |
+| [runtime_mobile/knowledge_packs/](runtime_mobile/knowledge_packs/) | Pack management, graph lookup and local JSON data |
+| [runtime_mobile/unified_events_v3/](runtime_mobile/unified_events_v3/) | Unified event schema and adapters |
+| [runtime_mobile/vision_deterministic_flow_v3/](runtime_mobile/vision_deterministic_flow_v3/) | Vision Flow components |
+| [runtime_mobile/schoolwork_reasoning_v3/](runtime_mobile/schoolwork_reasoning_v3/) | Schoolwork reasoning components |
+| [runtime_mobile/trace_logs_v3/](runtime_mobile/trace_logs_v3/) | Trace schema and writer |
+| [tests/](tests/), [docs/](docs/) | Smoke test and tester guides |
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
+
 Version: **3.2.0**
 
 This is the official folder structure for **SIRIUS LOCAL AI GAMA 3.2.0**, fully aligned with the 3.2.x architecture, unified event system, hybrid‑safe rules, VisionEngineV3, Event Engine 3.2, and Runtime Core 3.2.
@@ -236,4 +253,6 @@ Build system for mobile platforms:
 - versioning/  
 - release/  
 - hybrid_safe_build/  
-- diagnostics_build/  
+- diagnostics_build/
+
+</details>

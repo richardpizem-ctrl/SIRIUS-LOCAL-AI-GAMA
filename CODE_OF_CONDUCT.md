@@ -1,5 +1,5 @@
 # 📘 Code of Conduct  
-### SIRIUS LOCAL AI GAMA — Version 3.2.0
+These community guidelines apply across GAMA releases and to contributions on the current branch.
 
 This Code of Conduct defines safe, respectful, and responsible behavior within the **SIRIUS LOCAL AI GAMA** project.  
 GAMA follows the SIRIUS ecosystem principles of **privacy, safety, determinism, modularity, and offline‑first design**, extended with **hybrid‑safe rules** introduced in the 3.x architecture and strengthened in **3.2.0**.

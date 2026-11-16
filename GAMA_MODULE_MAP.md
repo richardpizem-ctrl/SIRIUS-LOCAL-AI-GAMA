@@ -1,4 +1,14 @@
-# 🗺️ SIRIUS LOCAL AI GAMA – Module Map  
+# GAMA module map
+
+## Start with the active entry point
+
+For Android text questions, follow [main.py](main.py), [MobileNLRouter](runtime_mobile/core/router_mobile.py), [MobileRuntimeCore](runtime_mobile/core/runtime_core.py), [MobileRuntimeDispatcher](runtime_mobile/core/runtime_dispatcher.py) and [the local graph lookup](runtime_mobile/knowledge_packs/kg_lookup.py).
+
+Runtime v3.4.0 also contains [Vision Flow](runtime_mobile/vision_deterministic_flow_v3/), [unified events](runtime_mobile/unified_events_v3/) and [trace logging](runtime_mobile/trace_logs_v3/). Use [the smoke test](tests/mobile_smoke_test.py) for the dispatcher OCR path with an injected test engine, and the [tester guide](docs/ANDROID-OFFLINE-TESTING.md) for verified Android scenarios.
+
+<details>
+<summary>Earlier documentation (historical reference)</summary>
+
 Version: **3.2.0**
 
 This Module Map defines all modules included in **SIRIUS LOCAL AI GAMA 3.2.0**, fully aligned with the unified event architecture 3.2.x, deterministic runtime, hybrid‑safe rules, PACK_SUGGEST support, VisionEngineV3, Hybrid Router 3.2, and the SIRIUS 3.2.x ecosystem.
@@ -143,3 +153,5 @@ This Module Map defines all modules included in **SIRIUS LOCAL AI GAMA 3.2.0**, 
 
 # ✔ GAMA 3.2.0 — MODULE MAP COMPLETE  
 Fully aligned with the SIRIUS LOCAL AI GAMA 3.2.x ecosystem.
+
+</details>

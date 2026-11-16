@@ -1,0 +1,63 @@
+{
+  "name": "gama_water_kg",
+  "version": "1.0.0",
+  "language": "sk",
+  "entries": {
+    "kg.water.sk": {
+      "schema_version": 1,
+      "graph": {
+        "nodes": [
+          1201,
+          1202,
+          1203,
+          1204,
+          1205
+        ],
+        "edges": [
+          {
+            "source": 1201,
+            "rel": 60,
+            "target": 1203,
+            "provenance": 1
+          },
+          {
+            "source": 1201,
+            "rel": 61,
+            "target": 1204,
+            "provenance": 1
+          },
+          {
+            "source": 1202,
+            "rel": 62,
+            "target": 1205,
+            "provenance": 2
+          }
+        ]
+      },
+      "entities": {
+        "1201": "voda",
+        "1202": "vodná para",
+        "1203": "0 °C",
+        "1204": "100 °C pri normálnom atmosférickom tlaku",
+        "1205": "kvapalná voda"
+      },
+      "relations": {
+        "60": "bod mrznutia",
+        "61": "bod varu",
+        "62": "produkt kondenzácie"
+      },
+      "lexicon": {
+        "voda": [
+          1201
+        ],
+        "vodná para": [
+          1202
+        ]
+      },
+      "sources": {
+        "1": "USGS Water Science School – https://doi.org/10.3133/gip219",
+        "2": "NOAA Water Cycle Activity – https://www.nesdis.noaa.gov/s3/2023-02/WaterCycleActivity-FullManual.pdf"
+      }
+    }
+  }
+}

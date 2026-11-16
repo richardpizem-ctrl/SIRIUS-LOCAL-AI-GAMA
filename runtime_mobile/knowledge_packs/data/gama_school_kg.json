@@ -6,12 +6,84 @@
     "kg.school.sk": {
       "schema_version": 1,
       "graph": {
-        "nodes": [1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108],
+        "nodes": [
+          1101,
+          1102,
+          1103,
+          1104,
+          1105,
+          1106,
+          1107,
+          1108,
+          1109,
+          1110,
+          1111,
+          1112,
+          1113,
+          1114,
+          1115
+        ],
         "edges": [
-          {"source": 1101, "rel": 50, "target": 1102, "provenance": 1},
-          {"source": 1103, "rel": 51, "target": 1104, "provenance": 1},
-          {"source": 1105, "rel": 51, "target": 1107, "provenance": 1},
-          {"source": 1106, "rel": 51, "target": 1108, "provenance": 1}
+          {
+            "source": 1101,
+            "rel": 50,
+            "target": 1102,
+            "provenance": 1
+          },
+          {
+            "source": 1103,
+            "rel": 51,
+            "target": 1104,
+            "provenance": 1
+          },
+          {
+            "source": 1105,
+            "rel": 51,
+            "target": 1107,
+            "provenance": 1
+          },
+          {
+            "source": 1106,
+            "rel": 51,
+            "target": 1108,
+            "provenance": 1
+          },
+          {
+            "source": 1109,
+            "rel": 51,
+            "target": 1110,
+            "provenance": 1
+          },
+          {
+            "source": 1101,
+            "rel": 51,
+            "target": 1111,
+            "provenance": 1
+          },
+          {
+            "source": 1101,
+            "rel": 52,
+            "target": 1114,
+            "provenance": 1
+          },
+          {
+            "source": 1101,
+            "rel": 52,
+            "target": 1112,
+            "provenance": 1
+          },
+          {
+            "source": 1101,
+            "rel": 52,
+            "target": 1113,
+            "provenance": 1
+          },
+          {
+            "source": 1101,
+            "rel": 50,
+            "target": 1115,
+            "provenance": 1
+          }
         ]
       },
       "entities": {
@@ -22,26 +94,107 @@
         "1105": "počítačová myš",
         "1106": "myš domová",
         "1107": "vstupné zariadenie",
-        "1108": "hlodavec"
+        "1108": "hlodavec",
+        "1109": "rastliny",
+        "1110": "živé organizmy, z ktorých väčšina si tvorí cukry fotosyntézou",
+        "1111": "proces, pri ktorom rastliny využívajú energiu svetla na tvorbu cukrov",
+        "1112": "voda",
+        "1113": "oxid uhličitý",
+        "1114": "energia svetla",
+        "1115": "cukry"
       },
       "relations": {
         "50": "vytvára",
-        "51": "je"
+        "51": "je",
+        "52": "využíva"
       },
       "lexicon": {
-        "fotosyntéza": [1101],
-        "kyslík": [1102],
-        "auto": [1103],
-        "aute": [1103],
-        "vozidlo": [1104],
-        "myš": [1105, 1106],
-        "myši": [1105, 1106],
-        "počítačová myš": [1105],
-        "počítačovej myši": [1105],
-        "myš domová": [1106],
-        "myši domovej": [1106],
-        "vstupné zariadenie": [1107],
-        "hlodavec": [1108]
+        "fotosyntéza": [
+          1101
+        ],
+        "kyslík": [
+          1102
+        ],
+        "auto": [
+          1103
+        ],
+        "aute": [
+          1103
+        ],
+        "vozidlo": [
+          1104
+        ],
+        "myš": [
+          1105,
+          1106
+        ],
+        "myši": [
+          1105,
+          1106
+        ],
+        "počítačová myš": [
+          1105
+        ],
+        "počítačovej myši": [
+          1105
+        ],
+        "myš domová": [
+          1106
+        ],
+        "myši domovej": [
+          1106
+        ],
+        "vstupné zariadenie": [
+          1107
+        ],
+        "hlodavec": [
+          1108
+        ],
+        "rastliny": [
+          1109
+        ],
+        "rastlina": [
+          1109
+        ],
+        "rastlinách": [
+          1109
+        ],
+        "rastline": [
+          1109
+        ],
+        "voda": [
+          1112
+        ],
+        "vodu": [
+          1112
+        ],
+        "vode": [
+          1112
+        ],
+        "oxid uhličitý": [
+          1113
+        ],
+        "oxide uhličitom": [
+          1113
+        ],
+        "energia svetla": [
+          1114
+        ],
+        "energiu svetla": [
+          1114
+        ],
+        "cukry": [
+          1115
+        ],
+        "cukor": [
+          1115
+        ],
+        "cukroch": [
+          1115
+        ],
+        "fotosyntéze": [
+          1101
+        ]
       },
       "sources": {
         "1": "GAMA - zakladny skolsky balík"

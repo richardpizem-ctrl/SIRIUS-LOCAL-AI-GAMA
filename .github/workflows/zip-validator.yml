@@ -1,0 +1,34 @@
+name: ZIP Validator
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "*.zip"
+
+jobs:
+  validate-zip:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: List ZIP files
+        run: |
+          if ls *.zip 1> /dev/null 2>&1; then
+            ls -l *.zip
+          else
+            echo "No ZIP files found, skipping validation."
+          fi
+
+      - name: Validate ZIP structure
+        run: |
+          if ls *.zip 1> /dev/null 2>&1; then
+            for file in *.zip; do
+              echo "Validating $file"
+              unzip -t "$file"
+            done
+          else
+            echo "No ZIP files found, skipping validation."
+          fi
